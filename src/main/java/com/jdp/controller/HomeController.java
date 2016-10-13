@@ -1,4 +1,4 @@
-package com.jdp.exam;
+package com.jdp.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
