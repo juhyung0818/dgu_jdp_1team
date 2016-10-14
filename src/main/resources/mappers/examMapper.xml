@@ -5,6 +5,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.jdp.mapper.ExamMapper">
 
+	<!-- exam register -->
 	<insert id="register">
 		insert into question (subjectCode, examName, qNumber, qInfo, qPoint, answer)
 		values (#{subjectCode}, #{examName}, #{qNumber}, #{qInfo}, #{qPoint}, #{answer})
@@ -16,6 +17,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values (#{subjectCode}, #{examName}, #{startTime}, #{endTime})
 	</insert> -->
 	
+	<!-- exam delete -->
 	<delete id="delete">
  		delete from exam where subjectCode=#{subjectCode} and examName=#{examName}
  	</delete>
@@ -28,6 +30,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		order by h.senddate desc
  	</select>
  	 -->
+<<<<<<< HEAD
 <!--  	 <select id="receiveList" resultType="org.highfive.domain.QuestionVO">
  		select u.uid, u.uname, u.age, u.nation, u.sex, u.uphoto
  		from tbl_user as u join tbl_highfive as h
@@ -36,4 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		order by h.senddate desc
  	</select>
  -->
+=======
+
+>>>>>>> origin/master
 </mapper>
