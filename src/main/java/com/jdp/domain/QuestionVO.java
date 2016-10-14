@@ -5,6 +5,7 @@ package com.jdp.domain;
  */
 public class QuestionVO {
 	
+	int subjectCode;
 	String examName;
 	int qNumber;
 	String qInfo;
@@ -12,8 +13,22 @@ public class QuestionVO {
 	int answer;
 	
 	/**
+	 * subjectCode getter method
+	 * @return code of subject
+	 */
+	public int getSubjectCode() {
+		return subjectCode;
+	}
+	/**
+	 * subject setter method
+	 * @param subjectCode
+	 */
+	public void setSubjectCode(int subjectCode) {
+		this.subjectCode = subjectCode;
+	}
+	/**
 	 * examName getter method
-	 * @return name of exam
+	 * @return name of exam :code of subject
 	 */
 	public String getExamName() {
 		return examName;

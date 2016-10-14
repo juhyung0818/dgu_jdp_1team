@@ -14,9 +14,9 @@ public class ExamDAO {
 	
 	@Inject
 	private SqlSession session; //session for sql connetion
-	private String namespace = "org.highfive.mapper.examMapper";
+	private String namespace = "com.jdp.mapper.ExamMapper";
 
 	public void register(QuestionVO question) throws Exception {
-		session.insert(namespace + ".register");
+		session.insert(namespace + ".register", question);
 	}
 }

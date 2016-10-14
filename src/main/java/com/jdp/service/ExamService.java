@@ -26,9 +26,10 @@ public class ExamService {
 	 * @param questionList
 	 * @throws Exception
 	 */
-	public void register(List<QuestionVO> questionList) throws Exception {
-		for(int i=0; i<questionList.size(); i++){
-			examDAO.register(questionList.get(i));
-		}
+	public void register(QuestionVO questionList) throws Exception {
+//		for(int i=0; i<questionList.size(); i++){
+//			examDAO.register(questionList.get(i));
+//		}
+		examDAO.register(questionList);
 	}
 }
