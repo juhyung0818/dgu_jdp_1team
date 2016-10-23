@@ -3,7 +3,12 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="org.highfive.mapper.ExamMapper">
+<mapper namespace="com.jdp.mapper.ExamMapper">
+
+	<insert id="register">
+		insert into question (subjectCode, examName, qNumber, qInfo, qPoint, answer)
+		values (#{subjectCode}, #{examName}, #{qNumber}, #{qInfo}, #{qPoint}, #{answer})
+	</insert>
 
 
 </mapper>

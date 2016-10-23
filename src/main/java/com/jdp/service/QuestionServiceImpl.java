@@ -1,28 +1,26 @@
 package com.jdp.service;
 
-import java.util.List;
-
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
 import com.jdp.domain.QuestionVO;
-import com.jdp.persistence.ExamDAO;
+import com.jdp.persistence.QuestionDAOImpl;
 
 /**
- * 
+ * Service class
  * @author YJH
- *
+ * 2016.10.19.Wed
  */
 
 @Service
-public class ExamService {
+public class QuestionServiceImpl {
 
 	@Inject
-	private ExamDAO examDAO;
+	private QuestionDAOImpl examDAO;
 	
 	/**
-	 * question list split
+	 * add question in exam
 	 * @param questionList
 	 * @throws Exception
 	 */
