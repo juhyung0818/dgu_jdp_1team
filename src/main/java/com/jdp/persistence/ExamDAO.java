@@ -1,22 +1,15 @@
 package com.jdp.persistence;
 
-import javax.inject.Inject;
-import org.apache.ibatis.session.SqlSession;
-import org.springframework.stereotype.Repository;
-import com.jdp.domain.QuestionVO;
+import com.jdp.domain.ExamVO;
 /**
- * 
+ * Database Access Object
+ * interface to access exam table in database
  * @author YJH
- *
+ * 2016.10.19.Wed
  */
-@Repository
-public class ExamDAO {
-	
-	@Inject
-	private SqlSession session; //session for sql connetion
-	private String namespace = "com.jdp.mapper.ExamMapper";
-
-	public void register(QuestionVO question) throws Exception {
-		session.insert(namespace + ".register", question);
-	}
+public interface ExamDAO {
+	public void register(ExamVO exam) throws Exception;
+	public void delete(ExamVO exam) throws Exception;
+	public void readExam(ExamVO exam) throws Exception;
+	public void update(ExamVO exam) throws Exception;
 }

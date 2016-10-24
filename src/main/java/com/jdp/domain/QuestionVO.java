@@ -1,7 +1,8 @@
 package com.jdp.domain;
 /**
- * class about Question
+ * Value Object of Question
  * @author YJH
+ * 2016.10.19.Wed
  */
 public class QuestionVO {
 	
