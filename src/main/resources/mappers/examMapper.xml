@@ -5,5 +5,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="org.highfive.mapper.ExamMapper">
 
-
+	<!-- exam register -->
+	<insert id="register">
+		insert into exam (subjectCode, examName, startTime, endTime)
+		values (#{subjectCode},#{examName},#{startTime}, #{endTime})
+	</insert>
+	
+	<!-- exam delete -->
+	<delete id="delete">
+ 		delete from exam where subjectCode=#{subjectCode} and examName=#{examName}
+ 	</delete>
 </mapper>
