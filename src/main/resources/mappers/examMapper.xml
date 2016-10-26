@@ -6,9 +6,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.jdp.mapper.ExamMapper">
 
 	<insert id="register">
-		insert into question (subjectCode, examName, qNumber, qInfo, qPoint, answer)
-		values (#{subjectCode}, #{examName}, #{qNumber}, #{qInfo}, #{qPoint}, #{answer})
+		insert into question (subjectCode, examName, qNumber, qInfo, ex1, ex2, ex3, ex4, qPoint, answer)
+		values (#{subjectCode}, #{examName}, #{qNumber}, #{qInfo}, #{ex1}, #{ex2}, #{ex3}, #{ex4}, #{qPoint}, #{answer})
 	</insert>
-
 
 </mapper>

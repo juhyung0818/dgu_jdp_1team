@@ -5,6 +5,11 @@ import java.util.List;
 import com.jdp.domain.ExamVO;
 import com.jdp.domain.QuestionVO;
 
+/**
+ * interface of exam for exam
+ * @author YJH
+ * 2016.10.24.Mon
+ */
 public interface ExamService {
 
 	//insert a exam
