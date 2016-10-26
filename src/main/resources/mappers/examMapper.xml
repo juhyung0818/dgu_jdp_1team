@@ -9,12 +9,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into question (subjectCode, examName, qNumber, qInfo, qPoint, answer)
 		values (#{subjectCode}, #{examName}, #{qNumber}, #{qInfo}, #{qPoint}, #{answer})
 	</insert>
-
-	<!-- exam register -->
-	<insert id="register">
-		insert into exam (subjectCode, examName, startTime, endTime)
-		values (#{subjectCode},#{examName},#{startTime}, #{endTime})
-	</insert>
 	
 	<!-- exam delete -->
 	<delete id="delete">
