@@ -21,6 +21,7 @@ import com.jdp.persistence.ExamDAO;
  * Test code of exam for database access
  * @author YJH
  * 2016.10.29.Sat
+ * pass all test
  */
 public class ExamTest {
 
@@ -33,7 +34,7 @@ public class ExamTest {
 	public void testRegistExam() throws Exception{
 		ExamVO vo = new ExamVO();
 		vo.setSubjectCode(12312);
-		vo.setExamName("test1");
+		vo.setExamName("test");
 		vo.setStudentCnt(0);
 		vo.setStartTime(Timestamp.valueOf("2016-10-30 11:11:00"));
 		vo.setEndTime(Timestamp.valueOf("2016-10-30 11:11:00"));
@@ -64,5 +65,12 @@ public class ExamTest {
 		logger.info(dao.listExam(subjectCode).toString());
 	}
 	
+	@Test
+	public void testIncrementCnt() throws Exception{
+		ExamVO vo = new ExamVO();
+		vo.setSubjectCode(12312);
+		vo.setExamName("test");
+		dao.incrementCnt(vo);
+	}
 	
 }

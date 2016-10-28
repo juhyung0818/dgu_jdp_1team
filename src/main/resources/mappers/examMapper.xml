@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	</select>
 
  	<update id="incrementCnt">
- 		update exam set studentCnt=studentCnt+1;
+ 		update exam set studentCnt = studentCnt + 1
  		where subjectCode=#{subjectCode} and examName=#{examName}
  	</update>
  	
