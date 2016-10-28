@@ -1,8 +1,12 @@
 package com.jdp.persistence;
 
+import java.util.List;
+
 import javax.inject.Inject;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+
 import com.jdp.domain.QuestionVO;
 /**
  * Database Access Object
@@ -15,10 +19,10 @@ public class QuestionDAOImpl {
 	
 	@Inject
 	private SqlSession session; //session for sql connetion
-	private String namespace = "com.jdp.mapper.ExamMapper";
+	private String namespace = "com.jdp.mapper.QuestionMapper";
 
 	
 	public void register(QuestionVO question) throws Exception {
-		session.insert(namespace + ".register", question);
+			session.insert(namespace + ".register", question);
 	}
 }

@@ -1,9 +1,12 @@
 package com.jdp.service;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.jdp.domain.QuestionListVO;
 import com.jdp.domain.QuestionVO;
 import com.jdp.persistence.QuestionDAOImpl;
 
@@ -14,7 +17,7 @@ import com.jdp.persistence.QuestionDAOImpl;
  */
 
 @Service
-public class QuestionServiceImpl {
+public class QuestionServiceImpl{
 
 	@Inject
 	private QuestionDAOImpl examDAO;
@@ -24,10 +27,12 @@ public class QuestionServiceImpl {
 	 * @param questionList
 	 * @throws Exception
 	 */
-	public void register(QuestionVO questionList) throws Exception {
-//		for(int i=0; i<questionList.size(); i++){
-//			examDAO.register(questionList.get(i));
-//		}
-		examDAO.register(questionList);
+	public void register(QuestionListVO questions) throws Exception {
+		List<QuestionVO> list = questions.getqList();
+
+		for(int i=0; i<questions.getqList().size(); i++){
+			examDAO.register(list.get(i));
+		}
+		
 	}
 }

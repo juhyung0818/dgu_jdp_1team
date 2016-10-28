@@ -1,5 +1,7 @@
 package com.jdp.persistence;
 
+import java.util.List;
+
 import com.jdp.domain.ExamVO;
 
 /**
@@ -12,6 +14,10 @@ import com.jdp.domain.ExamVO;
 public interface ExamDAO {
 	public void register(ExamVO exam) throws Exception;
 	public void delete(ExamVO exam) throws Exception;
-	public void readExam(ExamVO exam) throws Exception;
+	//modify about exam
 	public void update(ExamVO exam) throws Exception;
+	public List<ExamVO> listExam(String subjectCode) throws Exception;
+	public void incrementCnt(ExamVO exam) throws Exception;
+	
+	public void readExam(ExamVO exam) throws Exception;
 }

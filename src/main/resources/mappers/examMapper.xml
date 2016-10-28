@@ -6,8 +6,31 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.jdp.mapper.ExamMapper">
 
 	<insert id="register">
-		insert into question (subjectCode, examName, qNumber, qInfo, ex1, ex2, ex3, ex4, qPoint, answer)
-		values (#{subjectCode}, #{examName}, #{qNumber}, #{qInfo}, #{ex1}, #{ex2}, #{ex3}, #{ex4}, #{qPoint}, #{answer})
+		insert into exam (subjectCode, examName, studentCnt, startTime, endTime)
+		values (#{subjectCode}, #{examName}, #{studentCnt}, #{startTime}, #{endTime})
 	</insert>
+	
+	 <delete id="delete">
+ 		delete from exam where subjectCode=#{subjectCode} and examName=#{examName}
+ 	</delete>
+
+ 	<update id="update">
+ 		update exam set startTime=#{startTime}, endTime=#{endTime} 
+ 		where subjectCode=#{subjectCode} and examName=#{examName}
+ 	</update>
+
+	<select id="listExam" resultType="com.jdp.domain.ExamVO">
+ 		select examName, startTime, endTime
+ 		from exam
+ 		where subjectCode=#{subjectCode}
+ 		order by startTime
+ 	</select>
+
+ 	<update id="incrementCnt">
+ 		update exam set studentCnt=studentCnt+1;
+ 		where subjectCode=#{subjectCode} and examName=#{examName}
+ 	</update>
+ 	
+ 	
 
 </mapper>

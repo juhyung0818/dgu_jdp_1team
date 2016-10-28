@@ -3,16 +3,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 	
-	<head>
-		<style type="text/css"> 
-			h1 {background:yellow;}
-			p {color:black;}
-        </style>
-	</head>
 	
-	<center>
-	<font size="7" color="hotpink"> 문제 출제 </font> 
-	<hr color="hotpink"> 
+	<%@include file="../include/header.jsp"%>
+	
+
+	
+<body>
+	<font size="7" color="black"> 문제 출제 </font> 
 	<br> <br>
 
 	<form fole="form" method="post">
@@ -31,16 +28,14 @@
 		</div> -->
 		
 	
-	<c:forEach var="i" begin="0" varStatus="status" end="1">
+	<c:forEach var="i" begin="0" varStatus="status" end="0">
 		<table border="3" bordercolor="hotpink">
 		<tr><td>
 		<form fole="form" method="post">
-	
-			<div class="box-body">
-				<div class="form-group">
-					<input type="int" name="qNumber" class="form" placeholder="Enter qNumber" value=@i>
-					<label for="exampleInputEmail1"> 번 </label>
-				</div>
+			<div class="form-group">
+				<input type="int" name="qNumber" class="form" placeholder="Enter qNumber" value='${i+1}' >
+				<label for="exampleInputEmail1"> 번 문제</label>
+			</div>
 
 			<div class="form-group">
 				<p> 문제입력 <br>
@@ -48,18 +43,16 @@
 				</p>
 			</div>
 		
-			<div class="box-body">
-				<div class="form-group">
-					<p> 1번
-					<textarea class="form-control" name="ex1" rows="1" placeholder="Enter ..."></textarea>
-					</p>
-				</div>
+			<div class="form-group">
+				<p> 1번
+				<textarea class="form-control" name="ex1" rows="1" placeholder="Enter ..."></textarea>
+				</p>
+			</div>
 		
-			<div class="box-body">
-				<div class="form-group">
-					<p> 2번
-					<textarea class="form-control" name="ex2" rows="1" placeholder="Enter ..."></textarea>
-					</p>
+			<div class="form-group">
+				<p> 2번
+				<textarea class="form-control" name="ex2" rows="1" placeholder="Enter ..."></textarea>
+				</p>
 			</div>
 		
 			<div class="form-group">
@@ -79,14 +72,12 @@
 				<input type="int" name="qPoint" class="form-contorl" placeholder="Enter qPoint">
 				</p>
 			</div>
-			
 				<p> 정답
    				<input type="radio" name="example" value="1"> 1번 
    				<input type="radio" name="example" value="2"> 2번 
    				<input type="radio" name="example" value="3"> 3번
    				<input type="radio" name="example" value="4"> 4번 
 				</p>
-
 			</div>
 		</form>
 		</td></tr>
@@ -99,4 +90,4 @@
 		</div>
 
 	</form>
-</center>
+</body>
