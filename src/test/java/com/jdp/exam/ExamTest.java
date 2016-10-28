@@ -64,7 +64,7 @@ public class ExamTest {
 		String subjectCode = "12312";
 		logger.info(dao.listExam(subjectCode).toString());
 	}
-	
+
 	@Test
 	public void testIncrementCnt() throws Exception{
 		ExamVO vo = new ExamVO();
