@@ -12,7 +12,6 @@ import com.jdp.domain.ExamVO;
 @Repository
 public class ExamDAOImpl implements ExamDAO{
 
-	
 	@Inject
 	private SqlSession session; //session for sql connetion
 	private String namespace = "com.jdp.mapper.ExamMapper";
@@ -30,7 +29,6 @@ public class ExamDAOImpl implements ExamDAO{
 	@Override
 	public void readExam(ExamVO exam) throws Exception {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override

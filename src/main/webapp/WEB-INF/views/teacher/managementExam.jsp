@@ -13,7 +13,7 @@
 				
 				<th>SUBJECT CODE</th><td>${subjectCode}</td>
 						
-				<table class="table table-bordered">
+				<table class="w3-table w3-bordered">
 					<tr>
 						<th>EXAM NAME</th>
 						<th>START TIME</th>
@@ -21,7 +21,7 @@
 					</tr>
 					<c:forEach items="${list}" var="examVO">
 						<tr>
-							<td><a href='/teacher/read?subejctCode=${examVO.subjectCode}&examName=${examVO.examName}'>
+							<td><a href='/teacher/read?subjectCode=${examVO.subjectCode}&examName=${examVO.examName}'>
 								${examVO.examName} </a></td>
 							<td>${examVO.startTime}</td>
 							<td>${examVO.endTime}</td>

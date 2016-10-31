@@ -10,9 +10,9 @@ import com.jdp.domain.ExamVO;
 
 import com.jdp.persistence.ExamDAO;
 
+
 @Service
 public class ExamServiceImpl implements ExamService{
-
 
 	@Inject
 	private ExamDAO examDao;
@@ -20,7 +20,6 @@ public class ExamServiceImpl implements ExamService{
 	@Override
 	public void register(ExamVO exam) throws Exception {
 		examDao.register(exam);
-
 	}
 
 	@Override
@@ -30,7 +29,6 @@ public class ExamServiceImpl implements ExamService{
 
 	@Override
 	public void update(ExamVO exam) throws Exception {
-
 		examDao.update(exam);
 	}
 

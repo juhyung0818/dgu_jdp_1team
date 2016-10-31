@@ -6,12 +6,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.jdp.mapper.ExamMapper">
 
 	<insert id="register">
-		insert into exam (examName, startTime, endTime) values (#{examName) #{startTime}. #{endTime})
+		insert into exam (subjectCode, examName, studentCnt, startTime, endTime)
+		values (#{subjectCode}, #{examName}, #{studentCnt}, #{startTime}, #{endTime})
 	</insert>
 	
-	<!-- exam delete -->
-	<delete id="delete">
- 		delete from exam where subjectCode=#{subjectCode} and examName=#{examName}
- 	</delete>
+	 <update id="update">
 
+ 	</update>
+
+	<select id="listExam" resultType="com.jdp.domain.ExamVO">
+ 		select subjectCode, examName, startTime, endTime  
+ 		from exam
+ 		where subjectCode=#{subjectCode}
+ 	</select>
+ 	
 </mapper>

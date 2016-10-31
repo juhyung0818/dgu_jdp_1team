@@ -21,7 +21,7 @@ import com.jdp.persistence.QuestionDAOImpl;
 public class QuestionServiceImpl implements QuestionService{
 
 	@Inject
-	private QuestionDAOImpl questionDAO;
+	private QuestionDAO questionDAO;
 	
 	/**
 	 * add question in exam
