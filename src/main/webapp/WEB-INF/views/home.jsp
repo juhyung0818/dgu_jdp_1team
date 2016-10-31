@@ -5,11 +5,6 @@
 
 <%@include file="include/tHeader.jsp"%>
 
-<body>
-<h1>
-	로그인
-</h1>
 
-<P> 현재 서버 시간 : The time on the server is ${serverTime}. </P>
-</body>
-</html>
+<%@include file="include/tFooter.jsp"%>
+

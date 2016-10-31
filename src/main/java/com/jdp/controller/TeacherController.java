@@ -16,35 +16,41 @@ import com.jdp.service.ExamService;
 import com.jdp.service.QuestionService;
 
 /**
- * controller of teacher and students about exam 
- * @author YJH
- * 2016.10.31.Mun
+ * controller of teacher and students about exam
+ * 
+ * @author YJH 2016.10.31.Mun
  */
 @Controller
 @RequestMapping("/teacher/*")
 public class TeacherController {
-	
-	//Exam Service instance
+
+	// Exam Service instance
 	@Inject
 	private ExamService examService;
 	@Inject
 	private QuestionService questionService;
-	//instance for log
+	// instance for log
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
-	
-	
-	//TODO subject code....
+
+	@RequestMapping(method = RequestMethod.GET)
+	public void mainView(Model model) throws Exception {
+		logger.info("subjectCode : " + "" + "examList");
+		model.addAttribute("list", examService.examList(12312));
+	}
+
+
+	// TODO subject code....
 	@RequestMapping(value = "/managementExam", method = RequestMethod.GET)
 	public void managementExamGET(Model model) throws Exception {
 		logger.info("subjectCode : " + "" + "examList");
-	    model.addAttribute("list", examService.examList(12312));
+		model.addAttribute("list", examService.examList(12312));
 	}
-	
-	  @RequestMapping(value = "/read", method = RequestMethod.GET)
-	  public void read(@RequestParam("subjcetCode") int subjectCode, 
-			  @RequestParam("examName") String examName, Model model) throws Exception {
 
-	    model.addAttribute("list", questionService.questionList(subjectCode, examName));
-	  }
+	@RequestMapping(value = "/read", method = RequestMethod.GET)
+	public void read(@RequestParam("subjcetCode") int subjectCode, @RequestParam("examName") String examName,
+			Model model) throws Exception {
+
+		model.addAttribute("list", questionService.questionList(12312, "test"));
+	}
 
 }
