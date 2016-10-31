@@ -11,7 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jdp.domain.ExamVO;
-import com.jdp.service.ExamServiceImpl;
+
+import com.jdp.service.ExamService;
 
 /**
  * controller of teacher and students about exam 
@@ -23,17 +24,20 @@ import com.jdp.service.ExamServiceImpl;
 public class ExamController {
 
 	@Inject
-	private ExamServiceImpl examService;
+
+	private ExamService examService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(ExamController.class);
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public void registGET(ExamVO exam, Model model) throws Exception{
-		logger.info("exam register...");
+
+	public void registGET(ExamVO exam, Model model) {
+		logger.info("exam register");
 	}
 	
 	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public String regist(ExamVO exam) throws Exception{
+	public String registPOST(ExamVO exam) throws Exception{
+
 		logger.info("exam register.........");
 		logger.info(exam.toString());
 		
@@ -43,4 +47,5 @@ public class ExamController {
 		//please change teacher main later
 
 	}
+
 }

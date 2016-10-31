@@ -1,5 +1,6 @@
 package com.jdp.domain;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 /**
@@ -13,9 +14,8 @@ public class ExamVO {
 	private int subjectCode;
 	private String examName;
 	private int studentCnt;
-	private int totalscore;
-	private Date startTime;
-	private Date endTime;
+	private Timestamp startTime;
+	private Timestamp endTime;
 	
 	public int getSubjectCode() {
 		return subjectCode;
@@ -29,28 +29,23 @@ public class ExamVO {
 	public void setExamName(String examName) {
 		this.examName = examName;
 	}
-	public int getTotalscore() {
-		return totalscore;
-	}
-	public void setTotalscore(int totalscore) {
-		this.totalscore = totalscore;
-	}
+	
 	public int getStudentCnt() {
 		return studentCnt;
 	}
 	public void setStudentCnt(int studentCnt) {
 		this.studentCnt = studentCnt;
 	}
-	public Date getStartTime() {
+	public Timestamp getStartTime() {
 		return startTime;
 	}
-	public void setStartTime(Date startTime) {
+	public void setStartTime(Timestamp startTime) {
 		this.startTime = startTime;
 	}
-	public Date getEndTime() {
+	public Timestamp getEndTime() {
 		return endTime;
 	}
-	public void setEndTime(Date endTime) {
+	public void setEndTime(Timestamp endTime) {
 		this.endTime = endTime;
 	}
 	@Override

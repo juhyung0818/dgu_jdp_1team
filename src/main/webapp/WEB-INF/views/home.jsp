@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page session="false" %>
+<<<<<<< HEAD
 <html>
 <head>
 	<title>Home</title>
@@ -23,3 +24,13 @@
 </form>
 </body>
 </html>
+=======
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+<%@include file="include/tHeader.jsp"%>
+
+
+<%@include file="include/tFooter.jsp"%>
+
+>>>>>>> 4a2c114d442107589a45d8d65a181898215bca09

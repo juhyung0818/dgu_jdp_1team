@@ -19,7 +19,5 @@ public interface ExamService {
 	//modify startTime, endTime, exam name
 	public void update(ExamVO exam) throws Exception;
 	//display exam list
-	public List<ExamVO> examList(ExamVO exam) throws Exception;
-	//display one exam
-	public List<QuestionVO> read(ExamVO exam) throws Exception;	
+	public List<ExamVO> examList(int subjectCode) throws Exception;
 }
