@@ -1,4 +1,4 @@
-package com.jdp.exam;
+package com.jdp.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
@@ -35,5 +35,14 @@ public class HomeController {
 		
 		return "home";
 	}
+	
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public String test(Locale locale, Model model) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		return "login";
+	}
+	
+	
 	
 }

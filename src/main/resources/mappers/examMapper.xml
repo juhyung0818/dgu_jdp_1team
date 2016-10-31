@@ -3,26 +3,12 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="org.jdp.mapper.HighfiveMapper">
+<mapper namespace="com.jdp.mapper.ExamMapper">
 
-	<!-- exam register -->
 	<insert id="register">
-		insert into exam (subjectCode, examName, startTime, endTime)
-		values (#{subjectCode},#{examName},#{startTime}, #{endTime})
+		insert into question (subjectCode, examName, qNumber, qInfo, qPoint, answer)
+		values (#{subjectCode}, #{examName}, #{qNumber}, #{qInfo}, #{qPoint}, #{answer})
 	</insert>
-	
-	<!-- exam delete -->
-	<delete id="delete">
- 		delete from exam where subjectCode=#{subjectCode} and examName=#{examName}
- 	</delete>
- 	<!-- 
- 	<select id="list" resultType="org.jpd.domain.examVO">
- 		select u.uid, u.uname, u.age, u.nation, u.sex, u.uphoto
- 		from tbl_user as u join tbl_highfive as h
- 		on u.uid=h.sender
- 		where flag=1 and receiver=#{receiver} 
- 		order by h.senddate desc
- 	</select>
- 	 -->
+
 
 </mapper>
