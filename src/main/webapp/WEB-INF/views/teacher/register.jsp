@@ -31,9 +31,9 @@
 	</style>
 </head>
 <body>
+	<center>
 	<form class="form-inline" role="form" method="post">
 	<fieldset>
-	<center>
 		<div class="box-body">
 			<div class="form-group">
 				<label class=".hidden" for="subjectCode" >subject code</label>
@@ -41,23 +41,26 @@
 			</div>
 			<div class="form-group">
 				<label for="examName">exam name</label>
-				<textarea class="form-control" name="examName" rows="10" placeholder="Enter ..."></textarea>
+				<input type="text" name="examName" placeholder="exam name">
 			</div>
-
+			<div class="form-group">
+				<label for="totalScore">total score</label>
+				<input type="number" placeholder= "total score">
+			</div>
 			<div class="form-group">
 				<label for="startTime">start time</label>
-				<input type="text" id="startTime" class='datetimepicker' value="">
+				<input type="text" name="startTime" class='datetimepicker' value="">
 			</div>
 			<div class="form-group">
 				<label for="endTime">end time</label>
-				<input type="text" id="endTime" class='datetimepicker' value="">
+				<input type="text" name="endTime" class='datetimepicker' value="">
 			</div>
 		</div>
 		<div class="box-footer">
 			<button type="submit" class="btn">submit</button>
 		</div>
-	</center>
 	</fieldset>
 	</form>
+	</center>
 </body>
 </html>

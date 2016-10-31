@@ -13,7 +13,7 @@ import com.jdp.domain.ExamVO;
 
 public interface ExamDAO {
 	public void register(ExamVO exam) throws Exception;
-	public void delete(ExamVO exam) throws Exception;
+	public void delete(int subjectCode, String examName) throws Exception;
 	//modify about exam
 	public void update(ExamVO exam) throws Exception;
 	public List<ExamVO> listExam(int subjectCode) throws Exception;

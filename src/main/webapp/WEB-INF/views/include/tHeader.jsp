@@ -39,7 +39,7 @@ h1 {
 		<!-- Header -->
 		<header class="w3-panel w3-padding-128 w3-center w3-opacity">
 			<div class="w3-panel w3-pink">
-				<h1 class="w3-opacity">순성닷컴</h1>
+				<h1 class="w3-opacity">순성닷컴 </h1>
 			</div>
 
 			<div class="w3-xxxlarge">

@@ -6,30 +6,20 @@
 	
 	<%@include file="../include/tHeader.jsp"%>
 
-<body>
-	<font size="7" color="black"> 문제 출제 </font> 
-	<br> <br>
+	<body>
+		<div align="center">
+		<font size="7" color="black"> 문제 출제 </font> 
+			<br> <br>
 
-	<form fole="form" method="post">
-
-<!-- 	<div class="box-body">
-		<div class="form-group">
-			<p> 과목코드
-			<input type="int" name="subjectCode" class="form-contorl" placeholder="Enter subjectCode" border-color="pink">
-			 </p>
-		</div>
-
-		<div class="form-group">
-			<p> 시험이름
-			<textarea class="form-control" name="examName" rows="1" placeholder="Enter ..."></textarea>
-			</p>
-		</div> -->
+			<form role="form" method="post">
+				<input type='hidden' name='subjectCode' value="12000">
+				<input type='hidden' name='examName' value="soon">
 		
 	
-	<c:forEach var="i" begin="0" varStatus="status" end="0">
-		<table border="3" bordercolor="hotpink">
-		<tr><td>
-		<form fole="form" method="post">
+		<c:forEach var="i" begin="0" varStatus="status" end="0">
+			<table border="3" bordercolor="hotpink">
+			<tr><td>
+			<form fole="form" method="post">
 			<div class="form-group">
 				<input type="int" name="qNumber" class="form" placeholder="Enter qNumber" value='${i+1}' >
 				<label for="exampleInputEmail1"> 번 문제</label>
@@ -87,5 +77,6 @@
     		<input type="reset" value="취소">
 		</div>
 
-	</form>
-</body>
+		</form>
+	</div>
+<%@include file="../include/tFooter.jsp"%>
