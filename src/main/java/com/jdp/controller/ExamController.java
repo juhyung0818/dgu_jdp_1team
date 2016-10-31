@@ -8,9 +8,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.jdp.domain.QuestionVO;
-import com.jdp.service.QuestionServiceImpl;
+import com.jdp.domain.ExamVO;
+
+import com.jdp.service.ExamService;
 
 /**
  * controller of teacher and students about exam 
@@ -22,22 +24,28 @@ import com.jdp.service.QuestionServiceImpl;
 public class ExamController {
 
 	@Inject
-	private QuestionServiceImpl examService;
+
+	private ExamService examService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(ExamController.class);
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public void registGET(QuestionVO questions, Model model) {
-		logger.info("Welcome home! The client locale is {}.");
+
+	public void registGET(ExamVO exam, Model model) {
+		logger.info("exam register");
 	}
 	
 	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public String regist(QuestionVO questions) throws Exception{
+	public String registPOST(ExamVO exam) throws Exception{
+
 		logger.info("exam register.........");
+		logger.info(exam.toString());
 		
-		examService.register(questions);
+		examService.register(exam);
 		
 		return "home";
+		//please change teacher main later
 
 	}
+
 }

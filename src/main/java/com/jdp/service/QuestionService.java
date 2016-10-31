@@ -1,21 +1,20 @@
-package com.jdp.persistence;
+package com.jdp.service;
 
 import java.util.List;
 
 import com.jdp.domain.QuestionVO;
 
 /**
- * Database Access Object
- * interface to access question table in database
+ * interface of question for service
  * @author YJH
- * 2016.10.19.Wed
+ * 2016.10.24.Mon
  */
+public interface QuestionService {
 
-public interface QuestionDAO {
 	//insert a question
 	public void register(QuestionVO question) throws Exception;
 	//modify a question
 	public void update(QuestionVO question) throws Exception;
 	//display question list
-	public List<QuestionVO> listQuestion(int subjectCode, String examName) throws Exception;
+	public List<QuestionVO> questionList(int subjectCode, String examName) throws Exception;
 }
