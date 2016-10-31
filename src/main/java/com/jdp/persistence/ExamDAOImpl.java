@@ -1,6 +1,8 @@
 package com.jdp.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -18,12 +20,24 @@ public class ExamDAOImpl implements ExamDAO{
 
 	@Override
 	public void register(ExamVO exam) throws Exception {
+//<<<<<<< HEAD
 		session.insert(namespace+".register", exam);
+//=======
+//		Map<String, Object> paramMap = new HashMap<>();
+//		paramMap.put("subjectCode", exam.getSubjectCode());
+//		paramMap.put("examName", exam.getExamName());
+//		paramMap.put("startTime", exam.getStartTime());
+//		paramMap.put("endTime", exam.getEndTime());
+//		session.insert(namespace+".register", paramMap);
+//>>>>>>> af95af3aeeea7cf85014ee05cf0c0e1ac3d42e78
 	}
 
 	@Override
-	public void delete(ExamVO exam) throws Exception {
-		session.delete(namespace+".delete", exam);
+	public void delete(int subjectCode, String examName) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("subjectCode", subjectCode);
+		paramMap.put("examName", examName);
+		session.delete(namespace+".delete", paramMap);
 	}
 
 	@Override

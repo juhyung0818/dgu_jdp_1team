@@ -23,8 +23,8 @@ public class ExamServiceImpl implements ExamService{
 	}
 
 	@Override
-	public void delete(ExamVO exam) throws Exception {
-		examDao.delete(exam);
+	public void delete(int subjectCode, String examName) throws Exception {
+		examDao.delete(subjectCode, examName);
 	}
 
 	@Override

@@ -15,7 +15,7 @@ public interface ExamService {
 	//insert a exam
 	public void register(ExamVO exam) throws Exception; 
 	//remove a exam
-	public void delete(ExamVO exam) throws Exception; 
+	public void delete(int subjectCode, String examName) throws Exception; 
 	//modify startTime, endTime, exam name
 	public void update(ExamVO exam) throws Exception;
 	//display exam list

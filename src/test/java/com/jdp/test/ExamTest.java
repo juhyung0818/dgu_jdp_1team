@@ -43,10 +43,10 @@ public class ExamTest {
 	
 	@Test
 	public void testDeleteExam() throws Exception{
-		ExamVO vo = new ExamVO();
-		vo.setSubjectCode(12312);
-		vo.setExamName("test");
-		dao.delete(vo);
+		int subjectCode = 12312;
+		String examName = "test5";
+		
+		dao.delete(subjectCode, examName);
 	}
 	
 	@Test

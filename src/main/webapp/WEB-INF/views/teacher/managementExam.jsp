@@ -30,7 +30,27 @@
 				</table>
 			</div>
 		<!-- Main content -->
+		
+		<br><br>
+		<div class="box-footer" align="right">
+			<button type="submit" class="w3-btn w3-pink">ADD</button>
+			<input type="button" value="확인" onClick="self.location='/teacher/register';">
+		</div>
+		
+		
+<script>
+//buttons 
+$(document).ready(function(){
+	var formObj = $("form[role='form']");
+	console.log(formObj);
+	
+	$(".w3-btn w3-pink").on("click", function(){
+		formObj.attr("action", "/teacher/register");
+		formObj.attr("method", "get");		
+		formObj.submit();
+	});
+});
+
+</script>
 
 <%@include file="../include/tFooter.jsp"%>
-
-

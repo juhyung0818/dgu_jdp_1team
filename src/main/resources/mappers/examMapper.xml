@@ -10,6 +10,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values (#{subjectCode}, #{examName}, #{studentCnt}, #{startTime}, #{endTime})
 	</insert>
 	
+	<delete id="delete">
+		delete from exam
+		where subjectCode=#{subjectCode} and examName=#{examName}
+	</delete>
+	
 	 <update id="update">
 
  	</update>

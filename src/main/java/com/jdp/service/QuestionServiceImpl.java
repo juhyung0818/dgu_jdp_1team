@@ -38,8 +38,7 @@ public class QuestionServiceImpl implements QuestionService{
 
 	@Override
 	public void register(QuestionVO question) throws Exception {
-		// TODO Auto-generated method stub
-		
+		questionDAO.register(question);
 	}
 
 	@Override
