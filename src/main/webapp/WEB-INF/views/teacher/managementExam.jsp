@@ -3,9 +3,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="../include/tHeader.jsp"%>
-
+				
 		<!-- Main content -->
-
+				
 			<div align="center">
 				<div class="box-header with-border">
 					<h3 class="box-title">EXAM LIST</h3>

@@ -50,4 +50,6 @@ h1 {
 				href="managementExam">시험관리</a> <a
 				class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge"
 				href="managementGrade">성적관리</a>
+				
+			
 		</header>

@@ -8,8 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.jdp.domain.QuestionListVO;
 import com.jdp.domain.QuestionVO;
-import com.jdp.persistence.ExamDAOImpl;
-import com.jdp.persistence.QuestionDAOImpl;
+import com.jdp.persistence.QuestionDAO;
 
 /**
  * Service class
