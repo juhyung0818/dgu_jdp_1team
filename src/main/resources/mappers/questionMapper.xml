@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	</update>
 
 	<select id="listQuestion" resultType="com.jdp.domain.QuestionVO">
- 		select qNumber, qInfo, ex1, ex2, ex3, ex4, qPoint, answer
+ 		select examName, qNumber, qInfo, ex1, ex2, ex3, ex4, qPoint, answer
  		from question
  		where subjectCode=#{subjectCode} and examName=#{examName}
  		order by qNumber

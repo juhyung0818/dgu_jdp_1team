@@ -47,10 +47,9 @@ public class TeacherController {
 	}
 
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
-	public void read(@RequestParam("subjcetCode") int subjectCode, @RequestParam("examName") String examName,
-			Model model) throws Exception {
+	public void read(@RequestParam("examName") String examName, Model model) throws Exception {
 
-		model.addAttribute("list", questionService.questionList(12312, "test"));
+		model.addAttribute("list", questionService.questionList(12312, examName));
 	}
 
 }

@@ -7,34 +7,44 @@
 			<!-- general form elements -->
 			<div class="box box-primary">
 				<div class="box-header">
-					<h3 class="box-title">READ EXAM</h3>
+					<h3 class="box-title">  </h3>
 				</div>
 				<!-- /.box-header -->
 
 			<div align="center">
 				<div class="box-header with-border">
-					<h3 class="box-title">QUESTION LIST</h3>
+					<h3 class="box-title">QUESTIONS</h3>
 				</div>
 
-				<table class="table table-bordered">
+				<table class="w3-table w3-bordered">
 					<tr>
 						<th>EXAM NAME</th>
-						<th>QUESTION NUMBERE</th>
-						<th>QUESTION INFOMATION</th>
+						<th>QUESTION NUMBERE </th>
+						<th>QUESTION INFOMATION </th>
+ 						<td colspan="4"> EXAMPLES </td>
+						<td>QPOINT </td>
+						<td>ANSWER </td>
 					</tr>
 					
 					<c:forEach items="${list}" var="questionVO">
 						<tr>
-							<td>${questionVO.examName} </a></td>
+							<td>${questionVO.examName}</td>
 							<td>${questionVO.qNumber}</td>
 							<td>${questionVO.qInfo}</td>
+							<td>${questionVO.ex1}</td>
+							<td>${questionVO.ex2}</td>
+							<td>${questionVO.ex3}</td>
+							<td>${questionVO.ex4}</td>
+							<td>${questionVO.qPoint}</td>
+							<td>${questionVO.answer}</td>
 						</tr>
 					</c:forEach>
 				</table>
 			</div>
 <!-- /.box-body -->
 
-<div class="box-footer">
+<br><br>
+<div class="box-footer" align="right">
 	<button type="submit" class="btn btn-warning">MODIFY</button>
 	<button type="submit" class="btn btn-danger">REMOVE</button>
 	<button type="submit" class="btn btn-primary">LIST ALL</button>

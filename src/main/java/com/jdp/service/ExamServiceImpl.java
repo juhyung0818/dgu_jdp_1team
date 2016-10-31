@@ -33,32 +33,8 @@ public class ExamServiceImpl implements ExamService{
 
 	@Override
 	public List<ExamVO> examList(int subjectCode) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return examDao.listExam(subjectCode);
 	}
 
-//	@Override
-//	public List<QuestionVO> read(ExamVO exam) throws Exception {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//		examDao.update(exam);
-//	}
-//
-//	@Override
-//	public List<ExamVO> examList(int subjectCode) throws Exception {
-//		return examDao.listExam(subjectCode);
-//	}
-//
-//	@Override
-//	public void delete(ExamVO exam) throws Exception {
-//		// TODO Auto-generated method stub
-//		
-//	}
-//
-//	@Override
-//	public void update(ExamVO exam) throws Exception {
-//		// TODO Auto-generated method stub
-//		
-//	}
+
 }

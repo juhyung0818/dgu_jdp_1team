@@ -13,7 +13,7 @@
 				
 				<th>SUBJECT CODE</th><td>${subjectCode}</td>
 						
-				<table class="table table-bordered">
+				<table class="w3-table w3-bordered">
 					<tr>
 						<th>EXAM NAME</th>
 						<th>START TIME</th>
