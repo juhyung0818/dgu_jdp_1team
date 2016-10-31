@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@include file="../include/tHeader.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -20,29 +19,34 @@
 		}	
 		input {
 			height : 30px;
+			
 		}
-		
 		fieldset{
-			width : 200px;
+			width : 200pt;
+			border : 3;
+			border-color : pink;
 		}
 	</style>
 </head>
 <body>
+	<center>
+	<h1>
+		Exam Register
+	</h1>
 	<form class="form-inline" role="form" method="post">
 	<fieldset>
-	<center>
 		<div class="box-body">
 			<div class="form-group">
 				<label class=".hidden" for="subjectCode" >subject code</label>
-				<input type="text" class="form-control" name="subjectCode" placeholder="subject code">
+				<input type="text" class="w3-input w3-border w3-round-large" name="subjectCode" placeholder="subject code">
 			</div>
 			<div class="form-group">
 				<label for="examName">exam name</label>
-				<input type="text" name="examName" placeholder="exam name">
+				<input type="text" class="w3-input w3-border w3-round-large"name="examName" placeholder="exam name">
 			</div>
 			<div class="form-group">
 				<label for="questionNum">question number</label>
-				<input type="number" name="questionNum" placeholder="number of question">
+				<input type="number" class="w3-input w3-border w3-round-large"name="questionNum" placeholder="number of question"><br>
 			</div>
 			<div class="form-group">
 				<label for="startTime">start time</label>
@@ -53,13 +57,14 @@
 				<input type="text" id="endTime" class='datetimepicker' value="">
 			</div>
 		</div>
-		<div class="box-footer">
-			<button type="submit" class="btn">submit</button>
-			<button type="reset" class="btn">cancel</button>
+		<div class="box-footer"><br>
+			<button type="submit"  class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge">submit</button>
+			<button type="reset" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge">cancel</button>
 		</div>
+		</fieldset>
 	</center>
-	</fieldset>
 
 	</form>
 </body>
 </html>
+<%@include file="../include/tFooter.jsp"%>
