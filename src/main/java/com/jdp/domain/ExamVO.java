@@ -13,6 +13,7 @@ public class ExamVO {
 	private int subjectCode;
 	private String examName;
 	private int studentCnt;
+	private int totalscore;
 	private Date startTime;
 	private Date endTime;
 	
@@ -27,6 +28,12 @@ public class ExamVO {
 	}
 	public void setExamName(String examName) {
 		this.examName = examName;
+	}
+	public int getTotalscore() {
+		return totalscore;
+	}
+	public void setTotalscore(int totalscore) {
+		this.totalscore = totalscore;
 	}
 	public int getStudentCnt() {
 		return studentCnt;

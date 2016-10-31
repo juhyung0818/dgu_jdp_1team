@@ -1,64 +1,66 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<title>register exam</title>
+	<link rel="stylesheet" href="//mugifly.github.io/jquery-simple-datetimepicker/jquery.simple-dtpicker.css">
+	<script src="//code.jquery.com/jquery.min.js"></script>
+	<script src="//mugifly.github.io/jquery-simple-datetimepicker/jquery.simple-dtpicker.js"></script>
+	<script>
+		$(function(){
+  		$('.datetimepicker').appendDtpicker({'locale':'ko'});
+		});
+	</script>        
 	
-	<head>
-		<style type="text/css"> 
-			h1 {background:yellow;}
-			p {color:black;}
-        </style>
-	</head>
-	
+	<style type="text/css">
+		label {
+			display : none;
+		}	
+		input {
+			height : 30px;
+		}
+		button{
+			width : 150px;
+			height : 30px;
+		}
+		fieldset{
+			width : 200px;
+		}
+	</style>
+</head>
+<body>
+	<form class="form-inline" role="form" method="post">
+	<fieldset>
 	<center>
-	<font size="7" color="hotpink"> 문제 출제 </font> 
-	<hr color="hotpink"> 
-	<br> <br>
-
-	<form fole="form" method="post">
-
-	<div class="box-body">
-		<div class="form-group">
-			<p> subjectCode
-			<input type="int" name="subjectCode" class="form-contorl" placeholder="Enter subjectCode" border-color="pink">
-			 </p>
-		</div>
-
-		<div class="form-group">
-			<p> examName
-			<textarea class="form-control" name="examName" rows="3" placeholder="Enter ..."></textarea>
-			</p>
-		</div>
-
-		<div class="form-group">
-			<label for="exampleInputEmail1">qNumber</label>
-			<input type="int" name="qNumber" class="form-control" placeholder="Enter qNumber">
-		</div>
-
 		<div class="box-body">
-		<div class="form-group">
-			<p> qInfo
-			<textarea class="form-control" name="qInfo" rows="3" placeholder="Enter ..."></textarea>
-			</p>
+			<div class="form-group">
+				<label class=".hidden" for="subjectCode" >subject code</label>
+				<input type="text" class="form-control" id="subjectCode" placeholder="subject code">
+			</div>
+			<div class="form-group">
+				<label for="examName">exam name</label>
+				<input type="text" id="examName" placeholder="exam name">
+			</div>
+			<div class="form-group">
+				<label for="totalScore">total score</label>
+				<input type="number" id="totalScore" placeholder= "total score">
+			</div>
+			<div class="form-group">
+				<label for="startTime">start time</label>
+				<input type="text" id="startTime" class='datetimepicker' value="">
+			</div>
+			<div class="form-group">
+				<label for="endTime">end time</label>
+				<input type="text" id="endTime" class='datetimepicker' value="">
+			</div>
 		</div>
-
-		<div class="form-group">
-			<p> qPoint
-			<input type="int" name="qPoint" class="form-contorl" placeholder="Enter qPoint">
-			</p>
+		<div class="box-footer">
+			<button type="submit" class="btn">submit</button>
 		</div>
-		<div class="form-group">
-			<p> answer
-			<input type="int" name="answer" class="form-control" placeholder="Enter answer">
-			</p>
-		</div>
-
-	</div>
-
-	<div class="box-footer">
-		<input type="submit" value="등록">
-    <input type="reset" value="취소">
-	</div>
-
+	</center>
+	</fieldset>
 	</form>
-</center>
+</body>
+</html>
