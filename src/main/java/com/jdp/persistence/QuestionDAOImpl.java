@@ -15,7 +15,7 @@ import com.jdp.domain.QuestionVO;
  * 2016.10.19.Wed
  */
 @Repository
-public class QuestionDAOImpl {
+public class QuestionDAOImpl implements QuestionDAO{
 	
 	@Inject
 	private SqlSession session; //session for sql connetion
@@ -23,6 +23,16 @@ public class QuestionDAOImpl {
 
 	
 	public void register(QuestionVO question) throws Exception {
-			session.insert(namespace + ".register", question);
+		session.insert(namespace + ".register", question);
+	}
+
+	@Override
+	public void update(QuestionVO question) throws Exception {
+		session.update(namespace+".update", question);
+	}
+
+	@Override
+	public List<QuestionVO> listQuestion(QuestionVO question) throws Exception {
+		return session.selectList(namespace+".listQuestion", question);
 	}
 }

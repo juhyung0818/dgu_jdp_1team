@@ -16,7 +16,7 @@ public interface ExamDAO {
 	public void delete(ExamVO exam) throws Exception;
 	//modify about exam
 	public void update(ExamVO exam) throws Exception;
-	public List<ExamVO> listExam(String subjectCode) throws Exception;
+	public List<ExamVO> listExam(int subjectCode) throws Exception;
 	public void incrementCnt(ExamVO exam) throws Exception;
 	
 	public void readExam(ExamVO exam) throws Exception;

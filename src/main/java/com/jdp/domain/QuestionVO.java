@@ -17,11 +17,6 @@ public class QuestionVO {
 	private int qPoint;
 	private int answer;
 
-	public QuestionVO() {
-		subjectCode = 200;
-		examName = "test";
-	}
-	
 	/**
 	 * subjectCode getter method
 	 * @return code of subject

@@ -1,4 +1,4 @@
-package com.jdp.exam;
+package com.jdp.test;
 
 import java.sql.Timestamp;
 
@@ -61,7 +61,7 @@ public class ExamTest {
 	
 	@Test
 	public void testListExam() throws Exception{
-		String subjectCode = "12312";
+		int subjectCode = 12312;
 		logger.info(dao.listExam(subjectCode).toString());
 	}
 

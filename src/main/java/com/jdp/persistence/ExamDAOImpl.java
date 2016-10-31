@@ -36,7 +36,7 @@ public class ExamDAOImpl implements ExamDAO{
 	}
 
 	@Override
-	public List<ExamVO> listExam(String subjectCode) throws Exception {
+	public List<ExamVO> listExam(int subjectCode) throws Exception {
 		return session.selectList(namespace+".listExam", subjectCode);
 	}
 

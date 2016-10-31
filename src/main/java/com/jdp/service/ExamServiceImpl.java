@@ -31,7 +31,7 @@ public class ExamServiceImpl implements ExamService{
 	}
 
 	@Override
-	public List<ExamVO> examList(String subjectCode) throws Exception {
+	public List<ExamVO> examList(int subjectCode) throws Exception {
 		return examDao.listExam(subjectCode);
 	}
 }
