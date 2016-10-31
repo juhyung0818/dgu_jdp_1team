@@ -17,5 +17,5 @@ public interface QuestionDAO {
 	//modify a question
 	public void update(QuestionVO question) throws Exception;
 	//display question list
-	public List<QuestionVO> listQuestion(QuestionVO question) throws Exception;
+	public List<QuestionVO> listQuestion(int subjectCode, String examName) throws Exception;
 }

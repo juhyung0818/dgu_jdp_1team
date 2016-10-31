@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.jdp.domain.QuestionListVO;
 import com.jdp.domain.QuestionVO;
+import com.jdp.persistence.ExamDAOImpl;
 import com.jdp.persistence.QuestionDAOImpl;
 
 /**
@@ -17,10 +18,10 @@ import com.jdp.persistence.QuestionDAOImpl;
  */
 
 @Service
-public class QuestionServiceImpl{
+public class QuestionServiceImpl implements QuestionService{
 
 	@Inject
-	private QuestionDAOImpl examDAO;
+	private QuestionDAOImpl questionDAO;
 	
 	/**
 	 * add question in exam
@@ -31,8 +32,25 @@ public class QuestionServiceImpl{
 		List<QuestionVO> list = questions.getqList();
 
 		for(int i=0; i<questions.getqList().size(); i++){
-			examDAO.register(list.get(i));
+			questionDAO.register(list.get(i));
 		}
 		
+	}
+
+	@Override
+	public void register(QuestionVO question) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void update(QuestionVO question) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<QuestionVO> questionList(int subjectCode, String examName) throws Exception {
+		return questionDAO.listQuestion(subjectCode, examName);
 	}
 }

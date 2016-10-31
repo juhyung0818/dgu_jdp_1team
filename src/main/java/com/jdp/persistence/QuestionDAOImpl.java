@@ -1,6 +1,8 @@
 package com.jdp.persistence;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -32,7 +34,10 @@ public class QuestionDAOImpl implements QuestionDAO{
 	}
 
 	@Override
-	public List<QuestionVO> listQuestion(QuestionVO question) throws Exception {
-		return session.selectList(namespace+".listQuestion", question);
+	public List<QuestionVO> listQuestion(int subjectCode, String examName) throws Exception {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("subjectCode", subjectCode);
+		paramMap.put("examName", examName);
+		return session.selectList(namespace+".listQuestion", paramMap);
 	}
 }

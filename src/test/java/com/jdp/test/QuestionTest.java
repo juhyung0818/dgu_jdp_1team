@@ -61,12 +61,12 @@ public class QuestionTest {
 		dao.update(vo);
 	}
 
-	@Test
-	public void testListQuestion() throws Exception{
-		logger.info("test:ostQuestion....");
-		QuestionVO vo = new QuestionVO();
-		vo.setSubjectCode(12312);
-		vo.setExamName("test");
-		logger.info(dao.listQuestion(vo).toString());
-	}
+//	@Test
+//	public void testListQuestion() throws Exception{
+//		logger.info("test:ostQuestion....");
+//		QuestionVO vo = new QuestionVO();
+//		vo.setSubjectCode(12312);
+//		vo.setExamName("test");
+//		logger.info(dao.listQuestion(vo).toString());
+//	}
 }

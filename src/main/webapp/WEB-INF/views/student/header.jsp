@@ -26,7 +26,7 @@ h1 {letter-spacing:6px}
   
   <div class="w3-padding-32">
     <div class="w3-btn-bar w3-border w3-show-inline-block">
-      <a href="#" class="w3-btn">Home</a>
+      <a href="#" class="w3-btn">d</a>
       <a href="#" class="w3-btn w3-light-grey">Portfolio</a>
       <a href="#" class="w3-btn">Contact</a>
       <a href="#" class="w3-btn w3-hide-small">Weddings</a>

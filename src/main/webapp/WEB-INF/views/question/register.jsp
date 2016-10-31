@@ -4,10 +4,8 @@
 	pageEncoding="UTF-8"%>
 	
 	
-	<%@include file="../include/header.jsp"%>
-	
+	<%@include file="../include/tHeader.jsp"%>
 
-	
 <body>
 	<font size="7" color="black"> 문제 출제 </font> 
 	<br> <br>
