@@ -11,18 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.jdp.domain.ExamVO;
-
 import com.jdp.service.ExamService;
 
-/**
- * controller of teacher and students about exam 
- * @author YJH
- * 2016.10.19.Wed
- */
 @Controller
-@RequestMapping("/exam/*")
-public class ExamController {
-
+@RequestMapping("/subject/*")
+public class SubjectController {
 	@Inject
 	private ExamService examService;
 	
@@ -44,5 +37,4 @@ public class ExamController {
 		return "home";
 		//please change teacher main later
 	}
-
 }
