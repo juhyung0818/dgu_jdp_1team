@@ -1,5 +1,4 @@
 <%@include file="../include/tHeader.jsp"%>
-<<<<<<< HEAD
 
 <section class="content">
 	<div class="row">
@@ -82,4 +81,5 @@
 	</div>
 	<!-- /.row -->
 </section>
+
 <%@include file="../include/tFooter.jsp"%>

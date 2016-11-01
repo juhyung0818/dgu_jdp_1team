@@ -1,6 +1,8 @@
 package com.jdp.test;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -44,8 +46,10 @@ public class ExamTest {
 	@Test
 	public void testDeleteExam() throws Exception{
 		int subjectCode = 12312;
-		String examName = "test5";
-		
+		String examName = "aa";
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("subjectCode", subjectCode);
+		paramMap.put("examName", examName);
 		dao.delete(subjectCode, examName);
 	}
 	

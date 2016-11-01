@@ -31,40 +31,25 @@
 <body>
 	<center>
 	<h1>
-		Exam Register
+		Subject Register
 	</h1>
 	<form class="form-inline" role="form" method="post">
 	<fieldset>
 		<div class="box-body">
 			<div class="form-group">
-				<label class=".hidden" for="subjectCode" >subject code</label>
-				<input type="text" class="w3-input w3-border w3-round-large" name="subjectCode" placeholder="subject code">
-			</div>
-			<div class="form-group">
-				<label for="examName">exam name</label>
-				<input type="text" class="w3-input w3-border w3-round-large"name="examName" placeholder="exam name">
-			</div>
-			<div class="form-group">
-				<label for="questionNum">question number</label>
-				<input type="number" class="w3-input w3-border w3-round-large"name="questionNum" placeholder="number of question"><br>
-			</div>
-
-			<div class="form-group">
-				<label for="startTime">start time</label>
-				<input type="text" id="startTime" class='datetimepicker' value="">
-			</div>
-			<div class="form-group">
-				<label for="endTime">end time</label>
-				<input type="text" id="endTime" class='datetimepicker' value="">
+				<label for="subjectName">subject name</label>
+				<input type="text" class="w3-input w3-border w3-round-large" name="subjectName" placeholder="Write subject name">
 			</div>
 		</div>
 		<div class="box-footer"><br>
+				<input type='hidden' name='subjectCode' value="100">
+				<input type='hidden' name='subjectName' value="jh">
 			<button type="submit"  class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> submit </button>
 			<button type="reset" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> cancel </button>
 		</div>
 		</fieldset>
-	</center>
 	</form>
+	</center>
 </body>
 </html>
 <%@include file="../include/tFooter.jsp"%>

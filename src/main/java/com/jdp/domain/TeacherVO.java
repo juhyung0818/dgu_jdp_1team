@@ -11,6 +11,7 @@ public class TeacherVO {
 	private String pw;
 	private String name;
 	
+	/* setter, getter methods */
 	public String getTid() {
 		return tid;
 	}

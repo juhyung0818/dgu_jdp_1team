@@ -52,7 +52,7 @@
 
 <script>
 //ë²í¼í´ë¦­ ê´ë ¨				
-/* $(document).ready(function(){
+ $(document).ready(function(){
 	
 	var formObj = $("form[role='form']");
 	console.log(formObj);
@@ -75,7 +75,7 @@
 		self.location = "/exam/list";
 	});
 	
-}); */
+});
 
 </script>
 

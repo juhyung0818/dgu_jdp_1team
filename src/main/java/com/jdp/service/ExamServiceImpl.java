@@ -7,10 +7,13 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.jdp.domain.ExamVO;
-
 import com.jdp.persistence.ExamDAO;
 
-
+/**
+ * Service class about Exam
+ * @author YJH
+ * 2016.10.24.Wed
+ */
 @Service
 public class ExamServiceImpl implements ExamService{
 

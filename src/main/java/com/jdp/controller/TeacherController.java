@@ -20,6 +20,7 @@ import com.jdp.service.QuestionService;
  * 
  * @author YJH 2016.10.31.Mun
  */
+
 @Controller
 @RequestMapping("/teacher/*")
 public class TeacherController {
@@ -32,6 +33,7 @@ public class TeacherController {
 	// instance for log
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 
+<<<<<<< HEAD
 	@RequestMapping(method = RequestMethod.GET)
 	public void mainView(Model model) throws Exception {
 		logger.info("subjectCode : " + "" + "examList");
@@ -39,6 +41,9 @@ public class TeacherController {
 	}
 
 	// TODO subject code....
+=======
+	// TODO subject code.... exam
+>>>>>>> 4c254baab405df4c62e2424763b80eb4fabed372
 	@RequestMapping(value = "/managementExam", method = RequestMethod.GET)
 	public void managementExamGET(Model model) throws Exception {
 		logger.info("subjectCode : " + "" + "examList");
