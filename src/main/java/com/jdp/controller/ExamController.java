@@ -55,12 +55,4 @@ public class ExamController {
 		model.addAttribute("list", examService.examList(subjectCode));
 		model.addAttribute("subjectCode", subjectCode);
 	}
-
-	@RequestMapping(value = "/{subjectCode}/{examName}", method = RequestMethod.DELETE)
-	public String delete(@PathVariable("subjectCode") int subjectCode, 
-						@PathVariable("examName") String examName) throws Exception {
-		logger.info("subjectCode: " + subjectCode +" examName: " + examName + " delete....");
-		examService.delete(subjectCode, examName);
-		return "redirect:/exam/managementExam?subjectCode="+subjectCode;
-	}
 }

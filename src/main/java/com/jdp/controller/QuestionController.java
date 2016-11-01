@@ -43,14 +43,14 @@ public class QuestionController {
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public void read(@RequestParam("subjectCode") int subjectCode,
+	public void read(@RequestParam("subjectCode") int subjectCode, 
 			@RequestParam("examName") String examName, Model model) throws Exception {
 		model.addAttribute("list", questionService.questionList(subjectCode, examName));
 	}
 	
-	@RequestMapping(value = "/{subjectCode}/{examName}", method = RequestMethod.POST)
-	public String delete(@PathVariable("subjectCode") int subjectCode, 
-						@PathVariable("examName") String examName) throws Exception {
+	@RequestMapping(value = "/list", method = RequestMethod.POST)
+	public String delete(@RequestParam("subjectCode") int subjectCode, 
+			@RequestParam("examName") String examName) throws Exception {
 		logger.info("subjectCode: " + subjectCode +" examName: " + examName + " delete....");
 		questionService.delete(subjectCode, examName);
 		return "redirect:/exam/managementExam?subjectCode="+subjectCode;

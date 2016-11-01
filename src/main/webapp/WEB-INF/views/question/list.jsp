@@ -48,11 +48,7 @@
 					</table>
 				</div>
 				<!-- /.box-body -->
-
-				<br>
-				<br>
-
-
+				<br><br>
 				<div class="box-footer" align="right">
 					<form class="form-inline" role="form" method="post">
 						<button type="submit" class="w3-btn w3-pink w3-round-xlarge" value="delete"> REMOVE </button>
