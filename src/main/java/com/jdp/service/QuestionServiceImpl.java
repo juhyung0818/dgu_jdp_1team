@@ -51,4 +51,9 @@ public class QuestionServiceImpl implements QuestionService{
 	public List<QuestionVO> questionList(int subjectCode, String examName) throws Exception {
 		return questionDAO.listQuestion(subjectCode, examName);
 	}
+
+	@Override
+	public void delete(int subjectCode, String examName) throws Exception {
+		questionDAO.delete(subjectCode, examName);
+	}
 }

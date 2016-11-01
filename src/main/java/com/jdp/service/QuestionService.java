@@ -17,4 +17,6 @@ public interface QuestionService {
 	public void update(QuestionVO question) throws Exception;
 	//display question list
 	public List<QuestionVO> questionList(int subjectCode, String examName) throws Exception;
+	
+	public void delete(int subjectCode, String examName) throws Exception;
 }
