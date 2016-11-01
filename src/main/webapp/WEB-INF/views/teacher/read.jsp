@@ -11,11 +11,6 @@
 				</div>
 				<!-- /.box-header -->
 
-
-			<form role="form" method="post">
-				<input type='hidden' name='examName' value="${examVO.examName}">
-			</form>
-
 			<div align="center">
 				<div class="box-header with-border">
 					<h3 class="box-title">QUESTIONS</h3>
@@ -51,29 +46,36 @@
 <div class="box-footer" align="right">
 	<button type="submit" class="btn btn-warning">MODIFY</button>
 	<button type="submit" class="btn btn-danger">REMOVE</button>
+	<button type="submit" class="btn btn-primary">LIST ALL</button>
 </div>
 
 
 <script>
-$(document).ready(function(){
+//ë²í¼í´ë¦­ ê´ë ¨				
+/* $(document).ready(function(){
 	
 	var formObj = $("form[role='form']");
 	console.log(formObj);
 	
-
-	
-	
+	//ìí ë¬¸ì  ìì íê¸°
 	$(".btn-warning").on("click", function(){
 		formObj.attr("action", "/exam/modify");
 		formObj.attr("method", "get");		
 		formObj.submit();
 	});
 	
-	$("#btn-danger").on("click", function(){
-		formObj.attr("action", "/teacher/delete");
+	//ìí ì­ì íê¸°
+	$(".btn-danger").on("click", function(){
+		formObj.attr("action", "/exam/remove");
 		formObj.submit();
 	});
-});
+	
+	//ìí ëª©ë¡ì¼ë¡ ëìê°ê¸°
+	$(".btn-primary").on("click", function(){
+		self.location = "/exam/list";
+	});
+	
+}); */
 
 </script>
 

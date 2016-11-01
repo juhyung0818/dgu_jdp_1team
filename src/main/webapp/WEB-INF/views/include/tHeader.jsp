@@ -37,7 +37,7 @@ h1 {
 	<div class="w3-content" style="max-width: 1500px">
 
 		<!-- Header -->
-		<header class="w3-panel w3-padding-128 w3-center w3-opacity">
+		<header class="w3-panel w3-center w3-opacity">
 			<div class="w3-panel w3-pink">
 				<h1 class="w3-opacity">순성닷컴 </h1>
 			</div>
