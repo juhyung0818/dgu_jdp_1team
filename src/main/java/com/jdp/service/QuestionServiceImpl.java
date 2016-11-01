@@ -11,9 +11,9 @@ import com.jdp.domain.QuestionVO;
 import com.jdp.persistence.QuestionDAO;
 
 /**
- * Service class
+ * Service interface
  * @author YJH
- * 2016.10.19.Wed
+ * 2016.11.01.Wed
  */
 
 @Service

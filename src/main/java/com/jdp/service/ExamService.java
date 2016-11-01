@@ -6,9 +6,9 @@ import com.jdp.domain.ExamVO;
 import com.jdp.domain.QuestionVO;
 
 /**
- * interface of exam for exam
+ * Service interface about Exam
  * @author YJH
- * 2016.10.24.Mon
+ * 2016.10.24.Wed
  */
 public interface ExamService {
 
