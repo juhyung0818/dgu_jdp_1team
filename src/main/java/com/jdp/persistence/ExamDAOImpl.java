@@ -17,15 +17,30 @@ public class ExamDAOImpl implements ExamDAO{
 	@Inject
 	private SqlSession session; //session for sql connetion
 	private String namespace = "com.jdp.mapper.ExamMapper";
-	
+
 	@Override
 	public void register(ExamVO exam) throws Exception {
+
 		session.insert(namespace+".register", exam);
+
+//<<<<<<< HEAD
+		session.insert(namespace+".register", exam);
+//=======
+//		Map<String, Object> paramMap = new HashMap<>();
+//		paramMap.put("subjectCode", exam.getSubjectCode());
+//		paramMap.put("examName", exam.getExamName());
+//		paramMap.put("startTime", exam.getStartTime());
+//		paramMap.put("endTime", exam.getEndTime());
+//		session.insert(namespace+".register", paramMap);
+//
 	}
 
 	@Override
-	public void delete(ExamVO exam) throws Exception {
-		session.delete(namespace+".delete", exam);
+	public void delete(int subjectCode, String examName) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("subjectCode", subjectCode);
+		paramMap.put("examName", examName);
+		session.delete(namespace+".delete", paramMap);
 	}
 
 	@Override

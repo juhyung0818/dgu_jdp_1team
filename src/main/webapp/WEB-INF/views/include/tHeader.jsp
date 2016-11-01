@@ -39,7 +39,7 @@ h1 {
 		<!-- Header -->
 		<header class="w3-panel w3-padding-128 w3-center w3-opacity">
 			<div class="w3-panel w3-pink">
-				<h1 class="w3-opacity">순성닷컴</h1>
+				<h1 class="w3-opacity">순성닷컴 </h1>
 			</div>
 
 			<div class="w3-xxxlarge">
@@ -50,4 +50,6 @@ h1 {
 				href="managementExam">시험관리</a> <a
 				class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge"
 				href="managementGrade">성적관리</a>
+				
+			
 		</header>

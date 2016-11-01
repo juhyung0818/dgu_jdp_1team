@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.jdp.domain.QuestionListVO;
+import com.jdp.domain.QuestionVO;
 import com.jdp.service.QuestionServiceImpl;
 
 @Controller
@@ -28,9 +29,9 @@ public class QuestionController {
 	}
 	
 	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public String registPOST(@ModelAttribute QuestionListVO questions) throws Exception{
+	public String registPOST(@ModelAttribute QuestionVO question) throws Exception{
 		logger.info("question register.........");
-		questionService.register(questions);
+		questionService.register(question);
 		return "question/success";
 	}
 

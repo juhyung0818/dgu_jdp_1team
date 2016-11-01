@@ -1,7 +1,7 @@
 package com.jdp.domain;
 
 import java.sql.Timestamp;
-import java.util.Date;
+
 
 /**
  * Value Object
@@ -14,6 +14,7 @@ public class ExamVO {
 	private int subjectCode;
 	private String examName;
 	private int studentCnt;
+	private int questionNum;
 	private Timestamp startTime;
 	private Timestamp endTime;
 	
@@ -35,6 +36,12 @@ public class ExamVO {
 	}
 	public void setStudentCnt(int studentCnt) {
 		this.studentCnt = studentCnt;
+	}
+	public int getQuestionNum() {
+		return questionNum;
+	}
+	public void setQuestionNum(int questionNum) {
+		this.questionNum = questionNum;
 	}
 	public Timestamp getStartTime() {
 		return startTime;

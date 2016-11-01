@@ -6,9 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jdp.domain.ExamVO;
 
@@ -30,13 +30,12 @@ public class ExamController {
 	private static final Logger logger = LoggerFactory.getLogger(ExamController.class);
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-
-	public void registGET(ExamVO exam, Model model) {
+	public void registGET(@ModelAttribute ExamVO exam, Model model) {
 		logger.info("exam register");
 	}
 	
 	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public String registPOST(ExamVO exam) throws Exception{
+	public String registPOST(@ModelAttribute ExamVO exam) throws Exception{
 
 		logger.info("exam register.........");
 		logger.info(exam.toString());
@@ -45,7 +44,6 @@ public class ExamController {
 		
 		return "home";
 		//please change teacher main later
-
 	}
 
 }
