@@ -11,6 +11,7 @@ public class StudentVO {
 	private String sid;
 	private String pw;
 	
+	/* setter, getter methods */
 	public String getSid() {
 		return sid;
 	}

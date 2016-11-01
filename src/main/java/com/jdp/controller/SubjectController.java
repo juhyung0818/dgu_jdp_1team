@@ -5,36 +5,35 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.jdp.domain.ExamVO;
-import com.jdp.service.ExamService;
+import com.jdp.domain.SubjectVO;
+import com.jdp.service.SubjectService;
 
 @Controller
 @RequestMapping("/subject/*")
 public class SubjectController {
+
 	@Inject
-	private ExamService examService;
-	
+	private SubjectService subjectService;
 	private static final Logger logger = LoggerFactory.getLogger(ExamController.class);
-	
+
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public void registGET(@ModelAttribute ExamVO exam, Model model) {
-		logger.info("exam register");
+	public void registGET(@RequestParam("subjectName") String subjectName) {
+		logger.info("subject Register...");
 	}
 	
-	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public String registPOST(@ModelAttribute ExamVO exam) throws Exception{
-
-		logger.info("exam register.........");
-		logger.info(exam.toString());
-		
-		examService.register(exam);
-		
-		return "home";
-		//please change teacher main later
+	//TODO this method need subjectCode, tid
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String registPOST(SubjectVO subject) throws Exception {
+//		SubjectVO subject = new SubjectVO();
+//		subject.setSubjectCode(100);
+//		subject.setTid("jh");
+//		subject.setSubjectName(subjectName);
+		subjectService.register(subject);
+		return "redirect:/exam/managementExam";
 	}
 }

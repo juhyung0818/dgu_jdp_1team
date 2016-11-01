@@ -11,70 +11,34 @@
 				</div>
 				<!-- /.box-header -->
 
-<form role="form" method="post">
+				<form role="form" method="post">
+					<input type='hidden' name='subjectCode' value="${questionVO.subjectCode}">
+					<input type='hidden' name='examName' value="${questionVO.examName}">
+				</form>
 
-	<input type='hidden' name='bno' value="${questionVO.examName}">
+				<div class="box-body">
+					<div class="form-group">
+						<label for="exampleInputEmail1">EXAM NAME</label> <input
+							type="text" name='title' class="form-control"
+							value="${questionVO.examName}" readonly="readonly">
+					</div>
+					<div class="form-group">
+						<label for="exampleInputPassword1">QUESTIONS</label>
+						<textarea class="form-control" name="content" rows="3"
+							readonly="readonly">${questionVO.content}</textarea>
+					</div>
+					<div class="form-group">
+						<label for="exampleInputEmail1">qNumber</label> <input type="text"
+							name="writer" class="form-control" value="${questionVO.qNumber}"
+							readonly="readonly">
+					</div>
+				</div>
+				<!-- /.box-body -->
 
-</form>
-
-<div class="box-body">
-	<div class="form-group">
-		<label for="exampleInputEmail1">EXAM NAME</label> <input type="text"
-			name='title' class="form-control" value="${questionVO.examName}"
-			readonly="readonly">
-	</div>
-	<div class="form-group">
-		<label for="exampleInputPassword1">QUESTIONS</label>
-		<textarea class="form-control" name="content" rows="3"
-			readonly="readonly">${questionVO.content}</textarea>
-	</div>
-	<div class="form-group">
-		<label for="exampleInputEmail1">qNumber</label> <input type="text"
-			name="writer" class="form-control" value="${questionVO.qNumber}"
-			readonly="readonly">
-	</div>
-</div>
-<!-- /.box-body -->
-
-<div class="box-footer">
-	<button type="submit" class="btn btn-warning">MODIFY</button>
-	<button type="submit" class="btn btn-danger">REMOVE</button>
-	<button type="submit" class="btn btn-primary">LIST ALL</button>
-</div>
-
-
-<script>
-//버튼클릭 관련				
-/* $(document).ready(function(){
-	
-	var formObj = $("form[role='form']");
-	console.log(formObj);
-	
-	//시험 문제 수정하기
-	$(".btn-warning").on("click", function(){
-		formObj.attr("action", "/exam/modify");
-		formObj.attr("method", "get");		
-		formObj.submit();
-	});
-	
-	//시험 삭제하기
-	$(".btn-danger").on("click", function(){
-		formObj.attr("action", "/exam/remove");
-		formObj.submit();
-	});
-	
-	//시험 목록으로 돌아가기
-	$(".btn-primary").on("click", function(){
-		self.location = "/exam/list";
-	});
-	
-}); */
-
-</script>
-
-
-
-
+				<div class="box-footer" align="right">
+					<input type="button" class="w3-btn w3-pink" value="MODIFY" onClick="self.location='/exam/register';">
+					<input type="button" class="w3-btn w3-pink" value="REMOVE" onClick="self.location='/exam/delete';">
+				</div>
 			</div>
 			<!-- /.box -->
 		</div>

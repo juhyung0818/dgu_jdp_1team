@@ -13,14 +13,15 @@ import com.jdp.controller.ExamController;
 import com.jdp.domain.QuestionVO;
 import com.jdp.persistence.QuestionDAO;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/**/*.xml" })
 /**
  * Test code of question for database access
- * 
  * @author YJH
+ * 2016.10.29.Sat
+ * pass all test
  */
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/**/*.xml"})
 public class QuestionTest {
 	@Inject
 	private QuestionDAO dao;

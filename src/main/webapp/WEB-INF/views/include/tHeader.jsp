@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <html>
-<title>W3.CSS Template</title>
+<title>순성닷컴</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet"
@@ -73,10 +73,8 @@ li a:hover:not(.active){
 				<p class="w3-myfont">Soonsung's Programming World</p>
 			</div>
 			<br>
-			<nav class="navigation">
 			<ul class="w3-pink">
 				<li><a href="managementExam">시험관리</a></li>
 				<li><a href="managementGrade">성적관리</a></li>
 			</ul>	
-			</nav>
 		</header>

@@ -18,6 +18,7 @@ public class ExamVO {
 	private Timestamp startTime;
 	private Timestamp endTime;
 	
+	/* setter, getter methods */
 	public int getSubjectCode() {
 		return subjectCode;
 	}
