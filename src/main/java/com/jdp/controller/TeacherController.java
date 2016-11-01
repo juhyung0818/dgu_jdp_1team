@@ -35,20 +35,20 @@ public class TeacherController {
 	@RequestMapping(method = RequestMethod.GET)
 	public void mainView(Model model) throws Exception {
 		logger.info("subjectCode : " + "" + "examList");
-		model.addAttribute("list", examService.examList(100));
+		model.addAttribute("list", examService.examList(12312));
 	}
 
 	// TODO subject code....
 	@RequestMapping(value = "/managementExam", method = RequestMethod.GET)
 	public void managementExamGET(Model model) throws Exception {
 		logger.info("subjectCode : " + "" + "examList");
-		model.addAttribute("list", examService.examList(100));
+		model.addAttribute("list", examService.examList(12312));
 	}
 
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
 	public void read(@RequestParam("examName") String examName, Model model) throws Exception {
 
-		model.addAttribute("list", questionService.questionList(100, examName));
+		model.addAttribute("list", questionService.questionList(12312, examName));
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
