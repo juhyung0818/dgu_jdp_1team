@@ -15,20 +15,19 @@
 				<div class="box-header with-border">
 					<h3 class="box-title">QUESTIONS</h3>
 				</div>
-
-				<table class="w3-table w3-bordered">
+				
+				<table class=" ">
+				    
 					<tr>
-						<th>EXAM NAME</th>
 						<th>QUESTION NUMBERE </th>
 						<th>QUESTION INFOMATION </th>
  						<td colspan="4"> EXAMPLES </td>
-						<td>QPOINT </td>
+						<th>QPOINT </th>
 						<td>ANSWER </td>
 					</tr>
 					
 					<c:forEach items="${list}" var="questionVO">
 						<tr>
-							<td>${questionVO.examName}</td>
 							<td>${questionVO.qNumber}</td>
 							<td>${questionVO.qInfo}</td>
 							<td>${questionVO.ex1}</td>

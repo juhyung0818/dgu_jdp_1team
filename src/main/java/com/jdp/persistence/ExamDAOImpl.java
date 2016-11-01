@@ -20,7 +20,7 @@ public class ExamDAOImpl implements ExamDAO{
 	
 	@Override
 	public void register(ExamVO exam) throws Exception {
-		session.insert(namespace+".", exam);
+		session.insert(namespace+".register", exam);
 	}
 
 	@Override
