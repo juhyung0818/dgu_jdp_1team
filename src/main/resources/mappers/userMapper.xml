@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jdp.mapper.UserMapper">
+
+	<insert id="teacherRegister">
+		insert into teacher (tid, pw, name)
+		values (#{tid}, #{pw}, #{name})
+	</insert>
+	
+	 <update id="update">
+ 		update question set qInfo=#{qInfo}, ex1=#{ex1}, ex2=#{ex2}, ex3=#{ex3},ex4=#{ex4}, qPoint=#{qPoint}, answer=#{answer}
+ 		where subjectCode=#{subjectCode} and examName=#{examName} and qNumber=#{qNumber}
+ 	</update>
+
+	<select id="listQuestion" resultType="com.jdp.domain.QuestionVO">
+ 		select examName, qNumber, qInfo, ex1, ex2, ex3, ex4, qPoint, answer
+ 		from question
+ 		where subjectCode=#{subjectCode} and examName=#{examName}
+ 		order by qNumber
+ 	</select>
+ 	
+ 	<delete id="delete">
+ 		delete from question
+ 		where subjectCode=#{subjectCode} and examName=#{examName}
+ 	</delete>
+
+</mapper>
