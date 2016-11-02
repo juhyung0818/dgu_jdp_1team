@@ -46,7 +46,7 @@ public class ExamController {
 	@RequestMapping(value = "/managementExam", method = RequestMethod.GET)
 	public void managementExamGET(Model model) throws Exception {
 		logger.info("subjectCode : " + "" + "examList");
-		model.addAttribute("list", examService.examList(12312));
+		model.addAttribute("list", examService.examList(100));
 	}
 
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)

@@ -26,14 +26,4 @@ public class StudentController {
 	public void registGET(@ModelAttribute SubjectVO subject, Model model) {
 		logger.info("student main");
 	}
-	
-	@RequestMapping(value="/studentMain", method=RequestMethod.POST)
-	public String registPOST(@ModelAttribute SubjectVO subject) throws Exception{
-
-		logger.info("student main.........");
-		
-		subjectService.subjectList();
-		
-		return "studentMain";
-	}
 }

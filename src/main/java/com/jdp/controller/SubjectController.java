@@ -22,7 +22,7 @@ public class SubjectController {
 	private static final Logger logger = LoggerFactory.getLogger(ExamController.class);
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public void registGET(@RequestParam("subjectName") String subjectName) {
+	public void registGET(String subjectName) {
 		logger.info("subject Register...");
 	}
 	
