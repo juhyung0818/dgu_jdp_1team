@@ -50,7 +50,7 @@
 			</div>
 			<div class="form-group">
 				<label for="questionNum">question number</label>
-				<input type="number" class="w3-input w3-border w3-round-large"name="questionNum" placeholder="number of question"><br>
+				<input type="number" class="w3-input w3-border w3-round-large"name="num" placeholder="number of question"><br>
 			</div>
 
 			<div class="form-group">
@@ -63,11 +63,10 @@
 			</div>
 		</div>
 		<div class="box-footer"><br>
-			<button type="submit"  class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> submit </button>
+			<button type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> submit </button>
 			<button type="reset" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> cancel </button>
 		</div>
 		</fieldset>
-	</center>
 	</form>
 </body>
 </html>

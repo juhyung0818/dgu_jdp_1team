@@ -10,11 +10,7 @@
 	<div align="center">
 		<font size="7" color="black"> 문제 출제 </font> <br> <br>
 		<form fole="form" method="post" class="w3-container">
-			<input type='hidden' name='subjectCode' value="12312"> 
-			<input type='hidden' name='examName' value="test1">
-
-
-				<c:forEach var="i" begin="0" varStatus="status" end="9">
+				<c:forEach var="i" begin="1" varStatus="status" end='${num}'>
 					<table class="w3-striped ">
 						<tr>
 							<td>QPOINT</td>
@@ -27,7 +23,7 @@
 									<li>Q
 										<div class="form-group">
 											<input class="w3-input" type="int" name="qNumber"
-												placeholder="Enter qNumber" value='${i+1}'> <label
+												placeholder="Enter qNumber" value='${i}'> <label
 												for="exampleInputEmail1"></label>
 										</div>
 									</li>
@@ -100,7 +96,7 @@
 
 			<div class="box-footer">
 				<input type="submit" value="등록">
-				<input type="reset" value="취소" onClick="self.location='/exam/managementExam';">
+				<input type="reset" value="취소" onClick="self.location='/exam/managementExam?subjectCode='${subjectCode}';">
 			</div>
 
 		</form>

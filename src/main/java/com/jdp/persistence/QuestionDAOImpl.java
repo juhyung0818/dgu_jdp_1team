@@ -42,4 +42,12 @@ public class QuestionDAOImpl implements QuestionDAO{
 		paramMap.put("examName", examName);
 		return session.selectList(namespace+".listQuestion", paramMap);
 	}
+
+	@Override
+	public void delete(int subjectCode, String examName) throws Exception {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("subjectCode", subjectCode);
+		paramMap.put("examName", examName);
+		session.delete(namespace+".delete", paramMap);
+	}
 }

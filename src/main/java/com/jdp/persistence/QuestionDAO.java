@@ -18,4 +18,6 @@ public interface QuestionDAO {
 	public void update(QuestionVO question) throws Exception;
 	//display question list
 	public List<QuestionVO> listQuestion(int subjectCode, String examName) throws Exception;
+	
+ 	public void delete(int subjectCode, String examName) throws Exception;
 }
