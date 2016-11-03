@@ -18,6 +18,7 @@ public interface ExamDAO {
 	public void update(ExamVO exam) throws Exception;
 	public List<ExamVO> listExam(int subjectCode) throws Exception;
 	public void incrementCnt(ExamVO exam) throws Exception;
+	public String getSubjectName(int subjectCode) throws Exception;
 	
 	public void readExam(ExamVO exam) throws Exception;
 }

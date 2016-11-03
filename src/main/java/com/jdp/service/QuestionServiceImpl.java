@@ -53,8 +53,13 @@ public class QuestionServiceImpl implements QuestionService{
 	}
 
 	@Override
-	public List<QuestionVO> questionList(int subjectCode, String examName) throws Exception {
+	public List<QuestionVO> listQuestion(int subjectCode, String examName) throws Exception {
 		return questionDAO.listQuestion(subjectCode, examName);
+	}
+	
+	@Override
+	public List<QuestionVO> tryQuestion(int subjectCode, String examName) throws Exception {
+		return questionDAO.tryQuestion(subjectCode, examName);
 	}
 
 	@Transactional

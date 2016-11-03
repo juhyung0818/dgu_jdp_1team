@@ -5,12 +5,21 @@
 
 
 <%@include file="../include/tHeader.jsp"%>
+<head>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script>
+		var questionArray = new Array();
+		var questionInfo = new Object();
+		
+	</script>
+</head>
 
 <body>
 	<div align="center">
 		<font size="7" color="black"> 문제 출제 </font> <br> <br>
 		<form fole="form" method="post" class="w3-container">
-				<c:forEach var="i" begin="1" varStatus="status" end='${num}'>
+		
+<%-- 				<c:forEach var="i" begin="1" varStatus="status" end='${num}'>
 					<table class="w3-striped ">
 						<tr>
 							<td>QPOINT</td>
@@ -23,8 +32,8 @@
 									<li>Q
 										<div class="form-group">
 											<input class="w3-input" type="int" name="qNumber"
-												placeholder="Enter qNumber" value='${i}'> <label
-												for="exampleInputEmail1"></label>
+												placeholder="Enter qNumber" value='${i}'>
+											<label for="exampleInputEmail1"></label>
 										</div>
 									</li>
 									<li>
@@ -92,13 +101,12 @@
 							</td>
 						</tr>
 					</table>
-				</c:forEach>
+				</c:forEach> --%>
 
 			<div class="box-footer">
 				<input type="submit" value="등록">
 				<input type="reset" value="취소" onClick="self.location='/exam/managementExam?subjectCode='${subjectCode}';">
 			</div>
-
 		</form>
 	</div>
-	<%@include file="../include/tFooter.jsp"%>
+<%@include file="../include/tFooter.jsp"%>

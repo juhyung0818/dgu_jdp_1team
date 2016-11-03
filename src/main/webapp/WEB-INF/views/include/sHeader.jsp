@@ -47,9 +47,9 @@ h1 {
 			</div>
 			<br>
 			<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge"
-				href="/exam/managementExam?subjectCode=${subjectCode}">시험관리</a> <a
+				href="/exam/studentExam?subjectCode=${subjectCode}">시험관리</a> <a
 				class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge"
-				href="/exam/managementGradesubjectCode=${subjectCode}">성적관리</a>
+				href="/exam/managementGrade?subjectCode=${subjectCode}">성적관리</a>
 				
 		</header>
 	</div>

@@ -43,7 +43,7 @@ public class TeacherController {
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
 	public void read(@RequestParam("examName") String examName, Model model) throws Exception {
 
-		model.addAttribute("list", questionService.questionList(12312, examName));
+		model.addAttribute("list", questionService.listQuestion(12312, examName));
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
