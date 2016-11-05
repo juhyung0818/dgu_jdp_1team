@@ -26,5 +26,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		delete from question
  		where subjectCode=#{subjectCode} and examName=#{examName}
  	</delete>
+ 	
+ 	<select id="login" resultType="com.jdp.domain.UserVO">
+ 		select uid, upw from user where uid=#{uid} and upw=#{upw}
+ 	</select>
 
 </mapper>

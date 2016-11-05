@@ -3,7 +3,7 @@ package com.jdp.service;
 import java.util.List;
 
 import com.jdp.domain.ExamVO;
-import com.jdp.domain.QuestionVO;
+
 
 /**
  * Service interface about Exam

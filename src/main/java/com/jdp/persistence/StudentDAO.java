@@ -1,5 +1,7 @@
 package com.jdp.persistence;
 
+import java.util.List;
+
 import com.jdp.domain.StudentVO;
 
 /**
@@ -11,7 +13,8 @@ import com.jdp.domain.StudentVO;
 public interface StudentDAO {
 
 	public void register(StudentVO student) throws Exception;
+	//id duplication check
 	public void checkSid(StudentVO student) throws Exception;
 	public void checkPW(StudentVO student) throws Exception;
-
+	public List<StudentVO> login(StudentVO student) throws Exception;	
 }

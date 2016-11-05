@@ -25,6 +25,10 @@
 		<!-- Main content -->
 				
 			<div align="center">
+			
+				"${login.uid} "
+				<input type="text" name="studentID" value='${login.uid }' readonly>
+			
 				<div class="box-header with-border">
 					<h3 class="box-title">SUBJECT LIST</h3>
 				</div>

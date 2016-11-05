@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -36,10 +35,8 @@ public class ExamController {
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String registPOST(@RequestParam("subjectCode") int subjectCode, 
-			@RequestParam("examName") String examName, 
-			@RequestParam("num") int num, 
-			@ModelAttribute ExamVO exam) throws Exception {
+	public String registPOST(@RequestParam("subjectCode") int subjectCode, @RequestParam("examName") String examName, 
+							 @RequestParam("num") int num, @ModelAttribute ExamVO exam) throws Exception {
 		logger.info("exam register.........");
 		logger.info(exam.toString());
 		exam.setSubjectCode(subjectCode);

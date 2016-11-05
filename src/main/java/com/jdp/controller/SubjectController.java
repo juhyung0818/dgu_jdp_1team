@@ -5,11 +5,9 @@ import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-<<<<<<< HEAD
 
-=======
 import org.springframework.ui.Model;
->>>>>>> dc3a0685e2718a70ebb4a643f31721f0b85d9f75
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,13 +38,9 @@ public class SubjectController {
 	
 	//TODO this method need subjectCode, tid
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String registPOST(@RequestParam("subjectCode") int subjectCode, 
-			@RequestParam("tid") String tid, @RequestParam("subjectName") String subjectName) throws Exception {
-		SubjectVO subject = new SubjectVO();
-		subject.setSubjectCode(subjectCode);
-		subject.setSubjectName(subjectName);
-		subject.setTid(tid);
+	public String registPOST(@ModelAttribute SubjectVO subject) throws Exception {
+		
 		subjectService.register(subject);
-		return "redirect:/exam/managementExam?subjectCode="+subjectCode;
+		return "redirect:/exam/managementExam?subjectCode="+subject.getSubjectCode();
 	}
 }
