@@ -19,5 +19,9 @@
 	</footer>
 
 </body>
+<<<<<<< HEAD
 </html>
 
+=======
+</html>
+>>>>>>> 8a2de50852acdf4d132ccfa1f2146b43230603d1

@@ -25,4 +25,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		where subjectCode=#{subjectCode}
  	</select>
  	
+ 	<select id="getName" resultType="String">
+ 		select subjectName  
+ 		from subject
+ 		where subjectCode=#{subjectCode}
+ 	</select>
+ 	
 </mapper>

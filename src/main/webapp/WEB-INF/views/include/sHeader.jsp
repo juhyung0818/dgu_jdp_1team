@@ -3,7 +3,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <html>
+<<<<<<< HEAD
 <title>W3.CSS Template</title>
+=======
+<title>순성닷컴</title>
+>>>>>>> 8a2de50852acdf4d132ccfa1f2146b43230603d1
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet"
@@ -39,6 +43,7 @@ h1 {
 		<!-- Header -->
 		<header class="w3-panel w3-padding-128 w3-center w3-opacity">
 			<div class="w3-panel w3-pink">
+<<<<<<< HEAD
 				<h1 class="w3-opacity">순성닷컴 </h1>
 			</div>
 
@@ -46,3 +51,19 @@ h1 {
 				<p class="w3-myfont">Soonsung's Programming World</p>
 			</div>
 		</header>
+=======
+				<h1 class="w3-opacity"> 순성닷컴 </h1>
+			</div>
+
+			<div class="w3-xxxlarge">
+				<p class="w3-myfont">${subjectName}</p>
+			</div>
+			<br>
+			<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge"
+				href="/exam/studentExam?subjectCode=${subjectCode}">시험관리</a> <a
+				class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge"
+				href="/exam/managementGrade?subjectCode=${subjectCode}">성적관리</a>
+				
+		</header>
+	</div>
+>>>>>>> 8a2de50852acdf4d132ccfa1f2146b43230603d1

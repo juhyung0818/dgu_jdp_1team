@@ -15,4 +15,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		update subject set subjectName=#{subjectName}
  		where subjectCode=#{subjectCode}
  	</update>
+ 	
+ 	<select id="listSubject" resultType="com.jdp.domain.SubjectVO">
+ 		select s.subjectCode, s.subjectName, t.name
+ 		from member as m join teacher as t join subject as s
+ 		on t.tid=s.tid and m.subjectCode = s.subjectCode
+ 		where m.sid = #{sid}
+ 	</select>
+ 	
+ 	<insert id="joinSubject">
+		insert into member (sid, subjectCode, grade, classNumber, studentNumber, studentName)
+		values (#{sid}, #{subjectCode}, #{grade}, #{classNumber}, #{studentNumber}, #{studentName})
+	</insert>
+	
 </mapper>

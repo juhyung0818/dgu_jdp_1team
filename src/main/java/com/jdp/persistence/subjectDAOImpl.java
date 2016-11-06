@@ -1,6 +1,7 @@
 package com.jdp.persistence;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -41,5 +42,10 @@ public class SubjectDAOImpl implements SubjectDAO{
 		paramMap.put("subjectCode", subjectCode);
 		paramMap.put("subjectName", subjectName);
 		session.insert(namespace+".modify", paramMap);
+	}
+
+	@Override
+	public List<SubjectVO> listSubject(String sid) throws Exception {
+		return session.selectList(namespace+".listSubject", sid);
 	}
 }

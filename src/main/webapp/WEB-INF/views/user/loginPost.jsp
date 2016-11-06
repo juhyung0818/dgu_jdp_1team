@@ -8,6 +8,7 @@
 </head>
 <body>
 	<script type="text/javascript">
+		alert("loginpost");
 		self.location="/student/studentMain";
 	</script>
 </body>

@@ -45,11 +45,20 @@ public class ExamController {
 		return "redirect:/question/register?subjectCode="+subjectCode+"&examName="+examName+"&num="+num;
 	}
 
-	// TODO subject code....
 	@RequestMapping(value = "/managementExam", method = RequestMethod.GET)
 	public void managementExamGET(@RequestParam("subjectCode") int subjectCode, Model model) throws Exception {
 		logger.info("subjectCode : " + subjectCode + "examList");
 		model.addAttribute("list", examService.examList(subjectCode));
 		model.addAttribute("subjectCode", subjectCode);
+		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
 	}
+	
+	@RequestMapping(value = "/studentExam", method = RequestMethod.GET)
+	public void studentExamGET(@RequestParam("subjectCode") int subjectCode, Model model) throws Exception {
+		logger.info("subjectCode : " + subjectCode + "examList");
+		model.addAttribute("list", examService.examList(subjectCode));
+		model.addAttribute("subjectCode", subjectCode);
+		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
+	}
+	
 }

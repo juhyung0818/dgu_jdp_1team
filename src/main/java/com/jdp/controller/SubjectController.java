@@ -38,9 +38,18 @@ public class SubjectController {
 	
 	//TODO this method need subjectCode, tid
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String registPOST(@ModelAttribute SubjectVO subject) throws Exception {
-		
+	public String registPOST(@RequestParam("subjectCode") int subjectCode, 
+			@RequestParam("tid") String tid, @ModelAttribute SubjectVO subject) throws Exception {
+		subject.setSubjectCode(subjectCode);
+		subject.setTid(tid);
 		subjectService.register(subject);
 		return "redirect:/exam/managementExam?subjectCode="+subject.getSubjectCode();
 	}
+
+	@RequestMapping(value = "/studentSubject", method = RequestMethod.GET)
+	public void listSubject(@RequestParam("sid") String sid, Model model) throws Exception {
+		logger.info("subject List...");
+		model.addAttribute("list", subjectService.listSubject(sid));
+	}
+
 }

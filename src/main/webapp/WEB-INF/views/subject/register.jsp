@@ -29,11 +29,21 @@
 	<fieldset>
 		<div class="box-body">
 			<div class="form-group">
+<<<<<<< HEAD
 				<label for="subjectCode">subject code</label>
 				<input type="text" class="w3-input w3-border w3-round-large" name="subjectCode" placeholder="new subject code">
 			</div>
 		</div>
 		<div class="box-footer"><br>
+=======
+				<label for="subjectName">subject name</label>
+				<input type="text" class="w3-input w3-border w3-round-large" name="subjectName" placeholder="Write subject name" />
+			</div>
+		</div>
+		<div class="box-footer"><br>
+				<input type='hidden' name='subjectCode' value='${subjectCode}' >
+				<input type='hidden' name='subjectName' value='${subjectName}' >
+>>>>>>> 8a2de50852acdf4d132ccfa1f2146b43230603d1
 			<button type="submit"  class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> submit </button>
 			<button type="reset" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> cancel </button>
 		</div>

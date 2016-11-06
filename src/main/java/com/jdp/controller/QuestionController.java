@@ -45,7 +45,7 @@ public class QuestionController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void read(@RequestParam("subjectCode") int subjectCode, 
 			@RequestParam("examName") String examName, Model model) throws Exception {
-		model.addAttribute("list", questionService.questionList(subjectCode, examName));
+		model.addAttribute("list", questionService.listQuestion(subjectCode, examName));
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.POST)
@@ -54,5 +54,11 @@ public class QuestionController {
 		logger.info("subjectCode: " + subjectCode +" examName: " + examName + " delete....");
 		questionService.delete(subjectCode, examName);
 		return "redirect:/exam/managementExam?subjectCode="+subjectCode;
+	}
+	
+	@RequestMapping(value = "/try", method = RequestMethod.GET)
+	public void tryExam(@RequestParam("subjectCode") int subjectCode,
+			@RequestParam("examName") String examName, Model model) throws Exception {
+		model.addAttribute("list", questionService.tryQuestion(subjectCode, examName));
 	}
 }

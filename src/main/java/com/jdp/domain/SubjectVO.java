@@ -11,6 +11,7 @@ public class SubjectVO {
 	private int subjectCode;
 	private String subjectName;
 	private String tid;
+	private String teacher;
 	
 	/* setter, getter methods */
 	public int getSubjectCode() {
@@ -31,6 +32,12 @@ public class SubjectVO {
 	}
 	public void setTid(String tid) {
 		this.tid = tid;
+	}
+	public String getTeacher() {
+		return teacher;
+	}
+	public void setTeacher(String teacher) {
+		this.teacher = teacher;
 	}
 	/**
 	 * log for toString method
