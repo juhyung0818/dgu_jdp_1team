@@ -7,8 +7,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.jdp.mapper.SubjectMapper">
 
 	<insert id="register">
-		insert into subject (subjectCode, subjectName, tid)
-		values (#{subjectCode}, #{subjectName}, #{tid})
+		insert into subject (subjectCode, subjectName, uid)
+		values (#{subjectCode}, #{subjectName}, #{uid})
 	</insert>
 	
 	 <update id="modify">
@@ -16,16 +16,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		where subjectCode=#{subjectCode}
  	</update>
  	
- 	<select id="listSubject" resultType="com.jdp.domain.SubjectVO">
- 		select s.subjectCode, s.subjectName, t.name
- 		from member as m join teacher as t join subject as s
- 		on t.tid=s.tid and m.subjectCode = s.subjectCode
- 		where m.sid = #{sid}
+ 	<select id="listStudent" resultType="com.jdp.domain.SubjectVO">
+ 		select s.subjectCode, s.subjectName
+ 		from member as m join subject as s
+ 		on m.subjectCode = s.subjectCode
+ 		where m.uid = #{uid}
+ 		order by subjectName
  	</select>
  	
+ 	<select id="listTeacher" resultType="com.jdp.domain.SubjectVO">
+		select subjectName, subjectCode
+		from subject
+		where uid=#{uid}
+		order by subjectName	
+	 </select>
+ 	
  	<insert id="joinSubject">
-		insert into member (sid, subjectCode, grade, classNumber, studentNumber, studentName)
-		values (#{sid}, #{subjectCode}, #{grade}, #{classNumber}, #{studentNumber}, #{studentName})
+		insert into member (uid, subjectCode, grade, classNumber, studentNumber, studentName)
+		values (#{uid}, #{subjectCode}, #{grade}, #{classNumber}, #{studentNumber}, #{studentName})
 	</insert>
 
 </mapper>

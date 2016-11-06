@@ -1,8 +1,13 @@
 package com.jdp.domain;
-
+/**
+ * Value Object
+ * class about Member
+ * @author YJH
+ * 2016.11.06.Sun
+ */
 public class MemberVO {
 
-	private String sid;
+	private String uid;
 	private int subjectCode;
 	private int grade;
 	private int classNumber;
@@ -10,11 +15,11 @@ public class MemberVO {
 	private String studentName;
 	
 	/* getter, setter methods */
-	public String getSid() {
-		return sid;
+	public String getUid() {
+		return uid;
 	}
-	public void setSid(String sid) {
-		this.sid = sid;
+	public void setUid(String uid) {
+		this.uid = uid;
 	}
 	public int getSubjectCode() {
 		return subjectCode;
@@ -46,6 +51,10 @@ public class MemberVO {
 	public void setStudentName(String studentName) {
 		this.studentName = studentName;
 	}
-	
-	
+	/* toString for log */
+	@Override
+	public String toString() {
+		return "MemberVO [uid=" + uid + ", subjectCode=" + subjectCode + ", grade=" + grade + ", classNumber="
+				+ classNumber + ", studentNumber=" + studentNumber + ", studentName=" + studentName + "]";
+	}
 }

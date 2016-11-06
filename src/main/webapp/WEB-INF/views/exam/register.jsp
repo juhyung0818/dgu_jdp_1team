@@ -36,10 +36,6 @@
 	<form class="form-inline" role="form" method="post">
 	<fieldset>
 		<div class="box-body">
-<!-- 			<div class="form-group">
-				<label class=".hidden" for="subjectCode" >subject code</label>
-				<input type="text" class="w3-input w3-border w3-round-large" name="subjectCode" placeholder="subject code">
-			</div> -->
 			<div class="form-group">
 				<label for="examName">exam name</label>
 				<input type="text" class="w3-input w3-border w3-round-large"name="examName" placeholder="exam name">
@@ -64,6 +60,7 @@
 		</div>
 		</fieldset>
 	</form>
+	</center>
 </body>
 </html>
 <%@include file="../include/tFooter.jsp"%>

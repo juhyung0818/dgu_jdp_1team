@@ -19,7 +19,7 @@
 		<font size="7" color="black"> 문제 출제 </font> <br> <br>
 		<form fole="form" method="post" class="w3-container">
 		
-<%-- 				<c:forEach var="i" begin="1" varStatus="status" end='${num}'>
+				<c:forEach var="i" begin="1" varStatus="status" end='${num}'>
 					<table class="w3-striped ">
 						<tr>
 							<td>QPOINT</td>
@@ -59,51 +59,48 @@
 										<div class="form-group">
 											<input class="w3-input" name="ex1" rows="1"
 												placeholder="Enter ...">
-											</textarea>
 										</div>
 									</li>
 									<li>2)
 										<div class="form-group">
 											<input class="w3-input" name="ex2" rows="1"
 												placeholder="Enter ...">
-											</textarea>
 										</div>
 									</li>
 									<li>3)
 										<div class="form-group">
 											<input class="w3-input" name="ex3" rows="1"
 												placeholder="Enter ...">
-											</textarea>
 										</div>
 									</li>
 									<li>4)
 										<div class="form-group">
 											<input class="w3-input" name="ex4" rows="1"
 												placeholder="Enter ...">
-											</textarea>
 										</div>
 									</li>
 								</ul></td>
 							<td>
 								<div>
 									<p>
+									
 										정답 
 										<label class="w3-validate">1)</label>
-										<input class="w3-radio" type="radio" name="ex" value="1"> 
+										<input class="w3-radio" type="radio" name="answer" value="1"> 
 										<label class="w3-validate">2)</label>
-										<input class="w3-radio" type="radio" name="ex" value="1">
+										<input class="w3-radio" type="radio" name="answer" value="2">
 										<label class="w3-validate">3)</label>
-										<input class="w3-radio" type="radio" name="ex" value="1">
+										<input class="w3-radio" type="radio" name="answer" value="3">
 										<label class="w3-validate">4)</label>
-										<input class="w3-radio" type="radio" name="ex" value="1">
+										<input class="w3-radio" type="radio" name="answer" value="4">
 									</p>
 								</div>
 							</td>
 						</tr>
 					</table>
-				</c:forEach> --%>
+				</c:forEach>
 
-			<div class="box-footer">
+			<div class="box-footer" align="center">
 				<input type="submit" value="등록">
 				<input type="reset" value="취소" onClick="self.location='/exam/managementExam?subjectCode='${subjectCode}';">
 			</div>

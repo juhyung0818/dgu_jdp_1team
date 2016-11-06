@@ -42,8 +42,6 @@
 			</div>
 		</div>
 		<div class="box-footer"><br>
-				<input type='hidden' name='subjectCode' value='${subjectCode}' >
-				<input type='hidden' name='subjectName' value='${subjectName}' >
 			<button type="submit"  class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> submit </button>
 			<button type="reset" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> cancel </button>
 		</div>

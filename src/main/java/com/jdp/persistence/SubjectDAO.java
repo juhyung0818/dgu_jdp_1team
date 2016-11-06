@@ -2,6 +2,7 @@ package com.jdp.persistence;
 
 import java.util.List;
 
+import com.jdp.domain.MemberVO;
 import com.jdp.domain.SubjectVO;
 
 /**
@@ -17,6 +18,10 @@ public interface SubjectDAO {
 	public void register(SubjectVO subject) throws Exception;
 	//update subject in database
 	public void modify(int subjectCode, String subjectName) throws Exception;
-	//select subjectName in database
-	public List<SubjectVO> listSubject(String sid) throws Exception;
+	//select subjectName in database for student
+	public List<SubjectVO> listStudent(String uid) throws Exception;
+	//select subjectName in database for teacher
+	public List<SubjectVO> listTeacher(String uid) throws Exception;
+	//student join subject
+	public void joinSubject(MemberVO member) throws Exception;
 }

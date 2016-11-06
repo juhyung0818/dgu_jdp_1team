@@ -39,12 +39,13 @@ public class ExamController {
 	public String registPOST(@RequestParam("subjectCode") int subjectCode, 
 			@RequestParam("examName") String examName, 
 			@RequestParam("num") int num, 
-			@ModelAttribute ExamVO exam) throws Exception {
+			@ModelAttribute ExamVO exam, Model model) throws Exception {
 		logger.info("exam register.........");
 		logger.info(exam.toString());
 		exam.setSubjectCode(subjectCode);
 		exam.setExamName(examName);
 		examService.register(exam);
+		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
 		return "redirect:/question/register?subjectCode="+subjectCode+"&examName="+examName+"&num="+num;
 	}
 
@@ -54,6 +55,15 @@ public class ExamController {
 		model.addAttribute("list", examService.examList(subjectCode));
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
+	}
+	
+	@RequestMapping(value = "/managementExam", method = RequestMethod.POST)
+	public String managementExamPOST(@RequestParam("subjectCode") int subjectCode, 
+			@RequestParam("examName") String examName) throws Exception {
+		logger.info("subjectCode: " + subjectCode +" examName: " + examName + " delete....");
+//		questionService.delete(subjectCode, examName);
+		examService.delete(subjectCode, examName);
+		return "redirect:/exam/managementExam?subjectCode="+subjectCode;
 	}
 	
 	@RequestMapping(value = "/studentExam", method = RequestMethod.GET)

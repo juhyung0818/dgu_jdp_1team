@@ -41,15 +41,8 @@ h1 {
 			<div class="w3-panel w3-pink">
 				<h1 class="w3-opacity"> 순성닷컴 </h1>
 			</div>
-
-			<div class="w3-xxxlarge">
-				<p class="w3-myfont">${subjectName}</p>
-			</div>
 			<br>
 			<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge"
-				href="/exam/studentExam?subjectCode=${subjectCode}">시험관리</a> <a
-				class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge"
-				href="/exam/managementGrade?subjectCode=${subjectCode}">성적관리</a>
-				
+				href="/subject/sSubject?uid=${uid}">과목 선택</a>
 		</header>
 	</div>

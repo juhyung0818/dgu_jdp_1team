@@ -16,6 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.jdp.controller.ExamController;
 import com.jdp.domain.ExamVO;
 import com.jdp.persistence.ExamDAO;
+import com.jdp.persistence.ScoreDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/**/*.xml"})
@@ -23,12 +24,13 @@ import com.jdp.persistence.ExamDAO;
  * Test code of exam for database access
  * @author YJH
  * 2016.10.29.Sat
- * pass all test
  */
 public class ExamTest {
 
 	@Inject
 	private ExamDAO dao;
+	@Inject
+	private ScoreDAO score;
 	//log
 	private static final Logger logger = LoggerFactory.getLogger(ExamController.class);
 	
@@ -77,4 +79,10 @@ public class ExamTest {
 		dao.incrementCnt(vo);
 	}
 	
+	@Test
+	public void testQuestionAnswer() throws Exception{
+		int subjectCode= 1300;
+		String examName = "soooo";
+		logger.info(score.answers(subjectCode, examName).toString());
+	}
 }

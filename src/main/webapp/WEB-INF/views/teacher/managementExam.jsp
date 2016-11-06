@@ -21,7 +21,7 @@
 		<c:forEach items="${list}" var="examVO">
 			<tr>
 				<td><a
-					href='/teacher/read?subjectCode=${examVO.subjectCode}&examName=${examVO.examName}'>
+					href='/exam/managementExam?subjectCode=${examVO.subjectCode}&tid=${tid}'>
 						${examVO.examName} </a></td>
 				<td>${examVO.startTime}</td>
 				<td>${examVO.endTime}</td>
