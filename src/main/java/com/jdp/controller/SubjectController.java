@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.jdp.domain.MemberVO;
 import com.jdp.domain.SubjectVO;
 import com.jdp.service.SubjectService;
 
@@ -29,27 +30,48 @@ public class SubjectController {
 	private SubjectService subjectService;
 	private static final Logger logger = LoggerFactory.getLogger(ExamController.class);
 
-	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	@RequestMapping(value = "/tRegister", method = RequestMethod.GET)
 	public void registGET(@RequestParam("subjectCode") int subjectCode, 
-			@RequestParam("tid") String tid, Model model) {
+			@RequestParam("uid") String uid, Model model) {
 		logger.info("subject Register...");
-		model.addAttribute("tid", tid);
+		model.addAttribute("subjectCode", subjectCode);
+		model.addAttribute("uid", uid);
 	}
 	
 	//TODO this method need subjectCode, tid
-	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	@RequestMapping(value = "/tRegister", method = RequestMethod.POST)
 	public String registPOST(@RequestParam("subjectCode") int subjectCode, 
-			@RequestParam("tid") String tid, @ModelAttribute SubjectVO subject) throws Exception {
+			@RequestParam("uid") String uid, @ModelAttribute SubjectVO subject) throws Exception {
 		subject.setSubjectCode(subjectCode);
-		subject.setTid(tid);
 		subjectService.register(subject);
 		return "redirect:/exam/managementExam?subjectCode="+subject.getSubjectCode();
 	}
 
-	@RequestMapping(value = "/studentSubject", method = RequestMethod.GET)
-	public void listSubject(@RequestParam("sid") String sid, Model model) throws Exception {
-		logger.info("subject List...");
-		model.addAttribute("list", subjectService.listSubject(sid));
+	@RequestMapping(value = "/tSubject", method = RequestMethod.GET)
+	public void listTeacher(@RequestParam("uid") String uid, Model model) throws Exception {
+		logger.info("teacher subject List...");
+		model.addAttribute("list", subjectService.listTeacher(uid));
+		model.addAttribute("uid", uid);
+	}
+	
+	@RequestMapping(value = "/sSubject", method = RequestMethod.GET)
+	public void listStudent(@RequestParam("uid") String uid, Model model) throws Exception {
+		logger.info("student subject List...");
+		model.addAttribute("list", subjectService.listStudent(uid));
+		model.addAttribute("uid", uid);
+	}
+	
+	@RequestMapping(value = "/sRegister", method = RequestMethod.GET)
+	public void sRegisterGET(@RequestParam("uid") String uid, Model model) {
+		logger.info("Student Subject Register...");
+		model.addAttribute("uid", uid);
+	}
+	
+	@RequestMapping(value ="/sRegister", method = RequestMethod.POST)
+	public String sRegisterPOST(@RequestParam("uid") String uid, @ModelAttribute MemberVO member, Model model) throws Exception {
+		logger.info("Student Subject Register...");
+		subjectService.joinSubject(member);
+		return "redirect:/subject/sSubject?uid="+uid;
 	}
 
 }

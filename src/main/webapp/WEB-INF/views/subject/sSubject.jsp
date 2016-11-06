@@ -4,7 +4,6 @@
 	pageEncoding="UTF-8"%>
 <%@include file="../include/sHeader.jsp"%>
 
-
 <div align="center">
 	<div class="box-header with-border">
 		<h3 class="box-title">SUBJECT LIST</h3>
@@ -15,13 +14,11 @@
 		<table class="w3-table w3-bordered">
 			<tr>
 				<th>SUBJECT NAME</th>
-				<th>TEACHER</th>
 				<th>TRY</th>
 			</tr>
 			<c:forEach items="${list}" var="subjectVO">
 				<tr>
 					<td>${subjectVO.subjectName}</td>
-					<td>${subjectVO.teacher}</td>
 					<td>
 						<div class="box-footer" >
 							<a href='/exam/studentExam?subjectCode=${subjectVO.subjectCode}'> <input
@@ -32,8 +29,12 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<br>
-		<br>
+		<div class="box-footer" align="right">
+			<a href='/subject/sRegister?uid=${uid}'>
+				<input type="button" class="w3-btn w3-pink" value="ADD">
+			</a>
+		</div>
+		<br><br>
 	</form>
 </div>
 

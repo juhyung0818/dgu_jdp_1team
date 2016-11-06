@@ -2,7 +2,6 @@ package com.jdp.domain;
 
 import java.sql.Timestamp;
 
-
 /**
  * Value Object
  * class about Exam

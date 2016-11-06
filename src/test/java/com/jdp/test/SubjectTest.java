@@ -29,7 +29,6 @@ public class SubjectTest {
 		SubjectVO vo = new SubjectVO();
 		vo.setSubjectCode(123);
 		vo.setSubjectName("jh class");
-		vo.setTid("jh");
 		subjectDao.register(vo);
 	}
 }

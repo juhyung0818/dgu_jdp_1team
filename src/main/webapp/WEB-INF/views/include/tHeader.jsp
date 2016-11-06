@@ -73,8 +73,10 @@ li a:hover:not(.active){
 				<p class="w3-myfont">${subjectName}</p>
 			</div>
 			<br>
-			<ul class="w3-pink">
-				<li><a href="managementExam">시험관리</a></li>
-				<li><a href="managementGrade">성적관리</a></li>
-			</ul>	
+			<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge"
+				href="/subject/tSubject?uid=${uid}">과목 관리</a> <a
+				class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge"
+				href="/subject/studentSubject?uid=${uid}">성적관리</a>
+				
 		</header>
+	</div>

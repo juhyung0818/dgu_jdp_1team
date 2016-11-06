@@ -33,10 +33,10 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 			
 			//case : student
 			if(vo.getFlag()==0)
-				response.sendRedirect(dest!=null?(String)dest : "/student/studentMain");// TODO /subject/sSubject
+				response.sendRedirect(dest!=null?(String)dest : "/subject/sSubject");// TODO /subject/sSubject
 			//case : teacher
 			else
-				response.sendRedirect(dest!=null?(String)dest : "/teacher/teacherMain"); // TODO /subject/tSubject 
+				response.sendRedirect(dest!=null?(String)dest : "/subject/tSubject"); // TODO /subject/tSubject 
 		}
 		else
 		{
