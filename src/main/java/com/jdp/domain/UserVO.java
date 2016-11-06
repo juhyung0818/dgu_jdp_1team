@@ -4,11 +4,7 @@ public class UserVO {
 	private String uid;
 	private String upw;
 	private String uname;
-	private int upoint;
-	@Override
-	public String toString() {
-		return "UserVO [uid=" + uid + ", upw=" + upw + ", uname=" + uname + ", upoint=" + upoint + "]";
-	}
+	private int flag;
 	public String getUid() {
 		return uid;
 	}
@@ -27,10 +23,15 @@ public class UserVO {
 	public void setUname(String uname) {
 		this.uname = uname;
 	}
-	public int getUpoint() {
-		return upoint;
+	public int getFlag() {
+		return flag;
 	}
-	public void setUpoint(int upoint) {
-		this.upoint = upoint;
+	public void setFlag(int uflag) {
+		this.flag = uflag;
 	}
+	@Override
+	public String toString() {
+		return "UserVO [uid=" + uid + ", upw=" + upw + ", uname=" + uname + ", flag=" + flag + "]";
+	}
+	
 }

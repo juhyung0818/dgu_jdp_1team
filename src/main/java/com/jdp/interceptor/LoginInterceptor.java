@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import com.jdp.domain.UserVO;
 
 public class LoginInterceptor extends HandlerInterceptorAdapter{
 	private static final String LOGIN ="login";
@@ -18,25 +19,30 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 			ModelAndView modelAndView) throws Exception {
 		HttpSession session=request.getSession();
 		ModelMap modelMap = modelAndView.getModelMap();
-		Object userVO = modelMap.get("userVO");
-		
-		if(userVO !=null)
+		Object user = modelMap.get("userVO");
+		UserVO vo=(UserVO)user;
+		if(user !=null)
 		{
 			logger.info("new login success");
-			session.setAttribute(LOGIN, userVO);
+			session.setAttribute(LOGIN, user);
 			//response.sendRedirect("/");
 			//"/"->"/subject/subjectList"
 			
 			Object dest=session.getAttribute("dest");
 			//url after login success
-			response.sendRedirect(dest!=null?(String)dest : "/student/studentMain");
+			
+			//case : student
+			if(vo.getFlag()==0)
+				response.sendRedirect(dest!=null?(String)dest : "/student/studentMain");// TODO /subject/sSubject
+			//case : teacher
+			else
+				response.sendRedirect(dest!=null?(String)dest : "/teacher/teacherMain"); // TODO /subject/tSubject 
 		}
 		else
 		{
 			logger.info("userVO is null...");
-			Object dest=session.getAttribute("dest");
 			//url after login fail
-			response.sendRedirect(dest!=null?(String)dest : "/user/login");
+			response.sendRedirect("/user/login");
 		}
 			
 	}

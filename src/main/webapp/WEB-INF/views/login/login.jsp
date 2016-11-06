@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>Insert title here</title>
+<title>로그인</title>
 </head>
 <body>
 	<form action="/user/loginPost" method="post">
