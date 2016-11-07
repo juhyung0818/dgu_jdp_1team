@@ -22,41 +22,42 @@ import com.jdp.domain.SubjectVO;
 @Repository
 public class SubjectDAOImpl implements SubjectDAO{
 
-	@Inject
-	private SqlSession session;
-	private String namespace="com.jdp.mapper.SubjectMapper";
+   @Inject
+   private SqlSession session;
+   private String namespace="com.jdp.mapper.SubjectMapper";
 
-	/**
-	 * Subject add to database in subject table
-	 */
-	@Override
-	public void register(SubjectVO subject) throws Exception {
-		session.insert(namespace+".register", subject);
-	}
-	
-	/**
-	 * Subject modify subjectName to database in subject table
-	 */
-	@Override
-	public void modify(int subjectCode, String subjectName) throws Exception {
-		Map<String, Object> paramMap = new HashMap<>();
-		paramMap.put("subjectCode", subjectCode);
-		paramMap.put("subjectName", subjectName);
-		session.insert(namespace+".modify", paramMap);
-	}
+   /**
+    * Subject add to database in subject table
+    */
+   @Override
+   public void register(SubjectVO subject) throws Exception {
+      session.insert(namespace+".register", subject);
+   }
+   
+   /**
+    * Subject modify subjectName to database in subject table
+    */
+   @Override
+   public void modify(int subjectCode, String subjectName) throws Exception {
+      Map<String, Object> paramMap = new HashMap<>();
+      paramMap.put("subjectCode", subjectCode);
+      paramMap.put("subjectName", subjectName);
+      session.insert(namespace+".modify", paramMap);
+   }
 
-	@Override
-	public void joinSubject(MemberVO member) throws Exception {
-		session.insert(namespace+".joinSubject", member);
-	}
+   @Override
+   public void joinSubject(MemberVO member) throws Exception {
+      session.insert(namespace+".joinSubject", member);
+   }
 
-	@Override
-	public List<SubjectVO> listStudent(String uid) throws Exception {
-		return session.selectList(namespace+".listStudent", uid);
-	}
+   @Override
+   public List<SubjectVO> listStudent(String uid) throws Exception {
+      return session.selectList(namespace+".listStudent", uid);
+   }
 
-	@Override
-	public List<SubjectVO> listTeacher(String uid) throws Exception {
-		return session.selectList(namespace+".listTeacher", uid);
-	}
+   @Override
+   public List<SubjectVO> listTeacher(String uid) throws Exception {
+      return session.selectList(namespace+".listTeacher", uid);
+   }
+
 }
