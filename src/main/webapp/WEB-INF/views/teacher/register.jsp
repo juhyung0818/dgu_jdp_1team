@@ -1,5 +1,5 @@
 <%@include file="../include/tHeader.jsp"%>
-<<<<<<< HEAD
+
 
 <section class="content">
 	<div class="row">
@@ -21,16 +21,6 @@
 
 
 				<div align="center">
-					<div class="box-header with-border">
-						<h3 class="box-title">QUESTIONS</h3>
-					</div>
-
-					<table class="w3-striped">
-						<tr>
-							<td>QPOINT</td>
-							<th>QUESTION INFOMATION</th>
-							<td>ANSWER</td>
-						</tr>
 
 						<c:forEach items="${list}" var="questionVO">
 							<tr>
