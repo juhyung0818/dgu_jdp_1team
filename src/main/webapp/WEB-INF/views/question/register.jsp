@@ -17,8 +17,6 @@
 <body>
 	<div align="center">
 		<font size="7" color="black"> 문제 출제 </font> <br> <br>
-		<form fole="form" method="post" class="w3-container">
-		
 				<c:forEach var="i" begin="1" varStatus="status" end='${num}'>
 					<table class="w3-striped ">
 						<tr>
@@ -31,7 +29,7 @@
 								<ul class="w3-ul">
 									<li>Q
 										<div class="form-group">
-											<input class="w3-input" type="int" name="qNumber"
+											<input class="w3-input" type="number" name="qNumber${status.count}"
 												placeholder="Enter qNumber" value='${i}'>
 											<label for="exampleInputEmail1"></label>
 										</div>
@@ -39,8 +37,7 @@
 									<li>
 										<p>배점</p>
 										<div class="form-group">
-											<input type="int" name="qPoint" class="form-contorl"
-												placeholder="Enter qPoint">
+											<input type="number" name="qPoint${status.count}" class="form-contorl" placeholder="Enter qPoint" value="0">
 										</div>
 									</li>
 								</ul>
@@ -48,8 +45,8 @@
 							<td>
 								<p>문제입력</p>
 								<div class="form-group">
-									<textarea class="form-control" name="qInfo" rows="11"
-										placeholder="Enter ..."></textarea>
+									<textarea class="form-control" name="qInfo${status.count}" id="qInfo${status.count}" rows="11"
+										placeholder="Enter ..." > </textarea>
 								</div>
 							</td>
 							<td>
@@ -57,26 +54,26 @@
 								<ul class="w3-ul w3-border">
 									<li>1)
 										<div class="form-group">
-											<input class="w3-input" name="ex1" rows="1"
-												placeholder="Enter ...">
+											<input class="w3-input" name="ex1${status.count}" rows="1"
+												placeholder="Enter ..." value=" ">
 										</div>
 									</li>
 									<li>2)
 										<div class="form-group">
-											<input class="w3-input" name="ex2" rows="1"
-												placeholder="Enter ...">
+											<input class="w3-input" name="ex2${status.count}" rows="1"
+												placeholder="Enter ..." value=" ">
 										</div>
 									</li>
 									<li>3)
 										<div class="form-group">
-											<input class="w3-input" name="ex3" rows="1"
-												placeholder="Enter ...">
+											<input class="w3-input" name="ex3${status.count}" rows="1"
+												placeholder="Enter ..." value=" ">
 										</div>
 									</li>
 									<li>4)
 										<div class="form-group">
-											<input class="w3-input" name="ex4" rows="1"
-												placeholder="Enter ...">
+											<input class="w3-input" name="ex4${status.count}" rows="1"
+												placeholder="Enter ..." value=" ">
 										</div>
 									</li>
 								</ul></td>
@@ -86,13 +83,13 @@
 									
 										정답 
 										<label class="w3-validate">1)</label>
-										<input class="w3-radio" type="radio" name="answer" value="1"> 
+										<input class="w3-radio" type="radio" name="answer${status.count}" value="1" checked> 
 										<label class="w3-validate">2)</label>
-										<input class="w3-radio" type="radio" name="answer" value="2">
+										<input class="w3-radio" type="radio" name="answer${status.count}" value="2">
 										<label class="w3-validate">3)</label>
-										<input class="w3-radio" type="radio" name="answer" value="3">
+										<input class="w3-radio" type="radio" name="answer${status.count}" value="3">
 										<label class="w3-validate">4)</label>
-										<input class="w3-radio" type="radio" name="answer" value="4">
+										<input class="w3-radio" type="radio" name="answer${status.count}" value="4">
 									</p>
 								</div>
 							</td>
@@ -100,10 +97,41 @@
 					</table>
 				</c:forEach>
 
-			<div class="box-footer" align="center">
-				<input type="submit" value="등록">
-				<input type="reset" value="취소" onClick="self.location='/exam/managementExam?subjectCode='${subjectCode}';">
+				<div class="box-footer"> <br>
+					<button id="complete" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="10"> COMPLETE </button>
+					<button type="reset" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"
+					onclick="exam/studentExam?subjectCode=${subjectCode}"> CANCLE </button>
+				</div>
 			</div>
-		</form>
-	</div>
+	
+<script>
+$("#complete").click( function(){
+	var question = [];
+	var i;
+	for (i = 1; i <= '${num}' ; i++) {
+		var a = $('#qInfo'+i).val()
+		question.push($('input[name=qNumber'+ i +']').val());
+		question.push($('input[name=qPoint'+ i +']').val());
+		question.push($('input[name=answer'+ i +']:checked').val());
+		question.push($('#qInfo'+i).val());
+		question.push($('input[name=ex1'+ i +']').val());
+		question.push($('input[name=ex2'+ i +']').val());
+		question.push($('input[name=ex3'+ i +']').val());
+		question.push($('input[name=ex4'+ i +']').val());
+	} 
+	console.log(question);
+	$.ajaxSettings.traditional = true;
+	$.ajax({
+		type : 'POST',
+		url : '/question/register?subjectCode=${subjectCode}&examName=${examName}',
+		headers: {
+			"Contnet-Type": "application/json;charset=UTF-8",
+			"X-HTTP-Method-Override": "POST" 
+			},
+			data: ({'question': question})
+	});
+	
+});
+</script>	
+	
 <%@include file="../include/tFooter.jsp"%>

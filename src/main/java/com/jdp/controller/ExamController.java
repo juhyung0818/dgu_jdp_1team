@@ -77,5 +77,4 @@ public class ExamController {
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
 		model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
 	}
-	
 }

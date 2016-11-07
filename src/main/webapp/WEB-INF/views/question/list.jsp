@@ -17,8 +17,6 @@
 						name='examName' value="${questionVO.examName}">
 				</form>
 
-
-
 				<div align="center">
 					<div class="box-header with-border">
 						<h3 class="box-title">QUESTIONS</h3>
@@ -56,12 +54,8 @@
 				</div>
 
 			</div>
-			<!-- /.box -->
 		</div>
-		<!--/.col (left) -->
-
 	</div>
-	<!-- /.row -->
 </section>
 
 <%@include file="../include/tFooter.jsp"%>
