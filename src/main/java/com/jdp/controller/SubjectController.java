@@ -28,7 +28,7 @@ public class SubjectController {
 
 	@Inject
 	private SubjectService subjectService;
-	private static final Logger logger = LoggerFactory.getLogger(ExamController.class);
+	private static final Logger logger = LoggerFactory.getLogger(SubjectController.class);
 
 	@RequestMapping(value = "/tRegister", method = RequestMethod.GET)
 	public void registGET(@RequestParam("subjectCode") int subjectCode, 

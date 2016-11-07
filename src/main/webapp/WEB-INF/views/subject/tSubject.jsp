@@ -39,20 +39,4 @@
 	</form>
 </div>
 
-
-<!-- <script>
-//buttons 
-$(document).ready(function(){
-	var formObj = $("form[role='form']");
-	console.log(formObj);
-	
-	$(".w3-btn w3-pink").on("click", function(){
-		formObj.attr("action", "/exam/register");
-		formObj.attr("method", "get");		
-		formObj.submit();
-	});
-});
-
-</script> -->
-
 <%@include file="../include/sFooter.jsp"%>
