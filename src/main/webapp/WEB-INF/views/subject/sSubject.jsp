@@ -8,8 +8,6 @@
 	<div class="box-header with-border">
 		<h3 class="box-title">SUBJECT LIST</h3>
 	</div>
-
-
 	<form class="form-inline" role="form" method="post">
 		<table class="w3-table w3-bordered">
 			<tr>
@@ -30,6 +28,7 @@
 			</c:forEach>
 		</table>
 		<div class="box-footer" align="right">
+			<!-- <a href='/subject/sRegister?uid=${uid}'> -->
 			<a href='/subject/sRegister?uid=${uid}'>
 				<input type="button" class="w3-btn w3-pink" value="ADD">
 			</a>

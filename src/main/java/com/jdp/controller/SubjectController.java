@@ -1,11 +1,11 @@
 package com.jdp.controller;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jdp.domain.MemberVO;
 import com.jdp.domain.SubjectVO;
+import com.jdp.domain.UserVO;
 import com.jdp.service.SubjectService;
 
 /**
@@ -28,7 +29,7 @@ public class SubjectController {
 
 	@Inject
 	private SubjectService subjectService;
-	private static final Logger logger = LoggerFactory.getLogger(ExamController.class);
+	private static final Logger logger = LoggerFactory.getLogger(SubjectController.class);
 
 	@RequestMapping(value = "/tRegister", method = RequestMethod.GET)
 	public void registGET(@RequestParam("subjectCode") int subjectCode, 
@@ -48,17 +49,23 @@ public class SubjectController {
 	}
 
 	@RequestMapping(value = "/tSubject", method = RequestMethod.GET)
-	public void listTeacher(@RequestParam("uid") String uid, Model model) throws Exception {
+	//public void listTeacher(@RequestParam("uid") String uid, Model model) throws Exception {
+	public void listTeacher(Model model, HttpSession session) throws Exception {
 		logger.info("teacher subject List...");
-		model.addAttribute("list", subjectService.listTeacher(uid));
-		model.addAttribute("uid", uid);
+		
+		UserVO vo=(UserVO)session.getAttribute("login");
+		model.addAttribute("list", subjectService.listTeacher(vo.getUid()));
+		model.addAttribute("uid", vo.getUid());
 	}
 	
 	@RequestMapping(value = "/sSubject", method = RequestMethod.GET)
-	public void listStudent(@RequestParam("uid") String uid, Model model) throws Exception {
+	//public void listStudent(@RequestParam("uid") String uid, Model model) throws Exception {
+	public void listStudent(Model model, HttpSession session) throws Exception {
 		logger.info("student subject List...");
-		model.addAttribute("list", subjectService.listStudent(uid));
-		model.addAttribute("uid", uid);
+		
+		UserVO vo=(UserVO)session.getAttribute("login");
+		model.addAttribute("list", subjectService.listStudent(vo.getUid()));
+		model.addAttribute("uid", vo.getUid());
 	}
 	
 	@RequestMapping(value = "/sRegister", method = RequestMethod.GET)

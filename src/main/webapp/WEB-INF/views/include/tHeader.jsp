@@ -67,6 +67,7 @@ li a:hover:not(.active){
 		<header class="w3-panel w3-center w3-opacity">
 			<div class="w3-panel w3-pink">
 				<h1 >순성닷컴 </h1>
+				${uid}님 환영합니다.
 			</div>
 
 			<div class="w3-xxxlarge">
@@ -74,9 +75,10 @@ li a:hover:not(.active){
 			</div>
 			<br>
 			<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge"
-				href="/subject/tSubject?uid=${uid}">과목 관리</a> <a
+				href="/subject/tSubject">과목 관리</a> 
+			<a
 				class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge"
-				href="/subject/studentSubject?uid=${uid}">성적관리</a>
+				href="/subject/management">성적관리</a>
 				
 		</header>
 	</div>
