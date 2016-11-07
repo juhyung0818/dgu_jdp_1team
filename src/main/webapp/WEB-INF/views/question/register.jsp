@@ -109,7 +109,6 @@ $("#complete").click( function(){
 	var question = [];
 	var i;
 	for (i = 1; i <= '${num}' ; i++) {
-		var a = $('#qInfo'+i).val()
 		question.push($('input[name=qNumber'+ i +']').val());
 		question.push($('input[name=qPoint'+ i +']').val());
 		question.push($('input[name=answer'+ i +']:checked').val());

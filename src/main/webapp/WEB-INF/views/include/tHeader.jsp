@@ -54,9 +54,9 @@ h1 {
 			</div>
 			<br>
 			<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge"
-				href="/subject/tSubject?uid=${uid}">과목 관리</a> <a
+				href="/subject/tSubject">과목 관리</a> <a
 				class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge"
-				href="/subject/studentSubject?uid=${uid}">성적관리</a>
+				href="/subject/studentSubject">성적관리</a>
 				
 		</header>
 	</div>

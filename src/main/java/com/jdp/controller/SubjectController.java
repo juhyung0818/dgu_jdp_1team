@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jdp.domain.MemberVO;
-import com.jdp.domain.SubjectVO;
 import com.jdp.domain.UserVO;
 import com.jdp.service.SubjectService;
 
@@ -40,11 +39,11 @@ public class SubjectController {
 	
 	//TODO this method need subjectCode, tid
 	@RequestMapping(value = "/tRegister", method = RequestMethod.POST)
-	public String registPOST(@RequestParam("subjectCode") int subjectCode, 
-			@RequestParam("uid") String uid, @ModelAttribute SubjectVO subject) throws Exception {
-		subject.setSubjectCode(subjectCode);
-		subjectService.register(subject);
-		return "redirect:/exam/managementExam?subjectCode="+subject.getSubjectCode();
+	public String registPOST(@RequestParam("subjectName") String subjectName, HttpSession session) throws Exception {
+		
+		int subjectCode=subjectService.register(subjectName, ((UserVO)session.getAttribute("login")).getUid());
+		
+		return "redirect:/exam/managementExam?subjectCode="+subjectCode;
 	}
 
 	@RequestMapping(value = "/tSubject", method = RequestMethod.GET)

@@ -11,7 +11,7 @@ import com.jdp.domain.SubjectVO;
  */
 public interface SubjectService {
 	
-	public void register(SubjectVO subject) throws Exception;
+	public int register(String subjectName, String uid) throws Exception;
 	public void modify(int subjectCode, String subjectName) throws Exception; 
 	public List<SubjectVO> listStudent(String uid) throws Exception;
 	public List<SubjectVO> listTeacher(String uid) throws Exception;

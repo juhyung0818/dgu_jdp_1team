@@ -62,8 +62,8 @@ public class QuestionController {
 			q.setExamName(examName);
 			q.setqNumber(Integer.parseInt(temp[i*8+1]));
 			q.setqPoint(Integer.parseInt(temp[i*8+2]));
-			q.setqInfo(temp[i*8+3]);
-			q.setAnswer(Integer.parseInt(temp[i*8+4]));
+			q.setAnswer(Integer.parseInt(temp[i*8+3]));
+			q.setqInfo(temp[i*8+4]);
 			q.setEx1(temp[i*8+5]);
 			q.setEx2(temp[i*8+6]);
 			q.setEx3(temp[i*8+7]);
