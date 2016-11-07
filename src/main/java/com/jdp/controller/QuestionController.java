@@ -19,6 +19,7 @@ import com.jdp.domain.CheckVO;
 import com.jdp.domain.UserVO;
 import com.jdp.domain.QuestionVO;
 import com.jdp.domain.ScoreVO;
+import com.jdp.domain.UserVO;
 import com.jdp.service.QuestionService;
 import com.jdp.service.ScoreService;
 
@@ -36,11 +37,12 @@ public class QuestionController {
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void registGET(@RequestParam("subjectCode") int subjectCode,
 			@RequestParam("examName") String examName,
-			@RequestParam("num") int num, Model model){
+			@RequestParam("num") int num, Model model, HttpSession session){
 		
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("examName", examName);
 		model.addAttribute("num", num);
+		model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
 		logger.info("Question Register...");
 	}
 	

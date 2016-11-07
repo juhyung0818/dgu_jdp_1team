@@ -22,7 +22,7 @@ public class UserController {
 	@Inject
 	private UserService service;
 	
-	private static final Logger logger = LoggerFactory.getLogger(ExamController.class);
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public void longinGET(@ModelAttribute("dto") LoginDTO dto)

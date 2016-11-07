@@ -33,30 +33,6 @@ h1 {
 	font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
-ul {
-    list-style-type: none;
-    position : relative;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-li {
-    float: left;
-    width : 50%;
-}
-
-li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover:not(.active){
-	background-color: #111;
-}
 </style>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"> </script>
 </head>
@@ -70,6 +46,7 @@ li a:hover:not(.active){
 		<header class="w3-panel w3-center w3-opacity">
 			<div class="w3-panel w3-pink">
 				<h1 >순성닷컴 </h1>
+				${uname}님 환영합니다.
 			</div>
 
 			<div class="w3-xxxlarge">
@@ -77,9 +54,9 @@ li a:hover:not(.active){
 			</div>
 			<br>
 			<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge"
-				href="/subject/tSubject?uid=${uid}">과목 관리</a> <a
+				href="/subject/tSubject">과목 관리</a> <a
 				class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge"
-				href="/subject/studentSubject?uid=${uid}">성적관리</a>
+				href="/subject/studentSubject">성적관리</a>
 				
 		</header>
 	</div>

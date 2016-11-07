@@ -11,6 +11,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values (#{subjectName}, #{uid})
 	</insert>
 	
+	<select id="checkSubjectCode" resultType="int">
+ 		select subjectCode from subject where subjectName=#{subjectName}
+ 	</select>
+	
 	 <update id="modify">
  		update subject set subjectName=#{subjectName}
  		where subjectCode=#{subjectCode}

@@ -8,8 +8,6 @@
 	<div class="box-header with-border">
 		<h3 class="box-title">SUBJECT LIST</h3>
 	</div>
-
-
 	<form class="form-inline" role="form" method="post">
 		<table class="w3-table w3-bordered">
 			<tr>
@@ -21,8 +19,8 @@
 					<td>${subjectVO.subjectName}</td>
 					<td>
 						<div class="box-footer" >
-							<a href='/exam/studentExam?subjectCode=${subjectVO.subjectCode}'> <input
-								type="button" class="w3-btn w3-pink" value="ENTER">
+							<a href='/exam/studentExam?subjectCode=${subjectVO.subjectCode}'> 
+							<input type="button" class="w3-btn w3-pink" value="ENTER">
 							</a>
 						</div>
 					</td>
@@ -30,7 +28,8 @@
 			</c:forEach>
 		</table>
 		<div class="box-footer" align="right">
-			<a href='/subject/sRegister?uid=${uid}'>
+			<!-- <a href='/subject/sRegister?uid=${uid}'> -->
+			<a href='/subject/sRegister'>
 				<input type="button" class="w3-btn w3-pink" value="ADD">
 			</a>
 		</div>
