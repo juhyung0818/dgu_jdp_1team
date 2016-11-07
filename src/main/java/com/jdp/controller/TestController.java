@@ -18,5 +18,8 @@ public class TestController {
 	public void registGET(QuestionVO questions, Model model) {
 		logger.info("testing....");
 	}
-	
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public void login (Model model) {
+		logger.info("testing....");
+	}
 }
