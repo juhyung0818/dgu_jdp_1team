@@ -39,4 +39,9 @@ public class ExamServiceImpl implements ExamService{
 	public List<ExamVO> examList(int subjectCode) throws Exception {
 		return examDao.listExam(subjectCode);
 	}
+
+	@Override
+	public String getSubjectName(int subjectCode) throws Exception {
+		return examDao.getSubjectName(subjectCode);
+	}
 }

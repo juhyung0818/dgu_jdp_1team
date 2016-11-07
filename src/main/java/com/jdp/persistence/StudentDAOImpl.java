@@ -1,8 +1,14 @@
 package com.jdp.persistence;
 
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.jdp.domain.StudentVO;
+
 /**
  * Database Access Object
  * class to access StudentDAO table in database
@@ -11,7 +17,11 @@ import com.jdp.domain.StudentVO;
  */
 @Repository
 public class StudentDAOImpl implements StudentDAO{
-
+	
+	@Inject
+	private SqlSession session; //session for sql connetion
+	private String namespace = "com.jdp.mapper.StudentMapper";
+	
 	@Override
 	public void register(StudentVO student) throws Exception {
 		// TODO Auto-generated method stub
@@ -30,4 +40,8 @@ public class StudentDAOImpl implements StudentDAO{
 		
 	}
 
+	@Override
+	public List<StudentVO> login(StudentVO student) throws Exception {
+		return session.selectOne(namespace+".login", student);
+	}
 }

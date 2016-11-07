@@ -51,4 +51,9 @@ public class ExamDAOImpl implements ExamDAO{
 		session.update(namespace+".incrementCnt", exam);
 	}
 
+	@Override
+	public String getSubjectName(int subjectCode) throws Exception {
+		return session.selectOne(namespace+".getName", subjectCode);
+	}
+
 }

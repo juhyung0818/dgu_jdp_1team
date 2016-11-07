@@ -5,6 +5,14 @@
 
 
 <%@include file="../include/tHeader.jsp"%>
+<head>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script>
+		var questionArray = new Array();
+		var questionInfo = new Object();
+		
+	</script>
+</head>
 
 <style type="text/css">
 		.tg  {border-collapse:collapse;border-spacing:0;}
@@ -17,7 +25,7 @@
 <body>
 	<div align="center">
 		<font size="7" color="black"> 문제 출제 </font> <br> <br>
-		<form fole="form" method="post" class="w3-container">
+		<form ="form" method="post" class="w3-container">
 			<input type='hidden' name='subjectCode' value="12312"> 
 			<input type='hidden' name='examName' value="test1">
 
@@ -56,7 +64,7 @@
         <tr>
           <td class="tg-yw4l" colspan="15" rowspan="8"> 
 			<div class="form-group">
-				<textarea class="form-control" name="qInfo" cols="80"  rows="20" placeholder="Enter ..."></textarea> </td>
+				<textarea class="form-control" name="qInfo" cols="100"  rows="20" placeholder="Enter ..."></textarea> </td>
         </tr>
         <tr>
         </tr>
@@ -76,6 +84,8 @@
     	  <td class="tg-yw4l" colspan="15" rowspan="5"><p> 보기 </p>
           <ul class="w3-ul w3-border">
 	       <li>1)
+	        <div>
+	     
 		    <div class="form-group">
 		    <input class="w3-input" name="ex1" rows="1" placeholder="Enter ...">
 			</textarea>
@@ -94,6 +104,7 @@
 		  </div>
 	    </li>
 	    <li>4)
+	       
 		<div class="form-group">
 		  <input class="w3-input" name="ex4" rows="1" placeholder="Enter ...">
 			</textarea>
@@ -123,4 +134,8 @@
 
 	</form>
 </div>
+
+</body>
+		
+		
 <%@include file="../include/tFooter.jsp"%>

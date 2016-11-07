@@ -30,49 +30,47 @@ public class ExamController {
 	private static final Logger logger = LoggerFactory.getLogger(ExamController.class);
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public void registGET(ExamVO exam, Model model) {
+	public void registGET(@RequestParam("subjectCode") int subjectCode) {
 		logger.info("question register");
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String registPOST(@ModelAttribute ExamVO exam) throws Exception {
+	public String registPOST(@RequestParam("subjectCode") int subjectCode, 
+			@RequestParam("examName") String examName, 
+			@RequestParam("num") int num, 
+			@ModelAttribute ExamVO exam, Model model) throws Exception {
 		logger.info("exam register.........");
 		logger.info(exam.toString());
+		exam.setSubjectCode(subjectCode);
+		exam.setExamName(examName);
 		examService.register(exam);
-		return "question/register";
+		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
+		return "redirect:/question/register?subjectCode="+subjectCode+"&examName="+examName+"&num="+num;
 	}
 
-	// TODO subject code....
 	@RequestMapping(value = "/managementExam", method = RequestMethod.GET)
-	public void managementExamGET(Model model) throws Exception {
-		logger.info("subjectCode : " + "" + "examList");
-		model.addAttribute("list", examService.examList(12312));
-	}
-
-	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public String delete(@RequestParam("subjectCode") int subjectCode, 
-						@RequestParam("examName") String examName) throws Exception {
-		logger.info("subjectCode: " + subjectCode +" examName: " + examName + " delete....");
-		examService.delete(subjectCode, examName);
-//		return "redirect:/exam/managementExam";
-		return "hello";
+	public void managementExamGET(@RequestParam("subjectCode") int subjectCode, Model model) throws Exception {
+		logger.info("subjectCode : " + subjectCode + "examList");
+		model.addAttribute("list", examService.examList(subjectCode));
+		model.addAttribute("subjectCode", subjectCode);
+		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
 	}
 	
-//	  @RequestMapping(value = "/list/{subjectCode}", method = RequestMethod.GET)
-//	  public ResponseEntity<List<ExamVO>> list(@PathVariable("subjectCode") Integer subjectCode) {
-//		  
-//		  logger.info("exam list.....");
-//	    ResponseEntity<List<ExamVO>> entity = null;
-//	    try {
-//	      entity = new ResponseEntity<>(examService.examList(subjectCode), HttpStatus.OK);
-//
-//	    } catch (Exception e) {
-//	      e.printStackTrace();
-//	      entity = new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//	    }
-//
-//	    return entity;
-//	  }
-
-
+	@RequestMapping(value = "/managementExam", method = RequestMethod.POST)
+	public String managementExamPOST(@RequestParam("subjectCode") int subjectCode, 
+			@RequestParam("examName") String examName) throws Exception {
+		logger.info("subjectCode: " + subjectCode +" examName: " + examName + " delete....");
+//		questionService.delete(subjectCode, examName);
+		examService.delete(subjectCode, examName);
+		return "redirect:/exam/managementExam?subjectCode="+subjectCode;
+	}
+	
+	@RequestMapping(value = "/studentExam", method = RequestMethod.GET)
+	public void studentExamGET(@RequestParam("subjectCode") int subjectCode, Model model) throws Exception {
+		logger.info("subjectCode : " + subjectCode + "examList");
+		model.addAttribute("list", examService.examList(subjectCode));
+		model.addAttribute("subjectCode", subjectCode);
+		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
+	}
+	
 }

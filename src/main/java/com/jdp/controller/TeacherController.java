@@ -15,12 +15,6 @@ import com.jdp.domain.ExamVO;
 import com.jdp.service.ExamService;
 import com.jdp.service.QuestionService;
 
-/**
- * controller of teacher and students about exam
- * 
- * @author YJH 2016.10.31.Mun
- */
-
 @Controller
 @RequestMapping("/teacher/*")
 public class TeacherController {
@@ -49,7 +43,7 @@ public class TeacherController {
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
 	public void read(@RequestParam("examName") String examName, Model model) throws Exception {
 
-		model.addAttribute("list", questionService.questionList(12312, examName));
+		model.addAttribute("list", questionService.listQuestion(12312, examName));
 	}
 	
 	@RequestMapping(value = "/register", method = RequestMethod.GET)

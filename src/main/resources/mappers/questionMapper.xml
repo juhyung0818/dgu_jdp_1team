@@ -21,5 +21,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		where subjectCode=#{subjectCode} and examName=#{examName}
  		order by qNumber
  	</select>
+ 	
+ 	<delete id="delete">
+ 		delete from question
+ 		where subjectCode=#{subjectCode} and examName=#{examName}
+ 	</delete>
+ 	
+ 	<select id="tryQuestion" resultType="com.jdp.domain.QuestionVO">
+ 		select examName, qNumber, qInfo, ex1, ex2, ex3, ex4, qPoint
+ 		from question
+ 		where subjectCode=#{subjectCode} and examName=#{examName}
+ 		order by qNumber
+ 	</select>
 
 </mapper>

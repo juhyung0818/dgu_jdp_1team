@@ -5,9 +5,11 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.jdp.domain.QuestionListVO;
 import com.jdp.domain.QuestionVO;
+import com.jdp.persistence.ExamDAO;
 import com.jdp.persistence.QuestionDAO;
 
 /**
@@ -21,6 +23,9 @@ public class QuestionServiceImpl implements QuestionService{
 
 	@Inject
 	private QuestionDAO questionDAO;
+	
+	@Inject
+	private ExamDAO examDAO;
 	
 	/**
 	 * add question in exam
@@ -48,7 +53,19 @@ public class QuestionServiceImpl implements QuestionService{
 	}
 
 	@Override
-	public List<QuestionVO> questionList(int subjectCode, String examName) throws Exception {
+	public List<QuestionVO> listQuestion(int subjectCode, String examName) throws Exception {
 		return questionDAO.listQuestion(subjectCode, examName);
+	}
+	
+	@Override
+	public List<QuestionVO> tryQuestion(int subjectCode, String examName) throws Exception {
+		return questionDAO.tryQuestion(subjectCode, examName);
+	}
+
+	@Transactional
+	@Override
+	public void delete(int subjectCode, String examName) throws Exception {
+		questionDAO.delete(subjectCode, examName);
+		examDAO.delete(subjectCode, examName);
 	}
 }

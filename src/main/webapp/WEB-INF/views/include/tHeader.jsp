@@ -10,9 +10,10 @@
 	href="http://fonts.googleapis.com/css?family=Raleway">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
 <style>
-body, h1 {
-	font-family: "Raleway", Arial, sans-serif
+body, h1{
+	font-family : "Raleway", Arial, sans-serif
 }
 
 h1 {
@@ -30,7 +31,33 @@ h1 {
 .w3-myfont {
 	font-family: "Comic Sans MS", cursive, sans-serif;
 }
+
+ul {
+    list-style-type: none;
+    position : relative;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+    width : 50%;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active){
+	background-color: #111;
+}
 </style>
+
 <body>
 
 	<!-- !PAGE CONTENT! -->
@@ -39,17 +66,17 @@ h1 {
 		<!-- Header -->
 		<header class="w3-panel w3-center w3-opacity">
 			<div class="w3-panel w3-pink">
-				<h1 class="w3-opacity"> 순성닷컴 </h1>
+				<h1 >순성닷컴 </h1>
 			</div>
 
 			<div class="w3-xxxlarge">
-				<p class="w3-myfont">Soonsung's Programming World</p>
+				<p class="w3-myfont">${subjectName}</p>
 			</div>
 			<br>
 			<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge"
-				href="/exam/managementExam">시험관리</a> <a
+				href="/subject/tSubject?uid=${uid}">과목 관리</a> <a
 				class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge"
-				href="/exam/managementGrade">성적관리</a>
+				href="/subject/studentSubject?uid=${uid}">성적관리</a>
 				
-			
 		</header>
+	</div>

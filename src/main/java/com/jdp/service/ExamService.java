@@ -3,7 +3,7 @@ package com.jdp.service;
 import java.util.List;
 
 import com.jdp.domain.ExamVO;
-import com.jdp.domain.QuestionVO;
+
 
 /**
  * Service interface about Exam
@@ -20,4 +20,6 @@ public interface ExamService {
 	public void update(ExamVO exam) throws Exception;
 	//display exam list
 	public List<ExamVO> examList(int subjectCode) throws Exception;
+	
+	public String getSubjectName(int subjectCode) throws Exception;
 }

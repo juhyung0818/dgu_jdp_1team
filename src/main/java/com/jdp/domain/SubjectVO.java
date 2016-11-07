@@ -1,4 +1,5 @@
 package com.jdp.domain;
+
 /**
  * Value Object
  * class about Subject
@@ -9,7 +10,7 @@ public class SubjectVO {
 
 	private int subjectCode;
 	private String subjectName;
-	private String tid;
+	private String uid;
 	
 	/* setter, getter methods */
 	public int getSubjectCode() {
@@ -24,17 +25,18 @@ public class SubjectVO {
 	public void setSubjectName(String subjectName) {
 		this.subjectName = subjectName;
 	}
-	public String getTid() {
-		return tid;
+
+	public String getUid() {
+		return uid;
 	}
-	public void setTid(String tid) {
-		this.tid = tid;
+	public void setUid(String uid) {
+		this.uid = uid;
 	}
 	/**
-	 * log for toString method
+	 * toString for log
 	 */
 	@Override
 	public String toString() {
-		return "SubjectVO [subjectCode=" + subjectCode + ", subjectName=" + subjectName + ", tid=" + tid + "]";
+		return "SubjectVO [subjectCode=" + subjectCode + ", subjectName=" + subjectName + "]";
 	}
 }

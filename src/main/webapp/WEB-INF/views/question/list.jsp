@@ -48,30 +48,12 @@
 					</table>
 				</div>
 				<!-- /.box-body -->
-
-				<br>
-				<br>
-
-
+				<br><br>
 				<div class="box-footer" align="right">
-					<button type="submit" class="w3-btn w3-pink"> REMOVE </button>
+					<form class="form-inline" role="form" method="post">
+						<button type="submit" class="w3-btn w3-pink w3-round-xlarge" value="delete"> REMOVE </button>
+					</form>
 				</div>
-
-
-				<script>
-					$(document).ready(function() {
-
-						var formObj = $("form[role='form']");
-
-						console.log(formObj);
-
-						$(".btn-danger").on("click", function() {
-							formObj.attr("action", "/exam/delete");
-							formObj.submit();
-						});
-
-					});
-				</script>
 
 			</div>
 			<!-- /.box -->
