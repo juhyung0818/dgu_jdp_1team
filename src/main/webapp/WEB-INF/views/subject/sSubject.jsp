@@ -19,8 +19,8 @@
 					<td>${subjectVO.subjectName}</td>
 					<td>
 						<div class="box-footer" >
-							<a href='/exam/studentExam?subjectCode=${subjectVO.subjectCode}'> <input
-								type="button" class="w3-btn w3-pink" value="ENTER">
+							<a href='/exam/studentExam?subjectCode=${subjectVO.subjectCode}'> 
+							<input type="button" class="w3-btn w3-pink" value="ENTER">
 							</a>
 						</div>
 					</td>
@@ -29,7 +29,7 @@
 		</table>
 		<div class="box-footer" align="right">
 			<!-- <a href='/subject/sRegister?uid=${uid}'> -->
-			<a href='/subject/sRegister?uid=${uid}'>
+			<a href='/subject/sRegister'>
 				<input type="button" class="w3-btn w3-pink" value="ADD">
 			</a>
 		</div>

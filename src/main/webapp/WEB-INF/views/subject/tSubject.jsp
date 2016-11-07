@@ -2,7 +2,7 @@
 <%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="../include/sHeader.jsp"%>
+<%@include file="../include/tHeader.jsp"%>
 
 
 <div align="center">
@@ -31,7 +31,8 @@
 			</c:forEach>
 		</table>
 		<div class="box-footer" align="right">
-			<a href='/subject/sRegister?uid=${uid}'>
+			<!--<a href='/subject/sRegister?uid=${uid}'>-->
+			<a href='/subject/tRegister'>
 				<input type="button" class="w3-btn w3-pink" value="ADD">
 			</a>
 		</div>

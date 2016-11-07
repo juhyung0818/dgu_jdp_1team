@@ -40,7 +40,7 @@ h1 {
 		<header class="w3-panel w3-center w3-opacity">
 			<div class="w3-panel w3-pink">
 				<h1>순성닷컴 </h1>
-				${uid}님 환영합니다.
+				${uname}님 환영합니다.
 			</div>
 			<br>
 			<!-- 이 태그는 왜 있는 거지? 과목선택이 뭐하는 거? -->
