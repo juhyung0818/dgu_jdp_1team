@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.jdp.domain.CheckVO;
 import com.jdp.domain.QuestionVO;
 import com.jdp.domain.ScoreVO;
+import com.jdp.domain.UserVO;
 import com.jdp.service.QuestionService;
 import com.jdp.service.ScoreService;
 
@@ -34,11 +36,12 @@ public class QuestionController {
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void registGET(@RequestParam("subjectCode") int subjectCode,
 			@RequestParam("examName") String examName,
-			@RequestParam("num") int num, Model model){
+			@RequestParam("num") int num, Model model, HttpSession session){
 		
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("examName", examName);
 		model.addAttribute("num", num);
+		model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
 		logger.info("Question Register...");
 	}
 	
