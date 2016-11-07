@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jdp.domain.CheckVO;
+import com.jdp.domain.UserVO;
 import com.jdp.domain.QuestionVO;
 import com.jdp.domain.ScoreVO;
 import com.jdp.service.QuestionService;
@@ -59,8 +61,8 @@ public class QuestionController {
 			q.setExamName(examName);
 			q.setqNumber(Integer.parseInt(temp[i*8+1]));
 			q.setqPoint(Integer.parseInt(temp[i*8+2]));
-			q.setqInfo(temp[i*8+3]);
-			q.setAnswer(Integer.parseInt(temp[i*8+4]));
+			q.setAnswer(Integer.parseInt(temp[i*8+3]));
+			q.setqInfo(temp[i*8+4]);
 			q.setEx1(temp[i*8+5]);
 			q.setEx2(temp[i*8+6]);
 			q.setEx3(temp[i*8+7]);
@@ -71,14 +73,8 @@ public class QuestionController {
 		//inset questions
 		questionService.registerList(list);
 		
-		return "redirect:/exam/managementExam?subjectCode="+subjectCode;
+		return "/exam/managementExam?subjectCode="+subjectCode;
 	}	
-//	@RequestMapping(value="/register", method=RequestMethod.POST)
-//	public String registPOST(@ModelAttribute List<QuestionVO> question) throws Exception{
-//		logger.info("question register.........");
-//		questionService.registerList(question);
-//		return "redirect:/exam/managementExam?subjectCode="+question.get(0).getSubjectCode();
-//	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void read(@RequestParam("subjectCode") int subjectCode, 
@@ -97,8 +93,9 @@ public class QuestionController {
 	@RequestMapping(value = "/try", method = RequestMethod.GET)
 	public void tryGET(@RequestParam("subjectCode") int subjectCode,
 			@RequestParam("examName") String examName, 
-			@RequestParam("uid") String uid,
-			Model model) throws Exception {
+			Model model,
+			HttpSession session) throws Exception {
+		String uid = ((UserVO)session.getAttribute("login")).getUid();
 		logger.info(uid + "- try question GET......");
 		model.addAttribute("uid", uid);
 		model.addAttribute("subjectCode", subjectCode);
@@ -110,8 +107,10 @@ public class QuestionController {
 	@RequestMapping(value = "/try", method = RequestMethod.POST)
 	public String tryPOST(@RequestParam("subjectCode") int subjectCode,
 			@RequestParam("examName") String examName,
-			@RequestParam("uid") String uid, @RequestBody String answer,
-			Model model) throws Exception {
+			@RequestBody String answer,
+			Model model, HttpSession session) throws Exception {
+		String uid = ((UserVO)session.getAttribute("login")).getUid();
+
 		logger.info(uid + "- try question POST.....");
 		ScoreVO score = new ScoreVO();
 		score.setSubjectCode(subjectCode);
@@ -123,7 +122,6 @@ public class QuestionController {
 		String[] stAnswer = answer.split("&answer=");
 		int[] stAns = new int[stAnswer.length-1]; 
 		for(int i=0; i<stAnswer.length; i++){
-			System.out.println(stAnswer[i]);
 			if(i>0){
 				stAns[i-1] = Integer.parseInt(stAnswer[i]);
 			}

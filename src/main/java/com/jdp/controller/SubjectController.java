@@ -40,9 +40,8 @@ public class SubjectController {
 	
 	//TODO this method need subjectCode, tid
 	@RequestMapping(value = "/tRegister", method = RequestMethod.POST)
-	public String registPOST(@RequestParam("subjectCode") int subjectCode, 
-			@RequestParam("uid") String uid, @ModelAttribute SubjectVO subject) throws Exception {
-		subject.setSubjectCode(subjectCode);
+	public String registPOST(@RequestParam("uid") String uid, 
+			@ModelAttribute SubjectVO subject) throws Exception {
 		subjectService.register(subject);
 		return "redirect:/exam/managementExam?subjectCode="+subject.getSubjectCode();
 	}
