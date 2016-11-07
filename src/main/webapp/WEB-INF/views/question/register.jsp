@@ -30,7 +30,7 @@
 			<input type='hidden' name='examName' value="test1">
 
 
-	<c:forEach var="i" begin="0" varStatus="status" end="1">
+	<c:forEach var="i" begin="0" varStatus="status" end="${num}">
 
 		<table class="tg">	
   		<tr>
