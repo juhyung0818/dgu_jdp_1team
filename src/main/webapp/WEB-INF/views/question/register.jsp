@@ -60,6 +60,7 @@
 						</th>
 						</tr>
 						<tr>
+<<<<<<< HEAD
 						</tr>
 						<tr>
 						<td class="tg-yw4l" colspan="15" rowspan="8">
@@ -84,28 +85,57 @@
   						<tr>
   						<td class="tg-yw4l" colspan="15" rowspan="5"><p>보기</p>	
   									<ul class="w3-ul w3-border">
+=======
+							<td>
+								<ul class="w3-ul">
+									<li>Q
+										<div class="form-group">
+											<input class="w3-input" type="number" name="qNumber${status.count}"
+												placeholder="Enter qNumber" value='${i}'>
+											<label for="exampleInputEmail1"></label>
+										</div>
+									</li>
+									<li>
+										<p>배점</p>
+										<div class="form-group">
+											<input type="number" name="qPoint${status.count}" class="form-contorl" placeholder="Enter qPoint" value="0">
+										</div>
+									</li>
+								</ul>
+							</td>
+							<td>
+								<p>문제입력</p>
+								<div class="form-group">
+									<textarea class="form-control" name="qInfo${status.count}" id="qInfo${status.count}" rows="11"
+										placeholder="Enter ..." ></textarea>
+								</div>
+							</td>
+							<td>
+								EXAMPLES
+								<ul class="w3-ul w3-border">
+>>>>>>> 6d5f47e09a6a789e1966748b2b749505fd698e45
 									<li>1)
 										<div class="form-group">
 											<input class="w3-input" name="ex1${status.count}" rows="1"
-												placeholder="Enter ..." value=" ">
+												placeholder="Enter ...">
 										</div>
 									</li>
 									<li>2)
 										<div class="form-group">
 											<input class="w3-input" name="ex2${status.count}" rows="1"
-												placeholder="Enter ..." value=" ">
+												placeholder="Enter ...">
 										</div>
 									</li>
 									<li>3)
 										<div class="form-group">
 											<input class="w3-input" name="ex3${status.count}" rows="1"
-												placeholder="Enter ..." value=" ">
+												placeholder="Enter ..." >
 										</div>
 									</li>
 									<li>4)
 										<div class="form-group">
 											<input class="w3-input" name="ex4${status.count}" rows="1"
-												placeholder="Enter ..." value=" ">
+												placeholder="Enter ...">
 										</div>
 									</li>
 								</ul></td>
@@ -149,15 +179,10 @@ $("#complete").click( function(){
 		question.push($('input[name=ex4'+ i +']').val());
 	} 
 	console.log(question);
-	$.ajaxSettings.traditional = true;
 	$.ajax({
 		type : 'POST',
 		url : '/question/register?subjectCode=${subjectCode}&examName=${examName}',
-		headers: {
-			"Contnet-Type": "application/json;charset=UTF-8",
-			"X-HTTP-Method-Override": "POST" 
-			},
-			data: ({'question': question})
+			data:({'question': question})
 	});
 	
 });
