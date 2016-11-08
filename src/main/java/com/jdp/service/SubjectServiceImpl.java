@@ -22,8 +22,8 @@ public class SubjectServiceImpl implements SubjectService{
 	private SubjectDAO subjectDao;
 	
 	@Override
-	public void register(SubjectVO subject) throws Exception {
-		subjectDao.register(subject);
+	public int register(String subjectName, String uid) throws Exception {
+		return subjectDao.register(subjectName, uid);
 	}
 
 	@Override

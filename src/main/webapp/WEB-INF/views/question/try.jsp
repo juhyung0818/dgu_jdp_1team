@@ -116,7 +116,7 @@ $("#complete").click( function(){
 	$.ajaxSettings.traditional = true;
 	$.ajax({
 		type : 'POST',
-		url : '/question/try?subjectCode=${subjectCode}&examName=${examName}&uid=${uid}',
+		url : '/question/try?subjectCode=${subjectCode}&examName=${examName}',
 		headers: {
 			"Contnet-Type": "application/json;charset=UTF-8",
 			"X-HTTP-Method-Override": "POST" 

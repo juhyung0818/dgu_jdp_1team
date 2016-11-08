@@ -1,5 +1,8 @@
 package com.jdp.controller;
 
+
+
+
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
@@ -25,11 +28,11 @@ import com.jdp.service.SubjectService;
 @RequestMapping("/subject/*")
 public class SubjectController {
 
-	@Inject
-	private SubjectService subjectService;
-	private static final Logger logger = LoggerFactory.getLogger(SubjectController.class);
+   @Inject
+   private SubjectService subjectService;
+   private static final Logger logger = LoggerFactory.getLogger(ExamController.class);
 
-	@RequestMapping(value = "/tRegister", method = RequestMethod.GET)
+   @RequestMapping(value = "/tRegister", method = RequestMethod.GET)
    public void registGET(@RequestParam("subjectCode") int subjectCode, 
          @RequestParam("uid") String uid, Model model) {
       logger.info("subject Register...");
@@ -39,13 +42,12 @@ public class SubjectController {
    
    //TODO this method need subjectCode, tid
    @RequestMapping(value = "/tRegister", method = RequestMethod.POST)
-   public String registPOST(@RequestParam("subjectCode") int subjectCode, 
-         @RequestParam("uid") String uid, @ModelAttribute SubjectVO subject) throws Exception {
-      subject.setSubjectCode(subjectCode);
-      subjectService.register(subject);
-      return "redirect:/exam/managementExam?subjectCode="+subject.getSubjectCode();
+   public String registPOST(@RequestParam("subjectName") String subjectName, HttpSession session) throws Exception {
+      
+      int subjectCode=subjectService.register(subjectName, ((UserVO)session.getAttribute("login")).getUid());
+      
+      return "redirect:/exam/managementExam?subjectCode="+subjectCode;
    }
-
    @RequestMapping(value = "/tSubject", method = RequestMethod.GET)
    public void listTeacher(@RequestParam("uid") String uid, Model model) throws Exception {
       logger.info("teacher subject List...");
@@ -72,6 +74,6 @@ public class SubjectController {
       subjectService.joinSubject(member);
       return "redirect:/subject/sSubject?uid="+uid;
    }
- 
+
 
 }

@@ -22,42 +22,47 @@ import com.jdp.domain.SubjectVO;
 @Repository
 public class SubjectDAOImpl implements SubjectDAO{
 
-   @Inject
-   private SqlSession session;
-   private String namespace="com.jdp.mapper.SubjectMapper";
 
-   /**
-    * Subject add to database in subject table
-    */
-   @Override
-   public void register(SubjectVO subject) throws Exception {
-      session.insert(namespace+".register", subject);
-   }
-   
-   /**
-    * Subject modify subjectName to database in subject table
-    */
-   @Override
-   public void modify(int subjectCode, String subjectName) throws Exception {
-      Map<String, Object> paramMap = new HashMap<>();
-      paramMap.put("subjectCode", subjectCode);
-      paramMap.put("subjectName", subjectName);
-      session.insert(namespace+".modify", paramMap);
-   }
+	@Inject
+	private SqlSession session;
+	private String namespace="com.jdp.mapper.SubjectMapper";
 
-   @Override
-   public void joinSubject(MemberVO member) throws Exception {
-      session.insert(namespace+".joinSubject", member);
-   }
+	/**
+	 * Subject add to database in subject table
+	 */
+	@Override
+	public int register(String subjectName, String uid) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("subjectName", subjectName);
+		paramMap.put("uid", uid);
+		session.insert(namespace+".register", paramMap);
+		return session.selectOne(namespace+".checkSubjectCode", subjectName);
+	}
+	
+	/**
+	 * Subject modify subjectName to database in subject table
+	 */
+	@Override
+	public void modify(int subjectCode, String subjectName) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("subjectCode", subjectCode);
+		paramMap.put("subjectName", subjectName);
+		session.insert(namespace+".modify", paramMap);
+	}
 
-   @Override
-   public List<SubjectVO> listStudent(String uid) throws Exception {
-      return session.selectList(namespace+".listStudent", uid);
-   }
+	@Override
+	public void joinSubject(MemberVO member) throws Exception {
+		session.insert(namespace+".joinSubject", member);
+	}
 
-   @Override
-   public List<SubjectVO> listTeacher(String uid) throws Exception {
-      return session.selectList(namespace+".listTeacher", uid);
-   }
+	@Override
+	public List<SubjectVO> listStudent(String uid) throws Exception {
+		return session.selectList(namespace+".listStudent", uid);
+	}
 
+	@Override
+	public List<SubjectVO> listTeacher(String uid) throws Exception {
+		return session.selectList(namespace+".listTeacher", uid);
+	}
 }
+

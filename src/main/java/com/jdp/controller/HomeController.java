@@ -41,7 +41,7 @@ public class HomeController {
 		
 		
 		
-		return "home";
+		return "/user/login";
 	}
 	
 
