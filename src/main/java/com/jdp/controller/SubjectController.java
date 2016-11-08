@@ -25,11 +25,11 @@ import com.jdp.service.SubjectService;
 @RequestMapping("/subject/*")
 public class SubjectController {
 
-   @Inject
-   private SubjectService subjectService;
-   private static final Logger logger = LoggerFactory.getLogger(ExamController.class);
+	@Inject
+	private SubjectService subjectService;
+	private static final Logger logger = LoggerFactory.getLogger(SubjectController.class);
 
-   @RequestMapping(value = "/tRegister", method = RequestMethod.GET)
+	@RequestMapping(value = "/tRegister", method = RequestMethod.GET)
    public void registGET(@RequestParam("subjectCode") int subjectCode, 
          @RequestParam("uid") String uid, Model model) {
       logger.info("subject Register...");

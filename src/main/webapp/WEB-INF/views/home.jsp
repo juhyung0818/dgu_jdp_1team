@@ -6,4 +6,4 @@
 <%@include file="include/tHeader.jsp"%>
 
 <h2>${result}</h2>
-<%@include file="include/tFooter.jsp"%>4
+<%@include file="include/tFooter.jsp"%>

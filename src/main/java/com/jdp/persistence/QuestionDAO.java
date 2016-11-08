@@ -14,6 +14,7 @@ import com.jdp.domain.QuestionVO;
 public interface QuestionDAO {
 	//insert a question
 	public void register(QuestionVO question) throws Exception;
+	public void registerList(List<QuestionVO> question) throws Exception;
 	//modify a question
 	public void update(QuestionVO question) throws Exception;
 	//display question list

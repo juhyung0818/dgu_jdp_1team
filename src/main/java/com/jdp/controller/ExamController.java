@@ -72,5 +72,4 @@ public class ExamController {
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
 	}
-	
 }

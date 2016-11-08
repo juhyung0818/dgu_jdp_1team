@@ -45,6 +45,13 @@ public class QuestionServiceImpl implements QuestionService{
 	public void register(QuestionVO question) throws Exception {
 		questionDAO.register(question);
 	}
+	@Override
+	public void registerList(List<QuestionVO> question) throws Exception {
+
+		for(int i=0; i<question.size(); i++){
+			questionDAO.register(question.get(i));
+		}
+	}
 
 	@Override
 	public void update(QuestionVO question) throws Exception {

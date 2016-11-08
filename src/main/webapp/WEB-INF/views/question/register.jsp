@@ -18,124 +18,147 @@
 		.tg  {border-collapse:collapse;border-spacing:0;}
 		.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
 		.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-		.tg .tg-i46p{background-color:#ffccc9;color:#ffccc9}
+		.tg .tg-i46p{background-color:pink;color:pink}
 		.tg .tg-yw4l{vertical-align:top}
 </style>
 
 <body>
 	<div align="center">
 		<font size="7" color="black"> 문제 출제 </font> <br> <br>
-		<form ="form" method="post" class="w3-container">
-			<input type='hidden' name='subjectCode' value="12312"> 
-			<input type='hidden' name='examName' value="test1">
 
+				<c:forEach var="i" begin="1" varStatus="status" end='${num}'>
+					<table class="tg ">
+						<tr>
+						<th class="tg-i46p" colspan="3" rowspan="2">
+						<div class="form-group">
+							번호<input class="w3-input" type="number" name="qNumber${status.count}"
+								placeholder="Enter qNumber" value='${i}'>
+					<label for="exampleInputEmail1"></label>
+					
+						</div>
+						</th>
+						<th class="th-yw4l" colspan="3" rowspan="2">
+						<div class="form-group">
+						<p>배점</p><input type="number" name="qPoint${status.count}" class="form-contorl" placeholder="Enter qPoint" value="0">
+						</div>
+						</th>
+						<th class="th-yw4l" colspan="9" rowspan="2">
+						 <div>
+									<p>정답</p>
+									
+										
+										<label class="w3-validate">1)</label>
+										<input class="w3-radio" type="radio" name="answer${status.count}" value="1" checked> 
+										<label class="w3-validate">2)</label>
+										<input class="w3-radio" type="radio" name="answer${status.count}" value="2">
+										<label class="w3-validate">3)</label>
+										<input class="w3-radio" type="radio" name="answer${status.count}" value="3">
+										<label class="w3-validate">4)</label>
+										<input class="w3-radio" type="radio" name="answer${status.count}" value="4">
+									
+						</div>
+						</th>
+						</tr>
+						<tr>
+						</tr>
+						<tr>
+						<td class="tg-yw4l" colspan="15" rowspan="8">
+						  <textarea class="form-control" name="qInfo${status.count}" id="qInfo${status.count}" cols="100" rows="20"
+										placeholder="Enter ..." > </textarea>
+						</td>
+						</tr>
+						<tr>
+                        </tr>
+                        <tr>
+  						</tr>
+  						<tr>
+  						</tr>
+  						<tr>
+  						</tr>
+  						<tr>
+  						</tr>
+  						<tr>
+  						</tr>
+  						<tr>
+  						</tr>
+  						<tr>
+  						<td class="tg-yw4l" colspan="15" rowspan="5"><p>보기</p>	
+  									<ul class="w3-ul w3-border">
+									<li>1)
+										<div class="form-group">
+											<input class="w3-input" name="ex1${status.count}" rows="1"
+												placeholder="Enter ..." value=" ">
+										</div>
+									</li>
+									<li>2)
+										<div class="form-group">
+											<input class="w3-input" name="ex2${status.count}" rows="1"
+												placeholder="Enter ..." value=" ">
+										</div>
+									</li>
+									<li>3)
+										<div class="form-group">
+											<input class="w3-input" name="ex3${status.count}" rows="1"
+												placeholder="Enter ..." value=" ">
+										</div>
+									</li>
+									<li>4)
+										<div class="form-group">
+											<input class="w3-input" name="ex4${status.count}" rows="1"
+												placeholder="Enter ..." value=" ">
+										</div>
+									</li>
+								</ul></td>
+							</tr>
+							<tr>
+   							</tr>
+    						<tr>
+     						</tr>
+     						<tr>
+    						</tr>
+     						<tr>
+     						</tr>
+   				 </table>
+				<p></p>	
+				</c:forEach>
 
-	<c:forEach var="i" begin="0" varStatus="status" end="${num}">
-
-		<table class="tg">	
-  		<tr>
-    		<th class="tg-i46p" colspan="3" rowspan="2">
-    		 <div class="form-group">
-		     	번호<input class="w3-input" type="int" name="qNumber" placeholder="Enter qNumber" value='${i+1}'> <label
-			   for="exampleInputEmail1"></label>
-		    </div>
-		    </th>
-            <th class="tg-yw4l" colspan="3" rowspan="2">
-             <div class="form-group">
-		     <p> 배점</p><input type="int" name="qPoint" class="form-contorl" placeholder="Enter qPoint">
-		     </div>
-		    </th>
-            <th class="tg-yw4l" colspan="9" rowspan="2">
-             <div>
-		     <p> 정답 </p>
-		     <label class="w3-validate">1)</label>
-		     <input class="w3-radio" type="radio" name="ex" value="1"> 
-		     <label class="w3-validate">2)</label>
-		     <input class="w3-radio" type="radio" name="ex" value="1">
-		     <label class="w3-validate">3)</label>
-		     <input class="w3-radio" type="radio" name="ex" value="1">
-		     <label class="w3-validate">4)</label>
-		     <input class="w3-radio" type="radio" name="ex" value="1">
-	         </div>
-	         </th>
-        </tr>
-        <tr>
-        </tr>
-        <tr>
-          <td class="tg-yw4l" colspan="15" rowspan="8"> 
-			<div class="form-group">
-				<textarea class="form-control" name="qInfo" cols="100"  rows="20" placeholder="Enter ..."></textarea> </td>
-        </tr>
-        <tr>
-        </tr>
-  		<tr>
-  		</tr>
-  		<tr>
-  		</tr>
-  		<tr>
-  		</tr>
-  		<tr>
-  		</tr>
-  		<tr>
-  		</tr>
-  		<tr>
-  		</tr>
-  		<tr>
-    	  <td class="tg-yw4l" colspan="15" rowspan="5"><p> 보기 </p>
-          <ul class="w3-ul w3-border">
-	       <li>1)
-	        <div>
-	     
-		    <div class="form-group">
-		    <input class="w3-input" name="ex1" rows="1" placeholder="Enter ...">
-			</textarea>
-		    </div>
-	       </li>
-	      <li>2)
-		   <div class="form-group">
-		   <input class="w3-input" name="ex2" rows="1" placeholder="Enter ...">
-			</textarea>
-		   </div>
-	     </li>
-	     <li>3)
-		  <div class="form-group">
-		  <input class="w3-input" name="ex3" rows="1" placeholder="Enter ...">
-			</textarea>
-		  </div>
-	    </li>
-	    <li>4)
-	       
-		<div class="form-group">
-		  <input class="w3-input" name="ex4" rows="1" placeholder="Enter ...">
-			</textarea>
-		</div>
-	  </li>
-	  </ul>
-	    </td>
-     </tr>
-     <tr>
-     </tr>
-     <tr>
-     </tr>
-     <tr>
-     </tr>
-     <tr>
-     </tr>
-    </table>
-	<p> </p>
-	<p> </p>
-		
-  </c:forEach>
-
-	<div class="box-footer">
-			<input type="submit" value="등록">
-			<input type="reset" value="취소" onClick="self.location='/exam/managementExam';">
-	</div>
-
-	</form>
-</div>
-
+				<div class="box-footer"> <br>
+					<button id="complete" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="10"> COMPLETE </button>
+					<button type="reset" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"
+					onclick="exam/studentExam?subjectCode=${subjectCode}"> CANCLE </button>
+				</div>
+			</div>
 </body>
-		
-		
+	
+<script>
+$("#complete").click( function(){
+	var question = [];
+	var i;
+	for (i = 1; i <= '${num}' ; i++) {
+		var a = $('#qInfo'+i).val()
+		question.push($('input[name=qNumber'+ i +']').val());
+		question.push($('input[name=qPoint'+ i +']').val());
+		question.push($('input[name=answer'+ i +']:checked').val());
+		question.push($('#qInfo'+i).val());
+		question.push($('input[name=ex1'+ i +']').val());
+		question.push($('input[name=ex2'+ i +']').val());
+		question.push($('input[name=ex3'+ i +']').val());
+		question.push($('input[name=ex4'+ i +']').val());
+	} 
+	console.log(question);
+	$.ajaxSettings.traditional = true;
+	$.ajax({
+		type : 'POST',
+		url : '/question/register?subjectCode=${subjectCode}&examName=${examName}',
+		headers: {
+			"Contnet-Type": "application/json;charset=UTF-8",
+			"X-HTTP-Method-Override": "POST" 
+			},
+			data: ({'question': question})
+	});
+	
+});
+</script>	
+	
+
 <%@include file="../include/tFooter.jsp"%>

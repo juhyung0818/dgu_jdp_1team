@@ -12,6 +12,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 
 <style>
+ #box1{width:225px;height:225px;background-image:url("C:\User\Desktop\admin\teacher")}
 body, h1 {
 	font-family: "Raleway", Arial, sans-serif
 }
@@ -198,6 +199,7 @@ input[type="checkbox"] {
   <div id="my-form">
   <div id="wrap">
    <h1 class="member">member login</h1>
+   <div id="box1"></div>
    <div class="form">
     <div class="form2">
      <div class="form3">
