@@ -4,6 +4,7 @@ package com.jdp.controller;
 
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jdp.domain.MemberVO;
-import com.jdp.domain.SubjectVO;
+import com.jdp.domain.UserVO;
 import com.jdp.service.SubjectService;
 
 /**
