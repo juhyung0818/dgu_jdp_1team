@@ -37,7 +37,8 @@ public class QuestionController {
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void registGET(@RequestParam("subjectCode") int subjectCode,
 			@RequestParam("examName") String examName,
-			@RequestParam("num") int num, Model model, HttpSession session){
+			@RequestParam("num") int num,
+			Model model, HttpSession session){
 		
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("examName", examName);
@@ -51,7 +52,7 @@ public class QuestionController {
 							@RequestParam("examName") String examName,
 							@RequestBody String question) throws Exception{
 		logger.info("question register.........");
-
+		System.out.println(question);
 		//parsing part
 		List<QuestionVO> list = new ArrayList<QuestionVO>();
 		String[] temp = question.split("&question=");
@@ -75,7 +76,7 @@ public class QuestionController {
 		//inset questions
 		questionService.registerList(list);
 		
-		return "/exam/managementExam?subjectCode="+subjectCode;
+		return "redirect:/exam/managementExam?subjectCode="+subjectCode;
 	}	
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)

@@ -39,18 +39,9 @@ public class SubjectController {
 	
 	//TODO this method need subjectCode, tid
 	@RequestMapping(value = "/tRegister", method = RequestMethod.POST)
-<<<<<<< HEAD
-	public String registPOST(@RequestParam("uid") String uid, 
-			@ModelAttribute SubjectVO subject) throws Exception {
-		subjectService.register(subject);
-		return "redirect:/exam/managementExam?subjectCode="+subject.getSubjectCode();
-=======
 	public String registPOST(@RequestParam("subjectName") String subjectName, HttpSession session) throws Exception {
-		
 		int subjectCode=subjectService.register(subjectName, ((UserVO)session.getAttribute("login")).getUid());
-		
 		return "redirect:/exam/managementExam?subjectCode="+subjectCode;
->>>>>>> 358df1281342b8e69058eae3d3ee5bd59734ddd9
 	}
 
 	@RequestMapping(value = "/tSubject", method = RequestMethod.GET)
@@ -77,7 +68,6 @@ public class SubjectController {
 	@RequestMapping(value = "/sRegister", method = RequestMethod.GET)
 	public void sRegisterGET(Model model, HttpSession session) {
 		logger.info("Student Subject Register...");
-		
 		model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
 	}
 	
@@ -88,8 +78,9 @@ public class SubjectController {
 //		return "redirect:/subject/sSubject?uid="+uid;
 //	}
 	@RequestMapping(value ="/sRegister", method = RequestMethod.POST)
-	public String sRegisterPOST(@ModelAttribute MemberVO member, Model model) throws Exception {
+	public String sRegisterPOST(@ModelAttribute MemberVO member, Model model, HttpSession session) throws Exception {
 		logger.info("Student Subject Register...");
+		member.setUid(((UserVO)session.getAttribute("login")).getUid());
 		subjectService.joinSubject(member);
 		return "redirect:/subject/sSubject";
 	}

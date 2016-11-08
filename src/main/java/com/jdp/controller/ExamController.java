@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.jdp.domain.ExamVO;
 import com.jdp.domain.UserVO;
 import com.jdp.service.ExamService;
+import com.jdp.service.ScoreService;
 
 /**
  * controller of teacher and students about exam
@@ -28,6 +29,8 @@ public class ExamController {
 
 	@Inject
 	private ExamService examService;
+	@Inject
+	private ScoreService scoreService;
 
 	private static final Logger logger = LoggerFactory.getLogger(ExamController.class);
 
@@ -72,6 +75,7 @@ public class ExamController {
 	@RequestMapping(value = "/studentExam", method = RequestMethod.GET)
 	public void studentExamGET(@RequestParam("subjectCode") int subjectCode, Model model, HttpSession session) throws Exception {
 		logger.info("subjectCode : " + subjectCode + "examList");
+		model.addAttribute("score", scoreService.myScore(((UserVO)session.getAttribute("login")).getUid()));
 		model.addAttribute("list", examService.examList(subjectCode));
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));

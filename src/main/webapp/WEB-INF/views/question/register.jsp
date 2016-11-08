@@ -46,7 +46,7 @@
 								<p>문제입력</p>
 								<div class="form-group">
 									<textarea class="form-control" name="qInfo${status.count}" id="qInfo${status.count}" rows="11"
-										placeholder="Enter ..." > </textarea>
+										placeholder="Enter ..." ></textarea>
 								</div>
 							</td>
 							<td>
@@ -55,25 +55,25 @@
 									<li>1)
 										<div class="form-group">
 											<input class="w3-input" name="ex1${status.count}" rows="1"
-												placeholder="Enter ..." value=" ">
+												placeholder="Enter ...">
 										</div>
 									</li>
 									<li>2)
 										<div class="form-group">
 											<input class="w3-input" name="ex2${status.count}" rows="1"
-												placeholder="Enter ..." value=" ">
+												placeholder="Enter ...">
 										</div>
 									</li>
 									<li>3)
 										<div class="form-group">
 											<input class="w3-input" name="ex3${status.count}" rows="1"
-												placeholder="Enter ..." value=" ">
+												placeholder="Enter ..." >
 										</div>
 									</li>
 									<li>4)
 										<div class="form-group">
 											<input class="w3-input" name="ex4${status.count}" rows="1"
-												placeholder="Enter ..." value=" ">
+												placeholder="Enter ...">
 										</div>
 									</li>
 								</ul></td>
@@ -119,15 +119,10 @@ $("#complete").click( function(){
 		question.push($('input[name=ex4'+ i +']').val());
 	} 
 	console.log(question);
-	$.ajaxSettings.traditional = true;
 	$.ajax({
 		type : 'POST',
 		url : '/question/register?subjectCode=${subjectCode}&examName=${examName}',
-		headers: {
-			"Contnet-Type": "application/json;charset=UTF-8",
-			"X-HTTP-Method-Override": "POST" 
-			},
-			data: ({'question': question})
+			data:({'question': question})
 	});
 	
 });

@@ -7,6 +7,7 @@
 <title>·Î±×ÀÎ</title>
 </head>
 <body>
+
 	<form action="/user/loginPost" method="post">
 		<div class="form-group has-feedback">
 			<input type="text" name="uid" class="form-control" placeholder="USER ID"/>

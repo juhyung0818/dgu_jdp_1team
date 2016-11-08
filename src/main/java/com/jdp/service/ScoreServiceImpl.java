@@ -26,4 +26,9 @@ public class ScoreServiceImpl implements ScoreService{
 		return scoreDao.answers(subjectCode, examName);
 	}
 
+	@Override
+	public int myScore(String uid) throws Exception {
+		return scoreDao.myScore(uid);
+	}
+
 }
