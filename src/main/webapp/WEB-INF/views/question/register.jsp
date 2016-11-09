@@ -60,12 +60,12 @@
 						</th>
 						</tr>
 						<tr>
-<<<<<<< HEAD
+
 						</tr>
 						<tr>
 						<td class="tg-yw4l" colspan="15" rowspan="8">
 						  <textarea class="form-control" name="qInfo${status.count}" id="qInfo${status.count}" cols="100" rows="20"
-										placeholder="Enter ..." > </textarea>
+										placeholder="Enter ..."></textarea>
 						</td>
 						</tr>
 						<tr>
@@ -85,35 +85,7 @@
   						<tr>
   						<td class="tg-yw4l" colspan="15" rowspan="5"><p>보기</p>	
   									<ul class="w3-ul w3-border">
-=======
-							<td>
-								<ul class="w3-ul">
-									<li>Q
-										<div class="form-group">
-											<input class="w3-input" type="number" name="qNumber${status.count}"
-												placeholder="Enter qNumber" value='${i}'>
-											<label for="exampleInputEmail1"></label>
-										</div>
-									</li>
-									<li>
-										<p>배점</p>
-										<div class="form-group">
-											<input type="number" name="qPoint${status.count}" class="form-contorl" placeholder="Enter qPoint" value="0">
-										</div>
-									</li>
-								</ul>
-							</td>
-							<td>
-								<p>문제입력</p>
-								<div class="form-group">
-									<textarea class="form-control" name="qInfo${status.count}" id="qInfo${status.count}" rows="11"
-										placeholder="Enter ..." ></textarea>
-								</div>
-							</td>
-							<td>
-								EXAMPLES
-								<ul class="w3-ul w3-border">
->>>>>>> 6d5f47e09a6a789e1966748b2b749505fd698e45
+
 									<li>1)
 										<div class="form-group">
 											<input class="w3-input" name="ex1${status.count}" rows="1"
@@ -157,13 +129,11 @@
 					<button type="reset" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"
 					onclick="exam/studentExam?subjectCode=${subjectCode}"> CANCLE </button>
 				</div>
-<<<<<<< HEAD
+
 			</div>
 </body>
-=======
-		</div>
->>>>>>> c121e526b5736f3e552b17c3f74c79f37cfed4d2
-	
+
+		
 <script>
 $("#complete").click( function(){
 	var question = [];

@@ -55,7 +55,7 @@ public class QuestionController {
 		System.out.println(question);
 		//parsing part
 		List<QuestionVO> list = new ArrayList<QuestionVO>();
-		String[] temp = question.split("&question=");
+		String[] temp = question.split("&question%5B%5D=");
 		
 		for(int i=0; i<temp.length/8; i++){
 
@@ -81,8 +81,10 @@ public class QuestionController {
 	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void read(@RequestParam("subjectCode") int subjectCode, 
-			@RequestParam("examName") String examName, Model model) throws Exception {
+			@RequestParam("examName") String examName, Model model, HttpSession session) throws Exception {
+		
 		model.addAttribute("list", questionService.listQuestion(subjectCode, examName));
+		model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.POST)
@@ -105,6 +107,7 @@ public class QuestionController {
 		model.addAttribute("examName", examName);
 		model.addAttribute("list", questionService.tryQuestion(subjectCode, examName));
 		model.addAttribute("size", questionService.tryQuestion(subjectCode, examName).size()+1);
+		model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
 	}
 	
 	@RequestMapping(value = "/try", method = RequestMethod.POST)

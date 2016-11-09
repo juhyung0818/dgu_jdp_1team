@@ -32,19 +32,19 @@
 						<c:forEach items="${list}" var="questionVO" varStatus="i">
 							<table class="tg">
 							    <tr>
-							    <th class="tg-i46p" colspan="3" rowspan="2">
 							   
-								<td> Q${questionVO.qNumber}.</td>
+								
+							   
+								 <td>Q${questionVO.qNumber}.</td>
 							
 								
-								
-								<th class="th-yw4l" colspan="3" rowspan="2">
-								<td>배점: ${questionVO.qPoint}</td>
+							
+								<td>grade��: ${questionVO.qPoint}</td>
 								
 								
 								<th class="th-yw4l" colspan="9" rowspan="2">
 								    <div> 
-								    <p>정답</p>
+								    <p>Answer</p>
 									<label class="w3-validate">GIVE UP</label>
 									<input type="radio" name="answer${i.count}" value="0" checked>
 									<label class="w3-validate">1) </label>
@@ -82,7 +82,7 @@
   							<tr>
 							
 								<td class="tg-yw4l" colspan="15" rowspan="5">
-								<p>보기</p>
+								<p></p>
 									<ul class="w3-ul w3-border">
 										<li>1) ${questionVO.ex1}</li>
 										<li>2) ${questionVO.ex2}</li>
