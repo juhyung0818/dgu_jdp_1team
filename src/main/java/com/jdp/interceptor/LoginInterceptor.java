@@ -12,8 +12,11 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import com.jdp.domain.UserVO;
 
 public class LoginInterceptor extends HandlerInterceptorAdapter{
-	private static final String LOGIN ="login";
+	//private static final String LOGIN ="login";
+	private static final String STUDENT ="student";
+	private static final String TEACHER ="teacher";
 	private static final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
+	
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
@@ -21,22 +24,27 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		ModelMap modelMap = modelAndView.getModelMap();
 		Object user = modelMap.get("userVO");
 		UserVO vo=(UserVO)user;
+		
 		if(user !=null)
 		{
 			logger.info("new login success");
-			session.setAttribute(LOGIN, user);
-			//response.sendRedirect("/");
-			//"/"->"/subject/subjectList"
-			
 			Object dest=session.getAttribute("dest");
+			
 			//url after login success
 			
 			//case : student
 			if(vo.getFlag()==0)
+			{
+				session.setAttribute(STUDENT, user);
 				response.sendRedirect(dest!=null?(String)dest : "/subject/sSubject");
+			}
+				
 			//case : teacher
 			else
+			{
+				session.setAttribute(TEACHER, user);
 				response.sendRedirect(dest!=null?(String)dest : "/subject/tSubject");
+			}
 		}
 		else
 		{
@@ -51,10 +59,15 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 			throws Exception {
 		HttpSession session =request.getSession();
 		
-		if(session.getAttribute(LOGIN)!=null)
+		if((session.getAttribute(STUDENT)!=null))
 		{
 			logger.info("clear login data before");
-			session.removeAttribute(LOGIN);
+			session.removeAttribute(STUDENT);
+		}
+		else if(session.getAttribute(TEACHER)!=null)
+		{
+			logger.info("clear login data before");
+			session.removeAttribute(TEACHER);
 		}
 		return true;
 	}	

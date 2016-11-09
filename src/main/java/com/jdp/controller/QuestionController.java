@@ -41,7 +41,8 @@ public class QuestionController {
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("examName", examName);
 		model.addAttribute("num", num);
-		model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
+		//model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
+		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
 		logger.info("Question Register...");
 	}
 	
@@ -83,10 +84,12 @@ public class QuestionController {
 //		return "redirect:/exam/managementExam?subjectCode="+question.get(0).getSubjectCode();
 //	}
 	
+	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void read(@RequestParam("subjectCode") int subjectCode, 
-			@RequestParam("examName") String examName, Model model) throws Exception {
+			@RequestParam("examName") String examName, Model model, HttpSession session) throws Exception {
 		model.addAttribute("list", questionService.listQuestion(subjectCode, examName));
+		model.addAttribute("uname", ((UserVO)session.getAttribute("student")).getUname());
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.POST)
@@ -101,13 +104,16 @@ public class QuestionController {
 	public void tryGET(@RequestParam("subjectCode") int subjectCode,
 			@RequestParam("examName") String examName, 
 			@RequestParam("uid") String uid,
-			Model model) throws Exception {
+			Model model,
+			HttpSession session) throws Exception {
 		logger.info(uid + "- try question GET......");
 		model.addAttribute("uid", uid);
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("examName", examName);
 		model.addAttribute("list", questionService.tryQuestion(subjectCode, examName));
 		model.addAttribute("size", questionService.tryQuestion(subjectCode, examName).size()+1);
+		//model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
+		model.addAttribute("uname", ((UserVO)session.getAttribute("student")).getUname());
 	}
 	
 	@RequestMapping(value = "/try", method = RequestMethod.POST)

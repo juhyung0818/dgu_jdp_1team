@@ -34,7 +34,8 @@ public class ExamController {
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void registGET(@RequestParam("subjectCode") int subjectCode, Model model, HttpSession session) {
 		logger.info("question register");
-		model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
+		//model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
+		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -58,7 +59,8 @@ public class ExamController {
 		model.addAttribute("list", examService.examList(subjectCode));
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
-		model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
+		//model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
+		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
 	}
 
 	@RequestMapping(value = "/managementExam", method = RequestMethod.POST)
@@ -75,6 +77,7 @@ public class ExamController {
 		model.addAttribute("list", examService.examList(subjectCode));
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
-		model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
+		//model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
+		model.addAttribute("uname", ((UserVO)session.getAttribute("student")).getUname());
 	}
 }
