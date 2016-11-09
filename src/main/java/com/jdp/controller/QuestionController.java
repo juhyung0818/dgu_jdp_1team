@@ -42,7 +42,6 @@ public class QuestionController {
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("examName", examName);
 		model.addAttribute("num", num);
-		//model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
 		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
 		logger.info("Question Register...");
 	}
@@ -115,7 +114,7 @@ public class QuestionController {
 			@RequestParam("examName") String examName,
 			@RequestBody String answer,
 			Model model, HttpSession session) throws Exception {
-		String uid = ((UserVO)session.getAttribute("login")).getUid();
+		String uid = ((UserVO)session.getAttribute("student")).getUid();
 
 		logger.info(uid + "- try question POST.....");
 		ScoreVO score = new ScoreVO();

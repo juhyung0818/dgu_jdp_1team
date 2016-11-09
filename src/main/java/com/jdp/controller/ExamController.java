@@ -37,7 +37,6 @@ public class ExamController {
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void registGET(@RequestParam("subjectCode") int subjectCode, Model model, HttpSession session) {
 		logger.info("question register");
-		//model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
 		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
 	}
 
@@ -62,7 +61,7 @@ public class ExamController {
 		model.addAttribute("list", examService.examList(subjectCode));
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
-		//model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
+		
 		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
 	}
 
@@ -70,18 +69,20 @@ public class ExamController {
 	public String managementExamPOST(@RequestParam("subjectCode") int subjectCode, 
 			@RequestParam("examName") String examName) throws Exception {
 		logger.info("subjectCode: " + subjectCode +" examName: " + examName + " delete....");
-//		questionService.delete(subjectCode, examName);
+
 		examService.delete(subjectCode, examName);
 		return "redirect:/exam/managementExam?subjectCode="+subjectCode;
 	}
 	@RequestMapping(value = "/studentExam", method = RequestMethod.GET)
 	public void studentExamGET(@RequestParam("subjectCode") int subjectCode, Model model, HttpSession session) throws Exception {
 		logger.info("subjectCode : " + subjectCode + "examList");
-		model.addAttribute("score", scoreService.myScore(((UserVO)session.getAttribute("login")).getUid()));
+		
+		//model.addAttribute("score", scoreService.myScore(((UserVO)session.getAttribute("student")).getUid()));
+		model.addAttribute("score", "-");
 		model.addAttribute("list", examService.examList(subjectCode));
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
-		//model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
+		
 		model.addAttribute("uname", ((UserVO)session.getAttribute("student")).getUname());
 	}
 }
