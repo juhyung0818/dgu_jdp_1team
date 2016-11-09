@@ -34,5 +34,10 @@ public class ScoreDAOImpl implements ScoreDAO{
 		return session.selectList(namespace+".answer", paramMap);
 	}
 
+	@Override
+	public int myScore(String uid) throws Exception {
+		return session.selectOne(namespace+".myScore", uid);
+	}
+
 
 }

@@ -10,7 +10,6 @@
 		<h3 class="box-title">SUBJECT LIST</h3>
 	</div>
 
-
 	<form class="form-inline" role="form" method="post">
 		<table class="w3-table w3-bordered">
 			<tr>

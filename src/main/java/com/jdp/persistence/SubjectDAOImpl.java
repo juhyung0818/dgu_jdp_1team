@@ -22,6 +22,7 @@ import com.jdp.domain.SubjectVO;
 @Repository
 public class SubjectDAOImpl implements SubjectDAO{
 
+
 	@Inject
 	private SqlSession session;
 	private String namespace="com.jdp.mapper.SubjectMapper";
@@ -64,3 +65,4 @@ public class SubjectDAOImpl implements SubjectDAO{
 		return session.selectList(namespace+".listTeacher", uid);
 	}
 }
+

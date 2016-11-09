@@ -53,9 +53,9 @@ h1 {
 				<p class="w3-myfont">${subjectName}</p>
 			</div>
 			<br>
-			<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge"
+			<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red"
 				href="/subject/tSubject">과목 관리</a> <a
-				class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge"
+				class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red"
 				href="/subject/studentSubject">성적관리</a>
 				
 		</header>

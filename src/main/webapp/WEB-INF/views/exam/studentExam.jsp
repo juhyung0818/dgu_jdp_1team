@@ -17,6 +17,7 @@
 				<th>EXAM NAME</th>
 				<th>START TIME</th>
 				<th>END TIME</th>
+				<th>SCORE</th>
 				<th>TRY</th>
 			</tr>
 			<c:forEach items="${list}" var="examVO">
@@ -24,9 +25,10 @@
 					<td>${examVO.examName}</td>
 					<td>${examVO.startTime}</td>
 					<td>${examVO.endTime}</td>
+					<td>${score}</td>
 					<td>
 						<div class="box-footer" >
-							<a href='/question/try?subjectCode=${examVO.subjectCode}&examName=${examVO.examName}&uid=${login.uid}'> <input
+							<a href='/question/try?subjectCode=${examVO.subjectCode}&examName=${examVO.examName}'> <input
 								type="button" class="w3-btn w3-pink" value="TRY">
 							</a>
 						</div>
