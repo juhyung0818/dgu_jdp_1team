@@ -5,13 +5,14 @@ package com.jdp.domain;
  * @author YJH
  * 2016.11.06.Sun
  */
-public class MemberVO {
+public class MemberListVO {
 
 	private String uid;
 	private int subjectCode;
 	private int grade;
 	private int classNumber;
 	private int studentNumber;
+	private String name;
 	/* getter, setter methods */
 	public String getUid() {
 		return uid;
@@ -43,10 +44,16 @@ public class MemberVO {
 	public void setStudentNumber(int studentNumber) {
 		this.studentNumber = studentNumber;
 	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	/* toString for log */
 	@Override
 	public String toString() {
 		return "MemberVO [uid=" + uid + ", subjectCode=" + subjectCode + ", grade=" + grade + ", classNumber="
-				+ classNumber + ", studentNumber=" + studentNumber + ", studentName=" + "]";
+				+ classNumber + ", studentNumber=" + studentNumber + ", name=" + "]";
 	}
 }

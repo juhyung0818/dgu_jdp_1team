@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.jdp.domain.MemberListVO;
 import com.jdp.domain.MemberVO;
 import com.jdp.domain.SubjectVO;
 
@@ -58,5 +59,18 @@ public class SubjectDAOImpl implements SubjectDAO{
 	@Override
 	public List<SubjectVO> listTeacher(String uid) throws Exception {
 		return session.selectList(namespace+".listTeacher", uid);
+	}
+
+	@Override
+	public List<MemberListVO> listMember(String uid, int subjectCode) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("uid", uid);
+		paramMap.put("subjectCode", subjectCode);
+		return session.selectList(namespace+".manage", paramMap);
+	}
+
+	@Override
+	public List<MemberListVO> listMember2(MemberListVO memberListVO) throws Exception {
+		return session.selectList(namespace+".manage2", memberListVO);
 	}
 }

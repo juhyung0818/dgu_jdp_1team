@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.jdp.domain.MemberListVO;
 import com.jdp.domain.MemberVO;
 import com.jdp.domain.SubjectVO;
 import com.jdp.persistence.SubjectDAO;
@@ -44,6 +45,16 @@ public class SubjectServiceImpl implements SubjectService{
 	@Override
 	public List<SubjectVO> listTeacher(String uid) throws Exception {
 		return subjectDao.listTeacher(uid);
+	}
+
+	@Override
+	public List<MemberListVO> listMember(String uid, int subjectCode) throws Exception {
+		return subjectDao.listMember(uid, subjectCode);
+	}
+
+	@Override
+	public List<MemberListVO> listMember2(MemberListVO memberListVO) throws Exception {
+		return subjectDao.listMember2(memberListVO);
 	}
 
 }
