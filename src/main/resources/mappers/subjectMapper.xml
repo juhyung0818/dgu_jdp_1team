@@ -7,9 +7,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.jdp.mapper.SubjectMapper">
 
 	<insert id="register">
-		insert into subject (subjectCode, subjectName, uid)
-		values (#{subjectCode}, #{subjectName}, #{uid})
+		insert into subject (subjectName, uid)
+		values (#{subjectName}, #{uid})
 	</insert>
+	
+	<select id="checkSubjectCode" resultType="int">
+ 		select subjectCode from subject where subjectName=#{subjectName}
+ 	</select>
 	
 	 <update id="modify">
  		update subject set subjectName=#{subjectName}
@@ -32,8 +36,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 </select>
  	
  	<insert id="joinSubject">
-		insert into member (uid, subjectCode, grade, classNumber, studentNumber, studentName)
-		values (#{uid}, #{subjectCode}, #{grade}, #{classNumber}, #{studentNumber}, #{studentName})
+		insert into member (uid, subjectCode, grade, classNumber, studentNumber)
+		values (#{uid}, #{subjectCode}, #{grade}, #{classNumber}, #{studentNumber})
 	</insert>
 	
 	<select id="manage" resultType ="com.jdp.domain.MemberListVO">

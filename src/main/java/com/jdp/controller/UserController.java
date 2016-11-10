@@ -22,7 +22,7 @@ public class UserController {
 	@Inject
 	private UserService service;
 	
-	private static final Logger logger = LoggerFactory.getLogger(ExamController.class);
+	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public void longinGET(@ModelAttribute("dto") LoginDTO dto)
@@ -38,19 +38,4 @@ public class UserController {
 			return;
 		model.addAttribute("userVO", vo);
 	}
-//	@RequestMapping(value="/login", method=RequestMethod.GET)
-//	public void longinGET(@ModelAttribute("user") UserVO user)
-//	{
-//		logger.info("longin.get...");
-//		//logger.info(dto.getSid());
-//	}
-//	@RequestMapping(value="/login", method=RequestMethod.POST)
-//	public String longinPOST(UserVO user, HttpSession session, Model model) throws Exception
-//	{
-//		UserVO vo=service.login(user);
-//		if(vo==null)
-//			return null;
-//		model.addAttribute("UserVO", vo);
-//		return "redirect:/subject/list";
-//	}
 }

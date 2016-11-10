@@ -5,6 +5,8 @@ public class UserVO {
 	private String upw;
 	private String uname;
 	private int flag;
+	
+	/* getter, setter methods */
 	public String getUid() {
 		return uid;
 	}

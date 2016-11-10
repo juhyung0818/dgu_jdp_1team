@@ -23,6 +23,7 @@ import com.jdp.domain.SubjectVO;
 @Repository
 public class SubjectDAOImpl implements SubjectDAO{
 
+
 	@Inject
 	private SqlSession session;
 	private String namespace="com.jdp.mapper.SubjectMapper";
@@ -31,8 +32,12 @@ public class SubjectDAOImpl implements SubjectDAO{
 	 * Subject add to database in subject table
 	 */
 	@Override
-	public void register(SubjectVO subject) throws Exception {
-		session.insert(namespace+".register", subject);
+	public int register(String subjectName, String uid) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("subjectName", subjectName);
+		paramMap.put("uid", uid);
+		session.insert(namespace+".register", paramMap);
+		return session.selectOne(namespace+".checkSubjectCode", subjectName);
 	}
 	
 	/**
@@ -74,3 +79,4 @@ public class SubjectDAOImpl implements SubjectDAO{
 		return session.selectList(namespace+".manage2", memberListVO);
 	}
 }
+

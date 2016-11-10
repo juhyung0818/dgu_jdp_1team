@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <html>
+<head>
 <title>순성닷컴</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
@@ -31,17 +32,22 @@ h1 {
 	font-family: "Comic Sans MS", cursive, sans-serif;
 }
 </style>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"> </script>
+</head>
 <body>
 
 	<!-- !PAGE CONTENT! -->
 	<div class="w3-content" style="max-width: 1500px">
 
 		<!-- Header -->
-		<header class="w3-panel w3-padding-128 w3-center w3-opacity">
+		<header class="w3-panel w3-center w3-opacity">
 			<div class="w3-panel w3-pink">
-				<h1 class="w3-opacity">순성닷컴 </h1>
+				<h1>순성닷컴 </h1>
+				${uname}님 환영합니다.
 			</div>
 			<br>
+			<!-- 이 태그는 왜 있는 거지? 과목선택이 뭐하는 거? -->
 			<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge"
-				href="/subject/sSubject?uid=${uid}">과목 선택</a>
+				href="/subject/sSubject">과목 선택</a>
+			
 		</header>

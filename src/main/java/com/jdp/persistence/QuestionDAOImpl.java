@@ -29,6 +29,9 @@ public class QuestionDAOImpl implements QuestionDAO{
 	public void register(QuestionVO question) throws Exception {
 		session.insert(namespace + ".register", question);
 	}
+	public void registerList(List<QuestionVO> question) throws Exception {
+		session.insert(namespace + ".registerList", question);
+	}
 
 	@Override
 	public void update(QuestionVO question) throws Exception {

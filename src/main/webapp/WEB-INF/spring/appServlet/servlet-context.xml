@@ -20,13 +20,14 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+	
 	<!-- for identifing interceptor -->
 	<beans:bean id="loginInterceptor" class="com.jdp.interceptor.LoginInterceptor">
 	</beans:bean>
 	
 	<beans:bean id="authInterceptor" class="com.jdp.interceptor.AuthInterceptor">
 	</beans:bean>
-	
+
 	<interceptors>
 		<interceptor>
 			<mapping path="/user/loginPost"/>

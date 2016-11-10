@@ -47,6 +47,6 @@ public class MemberVO {
 	@Override
 	public String toString() {
 		return "MemberVO [uid=" + uid + ", subjectCode=" + subjectCode + ", grade=" + grade + ", classNumber="
-				+ classNumber + ", studentNumber=" + studentNumber + ", studentName=" + "]";
+				+ classNumber + ", studentNumber=" + studentNumber + "]";
 	}
 }
