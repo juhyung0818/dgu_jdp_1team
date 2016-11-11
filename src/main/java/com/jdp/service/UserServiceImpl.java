@@ -1,6 +1,6 @@
 package com.jdp.service;
 
-import java.sql.Date;
+import java.util.Date;
 
 import javax.inject.Inject;
 
@@ -12,7 +12,7 @@ import com.jdp.persistence.UserDAO;
 /**
  * implement UserService
  * @author kwon
- * update date : 2016³â 11¿ù 11ÀÏ
+ * update date : 2016-11-11
  */
 @Service
 public class UserServiceImpl implements UserService{

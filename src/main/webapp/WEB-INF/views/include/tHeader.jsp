@@ -38,7 +38,10 @@ h1 {
 </head>
 
 <body>
-
+	<div style="text-align:right">
+		${uname}님 환영합니다.
+		<a class="w3-btn w3-pink" href="/user/logout">logout</a>
+	</div>
 	<!-- !PAGE CONTENT! -->
 	<div class="w3-content" style="max-width: 1500px">
 
@@ -46,7 +49,7 @@ h1 {
 		<header class="w3-panel w3-center w3-opacity">
 			<div class="w3-panel w3-pink">
 				<h1 >순성닷컴 </h1>
-				${uname}님 환영합니다.
+				
 			</div>
 
 			<div class="w3-xxxlarge">

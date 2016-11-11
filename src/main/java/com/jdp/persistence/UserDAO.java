@@ -1,13 +1,13 @@
 package com.jdp.persistence;
 
-import java.sql.Date;
+import java.util.Date;
 
 import com.jdp.domain.UserVO;
 import com.jdp.dto.LoginDTO;
 /**
  * user login
  * @author kwon
- * update date : 2016³â 11¿ù 11ÀÏ
+ * update date : 2016-11-11
  */
 public interface UserDAO {
 	/**

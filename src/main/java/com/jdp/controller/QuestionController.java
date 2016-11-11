@@ -83,7 +83,7 @@ public class QuestionController {
 	public void read(@RequestParam("subjectCode") int subjectCode, 
 			@RequestParam("examName") String examName, Model model, HttpSession session) throws Exception {
 		model.addAttribute("list", questionService.listQuestion(subjectCode, examName));
-		model.addAttribute("uname", ((UserVO)session.getAttribute("student")).getUname());
+		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.POST)

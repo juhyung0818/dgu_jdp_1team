@@ -103,7 +103,7 @@ public class ExamController {
 			Model model, HttpSession session) throws Exception {
 		
 		model.addAttribute("subjectCode", subjectCode);
-		System.out.println("이것이 examName이다."+examName);
+		
 		String[] exam = examName.split("&examName=");
 		System.out.println("length : "+exam.length);
 		for(int i=0; i<exam.length; i++){

@@ -1,6 +1,6 @@
 package com.jdp.persistence;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,9 +12,9 @@ import org.springframework.stereotype.Repository;
 import com.jdp.domain.UserVO;
 import com.jdp.dto.LoginDTO;
 /**
- * 
- * @author kwon
  * implement UserDAO
+ * @author kwon
+ * update date : 2016-11-11
  */
 @Repository
 public class UserDAOImpl implements UserDAO{

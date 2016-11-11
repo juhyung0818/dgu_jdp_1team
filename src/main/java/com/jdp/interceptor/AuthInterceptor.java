@@ -9,8 +9,9 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+import org.springframework.web.util.WebUtils;
 
-
+import com.jdp.domain.UserVO;
 import com.jdp.service.UserService;
 /**
  * login authority
@@ -36,8 +37,34 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 			saveDest(request);
 			
 			Cookie studentCookie, teacherCookie;
-			//strs
+			studentCookie=WebUtils.getCookie(request, "studentCookie");
+			teacherCookie=WebUtils.getCookie(request, "teacherCookie");
 			
+			if(studentCookie!=null)
+			{
+				UserVO student=userService.checkLoginBefore(studentCookie.getValue());
+				
+				logger.info("USERVO : "+student);
+				
+				if(student!=null)
+				{
+					session.setAttribute("student", student);
+					return true;
+				}
+			}
+			
+			if(teacherCookie!=null)
+			{
+				UserVO teacher=userService.checkLoginBefore(teacherCookie.getValue());
+				
+				logger.info("USERVO : "+teacher);
+				
+				if(teacher!=null)
+				{
+					session.setAttribute("teacher", teacher);
+					return true;
+				}
+			}
 			response.sendRedirect("/user/login");
 			return false;
 		}
