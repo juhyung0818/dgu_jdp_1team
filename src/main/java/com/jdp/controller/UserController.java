@@ -1,5 +1,7 @@
 package com.jdp.controller;
 
+import java.sql.Date;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -14,7 +16,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.jdp.domain.UserVO;
 import com.jdp.dto.LoginDTO;
 import com.jdp.service.UserService;
-
+/**
+ * user login
+ * @author kwon
+ * update date : 2016³â 11¿ù 11ÀÏ
+ */
 @Controller
 @RequestMapping("/user")
 public class UserController {
@@ -37,5 +43,14 @@ public class UserController {
 		if(vo==null)
 			return;
 		model.addAttribute("userVO", vo);
+		
+		if(dto.isUseCookie())
+		{
+			int amount=60*60*24*7;
+			Date sessionLimit=new Date(System.currentTimeMillis()+1000*amount);
+			service.keepLogin(vo.getUid(), session.getId(), sessionLimit);
+		}
 	}
+	
+	
 }

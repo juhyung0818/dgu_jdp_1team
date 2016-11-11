@@ -1,5 +1,7 @@
 package com.jdp.service;
 
+import java.sql.Date;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -7,21 +9,30 @@ import org.springframework.stereotype.Service;
 import com.jdp.domain.UserVO;
 import com.jdp.dto.LoginDTO;
 import com.jdp.persistence.UserDAO;
-
+/**
+ * implement UserService
+ * @author kwon
+ * update date : 2016³â 11¿ù 11ÀÏ
+ */
 @Service
 public class UserServiceImpl implements UserService{
 
 	@Inject
 	private UserDAO dao;
 
-//	@Override
-//	public UserVO login(UserVO user) throws Exception {
-//		return dao.login(user);
-//	}
-
 	@Override
 	public UserVO login(LoginDTO dto) throws Exception {
 		return dao.login(dto);
+	}
+
+	@Override
+	public void keepLogin(String uid, String sessionId, Date next) throws Exception {
+		dao.keepLogin(uid, sessionId, next);
+	}
+
+	@Override
+	public UserVO checkLoginBefore(String value) throws Exception{
+		return dao.checkUserWithSessionKey(value);
 	}
 
 
