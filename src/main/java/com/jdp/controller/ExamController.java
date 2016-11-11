@@ -1,5 +1,8 @@
 package com.jdp.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jdp.domain.ExamVO;
+import com.jdp.domain.ScoreExamVO;
+import com.jdp.domain.ScoreVO;
 import com.jdp.domain.UserVO;
 import com.jdp.service.ExamService;
 import com.jdp.service.ScoreService;
@@ -80,18 +85,36 @@ public class ExamController {
 		logger.info("subjectCode : " + subjectCode + " examList");
 		UserVO user = new UserVO();
 		user = (UserVO)session.getAttribute("student");
-		//score = -1, yet student don't have score 
-		int score = scoreService.myScore(user.getUid());
-		if(score != -1){
-			model.addAttribute("score", score);
-		} else{
-			model.addAttribute("score", "-");
-		}
 
+		List<ExamVO> examList = examService.examList(subjectCode);
+		List<ScoreVO> scoreList = scoreService.myScore(subjectCode, user.getUid());
+		
+		List<ScoreExamVO> list = new ArrayList<>();
+
+		// examList.size() >= scoreList
+		for(int i=0; i<examList.size(); i++){
+			ScoreExamVO temp = new ScoreExamVO();
+			temp.setSubjectCode(examList.get(i).getSubjectCode()); // subject code
+			temp.setExamName(examList.get(i).getExamName()); // exam name
+			temp.setStartTime(examList.get(i).getStartTime()); //start time
+			temp.setEndTime(examList.get(i).getEndTime()); // end time
+			temp.setScore(-1);
+			
+			//score for each exams
+			for(int j=0; j<scoreList.size(); j++){
+				if(examList.get(i).getSubjectCode() == scoreList.get(j).getSubjectCode()
+						&& examList.get(i).getExamName().equals(scoreList.get(j).getExamName())){
+					temp.setScore(scoreList.get(j).getScore());
+				}
+			}
+			list.add(temp);
+		}
+		
 		//check whether take exam or doesn't
 		model.addAttribute("isTry", scoreService.check(user.getUid()));
+		model.addAttribute("uid", user.getUid());
 		
-		model.addAttribute("list", examService.examList(subjectCode));
+		model.addAttribute("list", list);
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
 		model.addAttribute("uname", user.getUname());
@@ -103,9 +126,9 @@ public class ExamController {
 			Model model, HttpSession session) throws Exception {
 		
 		model.addAttribute("subjectCode", subjectCode);
-		
-		String[] exam = examName.split("&examName=");
-		System.out.println("length : "+exam.length);
+
+		String[] exam = examName.split("&examName%5B%5D=");
+
 		for(int i=0; i<exam.length; i++){
 			System.out.println(exam[i]);
 		}

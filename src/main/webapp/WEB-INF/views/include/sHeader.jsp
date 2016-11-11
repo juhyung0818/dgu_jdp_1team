@@ -39,9 +39,9 @@ h1 {
 	<!-- !PAGE CONTENT! -->
 	<div class="w3-content" style="max-width: 1500px">
 		<div style="text-align:right">
-		${uname}님 환영합니다.
-		<a class="w3-btn w3-pink" href="/user/logout">logout</a>
-	</div>
+			${uname}님 환영합니다.
+			<a class="w3-btn w3-pink" href="/user/logout">logout</a>
+		</div>
 		<!-- Header -->
 		<header class="w3-panel w3-center w3-opacity">
 			<div class="w3-panel w3-pink">

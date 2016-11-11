@@ -15,7 +15,6 @@ public interface ScoreDAO {
 	
 	public void register(ScoreVO score) throws Exception;
 	public List<CheckVO> answers(int subjectCode, String examName) throws Exception;
-	public int myScore(String uid) throws Exception;
-	public Boolean check(String uid) throws Exception;
-	
+	public String check(String uid) throws Exception;
+	public List<ScoreVO> myScore(int subjectCode, String uid) throws Exception;
 }
