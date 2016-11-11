@@ -39,14 +39,14 @@
 							
 								
 							
-								<td>grade†ê: ${questionVO.qPoint}</td>
+								<td>point†ê: ${questionVO.qPoint}</td>
 								
 								
 								<th class="th-yw4l" colspan="9" rowspan="2">
 								    <div> 
 								    <p>Answer</p>
 									<label class="w3-validate">GIVE UP</label>
-									<input type="radio" name="answer${i.count}" value="0" >
+									<input type="radio" name="answer${i.count}" value="0" checked>
 									<label class="w3-validate">1) </label>
 									<input class="w3-radio" type="radio" name="answer${i.count}" value="1">
 									<label class="w3-validate">2) </label> 

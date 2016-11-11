@@ -39,7 +39,7 @@
 							
 								
 							
-								<td>grade†ê: ${questionVO.qPoint}</td>
+								<td>point†ê: ${questionVO.qPoint}</td>
 								
 								
 								<th class="th-yw4l" colspan="9" rowspan="2">
