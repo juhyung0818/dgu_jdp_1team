@@ -80,18 +80,12 @@ public class ExamController {
 		logger.info("subjectCode : " + subjectCode + " examList");
 		UserVO user = new UserVO();
 		user = (UserVO)session.getAttribute("student");
-		//score = -1, yet student don't have score 
-		int score = scoreService.myScore(user.getUid());
-		if(score != -1){
-			model.addAttribute("score", score);
-		} else{
-			model.addAttribute("score", "-");
-		}
 
 		//check whether take exam or doesn't
 		model.addAttribute("isTry", scoreService.check(user.getUid()));
+		model.addAttribute("uid", user.getUid());
 		
-		model.addAttribute("list", examService.examList(subjectCode));
+		model.addAttribute("list", scoreService.myScore(subjectCode, user.getUid()));
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
 		model.addAttribute("uname", user.getUname());

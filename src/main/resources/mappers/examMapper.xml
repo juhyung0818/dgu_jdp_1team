@@ -23,6 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		select subjectCode, examName, startTime, endTime  
  		from exam
  		where subjectCode=#{subjectCode}
+ 		order by startTime
  	</select>
  	
  	<select id="getName" resultType="String">
