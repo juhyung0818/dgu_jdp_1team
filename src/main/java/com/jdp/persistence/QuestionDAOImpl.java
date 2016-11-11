@@ -35,7 +35,7 @@ public class QuestionDAOImpl implements QuestionDAO{
 
 	@Override
 	public void update(QuestionVO question) throws Exception {
-		session.update(namespace+".update", question);
+		session.update(namespace + ".update", question);
 	}
 
 	@Override
@@ -43,7 +43,7 @@ public class QuestionDAOImpl implements QuestionDAO{
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("subjectCode", subjectCode);
 		paramMap.put("examName", examName);
-		return session.selectList(namespace+".listQuestion", paramMap);
+		return session.selectList(namespace + ".listQuestion", paramMap);
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class QuestionDAOImpl implements QuestionDAO{
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("subjectCode", subjectCode);
 		paramMap.put("examName", examName);
-		session.delete(namespace+".delete", paramMap);
+		session.delete(namespace + ".delete", paramMap);
 	}
 
 	@Override
@@ -59,6 +59,6 @@ public class QuestionDAOImpl implements QuestionDAO{
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("subjectCode", subjectCode);
 		paramMap.put("examName", examName);
-		return session.selectList(namespace+".tryQuestion", paramMap);
+		return session.selectList(namespace + ".tryQuestion", paramMap);
 	}
 }

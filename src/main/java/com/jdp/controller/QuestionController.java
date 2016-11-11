@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jdp.domain.CheckVO;
-import com.jdp.domain.UserVO;
 import com.jdp.domain.QuestionVO;
 import com.jdp.domain.ScoreVO;
 import com.jdp.domain.UserVO;
@@ -55,7 +55,7 @@ public class QuestionController {
 		System.out.println(question);
 		//parsing part
 		List<QuestionVO> list = new ArrayList<QuestionVO>();
-		String[] temp = question.split("&question=");
+		String[] temp = question.split("&question%5B%5D=");
 		
 		for(int i=0; i<temp.length/8; i++){
 
@@ -73,7 +73,7 @@ public class QuestionController {
 			//
 			list.add(q);
 		}
-		//inset questions
+		//insert questions
 		questionService.registerList(list);
 		
 		return "redirect:/exam/managementExam?subjectCode="+subjectCode;
@@ -96,8 +96,8 @@ public class QuestionController {
 	@RequestMapping(value = "/try", method = RequestMethod.GET)
 	public void tryGET(@RequestParam("subjectCode") int subjectCode,
 			@RequestParam("examName") String examName, 
-			Model model,
-			HttpSession session) throws Exception {
+			Model model, 
+			HttpSession session)throws Exception {
 		String uid = ((UserVO)session.getAttribute("login")).getUid();
 		logger.info(uid + "- try question GET......");
 		model.addAttribute("uid", uid);
@@ -105,12 +105,13 @@ public class QuestionController {
 		model.addAttribute("examName", examName);
 		model.addAttribute("list", questionService.tryQuestion(subjectCode, examName));
 		model.addAttribute("size", questionService.tryQuestion(subjectCode, examName).size()+1);
+
 	}
 	
 	@RequestMapping(value = "/try", method = RequestMethod.POST)
 	public String tryPOST(@RequestParam("subjectCode") int subjectCode,
 			@RequestParam("examName") String examName,
-			@RequestBody String answer,
+			@RequestBody String answer, 
 			Model model, HttpSession session) throws Exception {
 		String uid = ((UserVO)session.getAttribute("login")).getUid();
 

@@ -57,22 +57,24 @@
 </section>
 <script>
 $("#complete").click( function(){
-	var answer = [];
-	var i;
-	for (i = 1; i < '${size}' ; i++) {
-		answer.push($('input[name=answer'+ i +']:checked').val());
-	}
-	console.log(answer);
-	$.ajaxSettings.traditional = true;
-	$.ajax({
-		type : 'POST',
-		url : '/question/try?subjectCode=${subjectCode}&examName=${examName}',
-		headers: {
-			"Contnet-Type": "application/json;charset=UTF-8",
-			"X-HTTP-Method-Override": "POST" 
-			},
-			data: ({'answer': answer})
-	});
+	
+		var answer = [];
+		var i;
+		for (i = 1; i < '${size}' ; i++) {
+			answer.push($('input[name=answer'+ i +']:checked').val());
+		}
+		console.log(answer);
+		$.ajaxSettings.traditional = true;
+		$.ajax({
+			type : 'POST',
+			url : '/question/try?subjectCode=${subjectCode}&examName=${examName}',
+			headers: {
+				"Contnet-Type": "application/json;charset=UTF-8",
+				"X-HTTP-Method-Override": "POST" 
+				},
+				data: ({'answer': answer})
+		});
+		self.location = "/exam/studentExam?subjectCode="+${subjectCode};
 });
 </script>
 

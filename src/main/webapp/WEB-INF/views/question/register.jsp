@@ -98,7 +98,7 @@
 				</c:forEach>
 
 				<div class="box-footer"> <br>
-					<button id="complete" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="10"> COMPLETE </button>
+					<button id="complete" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> COMPLETE </button>
 					<button type="reset" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"
 					onclick="exam/studentExam?subjectCode=${subjectCode}"> CANCLE </button>
 				</div>
@@ -122,9 +122,8 @@ $("#complete").click( function(){
 	$.ajax({
 		type : 'POST',
 		url : '/question/register?subjectCode=${subjectCode}&examName=${examName}',
-			data:({'question': question})
+		data:({'question': question})
 	});
-	
 });
 </script>	
 	
