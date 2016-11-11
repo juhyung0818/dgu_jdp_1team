@@ -1,5 +1,7 @@
 package com.jdp.controller;
 
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jdp.domain.ExamVO;
+import com.jdp.domain.ScoreExamVO;
+import com.jdp.domain.ScoreVO;
 import com.jdp.domain.UserVO;
 import com.jdp.service.ExamService;
 import com.jdp.service.ScoreService;
@@ -81,11 +85,31 @@ public class ExamController {
 		UserVO user = new UserVO();
 		user = (UserVO)session.getAttribute("student");
 
+		List<ScoreExamVO> list = null;
+		List<ExamVO> examList = examService.examList(subjectCode);
+		List<ScoreVO> scoreList = scoreService.myScore(subjectCode, user.getUid());
+		
+		// examList.size() >= scoreList
+		for(int i=0; i<examList.size(); i++){
+			ScoreExamVO temp = null;
+			temp.setSubjectCode(examList.get(i).getSubjectCode());
+			temp.setExamName(examList.get(i).getExamName());
+			temp.setStartTime(examList.get(i).getStartTime());
+			temp.setEndTime(examList.get(i).getEndTime());
+			if(examList.get(i).getSubjectCode() == scoreList.get(i).getSubjectCode()
+					&& examList.get(i).getExamName() == scoreList.get(i).getExamName()){
+				temp.setScore(scoreList.get(i).getScore());
+			} else{
+				temp.setScore(-1);
+			}
+			list.add(temp);
+		}
+		
 		//check whether take exam or doesn't
 		model.addAttribute("isTry", scoreService.check(user.getUid()));
 		model.addAttribute("uid", user.getUid());
 		
-		model.addAttribute("list", scoreService.myScore(subjectCode, user.getUid()));
+		model.addAttribute("list", list);
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
 		model.addAttribute("uname", user.getUname());

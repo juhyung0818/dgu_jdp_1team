@@ -34,7 +34,7 @@ public class ScoreServiceImpl implements ScoreService{
 	}
 
 	@Override
-	public List<ScoreExamVO> myScore(int subjectCode, String uid) throws Exception {
+	public List<ScoreVO> myScore(int subjectCode, String uid) throws Exception {
 		return scoreDao.myScore(subjectCode, uid);
 	}
 

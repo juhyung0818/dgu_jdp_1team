@@ -23,11 +23,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		order by qNumber
  	</select>
  	
- 	<select id="myScore" resultType="int">
- 		select score
+ 	<select id="myScore" resultType="com.jdp.domain.ScoreVO">
+ 		select subjectCode, examName, score
  		from score as s join exam as e
  		on s.examName = e.examName
- 		where e.subjectCode=12312 and s.uid="a"
+ 		where e.subjectCode=#{subjectCode} and s.uid=#{uid}
  		order by e.startTime
  	</select>
  	
