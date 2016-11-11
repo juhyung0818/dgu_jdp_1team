@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,7 +38,7 @@ public class ExamController {
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void registGET(@RequestParam("subjectCode") int subjectCode, Model model, HttpSession session) {
 		logger.info("question register");
-		model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
+		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -61,25 +62,60 @@ public class ExamController {
 		model.addAttribute("list", examService.examList(subjectCode));
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
-		model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
+		
+		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
 	}
 
 	@RequestMapping(value = "/managementExam", method = RequestMethod.POST)
 	public String managementExamPOST(@RequestParam("subjectCode") int subjectCode, 
 			@RequestParam("examName") String examName) throws Exception {
 		logger.info("subjectCode: " + subjectCode +" examName: " + examName + " delete....");
-//		questionService.delete(subjectCode, examName);
 		examService.delete(subjectCode, examName);
 		return "redirect:/exam/managementExam?subjectCode="+subjectCode;
 	}
+	
 	@RequestMapping(value = "/studentExam", method = RequestMethod.GET)
+<<<<<<< HEAD
 	public void studentExamGET(@RequestParam("subjectCode") int subjectCode, Model model, HttpSession session) throws Exception {
 		logger.info("subjectCode : " + subjectCode + "examList");
 		
 		model.addAttribute("score", "-");
+=======
+	public void studentExamGET(@RequestParam("subjectCode") int subjectCode,
+			Model model, HttpSession session) throws Exception {
+		logger.info("subjectCode : " + subjectCode + " examList");
+		UserVO user = new UserVO();
+		user = (UserVO)session.getAttribute("student");
+		//score = -1, yet student don't have score 
+		int score = scoreService.myScore(user.getUid());
+		if(score != -1){
+			model.addAttribute("score", score);
+		} else{
+			model.addAttribute("score", "-");
+		}
+
+		//check whether take exam or doesn't
+		model.addAttribute("isTry", scoreService.check(user.getUid()));
+		
+>>>>>>> 61d5dd0c59718c71d1fc4efadc5397f3838a393f
 		model.addAttribute("list", examService.examList(subjectCode));
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
-		model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
+		model.addAttribute("uname", user.getUname());
+	}
+	
+	@RequestMapping(value = "/studentExam", method = RequestMethod.POST)
+	public String studentExamPOST(@RequestParam("subjectCode") int subjectCode, 
+			@RequestBody String examName,
+			Model model, HttpSession session) throws Exception {
+		
+		model.addAttribute("subjectCode", subjectCode);
+		System.out.println("이것이 examName이다."+examName);
+		String[] exam = examName.split("&examName=");
+		System.out.println("length : "+exam.length);
+		for(int i=0; i<exam.length; i++){
+			System.out.println(exam[i]);
+		}
+		return "redirect:/question/try?subjectCode="+subjectCode+"&examName="+exam[0];
 	}
 }

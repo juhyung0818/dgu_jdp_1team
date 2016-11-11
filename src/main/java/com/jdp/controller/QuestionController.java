@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jdp.domain.CheckVO;
-import com.jdp.domain.UserVO;
 import com.jdp.domain.QuestionVO;
 import com.jdp.domain.ScoreVO;
 import com.jdp.domain.UserVO;
@@ -43,7 +42,7 @@ public class QuestionController {
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("examName", examName);
 		model.addAttribute("num", num);
-		model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
+		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
 		logger.info("Question Register...");
 	}
 	
@@ -73,18 +72,18 @@ public class QuestionController {
 			//
 			list.add(q);
 		}
-		//inset questions
+		//insert questions
 		questionService.registerList(list);
 		
 		return "redirect:/exam/managementExam?subjectCode="+subjectCode;
 	}	
 	
+	
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void read(@RequestParam("subjectCode") int subjectCode, 
 			@RequestParam("examName") String examName, Model model, HttpSession session) throws Exception {
-		
 		model.addAttribute("list", questionService.listQuestion(subjectCode, examName));
-		model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
+		model.addAttribute("uname", ((UserVO)session.getAttribute("student")).getUname());
 	}
 	
 	@RequestMapping(value = "/list", method = RequestMethod.POST)
@@ -98,24 +97,22 @@ public class QuestionController {
 	@RequestMapping(value = "/try", method = RequestMethod.GET)
 	public void tryGET(@RequestParam("subjectCode") int subjectCode,
 			@RequestParam("examName") String examName, 
-			Model model,
-			HttpSession session) throws Exception {
-		String uid = ((UserVO)session.getAttribute("login")).getUid();
-		logger.info(uid + "- try question GET......");
-		model.addAttribute("uid", uid);
+			Model model, 
+			HttpSession session)throws Exception {
+		logger.info("- try question GET......");
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("examName", examName);
 		model.addAttribute("list", questionService.tryQuestion(subjectCode, examName));
 		model.addAttribute("size", questionService.tryQuestion(subjectCode, examName).size()+1);
-		model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
+		model.addAttribute("uname", ((UserVO)session.getAttribute("student")).getUname());
 	}
 	
 	@RequestMapping(value = "/try", method = RequestMethod.POST)
 	public String tryPOST(@RequestParam("subjectCode") int subjectCode,
 			@RequestParam("examName") String examName,
-			@RequestBody String answer,
+			@RequestBody String answer, 
 			Model model, HttpSession session) throws Exception {
-		String uid = ((UserVO)session.getAttribute("login")).getUid();
+		String uid = ((UserVO)session.getAttribute("student")).getUid();
 
 		logger.info(uid + "- try question POST.....");
 		ScoreVO score = new ScoreVO();

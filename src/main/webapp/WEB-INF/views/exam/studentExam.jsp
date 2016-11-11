@@ -28,33 +28,35 @@
 					<td>${score}</td>
 					<td>
 						<div class="box-footer" >
-							<a href='/question/try?subjectCode=${examVO.subjectCode}&examName=${examVO.examName}'> <input
-								type="button" class="w3-btn w3-pink" value="TRY">
-							</a>
+							<button id="try" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"
+							 value ="${examVO.examName}"> TRY </button>
 						</div>
 					</td>
 				</tr>
 			</c:forEach>
 		</table>
-		<br>
-		<br>
+		<br><br>
 	</form>
 </div>
 
-
-<!-- <script>
-//buttons 
-$(document).ready(function(){
-	var formObj = $("form[role='form']");
-	console.log(formObj);
-	
-	$(".w3-btn w3-pink").on("click", function(){
-		formObj.attr("action", "/exam/register");
-		formObj.attr("method", "get");		
-		formObj.submit();
-	});
-});
-
-</script> -->
+<script>
+$("#try").click( function(){
+	if('${isTry}' == 'true'){
+		console.log("true");
+		$(function(){
+			alert("You can't do it!");
+		});
+	}else{
+		var examName = [];
+		examName.push($("#try").val());
+		console.log("false");
+		$.ajax({
+			type : 'POST',
+			url : '/exam/studentExam?subjectCode=${subjectCode}&examName=$("#try").val()',
+			data:({'examName': $("#try").val()})
+		});
+	}
+ });
+</script>
 
 <%@include file="../include/sFooter.jsp"%>

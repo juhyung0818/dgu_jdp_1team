@@ -36,8 +36,24 @@ public class ScoreDAOImpl implements ScoreDAO{
 
 	@Override
 	public int myScore(String uid) throws Exception {
-		return session.selectOne(namespace+".myScore", uid);
+		Integer score = session.selectOne(namespace+".myScore", uid);
+		if(score != null){
+			return score;
+		} else{
+			return -1;
+		}
 	}
 
+	@Override
+	public Boolean check(String uid) throws Exception {
+		String tempUid = session.selectOne(namespace + ".check", uid);
+		//already take exam
+		if(tempUid != null){
+			return true;
+		} else{ 
+			//yet take exam
+			return false;
+		}
+	}
 
 }

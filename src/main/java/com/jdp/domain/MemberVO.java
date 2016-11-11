@@ -12,7 +12,10 @@ public class MemberVO {
 	private int grade;
 	private int classNumber;
 	private int studentNumber;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 61d5dd0c59718c71d1fc4efadc5397f3838a393f
 	
 	/* getter, setter methods */
 	public String getUid() {

@@ -31,4 +31,9 @@ public class ScoreServiceImpl implements ScoreService{
 		return scoreDao.myScore(uid);
 	}
 
+	@Override
+	public Boolean check(String uid) throws Exception {
+		return scoreDao.check(uid);
+	}
+
 }
