@@ -16,9 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.jdp.domain.CheckVO;
-import com.jdp.domain.UserVO;
 import com.jdp.domain.QuestionVO;
 import com.jdp.domain.ScoreVO;
+import com.jdp.domain.UserVO;
 import com.jdp.service.QuestionService;
 import com.jdp.service.ScoreService;
 
@@ -72,7 +72,7 @@ public class QuestionController {
 			//
 			list.add(q);
 		}
-		//inset questions
+		//insert questions
 		questionService.registerList(list);
 		
 		return "redirect:/exam/managementExam?subjectCode="+subjectCode;
@@ -97,11 +97,9 @@ public class QuestionController {
 	@RequestMapping(value = "/try", method = RequestMethod.GET)
 	public void tryGET(@RequestParam("subjectCode") int subjectCode,
 			@RequestParam("examName") String examName, 
-			Model model,
-			HttpSession session) throws Exception {
-		String uid = ((UserVO)session.getAttribute("student")).getUid();
-		logger.info(uid + "- try question GET......");
-		model.addAttribute("uid", uid);
+			Model model, 
+			HttpSession session)throws Exception {
+		logger.info("- try question GET......");
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("examName", examName);
 		model.addAttribute("list", questionService.tryQuestion(subjectCode, examName));
@@ -112,7 +110,7 @@ public class QuestionController {
 	@RequestMapping(value = "/try", method = RequestMethod.POST)
 	public String tryPOST(@RequestParam("subjectCode") int subjectCode,
 			@RequestParam("examName") String examName,
-			@RequestBody String answer,
+			@RequestBody String answer, 
 			Model model, HttpSession session) throws Exception {
 		String uid = ((UserVO)session.getAttribute("student")).getUid();
 

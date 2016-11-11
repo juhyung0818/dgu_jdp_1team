@@ -49,7 +49,6 @@ public class SubjectController {
 	@RequestMapping(value = "/tSubject", method = RequestMethod.GET)
 	public void listTeacher(Model model, HttpSession session) throws Exception {
 		logger.info("teacher subject List...");
-		
 		UserVO vo=(UserVO)session.getAttribute("teacher");
 		model.addAttribute("list", subjectService.listTeacher(vo.getUid()));
 		model.addAttribute("uname", vo.getUname());
@@ -75,7 +74,6 @@ public class SubjectController {
 	@RequestMapping(value ="/sRegister", method = RequestMethod.POST)
 	public String sRegisterPOST(@ModelAttribute MemberVO member, Model model, HttpSession session) throws Exception {
 		logger.info("Student Subject Register...");
-		
 		member.setUid(((UserVO)session.getAttribute("student")).getUid());
 		subjectService.joinSubject(member);
 		return "redirect:/subject/sSubject";

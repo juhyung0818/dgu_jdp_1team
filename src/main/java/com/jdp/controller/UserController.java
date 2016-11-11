@@ -19,7 +19,7 @@ import com.jdp.service.UserService;
 /**
  * user login
  * @author kwon
- * update date : 2016³â 11¿ù 11ÀÏ
+ * update date : 2016-11-11
  */
 @Controller
 @RequestMapping("/user")

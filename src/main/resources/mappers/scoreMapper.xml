@@ -29,4 +29,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		where uid=#{uid}
  	</select>
  	
+	<select id="check" resultType="String">
+		select uid
+		from score
+		where subjectCode=#{subjectCode} and examName=#{examName} and uid=#{uid}
+	</select> 	
 </mapper>

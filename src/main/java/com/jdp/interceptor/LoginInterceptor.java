@@ -12,7 +12,11 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.jdp.domain.UserVO;
-
+/**
+ * add comment plz
+ * @author KSS
+ * insert date
+ */
 public class LoginInterceptor extends HandlerInterceptorAdapter{
 	//private static final String LOGIN ="login";
 	private static final String STUDENT ="student";

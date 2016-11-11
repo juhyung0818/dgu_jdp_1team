@@ -10,8 +10,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import com.jdp.service.UserService;
 
+import com.jdp.service.UserService;
+/**
+ * login authority
+ * @author kwon
+ * update date : 2016-11-11
+ */
 public class AuthInterceptor extends HandlerInterceptorAdapter{
 	
 	private static final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
@@ -45,7 +50,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 		
 		String query=req.getQueryString();
 		
-		if(query==null|| query.equals("null"))
+		if(query==null || query.equals("null"))
 			query="";
 		else
 			query="?"+query;

@@ -44,7 +44,7 @@ public class MemberVO {
 	public void setStudentNumber(int studentNumber) {
 		this.studentNumber = studentNumber;
 	}
-	
+
 	/* toString for log */
 	@Override
 	public String toString() {
