@@ -7,7 +7,11 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
+/**
+ * add comment plz
+ * @author KSS
+ * insert date
+ */
 public class AuthInterceptor extends HandlerInterceptorAdapter{
 	
 	private static final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
@@ -35,7 +39,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter{
 		
 		String query=req.getQueryString();
 		
-		if(query==null|| query.equals("null"))
+		if(query==null || query.equals("null"))
 			query="";
 		else
 			query="?"+query;

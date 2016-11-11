@@ -31,7 +31,6 @@
 		destroy-method="clearCache">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
 	</bean>
-		
 	<context:component-scan base-package="com.jdp.persistence"></context:component-scan>
 	<context:component-scan base-package="com.jdp.service"></context:component-scan>
 </beans>

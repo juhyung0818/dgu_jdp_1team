@@ -1,5 +1,20 @@
 <%@include file="../include/sHeader.jsp"%>
-
+<head>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+	<script>
+		var questionArray = new Array();
+		var questionInfo = new Object();
+		
+	</script>
+</head>
+<style type="text/css">
+         #box1{width:225px;height:225px;background-image:url("c:\User\Desktop\admin\teachr.jpg")}		
+         .tg  {border-collapse:collapse;border-spacing:0;}
+		.tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+		.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
+		.tg .tg-i46p{background-color:pink;color:pink}
+		.tg .tg-yw4l{vertical-align:top}
+</style>
 <section class="content">
 	<div align="center">
 	<div class="row">
@@ -12,13 +27,24 @@
 					<div class="box-header with-border">
 						<h3 class="box-title">QUESTIONS</h3>
 					</div>
-					<table class="w3-striped w3-bordered">
+					
 
 						<c:forEach items="${list}" var="questionVO" varStatus="i">
-							<tr>
-								<td>Q${questionVO.qNumber}.</td>
-								<td>point: ${questionVO.qPoint}</td>
-								<td> 
+							<table class="tg">
+							    <tr>
+							   
+								
+							   
+								 <td>Q${questionVO.qNumber}.</td>
+							
+								
+							
+								<td>grade†ê: ${questionVO.qPoint}</td>
+								
+								
+								<th class="th-yw4l" colspan="9" rowspan="2">
+								    <div> 
+								    <p>Answer</p>
 									<label class="w3-validate">GIVE UP</label>
 									<input type="radio" name="answer${i.count}" value="0" checked>
 									<label class="w3-validate">1) </label>
@@ -29,11 +55,34 @@
 									<input class="w3-radio" type="radio" name="answer${i.count}" value="3">
 									<label class="w3-validate">4) </label>
 									<input class="w3-radio" type="radio" name="answer${i.count}" value="4">
-								</td>
+									</div>
+								</th>
+								</tr>
+									<tr>
+									</tr>
+									<tr>
+									<td class="th-yw4l" colspan="15" rowspan="8">
+									<textarea class="form-control" readonly cols="100" rows="20">${questionVO.qInfo}</textarea>
+								    </td>
 							</tr>
-							<tr>
-								<td colspan="3">${questionVO.qInfo}<br> <br>
-									EXAMPLES
+							 <tr>
+                            </tr>
+                            <tr>
+  							</tr>
+  							<tr>
+  							</tr>
+  							<tr>
+  							</tr>
+  							<tr>
+  							</tr>
+  							<tr>
+  							</tr>
+  							<tr>
+  							</tr>
+  							<tr>
+							
+								<td class="tg-yw4l" colspan="15" rowspan="5">
+								<p></p>
 									<ul class="w3-ul w3-border">
 										<li>1) ${questionVO.ex1}</li>
 										<li>2) ${questionVO.ex2}</li>
@@ -41,8 +90,9 @@
 										<li>4) ${questionVO.ex4}</li>
 									</ul></td>
 							</tr>
+							</table>
 						</c:forEach>
-					</table>
+					
 				</div>
 				<br><br>
 					<div class="box-footer"> <br>

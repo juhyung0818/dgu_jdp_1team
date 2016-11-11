@@ -1,9 +1,3 @@
-
-
-
-
-
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -18,7 +12,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 
 <style>
- 
+ #box1{width:225px;height:225px;background-image:url("C:\User\Desktop\admin\teacher")}
 body, h1 {
 	font-family: "Raleway", Arial, sans-serif
 }
@@ -201,22 +195,22 @@ input[type="checkbox"] {
 
 </div>
    
-<form action="/user/loginPost" method="post">
+<form>
   <div id="my-form">
   <div id="wrap">
    <h1 class="member">member login</h1>
-   <img src="/resources/teacher.jpg">
+   <div id="box1"></div>
    <div class="form">
     <div class="form2">
      <div class="form3">
-      <label for="user">아이디</label><input type="text" name="uid">
+      <label for="user">아이디</label><input type="text" id="user">
       <div class="clear"></div>
-      <label for="user">비밀번호</label><input type="password" name="upw">
+      <label for="user">비밀번호</label><input type="password" id="user">
      </div>
      <input type="submit"  value="로그인하기">
      <div class="clear"></div>
      <div class="form4">
-      <label><input type="checkbox" name="useCookie">아이디저장</label> 
+      <label><input type="checkbox">아이디저장</label> 
       <div class="clear"></div>
       <label><input type="button" id="myBtn" value="회원가입"></label>
 

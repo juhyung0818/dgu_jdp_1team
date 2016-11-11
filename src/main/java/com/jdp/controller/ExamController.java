@@ -38,7 +38,7 @@ public class ExamController {
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void registGET(@RequestParam("subjectCode") int subjectCode, Model model, HttpSession session) {
 		logger.info("question register");
-		model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
+		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -62,7 +62,8 @@ public class ExamController {
 		model.addAttribute("list", examService.examList(subjectCode));
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
-		model.addAttribute("uname", ((UserVO)session.getAttribute("login")).getUname());
+		
+		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
 	}
 
 	@RequestMapping(value = "/managementExam", method = RequestMethod.POST)
@@ -74,10 +75,11 @@ public class ExamController {
 	}
 	
 	@RequestMapping(value = "/studentExam", method = RequestMethod.GET)
-	public void studentExamGET(@RequestParam("subjectCode") int subjectCode, Model model, HttpSession session) throws Exception {
-		logger.info("subjectCode : " + subjectCode + "examList");
+	public void studentExamGET(@RequestParam("subjectCode") int subjectCode,
+			Model model, HttpSession session) throws Exception {
+		logger.info("subjectCode : " + subjectCode + " examList");
 		UserVO user = new UserVO();
-		user = (UserVO)session.getAttribute("login");
+		user = (UserVO)session.getAttribute("student");
 		//score = -1, yet student don't have score 
 		int score = scoreService.myScore(user.getUid());
 		if(score != -1){
