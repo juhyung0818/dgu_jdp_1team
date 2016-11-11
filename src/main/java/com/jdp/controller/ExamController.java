@@ -112,26 +112,12 @@ public class ExamController {
 		
 		//check whether take exam or doesn't
 		model.addAttribute("isTry", scoreService.check(user.getUid()));
+		
 		model.addAttribute("uid", user.getUid());
 		
 		model.addAttribute("list", list);
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
 		model.addAttribute("uname", user.getUname());
-	}
-	
-	@RequestMapping(value = "/studentExam", method = RequestMethod.POST)
-	public String studentExamPOST(@RequestParam("subjectCode") int subjectCode, 
-			@RequestBody String examName,
-			Model model, HttpSession session) throws Exception {
-		
-		model.addAttribute("subjectCode", subjectCode);
-		System.out.println("이것이 examName이다."+examName);
-		String[] exam = examName.split("&examName%5B%5D=");
-		System.out.println("length : "+exam.length);
-		for(int i=0; i<exam.length; i++){
-			System.out.println(exam[i]);
-		}
-		return "redirect:/question/try?subjectCode="+subjectCode+"&examName="+exam[0];
 	}
 }
