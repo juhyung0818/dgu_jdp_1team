@@ -46,7 +46,7 @@
 								    <div> 
 								    <p>Answer</p>
 									<label class="w3-validate">GIVE UP</label>
-									<input type="radio" name="answer${i.count}" value="0" checked>
+									<input type="radio" name="answer${i.count}" value="0" >
 									<label class="w3-validate">1) </label>
 									<input class="w3-radio" type="radio" name="answer${i.count}" value="1">
 									<label class="w3-validate">2) </label> 

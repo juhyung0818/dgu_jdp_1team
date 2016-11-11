@@ -75,12 +75,7 @@ public class ExamController {
 	}
 	
 	@RequestMapping(value = "/studentExam", method = RequestMethod.GET)
-<<<<<<< HEAD
-	public void studentExamGET(@RequestParam("subjectCode") int subjectCode, Model model, HttpSession session) throws Exception {
-		logger.info("subjectCode : " + subjectCode + "examList");
-		
-		model.addAttribute("score", "-");
-=======
+
 	public void studentExamGET(@RequestParam("subjectCode") int subjectCode,
 			Model model, HttpSession session) throws Exception {
 		logger.info("subjectCode : " + subjectCode + " examList");
@@ -97,7 +92,6 @@ public class ExamController {
 		//check whether take exam or doesn't
 		model.addAttribute("isTry", scoreService.check(user.getUid()));
 		
->>>>>>> 61d5dd0c59718c71d1fc4efadc5397f3838a393f
 		model.addAttribute("list", examService.examList(subjectCode));
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
@@ -110,7 +104,7 @@ public class ExamController {
 			Model model, HttpSession session) throws Exception {
 		
 		model.addAttribute("subjectCode", subjectCode);
-		System.out.println("이것이 examName이다."+examName);
+		System.out.println("0o0o0o0o."+examName);
 		String[] exam = examName.split("&examName=");
 		System.out.println("length : "+exam.length);
 		for(int i=0; i<exam.length; i++){
