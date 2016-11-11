@@ -32,7 +32,7 @@ public class QuestionTest {
 	public void testRegisterQuestion() throws Exception {
 		QuestionVO vo = new QuestionVO();
 		for (int i = 0; i < 10; i++) {
-			vo.setSubjectCode(12312);
+			vo.setSubjectCode(12);
 			vo.setExamName("test");
 			vo.setqNumber(i);
 			vo.setqInfo("problem");

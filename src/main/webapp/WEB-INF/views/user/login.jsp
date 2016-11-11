@@ -1,9 +1,3 @@
-
-
-
-
-
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -184,6 +178,11 @@ input[type="checkbox"] {
     background-color: pink;
     color: white;
 }
+
+.contentsimg{
+width:300px;
+height:150;
+}
 </style>
 
 <body>
@@ -205,7 +204,7 @@ input[type="checkbox"] {
   <div id="my-form">
   <div id="wrap">
    <h1 class="member">member login</h1>
-   <img src="/resources/teacher.jpg">
+   <img class='contentsimg' src="/resources/teacher.jpg" >
    <div class="form">
     <div class="form2">
      <div class="form3">
@@ -236,10 +235,10 @@ input[type="checkbox"] {
     </div>
     <div class="modal-body">
      <p> 이름 입력 : <input id= "name" class="form-control" placeholder= "Enter name"></p>
-     <p> 아이디 입력 : <input id="ID" class="form-contorl" placeholder="Enter ID">
+     <p> 아이디 입력 : <input id="ID" class="form-contorl" autofocus placeholder="Enter ID">
          <button>ID 중복체크</button>
 
-     <p> 비밀번호 입력:<input id="pass" name="pass" type="password" class="form-contorl" placeholder="Enter PWD">
+     <p> 비밀번호 입력:<input id="pass" name="pass" type="password" class="form-contorl" maxlength="12" pattern={"A-Za-z0-9"} placeholder="Enter PWD">
          (영어와 숫자가 혼합 된 6~12자리의 비밀번호)</p>
      <p> 비밀번호 확인 :<input id="pass-check"   type="password" class="form-control" placeholder="Enter PWD">  
          <button>확인</button>                     

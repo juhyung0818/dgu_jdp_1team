@@ -37,11 +37,11 @@ public class ExamTest {
 	@Test
 	public void testRegistExam() throws Exception{
 		ExamVO vo = new ExamVO();
-		vo.setSubjectCode(12312);
+		vo.setSubjectCode(12);
 		vo.setExamName("test");
 		vo.setStudentCnt(0);
-		vo.setStartTime(Timestamp.valueOf("2016-10-30 11:11:00"));
-		vo.setEndTime(Timestamp.valueOf("2016-10-30 11:11:00"));
+		vo.setStartTime(Timestamp.valueOf("2016-11-11 11:11:00"));
+		vo.setEndTime(Timestamp.valueOf("2016-11-11 11:11:00"));
 		dao.register(vo);
 	}
 	

@@ -75,7 +75,8 @@ public class ExamController {
 	@RequestMapping(value = "/studentExam", method = RequestMethod.GET)
 	public void studentExamGET(@RequestParam("subjectCode") int subjectCode, Model model, HttpSession session) throws Exception {
 		logger.info("subjectCode : " + subjectCode + "examList");
-		model.addAttribute("score", scoreService.myScore(((UserVO)session.getAttribute("login")).getUid()));
+		
+		model.addAttribute("score", "-");
 		model.addAttribute("list", examService.examList(subjectCode));
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));

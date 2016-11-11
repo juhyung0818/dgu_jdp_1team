@@ -79,8 +79,9 @@ public class SubjectController {
 //      return "redirect:/subject/sSubject?uid="+uid;
 //   }
    @RequestMapping(value ="/sRegister", method = RequestMethod.POST)
-   public String sRegisterPOST(@ModelAttribute MemberVO member, Model model) throws Exception {
+   public String sRegisterPOST(@ModelAttribute MemberVO member, Model model, HttpSession session) throws Exception {
       logger.info("Student Subject Register...");
+      member.setUid(((UserVO)session.getAttribute("login")).getUid());
       subjectService.joinSubject(member);
       return "redirect:/subject/sSubject";
    }
