@@ -1,5 +1,6 @@
 package com.jdp.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -85,22 +86,26 @@ public class ExamController {
 		UserVO user = new UserVO();
 		user = (UserVO)session.getAttribute("student");
 
-		List<ScoreExamVO> list = null;
 		List<ExamVO> examList = examService.examList(subjectCode);
 		List<ScoreVO> scoreList = scoreService.myScore(subjectCode, user.getUid());
 		
+		List<ScoreExamVO> list = new ArrayList<>();
+
 		// examList.size() >= scoreList
 		for(int i=0; i<examList.size(); i++){
-			ScoreExamVO temp = null;
-			temp.setSubjectCode(examList.get(i).getSubjectCode());
-			temp.setExamName(examList.get(i).getExamName());
-			temp.setStartTime(examList.get(i).getStartTime());
-			temp.setEndTime(examList.get(i).getEndTime());
-			if(examList.get(i).getSubjectCode() == scoreList.get(i).getSubjectCode()
-					&& examList.get(i).getExamName() == scoreList.get(i).getExamName()){
-				temp.setScore(scoreList.get(i).getScore());
-			} else{
-				temp.setScore(-1);
+			ScoreExamVO temp = new ScoreExamVO();
+			temp.setSubjectCode(examList.get(i).getSubjectCode()); // subject code
+			temp.setExamName(examList.get(i).getExamName()); // exam name
+			temp.setStartTime(examList.get(i).getStartTime()); //start time
+			temp.setEndTime(examList.get(i).getEndTime()); // end time
+			temp.setScore(-1);
+			
+			//score for each exams
+			for(int j=0; j<scoreList.size(); j++){
+				if(examList.get(i).getSubjectCode() == scoreList.get(j).getSubjectCode()
+						&& examList.get(i).getExamName().equals(scoreList.get(j).getExamName())){
+					temp.setScore(scoreList.get(j).getScore());
+				}
 			}
 			list.add(temp);
 		}
@@ -122,7 +127,7 @@ public class ExamController {
 		
 		model.addAttribute("subjectCode", subjectCode);
 		System.out.println("이것이 examName이다."+examName);
-		String[] exam = examName.split("&examName=");
+		String[] exam = examName.split("&examName%5B%5D=");
 		System.out.println("length : "+exam.length);
 		for(int i=0; i<exam.length; i++){
 			System.out.println(exam[i]);

@@ -25,11 +25,20 @@
 					<td>${scoreExamVO.examName}</td>
 					<td>${scoreExamVO.startTime}</td>
 					<td>${scoreExamVO.endTime}</td>
-					<td>${scoreExamVO.score}</td>
+					<td>
+						<script type = "text/javascript">
+							if("${scoreExamVO.score}" == -1){
+								document.write("-");
+							} else{
+								document.write("${scoreExamVO.score}");
+							}
+          				</script>
+					
+					</td>
 					<td>
 						<div class="box-footer" >
 							<button id="try" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"
-							 value ="${examVO.examName}"> TRY </button>
+							 value ="${scoreExamVO.examName}"> TRY </button>
 						</div>
 					</td>
 				</tr>
@@ -52,8 +61,7 @@ $("#try").click( function(){
 		console.log("false");
 		$.ajax({
 			type : 'POST',
-			url : '/exam/studentExam?subjectCode=${subjectCode}&examName=$("#try").val()',
-			data:({'examName': $("#try").val()})
+			data:({'examName': examName})
 		});
 	}
  });
