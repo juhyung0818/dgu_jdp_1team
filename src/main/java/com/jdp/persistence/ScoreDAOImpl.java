@@ -10,7 +10,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.jdp.domain.CheckVO;
-import com.jdp.domain.ScoreExamVO;
 import com.jdp.domain.ScoreVO;
 
 @Repository
@@ -46,7 +45,7 @@ public class ScoreDAOImpl implements ScoreDAO{
 	 * 2016.11.11.Fri
 	 */
 	@Override
-	public List<ScoreExamVO> myScore(int subjectCode, String uid) throws Exception {
+	public List<ScoreVO> myScore(int subjectCode, String uid) throws Exception {
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("subjectCode", subjectCode);
 		paramMap.put("uid", uid);
