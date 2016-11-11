@@ -30,5 +30,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<select id="login" resultType="com.jdp.domain.UserVO">
  		select uid, upw, uname, flag from user where uid=#{uid} and upw=#{upw}
  	</select>
+ 	
+ 	<update id="keepLogin">
+ 		update user set sessionKey = #{sessionId}, sessionLimit=#{next} where uid=#{uid}
+ 	</update>
+ 	
+ 	<select id="checkUserWithSessionKey" resultType="com.jdp.domain.UserVO">
+ 		select * from user where sessionKey=#{value} and sessionLimit>now()
+ 	</select>
 
 </mapper>

@@ -120,4 +120,22 @@ public class ExamController {
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
 		model.addAttribute("uname", user.getUname());
 	}
+<<<<<<< HEAD
+=======
+	
+	@RequestMapping(value = "/studentExam", method = RequestMethod.POST)
+	public String studentExamPOST(@RequestParam("subjectCode") int subjectCode, 
+			@RequestBody String examName,
+			Model model, HttpSession session) throws Exception {
+		
+		model.addAttribute("subjectCode", subjectCode);
+
+		String[] exam = examName.split("&examName%5B%5D=");
+
+		for(int i=0; i<exam.length; i++){
+			System.out.println(exam[i]);
+		}
+		return "redirect:/question/try?subjectCode="+subjectCode+"&examName="+exam[0];
+	}
+>>>>>>> 6c699e1532e60c04409067f1f9169b3c235c42e6
 }
