@@ -12,7 +12,6 @@ import com.jdp.domain.SubjectVO;
  * @author YJH
  * 2016.11.01.Thu
  */
-
 public interface SubjectDAO {
 
 	//add subject in database 
@@ -27,4 +26,6 @@ public interface SubjectDAO {
 	public void joinSubject(MemberVO member) throws Exception;
 	//teacher delete subject
 	public void delete(int subjectCode) throws Exception;
+	//get subject name
+	public String getSubjectName(int subjectCode) throws Exception;
 }

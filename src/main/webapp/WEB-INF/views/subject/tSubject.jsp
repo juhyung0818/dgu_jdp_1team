@@ -8,13 +8,13 @@
 	<div class="box-header with-border">
 		<h3 class="box-title">SUBJECT LIST</h3>
 	</div>
-<div style="max-width: 80%">
 
 	<form class="form-inline" role="form" method="post">
 		<table class="w3-table w3-bordered">
 			<tr>
 				<th>SUBJECT NAME</th>
 				<th>ENTER</th>
+				<th>GRADE</th>
 			</tr>
 			<c:forEach items="${list}" var="subjectVO">
 				<tr>
@@ -24,11 +24,11 @@
 							<a href='/exam/managementExam?subjectCode=${subjectVO.subjectCode}'> 
 							<input type="button" value="ENTER"
 							 class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red"></a>
-							<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red"
-							 href="/subject/studentSubject">Management</a>
-							<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red" 
-							 href="/subject/tDelete?subjectCode=${subjectVO.subjectCode}">Delete</a>
 						</div>
+					</td>
+					<td>
+						<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red"
+							href="/subject/studentSubject">GRADE</a>
 					</td>
 				</tr>
 			</c:forEach>
@@ -40,7 +40,6 @@
 		</div>
 		<br><br>
 	</form>
-</div>
 </div>
 
 <%@include file="../include/sFooter.jsp"%>

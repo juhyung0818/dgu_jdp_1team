@@ -42,6 +42,7 @@ public class ScoreController {
 		model.addAttribute("list", listMem);
 		flag =0;
 	}
+	
 	@RequestMapping(value = "/management", method = RequestMethod.POST)
 	public String managementPOST(@RequestParam("member_grade") String member_grade, 
 			@RequestParam("member_classNumber") String member_classNumber, 

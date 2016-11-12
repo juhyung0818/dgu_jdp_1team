@@ -52,4 +52,9 @@ public class SubjectServiceImpl implements SubjectService{
 		subjectDao.delete(subjectCode);
 	}
 
+	@Override
+	public String getSubjectName(int subjectCode) throws Exception {
+		return subjectDao.getSubjectName(subjectCode);
+	}
+
 }

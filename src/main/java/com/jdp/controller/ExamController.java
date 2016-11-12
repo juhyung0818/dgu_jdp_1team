@@ -66,6 +66,7 @@ public class ExamController {
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
 	}
+	
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String managementExamPOST(@RequestParam("subjectCode") int subjectCode, 
 			@RequestParam("examName") String examName,
@@ -119,6 +120,7 @@ public class ExamController {
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
 		model.addAttribute("uname", user.getUname());
 	}
+	
 	@RequestMapping(value = "/studentExam", method = RequestMethod.POST)
 	public String studentExamPOST(@RequestParam("subjectCode") int subjectCode, 
 			@RequestBody String examName,
