@@ -2,6 +2,7 @@ package com.jdp.persistence;
 
 import java.util.List;
 
+import com.jdp.domain.MemberListVO;
 import com.jdp.domain.MemberVO;
 import com.jdp.domain.SubjectVO;
 
@@ -24,4 +25,6 @@ public interface SubjectDAO {
 	public List<SubjectVO> listTeacher(String uid) throws Exception;
 	//student join subject
 	public void joinSubject(MemberVO member) throws Exception;
+	//teacher delete subject
+	public void delete(int subjectCode) throws Exception;
 }

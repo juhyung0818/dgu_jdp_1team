@@ -9,7 +9,7 @@
 <body>
 	<script type="text/javascript">
 		alert("loginpost");
-		self.location="/student/studentMain";
+		self.location="/subject/sSubject";
 	</script>
 </body>
 </html>

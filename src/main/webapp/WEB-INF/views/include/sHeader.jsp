@@ -13,7 +13,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <style>
 body, h1 {
-	font-family: "Raleway", Arial, sans-serif
+	font-family: "Raleway", Arial, sans-serif;
 }
 
 h1 {
@@ -31,23 +31,27 @@ h1 {
 .w3-myfont {
 	font-family: "Comic Sans MS", cursive, sans-serif;
 }
+
 </style>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"> </script>
 </head>
 <body>
-
+	
 	<!-- !PAGE CONTENT! -->
-	<div class="w3-content" style="max-width: 1500px">
-
+	<div class="w3-content" style="max-width: 80%">
+		<div style="text-align:right">
+			${uname}님 환영합니다.
+			<a class="w3-btn w3-pink" href="/user/logout">logout</a>
+		</div>
 		<!-- Header -->
 		<header class="w3-panel w3-center w3-opacity">
 			<div class="w3-panel w3-pink">
 				<h1>순성닷컴 </h1>
-				${uname}님 환영합니다.
+				
 			</div>
 			<br>
-			<!-- 이 태그는 왜 있는 거지? 과목선택이 뭐하는 거? -->
 			<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge"
 				href="/subject/sSubject">과목 선택</a>
 			
 		</header>
+	</div>

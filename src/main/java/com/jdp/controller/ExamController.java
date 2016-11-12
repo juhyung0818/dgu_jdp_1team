@@ -1,5 +1,6 @@
 package com.jdp.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jdp.domain.ExamVO;
 import com.jdp.domain.ScoreExamVO;
@@ -28,21 +30,19 @@ import com.jdp.service.ScoreService;
  * @author YJH 2016.10.19.Wed
  */
 
-@Controller //get, post, put, patch
-@RequestMapping("/exam")
+@Controller
+@RequestMapping("/exam/*")
 public class ExamController {
 
 	@Inject
 	private ExamService examService;
 	@Inject
 	private ScoreService scoreService;
-
 	private static final Logger logger = LoggerFactory.getLogger(ExamController.class);
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public void registGET(@RequestParam("subjectCode") int subjectCode, Model model, HttpSession session) {
+	public void registGET(@RequestParam("subjectCode") int subjectCode) {
 		logger.info("question register");
-		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -60,22 +60,22 @@ public class ExamController {
 	}
 
 	@RequestMapping(value = "/managementExam", method = RequestMethod.GET)
-	public void managementExamGET(@RequestParam("subjectCode") int subjectCode, Model model, HttpSession session) throws Exception {
+	public void managementExamGET(@RequestParam("subjectCode") int subjectCode, Model model) throws Exception {
 		logger.info("subjectCode : " + subjectCode + "examList");
-		
 		model.addAttribute("list", examService.examList(subjectCode));
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
-		
-		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
 	}
-
-	@RequestMapping(value = "/managementExam", method = RequestMethod.POST)
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String managementExamPOST(@RequestParam("subjectCode") int subjectCode, 
-			@RequestParam("examName") String examName) throws Exception {
+			@RequestParam("examName") String examName,
+			RedirectAttributes rttr) throws Exception {
 		logger.info("subjectCode: " + subjectCode +" examName: " + examName + " delete....");
+//		questionService.delete(subjectCode, examName);
 		examService.delete(subjectCode, examName);
-		return "redirect:/exam/managementExam?subjectCode="+subjectCode;
+	    rttr.addAttribute("subjectCode", subjectCode);
+	    rttr.addAttribute("examName", examName);
+		return "redirect:/exam/managementExam";
 	}
 	
 	@RequestMapping(value = "/studentExam", method = RequestMethod.GET)
@@ -86,28 +86,35 @@ public class ExamController {
 		UserVO user = new UserVO();
 		user = (UserVO)session.getAttribute("student");
 
-		List<ScoreExamVO> list = null;
 		List<ExamVO> examList = examService.examList(subjectCode);
 		List<ScoreVO> scoreList = scoreService.myScore(subjectCode, user.getUid());
 		
+		List<ScoreExamVO> list = new ArrayList<>();
+
 		// examList.size() >= scoreList
 		for(int i=0; i<examList.size(); i++){
-			ScoreExamVO temp = null;
-			temp.setSubjectCode(examList.get(i).getSubjectCode());
-			temp.setExamName(examList.get(i).getExamName());
-			temp.setStartTime(examList.get(i).getStartTime());
-			temp.setEndTime(examList.get(i).getEndTime());
-			if(examList.get(i).getSubjectCode() == scoreList.get(i).getSubjectCode()
-					&& examList.get(i).getExamName().equals(scoreList.get(i).getExamName())){
-				temp.setScore(scoreList.get(i).getScore());
-			} else{
-				temp.setScore(-1);
+
+			ScoreExamVO temp = new ScoreExamVO();
+			temp.setSubjectCode(examList.get(i).getSubjectCode()); // subject code
+			temp.setExamName(examList.get(i).getExamName()); // exam name
+			temp.setStartTime(examList.get(i).getStartTime()); //start time
+			temp.setEndTime(examList.get(i).getEndTime()); // end time
+			temp.setScore(-1);
+			
+			//score for each exams
+			for(int j=0; j<scoreList.size(); j++){
+				if(examList.get(i).getSubjectCode() == scoreList.get(j).getSubjectCode()
+						&& examList.get(i).getExamName().equals(scoreList.get(j).getExamName())){
+					temp.setScore(scoreList.get(j).getScore());
+				}
+
 			}
 			list.add(temp);
 		}
 		
 		//check whether take exam or doesn't
 		model.addAttribute("isTry", scoreService.check(user.getUid()));
+		
 		model.addAttribute("uid", user.getUid());
 		
 		model.addAttribute("list", list);
@@ -115,19 +122,20 @@ public class ExamController {
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
 		model.addAttribute("uname", user.getUname());
 	}
-	
 	@RequestMapping(value = "/studentExam", method = RequestMethod.POST)
 	public String studentExamPOST(@RequestParam("subjectCode") int subjectCode, 
 			@RequestBody String examName,
 			Model model, HttpSession session) throws Exception {
 		
 		model.addAttribute("subjectCode", subjectCode);
-		System.out.println("0o0o0o0o."+examName);
-		String[] exam = examName.split("&examName=");
-		System.out.println("length : "+exam.length);
+
+
+		String[] exam = examName.split("&examName%5B%5D=");
+
 		for(int i=0; i<exam.length; i++){
 			System.out.println(exam[i]);
 		}
 		return "redirect:/question/try?subjectCode="+subjectCode+"&examName="+exam[0];
 	}
+	
 }

@@ -1,5 +1,9 @@
 package com.jdp.controller;
 
+
+
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -12,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.jdp.domain.ExamVO;
+import com.jdp.domain.MemberListVO;
 import com.jdp.domain.MemberVO;
 import com.jdp.domain.UserVO;
 import com.jdp.service.SubjectService;
@@ -25,10 +31,11 @@ import com.jdp.service.SubjectService;
 @Controller
 @RequestMapping("/subject/*")
 public class SubjectController {
-
-   @Inject
-   private SubjectService subjectService;
-   private static final Logger logger = LoggerFactory.getLogger(SubjectController.class);
+	private List<MemberListVO> listMem;
+	private int flag=0;
+	@Inject
+	private SubjectService subjectService;
+	private static final Logger logger = LoggerFactory.getLogger(ExamController.class);
 
 	@RequestMapping(value = "/tRegister", method = RequestMethod.GET)
 	public void registGET(Model model, HttpSession session) {
@@ -78,4 +85,12 @@ public class SubjectController {
 		subjectService.joinSubject(member);
 		return "redirect:/subject/sSubject";
 	}
+	
+	@RequestMapping(value ="/tDelete", method = RequestMethod.POST)
+	public String tDeletePOST(@RequestParam("subjectCode") int subjectCode) throws Exception {
+		logger.info("teacher Subject delete...");
+		subjectService.delete(subjectCode);
+		return "redirect:/subject/tSubject";
+	}
 }
+
