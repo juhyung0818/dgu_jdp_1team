@@ -18,7 +18,8 @@
 			<th>EXAM NAME</th>
 			<th>START TIME</th>
 			<th>END TIME</th>
-			<th>SUBJECT ENTER</th>
+			<th>QUESTION ENTER</th>
+			<th>EXAM MODIFY</th>
 		</tr>
 		<c:forEach items="${list}" var="examVO">
 			<tr>
@@ -28,6 +29,11 @@
 				<td>
 					<a href='/question/modify?subjectCode=${examVO.subjectCode}&examName=${examVO.examName}'>
 						<button id="enter" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> ENTER </button>
+					</a>
+				</td>
+				<td>
+					<a href='/question/modify?subjectCode=${examVO.subjectCode}&examName=${examVO.examName}'>
+						<button id="modify" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> MODIFY </button>
 					</a>
 				</td>
 			</tr>
@@ -40,8 +46,8 @@
 		<a href='/exam/register?subjectCode=${subjectCode}'>
 			<input type="button" class="w3-btn w3-pink" value="ADD">
 		</a>
-		<button type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge btn-danger">SUBJECT REMOVE</button>
 		<button type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge btn-warning">SUBJECT MODIFY</button>
+		<button type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge btn-danger">SUBJECT REMOVE</button>
 		<a href="/subject/tSubject">
 			<button id="backPage" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> 
 				CANCEL

@@ -59,10 +59,10 @@ public class ExamTest {
 	public void testUpdateExam() throws Exception{
 		ExamVO vo = new ExamVO();
 		vo.setSubjectCode(12312);
-		vo.setExamName("test");
+		vo.setExamName("hello");
 		vo.setStartTime(Timestamp.valueOf("2016-10-30 11:00:00"));
 		vo.setEndTime(Timestamp.valueOf("2016-10-30 12:00:00"));
-		dao.update(vo);
+		dao.update(vo, "test");
 	}
 	
 	@Test
