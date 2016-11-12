@@ -1,5 +1,6 @@
 package com.jdp.controller;
 
+import java.lang.ProcessBuilder.Redirect;
 import java.util.Date;
 
 import javax.inject.Inject;
@@ -15,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.WebUtils;
 
 import com.jdp.domain.UserVO;
@@ -117,6 +119,7 @@ public class UserController {
 		}
 		return "redirect:/user/login";
 	}
+
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public void registGET() {
 		logger.info("user register");
@@ -129,4 +132,5 @@ public class UserController {
 		return "redirect:/";
 	}
 	
+
 }

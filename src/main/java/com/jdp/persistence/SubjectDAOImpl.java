@@ -71,5 +71,10 @@ public class SubjectDAOImpl implements SubjectDAO{
 		session.delete(namespace+".delete", subjectCode);
 		
 	}
+
+	@Override
+	public String getSubjectName(int subjectCode) throws Exception {
+		return session.selectOne(namespace+".getSubjectName", subjectCode);
+	}
 }
 
