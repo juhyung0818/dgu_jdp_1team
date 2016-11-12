@@ -38,15 +38,18 @@ h1 {
 </head>
 
 <body>
-
+	
 	<!-- !PAGE CONTENT! -->
-	<div class="w3-content" style="max-width: 1500px">
-
+	<div class="w3-content" style="max-width: 80%">
+		<div style="text-align:right">
+			${uname}님 환영합니다.
+			<a class="w3-btn w3-pink" href="/user/logout">logout</a>
+		</div>
 		<!-- Header -->
 		<header class="w3-panel w3-center w3-opacity">
 			<div class="w3-panel w3-pink">
 				<h1 >순성닷컴 </h1>
-				${uname}님 환영합니다.
+				
 			</div>
 
 			<div class="w3-xxxlarge">
@@ -54,10 +57,10 @@ h1 {
 			</div>
 			<br>
 			<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red"
-				href="/subject/tSubject">과목 관리</a> <a
-				class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red"
-				href="/subject/studentSubject">성적관리</a>
 
+				href="/subject/tSubject">과목 관리</a> 
+			<!-- <a sclass="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red"
+				href="/subject/studentSubject">성적관리</a>-->
 				
 		</header>
 	</div>

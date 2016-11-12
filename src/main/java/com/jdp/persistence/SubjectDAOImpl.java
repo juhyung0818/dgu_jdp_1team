@@ -65,5 +65,11 @@ public class SubjectDAOImpl implements SubjectDAO{
 	public List<SubjectVO> listTeacher(String uid) throws Exception {
 		return session.selectList(namespace+".listTeacher", uid);
 	}
+
+	@Override
+	public void delete(int subjectCode) throws Exception {
+		session.delete(namespace+".delete", subjectCode);
+		
+	}
 }
 

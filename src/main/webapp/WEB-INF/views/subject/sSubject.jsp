@@ -4,8 +4,8 @@
 	pageEncoding="UTF-8"%>
 <%@include file="../include/sHeader.jsp"%>
 
-<div align="center">
-	<div class="box-header with-border">
+<div align=center style="max-width: 1500px">
+	<div class="box-header with-border" >
 		<h3 class="box-title">SUBJECT LIST</h3>
 	</div>
 	<form class="form-inline" role="form" method="post">

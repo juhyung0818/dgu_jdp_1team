@@ -35,9 +35,10 @@ public class ScoreDAOImpl implements ScoreDAO{
 		return session.selectList(namespace+".answer", paramMap);
 	}
 
+
 	@Override
-	public int myScore(String uid) throws Exception {
-		return session.selectOne(namespace+".myScore", uid);
+	public String check(String uid) throws Exception {
+		return session.selectOne(namespace + ".check", uid);
 	}
 	@Override
 	public List<MemberListVO> listMember(String uid, int subjectCode) throws Exception {
@@ -47,9 +48,28 @@ public class ScoreDAOImpl implements ScoreDAO{
 		return session.selectList(namespace+".manage", paramMap);
 	}
 
+
 	@Override
 	public List<MemberListVO> listMember2(MemberListVO memberListVO) throws Exception {
 		return session.selectList(namespace+".manage2", memberListVO);
+	}
+	/**
+	 * display exam infomation and score
+	 * 2016.11.11.Fri
+	 */
+	@Override
+	public List<ScoreVO> myScore(int subjectCode, String uid) throws Exception {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("subjectCode", subjectCode);
+		paramMap.put("uid", uid);
+		return session.selectList(namespace+".myScore", paramMap);
+
+	}
+
+	@Override
+	public int myScore(String uid) throws Exception {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

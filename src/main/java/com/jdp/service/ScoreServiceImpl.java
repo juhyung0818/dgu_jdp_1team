@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.jdp.domain.CheckVO;
 import com.jdp.domain.MemberListVO;
+import com.jdp.domain.ScoreExamVO;
+
 import com.jdp.domain.ScoreVO;
 import com.jdp.persistence.ScoreDAO;
 
@@ -27,9 +29,15 @@ public class ScoreServiceImpl implements ScoreService{
 		return scoreDao.answers(subjectCode, examName);
 	}
 
+
 	@Override
-	public int myScore(String uid) throws Exception {
-		return scoreDao.myScore(uid);
+	public String check(String uid) throws Exception {
+		return scoreDao.check(uid);
+	}
+
+	@Override
+	public List<ScoreVO> myScore(int subjectCode, String uid) throws Exception {
+		return scoreDao.myScore(subjectCode, uid);
 	}
 	@Override
 	public List<MemberListVO> listMember(String uid, int subjectCode) throws Exception {

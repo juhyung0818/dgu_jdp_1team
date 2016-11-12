@@ -22,20 +22,21 @@ import com.jdp.domain.QuestionVO;
 public class QuestionDAOImpl implements QuestionDAO{
 	
 	@Inject
-	private SqlSession session; //session for sql connetion
+	private SqlSession session; //session for sql connection
 	private String namespace = "com.jdp.mapper.QuestionMapper";
 
 	
 	public void register(QuestionVO question) throws Exception {
 		session.insert(namespace + ".register", question);
 	}
+	
 	public void registerList(List<QuestionVO> question) throws Exception {
 		session.insert(namespace + ".registerList", question);
 	}
 
 	@Override
 	public void update(QuestionVO question) throws Exception {
-		session.update(namespace+".update", question);
+		session.update(namespace + ".update", question);
 	}
 
 	@Override
@@ -43,7 +44,7 @@ public class QuestionDAOImpl implements QuestionDAO{
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("subjectCode", subjectCode);
 		paramMap.put("examName", examName);
-		return session.selectList(namespace+".listQuestion", paramMap);
+		return session.selectList(namespace + ".listQuestion", paramMap);
 	}
 
 	@Override
@@ -51,7 +52,7 @@ public class QuestionDAOImpl implements QuestionDAO{
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("subjectCode", subjectCode);
 		paramMap.put("examName", examName);
-		session.delete(namespace+".delete", paramMap);
+		session.delete(namespace + ".delete", paramMap);
 	}
 
 	@Override
@@ -59,6 +60,6 @@ public class QuestionDAOImpl implements QuestionDAO{
 		Map<String, Object> paramMap = new HashMap<String, Object>();
 		paramMap.put("subjectCode", subjectCode);
 		paramMap.put("examName", examName);
-		return session.selectList(namespace+".tryQuestion", paramMap);
+		return session.selectList(namespace + ".tryQuestion", paramMap);
 	}
 }

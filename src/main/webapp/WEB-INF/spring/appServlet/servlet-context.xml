@@ -35,8 +35,10 @@
 		</interceptor>
 		
 		<interceptor>
-			<mapping path="/student/subjectRegister"/>
-			<mapping path="/student/studentMain"/>
+			<mapping path="/subject/*"/>
+			<mapping path="/exam/*"/>
+			<mapping path="/question/*"/>
+			
 			<beans:ref bean="authInterceptor"/>
 		</interceptor>
 		

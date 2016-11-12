@@ -11,7 +11,6 @@
 	</div>
 
 
-	<form class="form-inline" role="form" method="post">
 		<table class="w3-table w3-bordered">
 			<tr>
 				<th>EXAM NAME</th>
@@ -20,41 +19,44 @@
 				<th>SCORE</th>
 				<th>TRY</th>
 			</tr>
-			<c:forEach items="${list}" var="examVO">
+			<c:forEach items="${list}" var="scoreExamVO" varStatus="i" >
 				<tr>
-					<td>${examVO.examName}</td>
-					<td>${examVO.startTime}</td>
-					<td>${examVO.endTime}</td>
-					<td>${score}</td>
+					<td>${scoreExamVO.examName}</td>
+					<td>${scoreExamVO.startTime}</td>
+					<td>${scoreExamVO.endTime}</td>
+					<td>
+						<script type = "text/javascript">
+							if("${scoreExamVO.score}" == -1){
+								document.write("-");
+							} else{
+								document.write("${scoreExamVO.score}");
+							}
+          				</script>
+					
+					</td>
 					<td>
 						<div class="box-footer" >
-							<a href='/question/try?subjectCode=${examVO.subjectCode}&examName=${examVO.examName}'> <input
-								type="button" class="w3-btn w3-pink" value="TRY">
+							<a href='/question/try?subjectCode=${scoreExamVO.subjectCode}&examName=${scoreExamVO.examName}'>
+								<button class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> TRY </button>
 							</a>
 						</div>
 					</td>
 				</tr>
 			</c:forEach>
 		</table>
-		<br>
-		<br>
-	</form>
+		<br><br>
 </div>
-
-
 <!-- <script>
-//buttons 
-$(document).ready(function(){
-	var formObj = $("form[role='form']");
-	console.log(formObj);
-	
-	$(".w3-btn w3-pink").on("click", function(){
-		formObj.attr("action", "/exam/register");
-		formObj.attr("method", "get");		
-		formObj.submit();
+$("#try'{i.count}'").click( function(){
+	var examName = [];
+	examName.push($("#try1").val());
+	console.log("false");
+	$.ajax({
+		type : 'POST',
+		data:({'examName': examName})
 	});
 });
-
 </script> -->
+
 
 <%@include file="../include/sFooter.jsp"%>

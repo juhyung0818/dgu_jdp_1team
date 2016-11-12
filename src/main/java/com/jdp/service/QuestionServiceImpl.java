@@ -38,13 +38,13 @@ public class QuestionServiceImpl implements QuestionService{
 		for(int i=0; i<questions.getqList().size(); i++){
 			questionDAO.register(list.get(i));
 		}
-		
 	}
 
 	@Override
 	public void register(QuestionVO question) throws Exception {
 		questionDAO.register(question);
 	}
+	
 	@Override
 	public void registerList(List<QuestionVO> question) throws Exception {
 
@@ -54,9 +54,10 @@ public class QuestionServiceImpl implements QuestionService{
 	}
 
 	@Override
-	public void update(QuestionVO question) throws Exception {
-		// TODO Auto-generated method stub
-		
+	public void update(List<QuestionVO> question) throws Exception {
+		for(int i=0; i<question.size(); i++){
+			questionDAO.update(question.get(i));
+		}
 	}
 
 	@Override
@@ -75,4 +76,5 @@ public class QuestionServiceImpl implements QuestionService{
 		questionDAO.delete(subjectCode, examName);
 		examDAO.delete(subjectCode, examName);
 	}
+
 }

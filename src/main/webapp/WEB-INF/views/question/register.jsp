@@ -31,7 +31,7 @@
 						<tr>
 						<th class="tg-i46p" colspan="3" rowspan="2">
 						<div class="form-group">
-							번호<input class="w3-input" type="number" name="qNumber${status.count}"
+							Q<input class="w3-input" type="number" name="qNumber${status.count}"
 								placeholder="Enter qNumber" value='${i}'>
 					<label for="exampleInputEmail1"></label>
 					
@@ -125,7 +125,7 @@
 				</c:forEach>
 
 				<div class="box-footer"> <br>
-					<button id="complete" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="10"> COMPLETE </button>
+					<button id="complete" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> COMPLETE </button>
 					<button type="reset" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"
 					onclick="exam/studentExam?subjectCode=${subjectCode}"> CANCLE </button>
 				</div>
@@ -151,10 +151,9 @@ $("#complete").click( function(){
 	console.log(question);
 	$.ajax({
 		type : 'POST',
-		url : '/question/register?subjectCode=${subjectCode}&examName=${examName}',
-			data:({'question': question})
+		data:({'question': question})
 	});
-	
+	self.location = "/exam/managementExam?subjectCode="+${subjectCode};
 });
 </script>	
 	
