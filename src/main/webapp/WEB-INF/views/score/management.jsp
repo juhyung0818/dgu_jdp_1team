@@ -16,7 +16,7 @@
 				<th><input type="text" name="member_grade" placeholder="학년"></th>
 				<th><input type="text" name="member_classNumber" placeholder="반"></th>
 				<th><input type="text" name="member_studentNumber" placeholder="학번"></th>
-				<th><input type="text" name="member_name" placeholder="이름"></th>
+				<th><input type="text" name="member_uname" placeholder="이름"></th>
 				<th><button type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> 검색 </button></th>
 			<tr>
 				<th>학년</th>
@@ -29,7 +29,7 @@
 					<td>${memberListVO.grade}</td>
 					<td>${memberListVO.classNumber}</td>
 					<td>${memberListVO.studentNumber}</td>
-					<td>${memberListVO.name}</td>
+					<td>${memberListVO.uname}</td>
 				</tr>
 			</c:forEach>
 		</table>

@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.jdp.domain.CheckVO;
+import com.jdp.domain.MemberListVO;
 import com.jdp.domain.ScoreVO;
 import com.jdp.persistence.ScoreDAO;
 
@@ -30,5 +31,13 @@ public class ScoreServiceImpl implements ScoreService{
 	public int myScore(String uid) throws Exception {
 		return scoreDao.myScore(uid);
 	}
+	@Override
+	public List<MemberListVO> listMember(String uid, int subjectCode) throws Exception {
+		return scoreDao.listMember(uid, subjectCode);
+	}
 
+	@Override
+	public List<MemberListVO> listMember2(MemberListVO memberListVO) throws Exception {
+		return scoreDao.listMember2(memberListVO);
+	}
 }

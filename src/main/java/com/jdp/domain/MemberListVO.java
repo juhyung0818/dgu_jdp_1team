@@ -12,7 +12,9 @@ public class MemberListVO {
 	private int grade;
 	private int classNumber;
 	private int studentNumber;
-	private String name;
+	private String uname;
+	
+	
 	/* getter, setter methods */
 	public String getUid() {
 		return uid;
@@ -44,16 +46,16 @@ public class MemberListVO {
 	public void setStudentNumber(int studentNumber) {
 		this.studentNumber = studentNumber;
 	}
-	public String getName() {
-		return name;
+	public String getUname() {
+		return uname;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setUname(String uname) {
+		this.uname = uname;
 	}
 	/* toString for log */
 	@Override
 	public String toString() {
 		return "MemberVO [uid=" + uid + ", subjectCode=" + subjectCode + ", grade=" + grade + ", classNumber="
-				+ classNumber + ", studentNumber=" + studentNumber + ", name=" + "]";
+				+ classNumber + ", studentNumber=" + studentNumber + ", uname=" + uname+ "]";
 	}
 }

@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.jdp.domain.CheckVO;
+import com.jdp.domain.MemberListVO;
 import com.jdp.domain.ScoreVO;
 
 @Repository
@@ -38,6 +39,17 @@ public class ScoreDAOImpl implements ScoreDAO{
 	public int myScore(String uid) throws Exception {
 		return session.selectOne(namespace+".myScore", uid);
 	}
+	@Override
+	public List<MemberListVO> listMember(String uid, int subjectCode) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("uid", uid);
+		paramMap.put("subjectCode", subjectCode);
+		return session.selectList(namespace+".manage", paramMap);
+	}
 
+	@Override
+	public List<MemberListVO> listMember2(MemberListVO memberListVO) throws Exception {
+		return session.selectList(namespace+".manage2", memberListVO);
+	}
 
 }

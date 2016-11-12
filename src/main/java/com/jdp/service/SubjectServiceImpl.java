@@ -47,14 +47,4 @@ public class SubjectServiceImpl implements SubjectService{
 		return subjectDao.listTeacher(uid);
 	}
 
-	@Override
-	public List<MemberListVO> listMember(String uid, int subjectCode) throws Exception {
-		return subjectDao.listMember(uid, subjectCode);
-	}
-
-	@Override
-	public List<MemberListVO> listMember2(MemberListVO memberListVO) throws Exception {
-		return subjectDao.listMember2(memberListVO);
-	}
-
 }

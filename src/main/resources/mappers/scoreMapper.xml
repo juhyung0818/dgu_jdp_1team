@@ -29,4 +29,27 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		where uid=#{uid}
  	</select>
  	
+ 	<select id="manage" resultType ="com.jdp.domain.MemberListVO">
+	select m.grade, m.classnumber, m.studentnumber, u.uname
+    from subject as s join member as m on s.subjectcode = m.subjectcode join user as u on m.uid=u.uid
+    where s.subjectcode=#{subjectCode} and s.uid=#{uid};
+	</select>
+	
+	<select id="manage2" resultType ="com.jdp.domain.MemberListVO">
+	select m.grade, m.classnumber, m.studentnumber, u.uname
+    from subject as s inner join member as m  on s.subjectcode=m.subjectcode inner join user as u on m.uid=u.uid
+    where s.subjectcode=#{subjectCode} and s.uid=#{uid}
+    <if test="grade!=0 and grade!=''">
+    	and m.grade like CONCAT('%', #{grade}, '%')
+    </if> 
+    <if test="classNumber!=0 and classNumber!=''">
+    	and m.classNumber like CONCAT('%', #{classNumber}, '%')
+    </if>
+    <if test="studentNumber!=0 and studentNumber!=''">
+    	and m.studentNumber like CONCAT('%', #{studentNumber}, '%')
+    </if> 
+    <if test="uname!=null and uname!=''">
+    	and u.uname like CONCAT('%', #{uname}, '%')
+    </if>  ;
+	</select>
 </mapper>

@@ -25,8 +25,4 @@ public interface SubjectDAO {
 	public List<SubjectVO> listTeacher(String uid) throws Exception;
 	//student join subject
 	public void joinSubject(MemberVO member) throws Exception;
-	//manage student
-	public List<MemberListVO> listMember(String uid, int subjectCode) throws Exception;
-	//manage student2
-	public List<MemberListVO> listMember2(MemberListVO memberListVO) throws Exception;
 }

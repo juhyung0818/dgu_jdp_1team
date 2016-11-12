@@ -53,17 +53,11 @@ h1 {
 				<p class="w3-myfont">${subjectName}</p>
 			</div>
 			<br>
-<<<<<<< HEAD
-			<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge"
-				href="/subject/tSubject?uid=${uid}">과목 관리</a> <a
-				class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge"
-				href="/subject/management?uid=${uid}">성적관리</a>
-=======
 			<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red"
 				href="/subject/tSubject">과목 관리</a> <a
 				class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red"
 				href="/subject/studentSubject">성적관리</a>
->>>>>>> 534b4b6100c86558dd74f7baf57b620a9c213edd
+
 				
 		</header>
 	</div>

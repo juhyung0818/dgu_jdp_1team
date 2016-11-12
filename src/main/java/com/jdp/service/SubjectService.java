@@ -16,7 +16,5 @@ public interface SubjectService {
 	public void modify(int subjectCode, String subjectName) throws Exception; 
 	public List<SubjectVO> listStudent(String uid) throws Exception;
 	public List<SubjectVO> listTeacher(String uid) throws Exception;
-	public List<MemberListVO> listMember(String uid, int subjectCode) throws Exception;
-	public List<MemberListVO> listMember2(MemberListVO memberListVO) throws Exception;
 	public void joinSubject(MemberVO member) throws Exception;
 }
