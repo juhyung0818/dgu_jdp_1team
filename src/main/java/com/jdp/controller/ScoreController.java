@@ -33,13 +33,19 @@ public class ScoreController {
 	private static final Logger logger = LoggerFactory.getLogger(ExamController.class);
 	
 	@RequestMapping(value = "/management", method = RequestMethod.GET)
-	public void managementGET(
-			@ModelAttribute MemberListVO memberList, Model model) throws Exception {
+	public void managementGET(@RequestParam("subjectCode") int subjectCode,
+			@RequestParam("subjectName") String subjectName,
+			@ModelAttribute MemberListVO memberList, Model model, HttpSession session) throws Exception {
 		logger.info("Student Subject Register...");
+		UserVO user = new UserVO();
+		user = (UserVO)session.getAttribute("teacher");
+		
 		if(flag==0){
-			listMem=scoreService.listMember("jo", 1);
+			listMem=scoreService.listMember(user.getUid(), subjectCode);
 		} 
+		model.addAttribute("uname", user.getUname());
 		model.addAttribute("list", listMem);
+		model.addAttribute("subjectName", subjectName);
 		flag =0;
 	}
 	

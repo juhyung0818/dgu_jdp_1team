@@ -93,7 +93,7 @@ public class UserController {
 			
 			if(studentCookie !=null)
 			{
-				studentCookie.setPath("/user/login");
+				studentCookie.setPath("/");
 				studentCookie.setMaxAge(0);
 				response.addCookie(studentCookie);
 				service.keepLogin(student.getUid(), session.getId(), new Date());
@@ -111,7 +111,7 @@ public class UserController {
 			
 			if(teacherCookie !=null)
 			{
-				teacherCookie.setPath("/user/login");
+				teacherCookie.setPath("/");
 				teacherCookie.setMaxAge(0);
 				response.addCookie(teacherCookie);
 				service.keepLogin(teacher.getUid(), session.getId(), new Date());
