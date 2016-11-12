@@ -31,7 +31,7 @@
 						<tr>
 						<th class="tg-i46p" colspan="3" rowspan="2">
 						<div class="form-group">
-							번호<input class="w3-input" type="number" name="qNumber${status.count}"
+							Q<input class="w3-input" type="number" name="qNumber${status.count}"
 								placeholder="Enter qNumber" value='${i}'>
 					<label for="exampleInputEmail1"></label>
 					
@@ -151,9 +151,9 @@ $("#complete").click( function(){
 	console.log(question);
 	$.ajax({
 		type : 'POST',
-		url : '/question/register?subjectCode=${subjectCode}&examName=${examName}',
 		data:({'question': question})
 	});
+	self.location = "/exam/managementExam?subjectCode="+${subjectCode};
 });
 </script>	
 	

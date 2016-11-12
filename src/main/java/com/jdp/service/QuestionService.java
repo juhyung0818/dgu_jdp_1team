@@ -2,6 +2,7 @@ package com.jdp.service;
 
 import java.util.List;
 
+import com.jdp.domain.QuestionListVO;
 import com.jdp.domain.QuestionVO;
 
 /**
@@ -15,7 +16,7 @@ public interface QuestionService {
 	public void register(QuestionVO question) throws Exception;
 	public void registerList(List<QuestionVO> question) throws Exception;
 	//modify a question
-	public void update(QuestionVO question) throws Exception;
+	public void update(List<QuestionVO> question) throws Exception;
 	//display question list
 	public List<QuestionVO> listQuestion(int subjectCode, String examName) throws Exception;
 	public List<QuestionVO> tryQuestion(int subjectCode, String examName) throws Exception;
