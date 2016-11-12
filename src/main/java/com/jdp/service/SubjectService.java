@@ -16,5 +16,8 @@ public interface SubjectService {
 	public List<SubjectVO> listStudent(String uid) throws Exception;
 	public List<SubjectVO> listTeacher(String uid) throws Exception;
 	
+	//student join subject
 	public void joinSubject(MemberVO member) throws Exception;
+	//teacher delete subject
+	public void delete(int subjectCode) throws Exception;
 }

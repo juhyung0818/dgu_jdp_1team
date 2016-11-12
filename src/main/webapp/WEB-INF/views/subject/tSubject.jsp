@@ -4,8 +4,7 @@
 	pageEncoding="UTF-8"%>
 <%@include file="../include/tHeader.jsp"%>
 
-
-<div align="center">
+<div style="text-align:center">
 	<div class="box-header with-border">
 		<h3 class="box-title">SUBJECT LIST</h3>
 	</div>
@@ -21,16 +20,19 @@
 					<td>${subjectVO.subjectName}</td>
 					<td>
 						<div class="box-footer" >
-							<a href='/exam/managementExam?subjectCode=${subjectVO.subjectCode}'> <input
-								type="button" class="w3-btn w3-pink" value="ENTER">
-							</a>
+							<a href='/exam/managementExam?subjectCode=${subjectVO.subjectCode}'> 
+							<input type="button" value="ENTER"
+							 class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red"></a>
+							<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red"
+							 href="/subject/studentSubject">Management</a>
+							<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red" 
+							 href="/subject/tDelete?subjectCode=${subjectVO.subjectCode}">Delete</a>
 						</div>
 					</td>
 				</tr>
 			</c:forEach>
 		</table>
 		<div class="box-footer" align="right">
-			<!--<a href='/subject/sRegister?uid=${uid}'>-->
 			<a href='/subject/tRegister'>
 				<input type="button" class="w3-btn w3-pink" value="ADD">
 			</a>

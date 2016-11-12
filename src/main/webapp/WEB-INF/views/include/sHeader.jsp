@@ -13,7 +13,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 <style>
 body, h1 {
-	font-family: "Raleway", Arial, sans-serif
+	font-family: "Raleway", Arial, sans-serif;
 }
 
 h1 {
@@ -31,6 +31,7 @@ h1 {
 .w3-myfont {
 	font-family: "Comic Sans MS", cursive, sans-serif;
 }
+
 </style>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"> </script>
 </head>
@@ -53,3 +54,4 @@ h1 {
 				href="/subject/sSubject">과목 선택</a>
 			
 		</header>
+	</div>

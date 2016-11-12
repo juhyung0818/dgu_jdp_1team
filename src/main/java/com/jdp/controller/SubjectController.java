@@ -78,4 +78,11 @@ public class SubjectController {
 		subjectService.joinSubject(member);
 		return "redirect:/subject/sSubject";
 	}
+	
+	@RequestMapping(value ="/tDelete", method = RequestMethod.POST)
+	public String tDeletePOST(@RequestParam("subjectCode") int subjectCode) throws Exception {
+		logger.info("teacher Subject delete...");
+		subjectService.delete(subjectCode);
+		return "redirect:/subject/tSubject";
+	}
 }

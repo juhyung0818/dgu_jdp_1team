@@ -46,4 +46,9 @@ public class SubjectServiceImpl implements SubjectService{
 		return subjectDao.listTeacher(uid);
 	}
 
+	@Override
+	public void delete(int subjectCode) throws Exception {
+		subjectDao.delete(subjectCode);
+	}
+
 }
