@@ -2,14 +2,12 @@
 <%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="../include/sHeader.jsp"%>
+<%@include file="../include/tHeader.jsp"%>
 
 <div align="center">
 	<div class="box-header with-border">
-		<h3 class="box-title">SUBJECT LIST</h3>
+
 	</div>
-
-
 	<form class="form-inline" role="form" method="post" >
 		<table class="w3-table w3-bordered">
 			<tr>
