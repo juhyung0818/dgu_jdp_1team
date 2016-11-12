@@ -36,4 +36,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from score
 		where subjectCode=#{subjectCode} and examName=#{examName} and uid=#{uid}
 	</select> 	
+	
+	
+	<select id="checkIsTry" resultType="com.jdp.domain.ScoreVO">
+		select *
+		from score
+		where subjectCode=#{subjectCode} and examName=#{examName} and uid=#{uid}
+	</select>
 </mapper>

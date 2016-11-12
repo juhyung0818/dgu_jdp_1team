@@ -31,6 +31,7 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/user/loginPost"/>
+			<mapping path="/exam/studentExam"/>
 			<beans:ref bean="loginInterceptor"/>
 		</interceptor>
 		

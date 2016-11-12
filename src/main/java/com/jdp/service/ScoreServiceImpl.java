@@ -38,4 +38,9 @@ public class ScoreServiceImpl implements ScoreService{
 		return scoreDao.myScore(subjectCode, uid);
 	}
 
+	@Override
+	public ScoreVO checkIsTry(int subjectCode, String examName, String uid) throws Exception {
+		return scoreDao.checkIsTry(subjectCode, examName, uid);
+	}
+
 }

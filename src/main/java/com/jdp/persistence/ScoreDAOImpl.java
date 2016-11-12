@@ -52,4 +52,13 @@ public class ScoreDAOImpl implements ScoreDAO{
 		return session.selectList(namespace+".myScore", paramMap);
 	}
 
+	@Override
+	public ScoreVO checkIsTry(int subjectCode, String examName, String uid) throws Exception {
+		Map<String, Object> paramMap=new HashMap<String, Object>();
+		paramMap.put("subjectCode", subjectCode);
+		paramMap.put("examName", examName);
+		paramMap.put("uid", uid);
+		return session.selectOne(namespace+".checkIsTry", paramMap);
+	}
+
 }

@@ -16,4 +16,13 @@ public interface ScoreService {
 	public List<CheckVO> answer(int subjectCode, String examName) throws Exception;
 	public String check(String uid) throws Exception;
 	public List<ScoreVO> myScore(int subjectCode, String uid) throws Exception;
+	/**
+	 * student took a exam whether or not
+	 * @param subjectCode
+	 * @param examName
+	 * @param uid
+	 * @return if already took a exam, return uid. if not, null
+	 * @throws Exception
+	 */
+	public ScoreVO checkIsTry(int subjectCode, String examName, String uid) throws Exception;
 }
