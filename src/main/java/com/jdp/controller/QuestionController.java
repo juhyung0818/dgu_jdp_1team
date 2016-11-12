@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jdp.domain.CheckVO;
 import com.jdp.domain.QuestionVO;
@@ -79,14 +80,18 @@ public class QuestionController {
 	}	
 	
 	
-	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/modify", method = RequestMethod.GET)
 	public void read(@RequestParam("subjectCode") int subjectCode, 
 			@RequestParam("examName") String examName, Model model, HttpSession session) throws Exception {
-		model.addAttribute("list", questionService.listQuestion(subjectCode, examName));
+		 List<QuestionVO> list = questionService.listQuestion(subjectCode, examName);
+		model.addAttribute("list",list);
 		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
+		model.addAttribute("subjectCode", subjectCode);
+		model.addAttribute("examName", examName);
+		model.addAttribute("num", list.size());
 	}
 	
-	@RequestMapping(value = "/list", method = RequestMethod.POST)
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String delete(@RequestParam("subjectCode") int subjectCode, 
 			@RequestParam("examName") String examName) throws Exception {
 		logger.info("subjectCode: " + subjectCode +" examName: " + examName + " delete....");
@@ -141,5 +146,39 @@ public class QuestionController {
 		//insert score
 		scoreService.register(score);
 		return "redirect:/exam/studentExam?subjectCode="+subjectCode;
+	}
+	
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String modifyQuestion(@RequestParam("subjectCode") int subjectCode,
+			@RequestParam("examName") String examName, 
+			Model model, 
+			@RequestBody String question, RedirectAttributes rttr,
+			HttpSession session)throws Exception {
+
+		System.out.println("modify post....");
+
+		//parsing part
+		List<QuestionVO> list = new ArrayList<QuestionVO>();
+		String[] temp = question.split("&question%5B%5D=");
+		for(int i=0; i<temp.length/8; i++){
+
+			QuestionVO q = new QuestionVO();
+			q.setSubjectCode(subjectCode);
+			q.setExamName(examName);
+			q.setqNumber(Integer.parseInt(temp[i*8+1]));
+			q.setqPoint(Integer.parseInt(temp[i*8+2]));
+			q.setAnswer(Integer.parseInt(temp[i*8+3]));
+			q.setqInfo(temp[i*8+4]);
+			q.setEx1(temp[i*8+5]);
+			q.setEx2(temp[i*8+6]);
+			q.setEx3(temp[i*8+7]);
+			q.setEx4(temp[i*8+8]);
+			//
+			list.add(q);
+		}
+		//modify questions
+		questionService.update(list);
+	    rttr.addAttribute("subjectCode", subjectCode);
+		return "redirect:/exam/managementExam";
 	}
 }

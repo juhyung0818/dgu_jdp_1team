@@ -22,13 +22,14 @@ import com.jdp.domain.QuestionVO;
 public class QuestionDAOImpl implements QuestionDAO{
 	
 	@Inject
-	private SqlSession session; //session for sql connetion
+	private SqlSession session; //session for sql connection
 	private String namespace = "com.jdp.mapper.QuestionMapper";
 
 	
 	public void register(QuestionVO question) throws Exception {
 		session.insert(namespace + ".register", question);
 	}
+	
 	public void registerList(List<QuestionVO> question) throws Exception {
 		session.insert(namespace + ".registerList", question);
 	}

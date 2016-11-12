@@ -11,7 +11,6 @@
 	</div>
 
 
-	<form class="form-inline" role="form" method="post">
 		<table class="w3-table w3-bordered">
 			<tr>
 				<th>EXAM NAME</th>
@@ -20,7 +19,7 @@
 				<th>SCORE</th>
 				<th>TRY</th>
 			</tr>
-			<c:forEach items="${list}" var="scoreExamVO">
+			<c:forEach items="${list}" var="scoreExamVO" varStatus="i" >
 				<tr>
 					<td>${scoreExamVO.examName}</td>
 					<td>${scoreExamVO.startTime}</td>
@@ -37,34 +36,27 @@
 					</td>
 					<td>
 						<div class="box-footer" >
-							<button id="try" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"
-							 value ="${scoreExamVO.examName}"> TRY </button>
+							<a href='/question/try?subjectCode=${scoreExamVO.subjectCode}&examName=${scoreExamVO.examName}'>
+								<button class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> TRY </button>
+							</a>
 						</div>
 					</td>
 				</tr>
 			</c:forEach>
 		</table>
 		<br><br>
-	</form>
 </div>
+<!-- <script>
+$("#try'{i.count}'").click( function(){
+	var examName = [];
+	examName.push($("#try1").val());
+	console.log("false");
+	$.ajax({
+		type : 'POST',
+		data:({'examName': examName})
+	});
+});
+</script> -->
 
-<script>
-$("#try").click( function(){
-	if('${isTry}' == '${uid}'){
-		console.log("true");
-		$(function(){
-			alert("You can't do it!");
-		});
-	}else{
-		var examName = [];
-		examName.push($("#try").val());
-		console.log("false");
-		$.ajax({
-			type : 'POST',
-			data:({'examName': examName})
-		});
-	}
- });
-</script>
 
 <%@include file="../include/sFooter.jsp"%>

@@ -15,6 +15,5 @@
 				target="_blank" class="w3-hover-text-green">jh</a>
 		</p>
 	</footer>
-
 </body>
 </html>

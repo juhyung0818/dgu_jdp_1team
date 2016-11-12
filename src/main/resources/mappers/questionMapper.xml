@@ -33,5 +33,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		where subjectCode=#{subjectCode} and examName=#{examName}
  		order by qNumber
  	</select>
-
+ 	
 </mapper>

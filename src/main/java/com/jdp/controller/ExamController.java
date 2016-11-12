@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jdp.domain.ExamVO;
 import com.jdp.domain.ScoreExamVO;
@@ -29,8 +30,8 @@ import com.jdp.service.ScoreService;
  * @author YJH 2016.10.19.Wed
  */
 
-@Controller //get, post, put, patch
-@RequestMapping("/exam")
+@Controller
+@RequestMapping("/exam/*")
 public class ExamController {
 
 	@Inject
@@ -71,12 +72,15 @@ public class ExamController {
 		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
 	}
 
-	@RequestMapping(value = "/managementExam", method = RequestMethod.POST)
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String managementExamPOST(@RequestParam("subjectCode") int subjectCode, 
-			@RequestParam("examName") String examName) throws Exception {
+			@RequestParam("examName") String examName,
+			RedirectAttributes rttr) throws Exception {
 		logger.info("subjectCode: " + subjectCode +" examName: " + examName + " delete....");
 		examService.delete(subjectCode, examName);
-		return "redirect:/exam/managementExam?subjectCode="+subjectCode;
+	    rttr.addAttribute("subjectCode", subjectCode);
+	    rttr.addAttribute("examName", examName);
+		return "redirect:/exam/managementExam";
 	}
 	
 	@RequestMapping(value = "/studentExam", method = RequestMethod.GET)
@@ -112,6 +116,7 @@ public class ExamController {
 		
 		//check whether take exam or doesn't
 		model.addAttribute("isTry", scoreService.check(user.getUid()));
+		
 		model.addAttribute("uid", user.getUid());
 		
 		model.addAttribute("list", list);
@@ -119,7 +124,6 @@ public class ExamController {
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
 		model.addAttribute("uname", user.getUname());
 	}
-	
 	@RequestMapping(value = "/studentExam", method = RequestMethod.POST)
 	public String studentExamPOST(@RequestParam("subjectCode") int subjectCode, 
 			@RequestBody String examName,

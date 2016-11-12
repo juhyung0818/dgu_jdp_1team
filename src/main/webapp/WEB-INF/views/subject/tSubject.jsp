@@ -8,6 +8,7 @@
 	<div class="box-header with-border">
 		<h3 class="box-title">SUBJECT LIST</h3>
 	</div>
+<div style="max-width: 80%">
 
 	<form class="form-inline" role="form" method="post">
 		<table class="w3-table w3-bordered">
@@ -39,6 +40,7 @@
 		</div>
 		<br><br>
 	</form>
+</div>
 </div>
 
 <%@include file="../include/sFooter.jsp"%>

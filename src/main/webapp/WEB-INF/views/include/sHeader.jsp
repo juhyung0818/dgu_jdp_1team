@@ -38,7 +38,7 @@ h1 {
 <body>
 	
 	<!-- !PAGE CONTENT! -->
-	<div class="w3-content" style="max-width: 1500px">
+	<div class="w3-content" style="max-width: 80%">
 		<div style="text-align:right">
 			${uname}님 환영합니다.
 			<a class="w3-btn w3-pink" href="/user/logout">logout</a>
