@@ -117,14 +117,14 @@ input[type="button"] {
    <div class="form">
     <div class="form2">
      <div class="form3">
-      <p> 이름 입력 : <input name= "uname" class="form-control" autofocus placeholder= "Enter name"></p>
-     <p> 아이디 입력 : <input name= "uid" class="form-contorl"  placeholder="Enter ID">
+      <p> 이름 입력 : <input name= "uname" class="form-control" reqiored autofocus placeholder= "Enter name"></p>
+     <p> 아이디 입력 : <input name= "uid" class="form-contorl"  required placeholder="Enter ID">
          <button id="check" class ="btn-check">ID 중복체크</button>
 
-     <p> 비밀번호 입력:<input name="upw" name="pass" type="password" class="form-contorl" maxlength="12" pattern={"A-Za-z0-9"} placeholder="Enter PWD">
+     <p> 비밀번호 입력:<input name="upw" name="pass" type="password" required class="form-contorl" maxlength="12" pattern={"A-Za-z0-9"} placeholder="Enter PWD">
          (영어와 숫자가 혼합 된 6~12자리의 비밀번호)</p>
      <p> 비밀번호 재입력 :
-     	<input id="pass-check"   type="password" class="form-control" placeholder="Enter PWD">  
+     	<input id="pass-check" required  type="password" class="form-control" placeholder="Enter PWD">  
          <input type="submit" value="확인" >                   
      <p> 사용자 선택 :
                      

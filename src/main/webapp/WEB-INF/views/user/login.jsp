@@ -12,29 +12,8 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
 
 <style>
- 
-body, h1 {
-	font-family: "Raleway", Arial, sans-serif
-}
 
-h1 {
-	letter-spacing: 10px
-}
-
-.w3-row-padding img {
-	margin-bottom: 12px
-}
-
-.w3-row-padding {
-	margin-bottom: 128px
-}
-
-.w3-myfont {
-	font-family: "Comic Sans MS", cursive, sans-serif;
-}
-
-
-.member {
+ .member {
  font-size: 50px;
  text-shadow: 0 0 10px #666;
  color: #fff;
@@ -49,14 +28,14 @@ body {
  font-size: 12px;
 }
 .form {
- width: 420px;
+ width: 450px;
  height: 280px;
  border-radius: 25px;
  border: 5px double #999;
  margin: 30px auto;
 }
 .form2 {
- width: 380px;
+ width: 450px;
  min-width: 320px;
  height: 200px;
  margin: 60px auto;
@@ -142,7 +121,7 @@ height:150;
      <div class="form3">
       <label for="user">아이디</label><input type="text" id="uid" name="uid">
       <div class="clear"></div>
-      <label for="user">비밀번호</label><input type="text" name="upw">
+      <label for="user">비밀번호</label><input type="password" name="upw">
      </div>
      <input type="submit"  value="로그인하기">
      <div class="clear"></div>
