@@ -7,20 +7,17 @@
 	</h1>
 	<form class="form-inline" role="form" method="post" action="modify">
 		<input type='hidden' name='subjectCode' value="${subjectCode}"> 
-	<fieldset>
-		<div class="box-footer"><br>
-			<input type="text" class="w3-input w3-border w3-round-large" name="subjectName" value ="${subjectName}"/>
-		</div>
-		<div class="box-footer"><br>
-			<button type="submit"  class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge btn-primary"> SAVE </button>
-			<a href="/subject/tSubject">
-				<button id="backPage" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> 
-					CANCEL
-		 		</button> 
-			</a>
-		</div>
+		<fieldset>
+			<div class="box-footer"><br>
+				<input type="text" class="w3-input w3-border w3-round-large" name="subjectName" value ="${subjectName}"/>
+			</div>
 		</fieldset>
 	</form>
+	
+		<div class="box-footer"><br>
+			<button type="submit"  class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge btn-primary"> SAVE </button>
+			<button type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge btn-warning"> CANCEL </button> 
+		</div>
 	</center>
 </body>
 
@@ -32,9 +29,15 @@ $(document).ready(
 
 		console.log(formObj);
 		
-		$(".btn-primary").on("click",function() {
-					formObj.submit();
-				});
+		$(".btn-primary")
+			.on("click",function() {
+			formObj.submit();
+		});
+		
+		$(".btn-warning")
+			.on("click",function() {
+			self.location = "/subject/tSubject";
+		});
 	});
 </script>
 

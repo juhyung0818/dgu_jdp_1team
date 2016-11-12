@@ -103,10 +103,11 @@ public class SubjectController {
 	}
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String subjectModifyPOST(@RequestParam("subjectCode") int subjectCode,
+	public String subjectModifyPOST(@RequestParam("subjectCode") int subjectCode, @RequestParam("subjectName") String subjectName,
 			RedirectAttributes rttr) throws Exception{
+		subjectService.modify(subjectCode, subjectName);
 	    rttr.addAttribute("subjectCode", subjectCode);
-		return "/subject/tSubejct";
+		return "redirect:/exam/managementExam";
 	}
 }
 
