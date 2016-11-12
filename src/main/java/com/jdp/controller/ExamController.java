@@ -98,7 +98,7 @@ public class ExamController {
 			temp.setStartTime(examList.get(i).getStartTime());
 			temp.setEndTime(examList.get(i).getEndTime());
 			if(examList.get(i).getSubjectCode() == scoreList.get(i).getSubjectCode()
-					&& examList.get(i).getExamName() == scoreList.get(i).getExamName()){
+					&& examList.get(i).getExamName().equals(scoreList.get(i).getExamName())){
 				temp.setScore(scoreList.get(i).getScore());
 			} else{
 				temp.setScore(-1);

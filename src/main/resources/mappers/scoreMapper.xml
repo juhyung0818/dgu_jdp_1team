@@ -24,11 +24,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	</select>
  	
  	<select id="myScore" resultType="com.jdp.domain.ScoreVO">
- 		select subjectCode, examName, score
+ 		select s.subjectCode, s.examName, s.score, s.uid
  		from score as s join exam as e
  		on s.examName = e.examName
  		where e.subjectCode=#{subjectCode} and s.uid=#{uid}
- 		order by e.startTime
  	</select>
  	
 	<select id="check" resultType="String">

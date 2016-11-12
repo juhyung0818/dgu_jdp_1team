@@ -26,4 +26,11 @@ public class UserDAOImpl implements UserDAO{
 		return session.selectOne(namespace+".login", dto);
 	}
 
+@Override
+public UserVO register(UserVO user) throws Exception {
+	
+	return session.selectOne(namespace+".register",user );
+}
+
+
 }

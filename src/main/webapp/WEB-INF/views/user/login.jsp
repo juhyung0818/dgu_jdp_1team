@@ -93,7 +93,7 @@ input[type="submit"] {
  border: none;
  font-family: Arial, sans-serif
 }
-.submit 1 {height:20px;}
+
 
 input[type="button"] {
  height: 30px;
@@ -109,75 +109,7 @@ input[type="checkbox"] {
  margin-top:20px;
 }
 
-/* The Modal (background) */
-.modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
 
-/* Modal Content */
-.modal-content {
-    position: relative;
-    background-color: #fefefe;
-    margin: auto;
-    padding: 0;
-    border: 1px solid #888;
-    width: 60%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
-    -webkit-animation-name: animatetop;
-    -webkit-animation-duration: 0.4s;
-    animation-name: animatetop;
-    animation-duration: 0.4s
-}
-
-/* Add Animation */
-@-webkit-keyframes animatetop {
-    from {top:-300px; opacity:0}
-    to {top:0; opacity:1}
-}
-
-@keyframes animatetop {
-    from {top:-300px; opacity:0}
-    to {top:0; opacity:1}
-}
-
-/* The Close Button */
-.close {
-    color: white;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.modal-header {
-    padding: 2px 16px;
-    background-color: pink;
-    color: white;
-}
-
-.modal-body {padding: 2px 16px;}
-
-.modal-footer {
-    padding: 2px 16px;
-    background-color: pink;
-    color: white;
-}
 
 .contentsimg{
 width:300px;
@@ -208,100 +140,28 @@ height:150;
    <div class="form">
     <div class="form2">
      <div class="form3">
-      <label for="user">아이디</label><input type="text" name="uid">
+      <label for="user">아이디</label><input type="text" id="uid" name="uid">
       <div class="clear"></div>
-      <label for="user">비밀번호</label><input type="password" name="upw">
+      <label for="user">비밀번호</label><input type="text" name="upw">
      </div>
      <input type="submit"  value="로그인하기">
      <div class="clear"></div>
      <div class="form4">
       <label><input type="checkbox" name="useCookie">아이디저장</label> 
       <div class="clear"></div>
-      <label><input type="button" id="myBtn" value="회원가입"></label>
+      <a class="w3-btn w3-pink" href="/user/register">회원가입</a>
 
      </div>
     </div>
    </div>
   </div>
-<!-- The Modal -->
-<div id="myModal" class="modal">
 
-  <!-- Modal content -->
-
-  <div class="modal-content">
-    <div class="modal-header">
-      <span class="close">X</span>
-      <h2>회원가입</h2>
     </div>
-    <div class="modal-body">
-     <p> 이름 입력 : <input id= "name" class="form-control" placeholder= "Enter name"></p>
-     <p> 아이디 입력 : <input id="ID" class="form-contorl" autofocus placeholder="Enter ID">
-         <button>ID 중복체크</button>
+  
 
-     <p> 비밀번호 입력:<input id="pass" name="pass" type="password" class="form-contorl" maxlength="12" pattern={"A-Za-z0-9"} placeholder="Enter PWD">
-         (영어와 숫자가 혼합 된 6~12자리의 비밀번호)</p>
-     <p> 비밀번호 확인 :<input id="pass-check"   type="password" class="form-control" placeholder="Enter PWD">  
-         <button>확인</button>                     
-     <p> 사용자 선택 :
-		     <input class="w3-radio" type="radio" name="ex" value="1">
 
-                     <label class="w3-validate">선생님</label>
-		    
-		     <input class="w3-radio" type="radio" name="ex" value="1">
-                      <label class="w3-validate">학생</label>
-    </p>
-    </div>             
-    <div class="modal-footer">
-      <div class="box-footer">
-      			<button>등록</button>
-				<input type="reset" value="취소" onClick="self.location='/test/login?pass=">
-	  </div>
-    </div>
-  </div>
-
-</div>
-</div>
  </form>
-<script>
-// Get the modal
-var modal = document.getElementById('myModal');
-
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
-
-// When the user clicks the button, open the modal
-btn.onclick = function() {
-    modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
-}
-
-window.onload=function(){
-	document.getElementById('my-form').onsubmit=function(){
-	var pass=document.getElementById('pass').value;
-	var passCheck=document.getElementById('pass-check').value;
-
-	if(pass==passCheck){
-	alert('성공');}
-	else{
-	alert('실패');
-	return false;}
-	}
-}
-</script>     
+    
 
 </body>
 

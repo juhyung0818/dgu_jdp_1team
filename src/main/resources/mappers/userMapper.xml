@@ -30,5 +30,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<select id="login" resultType="com.jdp.domain.UserVO">
  		select uid, upw, uname, flag from user where uid=#{uid} and upw=#{upw}
  	</select>
+ 	
+ 	<insert id="register">
+ 	    insert into user(uid, upw, uname, flag)
+ 	    values (#{uid} , #{upw} , #{uname}, #{flag})
+ 	</insert>
 
 </mapper>

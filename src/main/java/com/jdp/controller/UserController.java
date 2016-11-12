@@ -38,4 +38,16 @@ public class UserController {
 			return;
 		model.addAttribute("userVO", vo);
 	}
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public void registGET() {
+		logger.info("user register");
+	}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public String registPOST(@ModelAttribute UserVO user) throws Exception {
+		logger.info("user register");
+		service.register(user);
+		return "redirect:/";
+	}
+	
 }
