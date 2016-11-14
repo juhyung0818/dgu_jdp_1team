@@ -4,7 +4,7 @@
 	pageEncoding="UTF-8"%>
 <%@include file="../include/tHeader.jsp"%>
 
-<div style="text-align:center">
+<div style="text-align: center">
 	<div class="box-header with-border">
 		<h3 class="box-title">SUBJECT LIST</h3>
 	</div>
@@ -20,25 +20,27 @@
 				<tr>
 					<td>${subjectVO.subjectName}</td>
 					<td>
-						<div class="box-footer" >
-							<a href='/exam/managementExam?subjectCode=${subjectVO.subjectCode}'> 
-							<input type="button" value="ENTER"
-							 class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red"></a>
+						<div class="box-footer">
+							<a
+								href='/exam/managementExam?subjectCode=${subjectVO.subjectCode}'>
+								<input type="button" value="ENTER"
+								class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red">
+							</a>
 						</div>
 					</td>
-					<td>
-						<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red"
-							href="/subject/studentSubject">GRADE</a>
-					</td>
+					<td><a
+						class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red"
+						href="/subject/studentSubject">GRADE</a></td>
 				</tr>
 			</c:forEach>
 		</table>
 		<div class="box-footer" align="right">
-			<a href='/subject/tRegister'>
-				<input type="button" class="w3-btn w3-pink" value="ADD">
+			<a href='/subject/tRegister'> <input type="button"
+				class="w3-btn w3-pink" value="ADD">
 			</a>
 		</div>
-		<br><br>
+		<br>
+		<br>
 	</form>
 </div>
 
