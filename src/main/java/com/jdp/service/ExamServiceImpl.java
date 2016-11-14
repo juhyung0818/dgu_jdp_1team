@@ -31,8 +31,8 @@ public class ExamServiceImpl implements ExamService{
 	}
 
 	@Override
-	public void update(ExamVO exam) throws Exception {
-		examDao.update(exam);
+	public void update(ExamVO exam, String newName) throws Exception {
+		examDao.update(exam, newName);
 	}
 
 	@Override

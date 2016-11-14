@@ -140,4 +140,20 @@ public class ExamController {
 		return "redirect:/question/try?subjectCode="+subjectCode+"&examName="+exam[0];
 	}
 	
+	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	public void examModifyGET(@RequestParam("subjectCode") int subjectCode, 
+			@RequestParam("examName") int examName, Model model) throws Exception{
+		model.addAttribute("subjectCode", subjectCode);
+	}
+	
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String examModifyPOST(@RequestParam("subjectCode") int subjectCode,
+			@RequestParam("newName") String newName,
+			@ModelAttribute("exam") ExamVO exam,
+			RedirectAttributes rttr) throws Exception{
+		examService.update(exam, newName);
+	    rttr.addAttribute("subjectCode", subjectCode);
+		return "redirect:/exam/managementExam";
+	}
+	
 }

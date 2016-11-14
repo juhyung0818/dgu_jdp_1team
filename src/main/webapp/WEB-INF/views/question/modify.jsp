@@ -221,4 +221,4 @@
 	});
 </script>
 
-<%@include file="../include/sFooter.jsp"%>
+<%@include file="../include/tFooter.jsp"%>
