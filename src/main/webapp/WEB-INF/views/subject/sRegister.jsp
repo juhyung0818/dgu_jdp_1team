@@ -3,30 +3,35 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
-<title>순성 닷컴</title>
-	<link rel="stylesheet" href="//mugifly.github.io/jquery-simple-datetimepicker/jquery.simple-dtpicker.css">
-	<script src="//code.jquery.com/jquery.min.js"></script>
-	<script src="//mugifly.github.io/jquery-simple-datetimepicker/jquery.simple-dtpicker.js"></script>
-	<script>
-		$(function(){
-  		$('.datetimepicker').appendDtpicker({'locale':'ko'});
+<title></title>
+<link rel="stylesheet"
+	href="//mugifly.github.io/jquery-simple-datetimepicker/jquery.simple-dtpicker.css">
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script
+	src="//mugifly.github.io/jquery-simple-datetimepicker/jquery.simple-dtpicker.js"></script>
+<script>
+	$(function() {
+		$('.datetimepicker').appendDtpicker({
+			'locale' : 'ko'
 		});
-	</script>        
-	
-	<style type="text/css">
-		label {
-			display : none;
-		}	
-		input {
-			height : 30px;
-			
-		}
-		fieldset{
-			width : 200pt;
-			border : 3;
-			border-color : pink;
-		}
-	</style>
+	});
+</script>
+
+<style type="text/css">
+label {
+	display: none;
+}
+
+input {
+	height: 30px;
+}
+
+fieldset {
+	width: 200pt;
+	border: 3;
+	border-color: pink;
+}
+</style>
 </head>
 <body>
 	<center>
