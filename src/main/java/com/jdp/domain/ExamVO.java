@@ -16,7 +16,7 @@ public class ExamVO {
 	private int questionNum;
 	private Timestamp startTime;
 	private Timestamp endTime;
-	
+
 	/* setter, getter methods */
 	public int getSubjectCode() {
 		return subjectCode;
@@ -55,6 +55,8 @@ public class ExamVO {
 	public void setEndTime(Timestamp endTime) {
 		this.endTime = endTime;
 	}
+	
+	//toString method for log
 	@Override
 	public String toString() {
 		return "ExamVO [subjectCode=" + subjectCode + ", examName=" + examName + ", studentCnt=" + studentCnt

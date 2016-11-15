@@ -5,9 +5,11 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.jdp.domain.ExamVO;
 import com.jdp.persistence.ExamDAO;
+import com.jdp.persistence.QuestionDAO;
 
 /**
  * Service class about Exam
@@ -19,14 +21,18 @@ public class ExamServiceImpl implements ExamService{
 
 	@Inject
 	private ExamDAO examDao;
+	@Inject
+	private QuestionDAO questionDao;
 	
 	@Override
 	public void register(ExamVO exam) throws Exception {
 		examDao.register(exam);
 	}
-
+	
+	@Transactional
 	@Override
 	public void delete(int subjectCode, String examName) throws Exception {
+		questionDao.delete(subjectCode, examName);
 		examDao.delete(subjectCode, examName);
 	}
 
@@ -44,4 +50,15 @@ public class ExamServiceImpl implements ExamService{
 	public String getSubjectName(int subjectCode) throws Exception {
 		return examDao.getSubjectName(subjectCode);
 	}
+
+	@Override
+	public ExamVO getExam(int subjectCode, String examName) throws Exception {
+		return examDao.getExam(subjectCode, examName);
+	}
+	
+	@Override
+	public void update(ExamVO exam) throws Exception {
+		examDao.update(exam);
+	}
+
 }

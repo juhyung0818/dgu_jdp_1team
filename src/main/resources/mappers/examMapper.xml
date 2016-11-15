@@ -15,9 +15,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where subjectCode=#{subjectCode} and examName=#{examName}
 	</delete>
 	
+	<delete id="deleteAll">
+		delete from exam
+		where subjectCode=#{subjectCode}
+	</delete>
+	
 	 <update id="modify">
-		update exam set examName=#{newName}, startTime=#{startTime}, endTime=#{endTime}
-		where examName = #{examName} and subjectCode=#{subjectCode}
+		update exam set startTime=#{startTime}, endTime=#{endTime}
+		where subjectCode=#{subjectCode} and examName = #{examName}
  	</update>
 
 	<select id="listExam" resultType="com.jdp.domain.ExamVO">
@@ -31,6 +36,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		select subjectName  
  		from subject
  		where subjectCode=#{subjectCode}
+ 	</select>
+ 	
+ 	<select id="getExam" resultType="com.jdp.domain.ExamVO">
+ 		select subjectCode, examName, startTime, endTime, studentCnt
+ 		from exam
+ 		where examName=#{examName} and subjectCode=#{subjectCode} 
  	</select>
  	
 </mapper>

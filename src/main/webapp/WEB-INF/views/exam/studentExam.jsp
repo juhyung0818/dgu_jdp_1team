@@ -10,8 +10,7 @@
 		<h3 class="box-title">EXAM LIST</h3>
 	</div>
 
-
-		<table class="w3-table w3-bordered">
+	<table class="w3-table w3-bordered">
 			<tr>
 				<th>EXAM NAME</th>
 				<th>START TIME</th>
@@ -32,31 +31,36 @@
 								document.write("${scoreExamVO.score}");
 							}
           				</script>
-					
 					</td>
 					<td>
+					<form role="form" method="post">
+						<input type='hidden' name='subjectCode' value="${subjectCode}"> 
+						<input type='hidden' name='examName' value="${scoreExamVO.examName}"> 
 						<div class="box-footer" >
-							<a href='/question/try?subjectCode=${scoreExamVO.subjectCode}&examName=${scoreExamVO.examName}'>
-								<button class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> TRY </button>
-							</a>
+							<button type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge btn-primary">TRY</button>
 						</div>
+					</form>
 					</td>
 				</tr>
 			</c:forEach>
 		</table>
+		<button type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge btn-danger">SUBJECT REMOVE</button>
 		<br><br>
 </div>
-<!-- <script>
-$("#try'{i.count}'").click( function(){
-	var examName = [];
-	examName.push($("#try1").val());
-	console.log("false");
-	$.ajax({
-		type : 'POST',
-		data:({'examName': examName})
-	});
-});
-</script> -->
 
+<script>
+$(document).ready(function() {
+
+	var formObj = $("form[role='form']");
+
+	console.log(formObj);
+
+	$(".btn-danger").on("click", function() {
+		formObj.attr("action", "/subject/leave");
+		formObj.submit();
+	});
+
+});
+</script>
 
 <%@include file="../include/sFooter.jsp"%>

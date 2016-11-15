@@ -18,8 +18,8 @@
 			<th>EXAM NAME</th>
 			<th>START TIME</th>
 			<th>END TIME</th>
-			<th>QUESTION ENTER</th>
 			<th>EXAM MODIFY</th>
+			<th>QUESTION ENTER</th>
 		</tr>
 		<c:forEach items="${list}" var="examVO">
 			<tr>
@@ -27,13 +27,13 @@
 				<td>${examVO.startTime}</td>
 				<td>${examVO.endTime}</td>
 				<td>
-					<a href='/question/modify?subjectCode=${examVO.subjectCode}&examName=${examVO.examName}'>
-						<button id="enter" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> ENTER </button>
+					<a href='/exam/modify?subjectCode=${examVO.subjectCode}&examName=${examVO.examName}'>
+						<button id="modify" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> MODIFY </button>
 					</a>
 				</td>
 				<td>
 					<a href='/question/modify?subjectCode=${examVO.subjectCode}&examName=${examVO.examName}'>
-						<button id="modify" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> MODIFY </button>
+						<button id="enter" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> ENTER </button>
 					</a>
 				</td>
 			</tr>

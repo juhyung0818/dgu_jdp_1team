@@ -20,5 +20,10 @@ public interface ExamDAO {
 	public void incrementCnt(ExamVO exam) throws Exception;
 	public String getSubjectName(int subjectCode) throws Exception;
 	
-	public void readExam(ExamVO exam) throws Exception;
+	public ExamVO getExam(int subjectCode, String examName) throws Exception;
+	
+	public void update(ExamVO exam) throws Exception;
+	//all exam delete
+	public void deleteAll(int subjectCode) throws Exception;
+
 }

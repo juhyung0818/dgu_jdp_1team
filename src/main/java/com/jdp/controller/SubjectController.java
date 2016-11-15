@@ -78,7 +78,9 @@ public class SubjectController {
 	@RequestMapping(value ="/sRegister", method = RequestMethod.POST)
 	public String sRegisterPOST(@ModelAttribute MemberVO member, Model model, HttpSession session) throws Exception {
 		logger.info("Student Subject Register...");
-		member.setUid(((UserVO)session.getAttribute("student")).getUid());
+		UserVO user = new UserVO();
+		user = (UserVO)session.getAttribute("student");
+		member.setUid(user.getUid());
 		subjectService.joinSubject(member);
 		return "redirect:/subject/sSubject";
 	}
@@ -103,11 +105,22 @@ public class SubjectController {
 	}
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String subjectModifyPOST(@RequestParam("subjectCode") int subjectCode, @RequestParam("subjectName") String subjectName,
+	public String subjectModifyPOST(@RequestParam("subjectCode") int subjectCode, 
+			@RequestParam("subjectName") String subjectName,
 			RedirectAttributes rttr) throws Exception{
 		subjectService.modify(subjectCode, subjectName);
 	    rttr.addAttribute("subjectCode", subjectCode);
 		return "redirect:/exam/managementExam";
+	}
+	
+	@RequestMapping(value="/leave", method = RequestMethod.POST)
+	public String leaveSubjectPOST(@RequestParam("subjectCode") int subjectCode, 
+			HttpSession session) throws Exception{
+		logger.info("leave subject....");
+		UserVO user = new UserVO();
+		user = (UserVO)session.getAttribute("student");
+		subjectService.leaveSubject(user.getUid(), subjectCode);
+		return "redirect:/subject/sSubject";
 	}
 }
 

@@ -62,4 +62,9 @@ public class QuestionDAOImpl implements QuestionDAO{
 		paramMap.put("examName", examName);
 		return session.selectList(namespace + ".tryQuestion", paramMap);
 	}
+
+	@Override
+	public void deleteAll(int subjectCode) throws Exception {
+		session.delete(namespace+".deleteAll", subjectCode);
+	}
 }

@@ -23,7 +23,6 @@ import com.jdp.domain.SubjectVO;
 @Repository
 public class SubjectDAOImpl implements SubjectDAO{
 
-
 	@Inject
 	private SqlSession session;
 	private String namespace="com.jdp.mapper.SubjectMapper";
@@ -69,12 +68,22 @@ public class SubjectDAOImpl implements SubjectDAO{
 	@Override
 	public void delete(int subjectCode) throws Exception {
 		session.delete(namespace+".delete", subjectCode);
-		
 	}
 
 	@Override
 	public String getSubjectName(int subjectCode) throws Exception {
 		return session.selectOne(namespace+".getSubjectName", subjectCode);
+	}
+
+	/**
+	 * Student leave subject 
+	 */
+	@Override
+	public void leaveSubject(String uid, int subjectCode) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("uid", uid);
+		paramMap.put("subjectCode", subjectCode);
+		session.delete(namespace+".leaveSubject", paramMap);
 	}
 }
 

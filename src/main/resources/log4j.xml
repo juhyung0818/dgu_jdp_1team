@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.jdp.exam">
+	<logger name="com.jdp.controller">
 		<level value="info" />
 	</logger>
 	

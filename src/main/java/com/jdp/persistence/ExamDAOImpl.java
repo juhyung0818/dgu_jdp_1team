@@ -32,11 +32,6 @@ public class ExamDAOImpl implements ExamDAO{
 	}
 
 	@Override
-	public void readExam(ExamVO exam) throws Exception {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
 	public void update(ExamVO exam, String newName) throws Exception {
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("subjectCode", exam.getSubjectCode());
@@ -44,7 +39,7 @@ public class ExamDAOImpl implements ExamDAO{
 		paramMap.put("startTime", exam.getStartTime());
 		paramMap.put("endTime", exam.getEndTime());
 		paramMap.put("newName", newName);
-		session.update(namespace+".modify", paramMap);
+		session.update(namespace+".modify", exam);
 	}
 
 	@Override
@@ -62,4 +57,21 @@ public class ExamDAOImpl implements ExamDAO{
 		return session.selectOne(namespace+".getName", subjectCode);
 	}
 
+	@Override
+	public ExamVO getExam(int subjectCode, String examName) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("subjectCode", subjectCode);
+		paramMap.put("examName", examName);
+		return session.selectOne(namespace+".getExam",paramMap);
+	}
+
+	@Override
+	public void update(ExamVO exam) throws Exception {
+		session.update(namespace+".modify", exam);
+	}
+
+	@Override
+	public void deleteAll(int subjectCode) throws Exception {
+		session.delete(namespace+".deleteAll", subjectCode);
+	}
 }

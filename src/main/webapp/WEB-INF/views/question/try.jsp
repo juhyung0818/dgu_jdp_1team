@@ -124,7 +124,7 @@ $("#complete").click( function(){
 				},
 				data: ({'answer': answer})
 		});
-		self.location = "/exam/studentExam?subjectCode="+${subjectCode};
+		/* self.location = "/exam/studentExam?subjectCode="+${subjectCode};*/
 });
 </script>
 

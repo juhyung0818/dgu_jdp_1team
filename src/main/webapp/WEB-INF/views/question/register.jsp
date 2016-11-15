@@ -133,7 +133,6 @@
 			</div>
 </body>
 
-		
 <script>
 $("#complete").click( function(){
 	var question = [];
@@ -151,6 +150,10 @@ $("#complete").click( function(){
 	console.log(question);
 	$.ajax({
 		type : 'POST',
+		headers: {
+			"Contnet-Type": "application/json;charset=UTF-8",
+			"X-HTTP-Method-Override": "POST" 
+			},
 		data:({'question': question})
 	});
 	self.location = "/exam/managementExam?subjectCode="+${subjectCode};

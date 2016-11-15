@@ -52,10 +52,6 @@
 				<label for="subjectCode">STUDENT NUMBER</label>
 				<input type="text" class="w3-input w3-border w3-round-large" name="studentNumber" placeholder="Write student number" />
 			</div>
-			<div class="form-group">
-				<label for="subjectCode">STUDENT NAME</label>
-				<input type="text" class="w3-input w3-border w3-round-large" name="studentName" placeholder="Write student name" />
-			</div>
 		</div>
 		<div class="box-footer"><br>
 			<button type="submit"  class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> ADD </button>
