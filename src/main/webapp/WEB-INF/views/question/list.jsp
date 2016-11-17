@@ -15,11 +15,6 @@
 		.tg .tg-i46p{background-color:pink;color:pink}
 		.tg .tg-yw4l{vertical-align:top}
 </style>
-<form role="form" action="modify" method="post">
-	<input type='hidden' name='subjectCode' value="${subjectCode}"> 
-	<input type='hidden' name='examName' value="${examName}">
-</form>
-
 <section class="content">
 	<div align="center">
 	<div class="row">
@@ -36,16 +31,8 @@
 						<c:forEach items="${list}" var="questionVO" varStatus="i">
 							<table class="tg">
 							    <tr>
-								<td>
-									Q<input class="w3-input" type="number" name="qNumber${i.count}"
-										placeholder="Enter qNumber" value='${i.count}' readonly>
-								</td>
-								<td> 						
-									<div class="form-group">
-										<p>Point</p>
-										<input type="number" name="qPoint${i.count}" class="form-contorl" placeholder="Enter qPoint" value="${questionVO.qPoint}">
-									</div>
-								</td>
+								<td>Q${questionVO.qNumber}.</td>
+								<td> <input type="number" value='${questionVO.qPoint}' /></td>
 								<th class="th-yw4l" colspan="9" rowspan="2">
 								    <div> 
 									    <p>Answer</p>
@@ -71,7 +58,7 @@
 									</tr>
 									<tr>
 									<td class="th-yw4l" colspan="15" rowspan="8">
-									<textarea class="form-control" cols="100" rows="20" id="qInfo${i.count}">${questionVO.qInfo}</textarea>
+									<textarea class="form-control" cols="100" rows="20">${questionVO.qInfo}</textarea>
 								    </td>
 							</tr>
 							 <tr>
@@ -94,25 +81,25 @@
 									<ul class="w3-ul w3-border">
 									<li>1)
 										<div class="form-group">
-											<input class="w3-input" name="ex1${i.count}" 
+											<input class="w3-input" name="ex1${status.count}" rows="1"
 												placeholder="Enter ..." value='${questionVO.ex1}'>
 										</div>
 									</li>
 									<li>2)
 										<div class="form-group">
-											<input class="w3-input" name="ex2${i.count}" 
+											<input class="w3-input" name="ex2${status.count}" rows="1"
 												placeholder="Enter ..." value='${questionVO.ex2}'>
 										</div>
 									</li>
 									<li>3)
 										<div class="form-group">
-											<input class="w3-input" name="ex3${i.count}" 
+											<input class="w3-input" name="ex3${status.count}" rows="1"
 												placeholder="Enter ..."  value='${questionVO.ex3}'>
 										</div>
 									</li>
 									<li>4)
 										<div class="form-group">
-											<input class="w3-input" name="ex4${i.count}"
+											<input class="w3-input" name="ex4${status.count}" rows="1"
 												placeholder="Enter ..." value='${questionVO.ex4}'>
 										</div>
 									</li>
@@ -120,37 +107,20 @@
 							</tr>
 							</table>
 						</c:forEach>
-					</div>
+					
+				</div>
 				<br><br>
 					<div class="box-footer"> <br>
-						<button id="modify" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="10"> SAVE </button>
-						<button type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge btn-danger">REMOVE</button>
-						<a href="/exam/managementExam?subjectCode=${subjectCode}">
-							<button id="backPage" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> 
-								CANCEL 
-							</button> 
-						</a>
+						<button id="modify" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="10"> MODIFY </button>
+						<button type="reset" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"
+						onclick="exam/studentExam?subjectCode=${subjectCode}"> CANCLE </button>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
-
 <script>
-$(document).ready(function() {
-
-	var formObj = $("form[role='form']");
-
-	console.log(formObj);
-
-	$(".btn-danger").on("click", function() {
-		formObj.attr("action", "/exam/delete");
-		formObj.submit();
-	});
-
-});
-
 $("#modify").click( function(){
 	var question = [];
 	var i;
@@ -163,13 +133,12 @@ $("#modify").click( function(){
 		question.push($('input[name=ex2'+ i +']').val());
 		question.push($('input[name=ex3'+ i +']').val());
 		question.push($('input[name=ex4'+ i +']').val());
-	}
+	} 
 	console.log(question);
 	$.ajax({
 		type : 'POST',
 		data:({'question': question})
 	});
-	self.location = "/exam/managementExam?subjectCode="+${subjectCode};
 });
 </script>
 

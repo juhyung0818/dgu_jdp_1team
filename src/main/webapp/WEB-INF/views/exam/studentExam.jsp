@@ -4,12 +4,10 @@
 	pageEncoding="UTF-8"%>
 <%@include file="../include/sHeader.jsp"%>
 
-
 <div align="center">
 	<div class="box-header with-border">
 		<h3 class="box-title">EXAM LIST</h3>
 	</div>
-
 
 		<table class="w3-table w3-bordered">
 			<tr>
@@ -24,7 +22,7 @@
 					<td>${scoreExamVO.examName}</td>
 					<td>${scoreExamVO.startTime}</td>
 					<td>${scoreExamVO.endTime}</td>
-					<td>
+					<td id="score${i.count}">
 						<script type = "text/javascript">
 							if("${scoreExamVO.score}" == -1){
 								document.write("-");
@@ -36,9 +34,9 @@
 					</td>
 					<td>
 						<div class="box-footer" >
-							<a href='/question/try?subjectCode=${scoreExamVO.subjectCode}&examName=${scoreExamVO.examName}'>
-								<button class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> TRY </button>
-							</a>
+							<form id="msg" action="/exam/studentExamPost?subjectCode=${scoreExamVO.subjectCode}&examName=${scoreExamVO.examName}" method="post">
+								<button id ="tryBtn" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" onclick="isTry(${scoreExamVO.score})"> TRY </button>
+							</form>
 						</div>
 					</td>
 				</tr>
@@ -46,17 +44,13 @@
 		</table>
 		<br><br>
 </div>
-<!-- <script>
-$("#try'{i.count}'").click( function(){
-	var examName = [];
-	examName.push($("#try1").val());
-	console.log("false");
-	$.ajax({
-		type : 'POST',
-		data:({'examName': examName})
-	});
-});
-</script> -->
 
-
+ <script>
+ function isTry(score)
+ {
+  	if(score!=-1)
+  		alert('you took a exam before!!!');
+ }
+ 
+ </script>
 <%@include file="../include/sFooter.jsp"%>

@@ -25,6 +25,14 @@ public class UserServiceImpl implements UserService{
 		return dao.login(dto);
 	}
 
+
+@Override
+public UserVO register(UserVO user) throws Exception {
+	
+	return dao.register(user);
+}
+	
+
 	@Override
 	public void keepLogin(String uid, String sessionId, Date next) throws Exception {
 		dao.keepLogin(uid, sessionId, next);
@@ -34,6 +42,7 @@ public class UserServiceImpl implements UserService{
 	public UserVO checkLoginBefore(String value) throws Exception{
 		return dao.checkUserWithSessionKey(value);
 	}
+
 
 
 }

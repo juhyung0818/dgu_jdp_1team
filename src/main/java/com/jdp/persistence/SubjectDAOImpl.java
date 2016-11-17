@@ -9,6 +9,7 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.jdp.domain.MemberListVO;
 import com.jdp.domain.MemberVO;
 import com.jdp.domain.SubjectVO;
 
@@ -69,6 +70,11 @@ public class SubjectDAOImpl implements SubjectDAO{
 	public void delete(int subjectCode) throws Exception {
 		session.delete(namespace+".delete", subjectCode);
 		
+	}
+
+	@Override
+	public String getSubjectName(int subjectCode) throws Exception {
+		return session.selectOne(namespace+".getSubjectName", subjectCode);
 	}
 }
 

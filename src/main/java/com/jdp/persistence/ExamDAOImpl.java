@@ -37,8 +37,14 @@ public class ExamDAOImpl implements ExamDAO{
 	}
 
 	@Override
-	public void update(ExamVO exam) throws Exception {
-		session.update(namespace+".update", exam);
+	public void update(ExamVO exam, String newName) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("subjectCode", exam.getSubjectCode());
+		paramMap.put("examName", exam.getExamName());
+		paramMap.put("startTime", exam.getStartTime());
+		paramMap.put("endTime", exam.getEndTime());
+		paramMap.put("newName", newName);
+		session.update(namespace+".modify", paramMap);
 	}
 
 	@Override

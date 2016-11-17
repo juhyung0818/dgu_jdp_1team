@@ -1,5 +1,7 @@
 package com.jdp.controller;
 
+
+
 import javax.inject.Inject;
 import javax.servlet.http.HttpSession;
 
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jdp.domain.MemberVO;
 import com.jdp.domain.UserVO;
@@ -26,9 +29,10 @@ import com.jdp.service.SubjectService;
 @RequestMapping("/subject/*")
 public class SubjectController {
 
-   @Inject
-   private SubjectService subjectService;
-   private static final Logger logger = LoggerFactory.getLogger(SubjectController.class);
+	@Inject
+	private SubjectService subjectService;
+	
+	private static final Logger logger = LoggerFactory.getLogger(ExamController.class);
 
 	@RequestMapping(value = "/tRegister", method = RequestMethod.GET)
 	public void registGET(Model model, HttpSession session) {
@@ -85,4 +89,25 @@ public class SubjectController {
 		subjectService.delete(subjectCode);
 		return "redirect:/subject/tSubject";
 	}
+	
+	/**
+	 * GET method to update subject information
+	 * @param subjectCode : key value 
+	 * @param model : object give jsp to pass
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	public void subjectModifyGET(@RequestParam("subjectCode") int subjectCode, Model model) throws Exception{
+		model.addAttribute("subjectCode", subjectCode);
+		model.addAttribute("subjectName", subjectService.getSubjectName(subjectCode));
+	}
+	
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String subjectModifyPOST(@RequestParam("subjectCode") int subjectCode, @RequestParam("subjectName") String subjectName,
+			RedirectAttributes rttr) throws Exception{
+		subjectService.modify(subjectCode, subjectName);
+	    rttr.addAttribute("subjectCode", subjectCode);
+		return "redirect:/exam/managementExam";
+	}
 }
+

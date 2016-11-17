@@ -13,30 +13,43 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import com.jdp.domain.ScoreVO;
 import com.jdp.service.ScoreService;
-
+/**
+ * prevent that who took a exam before try exam again
+ * @author kwon
+ * update date : 2016-11-13
+ */
 public class ExamInterceptor extends HandlerInterceptorAdapter{
 	
 	private static final Logger logger = LoggerFactory.getLogger(LoginInterceptor.class);
+
+	@Inject
+	private ScoreService scoreService;
 	
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
-		//HttpSession session=request.getSession();
-		ModelMap modelMap=modelAndView.getModelMap();
-		ScoreVO score=(ScoreVO)modelMap.get("scoreVO");
 		
-		if(!score.getUid().equals(""))
-		{
-			response.sendRedirect("/question/try?subjectCode="+score.getSubjectCode()+"&examName"+score.getExamName());
-		}
-		else
-		{
-			response.sendRedirect("/exam/studentExam");
+		//because bring what i added to model in get/post method 
+		ModelMap modelMap=modelAndView.getModelMap();
+		
+		ScoreVO score=(ScoreVO)modelMap.get("scoreVO");
+		int subjectCode=(int)modelMap.get("currentSubCode");
+		String examName=(String)modelMap.get("currentExamName");
+	
+		try {
+			if(!score.getUid().equals(""))
+			{
+				// case : took a exam before
+				logger.info("you took a exam before!!");
+				response.sendRedirect("/exam/studentExam?subjectCode="+subjectCode);
+				
+			}
+		} catch (Exception e) {
+			//case : didn't take a exam
+			response.sendRedirect("/question/try?subjectCode="+subjectCode+"&examName="+examName);
 		}
 	}
 
-	@Inject
-	private ScoreService scoreService;
 
 //	@Override
 //	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
