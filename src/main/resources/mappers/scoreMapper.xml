@@ -53,12 +53,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     	and u.uname like CONCAT('%', #{uname}, '%')
     </if>  ;
 	</select>
-	<select id="check" resultType="String">
-		select uid
+	
+	<select id="check" resultType="com.jdp.domain.ScoreVO">
+		select subjectCode, examName, uid, score
 		from score
 		where subjectCode=#{subjectCode} and examName=#{examName} and uid=#{uid}
 	</select> 	
-	
 	
 	<select id="checkIsTry" resultType="com.jdp.domain.ScoreVO">
 		select *

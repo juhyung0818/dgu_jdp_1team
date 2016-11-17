@@ -44,10 +44,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		delete from subject where subjectCode=#{subjectCode}
 	</delete>
 	
+	<!-- join member -->
 	<select id="getSubjectName" resultType="String">
 		select subjectName
 		from subject
 		where subjectCode=#{subjectCode}
 	</select>
+	
+	<!-- leave subject -->
+	<delete id="leaveSubject">
+		delete from member
+		where uid=#{uid} and subjectCode=#{subjectCode}
+	</delete>
 	
 </mapper>

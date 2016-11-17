@@ -116,7 +116,7 @@ public class ExamController {
 		}
 		
 		//check whether take exam or doesn't
-		model.addAttribute("isTry", scoreService.check(user.getUid()));
+//		model.addAttribute("isTry", scoreService.check(user.getUid()));
 		
 		model.addAttribute("uid", user.getUid());
 		
@@ -142,17 +142,25 @@ public class ExamController {
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
 	public void examModifyGET(@RequestParam("subjectCode") int subjectCode, 
-			@RequestParam("examName") int examName, Model model) throws Exception{
+			@RequestParam("examName") String examName, 
+			HttpSession session, Model model) throws Exception{
+		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
+		ExamVO exam = examService.getExam(subjectCode, examName);
+		System.out.println(exam.toString());
 		model.addAttribute("subjectCode", subjectCode);
+		model.addAttribute("examName", exam.getExamName());
+		model.addAttribute("startTime", exam.getStartTime());
+		model.addAttribute("endTime", exam.getEndTime());
 	}
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String examModifyPOST(@RequestParam("subjectCode") int subjectCode,
-			@RequestParam("newName") String newName,
-			@ModelAttribute("exam") ExamVO exam,
+	public String examModifyPOST(@RequestParam("subjectCode") int subjectCode, 
+			@RequestParam("examName") String examName,
+			@ModelAttribute("exam") ExamVO exam, 
 			RedirectAttributes rttr) throws Exception{
-		examService.update(exam, newName);
-	    rttr.addAttribute("subjectCode", subjectCode);
+		logger.info(exam.toString());
+		examService.update(exam);
+	    rttr.addAttribute("subjectCode", exam.getSubjectCode());
 		return "redirect:/exam/managementExam";
 	}
 	

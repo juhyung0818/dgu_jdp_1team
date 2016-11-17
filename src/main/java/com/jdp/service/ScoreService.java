@@ -16,7 +16,8 @@ public interface ScoreService {
 	public List<CheckVO> answer(int subjectCode, String examName) throws Exception;
 
 	public List<MemberListVO> listMember(String uid, int subjectCode) throws Exception;
-	public String check(String uid) throws Exception;
+	public List<MemberListVO> listMember2(MemberListVO memberListVO) throws Exception;
+	public ScoreVO check(int subjectCode, String examName, String uid) throws Exception;
 	public List<ScoreVO> myScore(int subjectCode, String uid) throws Exception;
 	/**
 	 * student took a exam whether or not

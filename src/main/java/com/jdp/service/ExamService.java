@@ -22,4 +22,10 @@ public interface ExamService {
 	public List<ExamVO> examList(int subjectCode) throws Exception;
 	
 	public String getSubjectName(int subjectCode) throws Exception;
+	//get exam infomation
+	public ExamVO getExam(int subjectCode, String examName) throws Exception;
+	
+	
+	public void update(ExamVO exam) throws Exception;
+
 }

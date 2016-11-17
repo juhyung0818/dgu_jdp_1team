@@ -17,6 +17,7 @@ import com.jdp.controller.ExamController;
 import com.jdp.domain.ExamVO;
 import com.jdp.persistence.ExamDAO;
 import com.jdp.persistence.ScoreDAO;
+import com.jdp.service.ExamService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/**/*.xml"})
@@ -58,11 +59,9 @@ public class ExamTest {
 	@Test
 	public void testUpdateExam() throws Exception{
 		ExamVO vo = new ExamVO();
-		vo.setSubjectCode(12312);
-		vo.setExamName("hello");
-		vo.setStartTime(Timestamp.valueOf("2016-10-30 11:00:00"));
-		vo.setEndTime(Timestamp.valueOf("2016-10-30 12:00:00"));
-		dao.update(vo, "test");
+		vo = dao.getExam(12313, "a");
+		System.out.println(vo.toString());
+		dao.update(vo);
 	}
 	
 	@Test
@@ -71,18 +70,25 @@ public class ExamTest {
 		logger.info(dao.listExam(subjectCode).toString());
 	}
 
-	@Test
-	public void testIncrementCnt() throws Exception{
-		ExamVO vo = new ExamVO();
-		vo.setSubjectCode(12312);
-		vo.setExamName("test");
-		dao.incrementCnt(vo);
-	}
+//	@Test
+//	public void testIncrementCnt() throws Exception{
+//		ExamVO vo = new ExamVO();
+//		vo.setSubjectCode(12312);
+//		vo.setExamName("test");
+//		dao.incrementCnt(vo);
+//	}
 	
 	@Test
 	public void testQuestionAnswer() throws Exception{
 		int subjectCode= 1300;
 		String examName = "soooo";
 		logger.info(score.answers(subjectCode, examName).toString());
+	}
+	
+	@Test
+	public void testGetExam() throws Exception{
+		ExamVO exam = new ExamVO();
+		exam = dao.getExam(12312, "a");
+		System.out.println(exam.toString());
 	}
 }

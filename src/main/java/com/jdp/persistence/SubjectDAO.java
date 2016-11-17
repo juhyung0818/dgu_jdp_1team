@@ -28,4 +28,7 @@ public interface SubjectDAO {
 	public void delete(int subjectCode) throws Exception;
 	//get subject name
 	public String getSubjectName(int subjectCode) throws Exception;
+	//leave subject
+	public void leaveSubject(String uid, int subjectCode) throws Exception;
+
 }
