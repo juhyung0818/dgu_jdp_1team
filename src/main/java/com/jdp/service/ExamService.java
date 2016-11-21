@@ -27,5 +27,12 @@ public interface ExamService {
 	
 	
 	public void update(ExamVO exam) throws Exception;
-
+	/**
+	 * it's time to able to take a exam or not
+	 * @param subjectCode
+	 * @param examName
+	 * @return if start time <= current time <= end time, return examVO. if not, return null.
+	 * @throws Exception
+	 */
+	public ExamVO checkTime(int subjectCode, String examName) throws Exception;
 }

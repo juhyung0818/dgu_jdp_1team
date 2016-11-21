@@ -116,6 +116,10 @@ public class QuestionController {
 		model.addAttribute("list", questionService.tryQuestion(subjectCode, examName));
 		model.addAttribute("size", questionService.tryQuestion(subjectCode, examName).size()+1);
 		model.addAttribute("uname", ((UserVO)session.getAttribute("student")).getUname());
+		
+		//for incorrect access
+		model.addAttribute("path", ((boolean)session.getAttribute("path")));
+		model.addAttribute("deniedURL", ((String)session.getAttribute("deniedURL")));
 	}
 	
 	@RequestMapping(value = "/try", method = RequestMethod.POST)

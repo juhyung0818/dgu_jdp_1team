@@ -1,5 +1,6 @@
 package com.jdp.controller;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,11 +50,18 @@ public class ExamController {
 	public String registPOST(@RequestParam("subjectCode") int subjectCode, 
 			@RequestParam("examName") String examName, 
 			@RequestParam("num") int num, 
-			@ModelAttribute ExamVO exam, Model model) throws Exception {
+			@RequestParam("startTime") String startTime, 
+			@RequestParam("endTime") String endTime, 
+			//@ModelAttribute ExamVO exam, Model model) throws Exception {
+			Model model) throws Exception {
 		logger.info("exam register.........");
-		logger.info(exam.toString());
+		//logger.info(exam.toString());
+		ExamVO exam=new ExamVO();
 		exam.setSubjectCode(subjectCode);
 		exam.setExamName(examName);
+		
+		exam.setStartTime(Timestamp.valueOf(startTime+":00"));//for matching format
+		exam.setEndTime(Timestamp.valueOf(endTime+":00"));//for matching format
 		examService.register(exam);
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
 		return "redirect:/question/register?subjectCode="+subjectCode+"&examName="+examName+"&num="+num;
@@ -114,16 +122,26 @@ public class ExamController {
 			}
 			list.add(temp);
 		}
-		
-		//check whether take exam or doesn't
-//		model.addAttribute("isTry", scoreService.check(user.getUid()));
-		
+
+		//initialization
+		//path : you have to take a exam with 'try' button
+		//       must not to directly enter page that take a exam. 
+		session.setAttribute("path",false);
+
 		model.addAttribute("uid", user.getUid());
 		
 		model.addAttribute("list", list);
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
 		model.addAttribute("uname", user.getUname());
+		
+		try {
+			model.addAttribute("examActive", (boolean)session.getAttribute("examActive"));	
+		} catch (Exception e) {
+			//initialization
+			session.setAttribute("examActive", true);
+			model.addAttribute("examActive", true);	
+		}
 	}
 
 	@RequestMapping(value ="/studentExamPost", method = RequestMethod.POST)

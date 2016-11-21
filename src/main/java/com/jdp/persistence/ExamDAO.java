@@ -25,5 +25,13 @@ public interface ExamDAO {
 	public void update(ExamVO exam) throws Exception;
 	//all exam delete
 	public void deleteAll(int subjectCode) throws Exception;
+	/**
+	 * it's time to able to take a exam or not
+	 * @param subjectCode
+	 * @param examName
+	 * @return if start time <= current time <= end time, return examVO. if not, return null.
+	 * @throws Exception
+	 */
+	public ExamVO checkTime(int subjectCode, String examName) throws Exception;
 
 }

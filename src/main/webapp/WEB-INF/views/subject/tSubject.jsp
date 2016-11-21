@@ -20,7 +20,9 @@
 				<tr>
 					<td>${subjectVO.subjectName}</td>
 					<td>
+<!-- 
 <<<<<<< HEAD
+ -->
 						<div class="box-footer" >
 							<a href='/exam/managementExam?subjectCode=${subjectVO.subjectCode}'> 
 							<input type="button" value="ENTER"
@@ -29,7 +31,9 @@
 							 href="#">Management</a>
 							<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red" 
 							 href="/subject/tDelete?subjectCode=${subjectVO.subjectCode}">Delete</a>
-=======
+<!--
+
+ =======
 						<div class="box-footer">
 							<a
 								href='/exam/managementExam?subjectCode=${subjectVO.subjectCode}'>
@@ -37,6 +41,7 @@
 								class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red">
 							</a>
 >>>>>>> 7e2dacd19373c40124a16a8c98dae0d313dcb72a
+ -->
 						</div>
 					</td>
 					<td><a

@@ -47,4 +47,10 @@ public class ScoreServiceImpl implements ScoreService{
 		return scoreDao.checkIsTry(subjectCode, examName, uid);
 	}
 
+	@Override
+	public List<MemberListVO> listMember2(MemberListVO memberListVO) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

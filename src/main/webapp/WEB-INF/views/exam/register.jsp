@@ -47,11 +47,11 @@
 
 			<div class="form-group">
 				<label for="startTime">start time</label>
-				<input type="text" id="startTime" class='datetimepicker' value="">
+				<input type="text" name="startTime" class='datetimepicker' value="">
 			</div>
 			<div class="form-group">
 				<label for="endTime">end time</label>
-				<input type="text" id="endTime" class='datetimepicker' value="">
+				<input type="text" name="endTime" class='datetimepicker' value="">
 			</div>
 		</div>
 		<div class="box-footer"><br>

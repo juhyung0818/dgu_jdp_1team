@@ -5,7 +5,12 @@
 <script>
 		var questionArray = new Array();
 		var questionInfo = new Object();
-		
+		var path=${path};
+		if(!path)
+		{
+			self.window.alert("access denied!!!");
+			self.location="/exam/studentExam?subjectCode="+${subjectCode};
+		}
 	</script>
 </head>
 <style type="text/css">
@@ -167,13 +172,10 @@ $("#complete").click( function(){
 				},
 				data: ({'answer': answer})
 		});
-<<<<<<< HEAD
 		self.location = "/exam/studentExam?subjectCode="+${subjectCode};
 		//reload before page
 		opener.location.reload();
-=======
-		/* self.location = "/exam/studentExam?subjectCode="+${subjectCode};*/
->>>>>>> 7e2dacd19373c40124a16a8c98dae0d313dcb72a
+
 });
 </script>
 

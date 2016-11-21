@@ -74,4 +74,12 @@ public class ExamDAOImpl implements ExamDAO{
 	public void deleteAll(int subjectCode) throws Exception {
 		session.delete(namespace+".deleteAll", subjectCode);
 	}
+
+	@Override
+	public ExamVO checkTime(int subjectCode, String examName) throws Exception {
+		Map<String, Object> paraMap=new HashMap<>();
+		paraMap.put("subjectCode", subjectCode);
+		paraMap.put("examName", examName);
+		return session.selectOne(namespace+".checkTime", paraMap);
+	}
 }

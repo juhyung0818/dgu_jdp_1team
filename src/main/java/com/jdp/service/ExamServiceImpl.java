@@ -61,4 +61,9 @@ public class ExamServiceImpl implements ExamService{
 		examDao.update(exam);
 	}
 
+	@Override
+	public ExamVO checkTime(int subjectCode, String examName) throws Exception {
+		return examDao.checkTime(subjectCode, examName);
+	}
+
 }

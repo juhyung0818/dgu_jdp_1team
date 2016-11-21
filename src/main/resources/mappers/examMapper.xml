@@ -44,4 +44,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		where examName=#{examName} and subjectCode=#{subjectCode} 
  	</select>
  	
+ 	<select id="checkTime" resultType="com.jdp.domain.ExamVO">
+ 		select *
+ 		from exam
+ 		where examName=#{examName} and subjectCode=#{subjectCode}
+ 		 and endTime > now() and  now() > startTime   
+ 	</select>
+ 	
 </mapper>

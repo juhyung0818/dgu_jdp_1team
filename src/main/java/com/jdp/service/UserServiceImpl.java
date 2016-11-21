@@ -6,6 +6,7 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.jdp.domain.ExamVO;
 import com.jdp.domain.UserVO;
 import com.jdp.dto.LoginDTO;
 import com.jdp.persistence.UserDAO;
@@ -42,7 +43,4 @@ public UserVO register(UserVO user) throws Exception {
 	public UserVO checkLoginBefore(String value) throws Exception{
 		return dao.checkUserWithSessionKey(value);
 	}
-
-
-
 }
