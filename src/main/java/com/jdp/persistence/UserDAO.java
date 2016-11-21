@@ -38,5 +38,13 @@ public interface UserDAO {
 	 * @throws Exception
 	 */
 	public UserVO checkUserWithSessionKey(String value) throws Exception;
-
+	
+	/**
+	 * check duplication uid
+	 * @param uid :user id
+	 * @return : check exists uid
+	 * @throws Exception
+	 * @author YJH
+	 */
+	public int checkUid(String uid) throws Exception;
 }

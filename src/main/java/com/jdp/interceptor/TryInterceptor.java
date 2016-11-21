@@ -38,8 +38,6 @@ public class TryInterceptor extends HandlerInterceptorAdapter{
 		else
 		{
 			logger.info("incorrect path..");
-			//response.sendRedirect((String)session.getAttribute("deniedURL"));
-			//return false;
 			return true;
 		}
 

@@ -144,6 +144,7 @@ public class ExamController {
 		}
 	}
 
+
 	@RequestMapping(value ="/studentExamPost", method = RequestMethod.POST)
 	public void studentExamPOST(@RequestParam("subjectCode") int subjectCode,
 			@RequestParam("examName") String examName,
@@ -158,6 +159,16 @@ public class ExamController {
 		model.addAttribute("currentExamName", examName);
 	}
 	
+
+	/**
+	 * exam information update
+	 * Method : GET
+	 * @param subjectCode : key of subject
+	 * @param examName
+	 * @param session : login session
+	 * @param model
+	 * @throws Exception
+	 */
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
 	public void examModifyGET(@RequestParam("subjectCode") int subjectCode, 
 			@RequestParam("examName") String examName, 

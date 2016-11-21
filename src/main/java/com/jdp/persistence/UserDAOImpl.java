@@ -52,5 +52,15 @@ public UserVO register(UserVO user) throws Exception {
 		return session.selectOne(namespace+".checkUserWithSessionKey", value);
 	}
 
+	/**
+	 * uid check
+	 * "uid" is primary key
+	 * uid must not duplicate
+	 * @author YJH
+	 */
+	@Override
+	public int checkUid(String uid) throws Exception {
+		return session.selectOne(namespace+".checkUid", uid);
+	}
 
 }

@@ -6,7 +6,6 @@
 <%@include file="../include/tHeader.jsp"%>
 
 		<!-- End Page Content -->
-	</div>
 
 
 <%@include file="../include/tFooter.jsp"%>

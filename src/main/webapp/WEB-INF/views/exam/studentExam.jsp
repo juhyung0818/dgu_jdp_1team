@@ -20,7 +20,6 @@
 				<th>START TIME</th>
 				<th>END TIME</th>
 				<th>SCORE</th>
-				<th>TRY</th>
 			</tr>
 			<c:forEach items="${list}" var="scoreExamVO" varStatus="i" >
 				<tr>
@@ -30,31 +29,18 @@
 					<td id="score${i.count}">
 						<script type = "text/javascript">
 							if("${scoreExamVO.score}" == -1){
-								document.write("-");
+								document.write(
+									"<form id='msg' action='/exam/studentExamPost?subjectCode=${scoreExamVO.subjectCode}&examName=${scoreExamVO.examName}' method='post'>" +
+					                	"<input type='hidden' name='subjectCode' value='${subjectCode}''>" +
+		                        		"<div class='box-footer' >" +
+		                     				"<button id ='tryBtn' class='w3-btn w3-white w3-border w3-border-pink w3-round-xlarge' onclick='isTry(${scoreExamVO.score})'> TRY </button>"+
+		                        		"</div>"+
+		                        	"</form>"
+		                     		);
 							} else{
 								document.write("${scoreExamVO.score}");
 							}
-          				</script>
-					</td>
-					<td>
-					<!-- <form role="form" method="post">
-						<input type='hidden' name='subjectCode' value="${subjectCode}"> 
-						<input type='hidden' name='examName' value="${scoreExamVO.examName}"> 
-						<div class="box-footer" >
-							<form id="msg" action="/exam/studentExamPost?subjectCode=${scoreExamVO.subjectCode}&examName=${scoreExamVO.examName}" method="post">
-								<button id ="tryBtn" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" onclick="isTry(${scoreExamVO.score})"> TRY </button>
-							</form>
-						</div>
-					</form> -->
-					<form id="msg" action="/exam/studentExamPost?subjectCode=${scoreExamVO.subjectCode}&examName=${scoreExamVO.examName}" method="post">
-						<input type='hidden' name='subjectCode' value="${subjectCode}"> 
-						<!-- <input type='hidden' name='examName' value="${scoreExamVO.examName}"> --> 
-						<div class="box-footer" >
-							
-							<button id ="tryBtn" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" onclick="isTry(${scoreExamVO.score})"> TRY </button>
-							
-						</div>
-					</form>
+						</script>
 					</td>
 				</tr>
 			</c:forEach>
