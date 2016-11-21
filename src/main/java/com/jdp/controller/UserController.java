@@ -1,7 +1,8 @@
 package com.jdp.controller;
 
-import java.lang.ProcessBuilder.Redirect;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.servlet.http.Cookie;
@@ -16,7 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.WebUtils;
 
 import com.jdp.domain.UserVO;
@@ -132,5 +133,27 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-
+	@ResponseBody
+	@RequestMapping(value = "/check", method = RequestMethod.POST)
+	 public Map<String, String> checkUid(String uid) throws Exception {
+	  
+	  Map<String, String> resultMap = new HashMap<String, String>();
+	  
+	  logger.info(uid);
+	  int resultCnt = service.checkUid(uid);
+	  String result = "";
+	  String resultMsg = "";
+	  if ( resultCnt == 0 ){
+	   result = "success";
+	   resultMsg = "사용가능한 아이디입니다.";
+	  } else {
+	   result = "failure";
+	   resultMsg = "이미 사용중인 아이디입니다.";
+	  }
+	  
+	  resultMap.put("result", result);
+	  resultMap.put("resultMsg", resultMsg);
+	  
+	  return resultMap;
+	 } 
 }

@@ -123,23 +123,16 @@ public class ExamController {
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
 		model.addAttribute("uname", user.getUname());
 	}
-	
-	@RequestMapping(value = "/studentExam", method = RequestMethod.POST)
-	public String studentExamPOST(@RequestParam("subjectCode") int subjectCode, 
-			@RequestBody String examName,
-			Model model, HttpSession session) throws Exception {
-		
-		model.addAttribute("subjectCode", subjectCode);
 
-
-		String[] exam = examName.split("&examName%5B%5D=");
-
-		for(int i=0; i<exam.length; i++){
-			System.out.println(exam[i]);
-		}
-		return "redirect:/question/try?subjectCode="+subjectCode+"&examName="+exam[0];
-	}
-	
+	/**
+	 * exam information update
+	 * Method : GET
+	 * @param subjectCode : key of subject
+	 * @param examName
+	 * @param session : login session
+	 * @param model
+	 * @throws Exception
+	 */
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
 	public void examModifyGET(@RequestParam("subjectCode") int subjectCode, 
 			@RequestParam("examName") String examName, 

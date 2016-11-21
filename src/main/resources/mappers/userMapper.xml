@@ -45,5 +45,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		select * from user where sessionKey=#{value} and sessionLimit>now()
  	</select>
 
+	<!-- user id duplication check -->
+	<select id="checkUid" resultType="int">
+		select COUNT(*) from user
+		where uid=#{uid}
+	</select>
 
 </mapper>

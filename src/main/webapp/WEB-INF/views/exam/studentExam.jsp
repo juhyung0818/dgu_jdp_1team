@@ -16,7 +16,6 @@
 				<th>START TIME</th>
 				<th>END TIME</th>
 				<th>SCORE</th>
-				<th>TRY</th>
 			</tr>
 			<c:forEach items="${list}" var="scoreExamVO" varStatus="i" >
 				<tr>
@@ -26,20 +25,14 @@
 					<td>
 						<script type = "text/javascript">
 							if("${scoreExamVO.score}" == -1){
-								document.write("-");
+								document.write("<div class='box-footer' >" +
+					                     "<a href='/question/try?subjectCode=${scoreExamVO.subjectCode}&examName=${scoreExamVO.examName}'>" +
+		                        "<button class='w3-btn w3-white w3-border w3-border-pink w3-round-xlarge'> TRY </button>" +
+		                     "</a> </div>");
 							} else{
 								document.write("${scoreExamVO.score}");
 							}
           				</script>
-					</td>
-					<td>
-					<form role="form" method="post">
-						<input type='hidden' name='subjectCode' value="${subjectCode}"> 
-						<input type='hidden' name='examName' value="${scoreExamVO.examName}"> 
-						<div class="box-footer" >
-							<button type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge btn-primary">TRY</button>
-						</div>
-					</form>
 					</td>
 				</tr>
 			</c:forEach>

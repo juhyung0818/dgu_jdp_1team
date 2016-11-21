@@ -36,4 +36,12 @@ public interface UserService {
 	 */
 	public UserVO checkLoginBefore(String value) throws Exception;
 
+	/**
+	 * check duplication uid
+	 * @param uid
+	 * @return
+	 * @throws Exception
+	 * @author YJH
+	 */
+	public int checkUid(String uid) throws Exception;
 }
