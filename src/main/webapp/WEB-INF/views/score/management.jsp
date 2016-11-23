@@ -21,6 +21,10 @@
 				<th>반</th>
 				<th>번호</th>
 				<th>이름</th>
+				<c:forEach items="${listExam}" var="examVO">
+				<th>${examVO.examName}</th>
+				</c:forEach>
+				<th>학생의 평균<th>	
 			</tr>
 			<c:forEach items="${list}" var="memberListVO">
 				<tr>
@@ -28,8 +32,38 @@
 					<td>${memberListVO.classNumber}</td>
 					<td>${memberListVO.studentNumber}</td>
 					<td>${memberListVO.uname}</td>
+					<c:forEach items="${memberListVO.scoreList}" var="scoreVO">
+						<td>
+						<script type ="text/javascript">
+							if("${scoreVO.score}"==0){
+								document.write("-");
+							}else{
+								document.write("${scoreVO.score}");
+							}
+						</script>
+						</td>
+					</c:forEach>
+					<td>${memberListVO.average}<td>	
 				</tr>
 			</c:forEach>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>검색 평균</td>
+				<c:forEach items="${averageVO}" var="averageVO">
+						<td>${averageVO.someAvg}</td>
+				</c:forEach>
+			<tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td>전체 수강생 평균</td>
+				<c:forEach items="${averageVO}" var="averageVO">
+						<td>${averageVO.allAvg}</td>
+				</c:forEach>
+			<tr>
 		</table>
 		<br><br>
 	</form>

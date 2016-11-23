@@ -47,7 +47,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 				{
 					logger.info("remember me...");
 					Cookie studentCookie = new Cookie("studentCookie", session.getId());
-					studentCookie.setPath("/subject/sSubject");
+					studentCookie.setPath("/");
 					studentCookie.setMaxAge(60*60*24*7); // 1 week
 					response.addCookie(studentCookie);
 				}
@@ -62,7 +62,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 				{
 					logger.info("remember me...");
 					Cookie teacherCookie = new Cookie("teacherCookie", session.getId());
-					teacherCookie.setPath("/subject/tSubject");
+					teacherCookie.setPath("/");
 					teacherCookie.setMaxAge(60*60*24*7);// 1 week
 					response.addCookie(teacherCookie);
 				}

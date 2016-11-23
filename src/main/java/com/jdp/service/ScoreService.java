@@ -3,6 +3,7 @@ package com.jdp.service;
 import java.util.List;
 
 import com.jdp.domain.CheckVO;
+import com.jdp.domain.ExamVO;
 import com.jdp.domain.MemberListVO;
 import com.jdp.domain.ScoreVO;
 /**
@@ -17,6 +18,8 @@ public interface ScoreService {
 
 	public List<MemberListVO> listMember(String uid, int subjectCode) throws Exception;
 	public List<MemberListVO> listMember2(MemberListVO memberListVO) throws Exception;
+	public List<ExamVO> listExam(int subjectCode) throws Exception;
 	public String check(String uid) throws Exception;
 	public List<ScoreVO> myScore(int subjectCode, String uid) throws Exception;
+	public List<ScoreVO> readScore(int subjectCode, String uid) throws Exception;
 }

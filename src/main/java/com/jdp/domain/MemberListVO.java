@@ -1,4 +1,7 @@
 package com.jdp.domain;
+
+import java.util.List;
+
 /**
  * Value Object
  * class about Member
@@ -13,8 +16,8 @@ public class MemberListVO {
 	private int classNumber;
 	private int studentNumber;
 	private String uname;
-	
-	
+	private List<ScoreVO> scoreList;
+	private double average;
 	/* getter, setter methods */
 	public String getUid() {
 		return uid;
@@ -51,6 +54,18 @@ public class MemberListVO {
 	}
 	public void setUname(String uname) {
 		this.uname = uname;
+	}
+	public List<ScoreVO> getScoreList() {
+		return scoreList;
+	}
+	public void setScoreList(List<ScoreVO> scoreList) {
+		this.scoreList = scoreList;
+	}
+	public double getAverage() {
+		return average;
+	}
+	public void setAverage(double average) {
+		this.average = average;
 	}
 	/* toString for log */
 	@Override
