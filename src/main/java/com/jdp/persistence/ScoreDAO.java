@@ -22,8 +22,17 @@ public interface ScoreDAO {
 	public List<MemberListVO> listMember(String uid, int subjectCode) throws Exception;
 	//manage student2
 	public List<MemberListVO> listMember2(MemberListVO memberListVO) throws Exception;
-	public String check(String uid) throws Exception;
+	public ScoreVO check(int subjectCode, String examName, String uid) throws Exception;
 	public List<ScoreVO> myScore(int subjectCode, String uid) throws Exception;
 	public List<ExamVO> listExam(int subjectCode) throws Exception;
 	public List<ScoreVO> readScore(int subjectCode, String uid) throws Exception;
+	/**
+	 * student took a exam whether or not
+	 * @param subjectCode
+	 * @param examName
+	 * @param uid
+	 * @return if already took a exam, return uid. if not, null
+	 * @throws Exception
+	 */
+	public ScoreVO checkIsTry(int subjectCode, String examName, String uid) throws Exception;
 }

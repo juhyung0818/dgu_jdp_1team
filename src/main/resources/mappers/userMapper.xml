@@ -31,6 +31,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		select uid, upw, uname, flag from user where uid=#{uid} and upw=#{upw}
  	</select>
  	
+
+ 	<insert id="register">
+ 	    insert into user(uid, upw, uname, flag)
+ 	    values (#{uid} , #{upw} , #{uname}, #{flag})
+ 	</insert>
+
  	<update id="keepLogin">
  		update user set sessionKey = #{sessionId}, sessionLimit=#{next} where uid=#{uid}
  	</update>
@@ -38,5 +44,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<select id="checkUserWithSessionKey" resultType="com.jdp.domain.UserVO">
  		select * from user where sessionKey=#{value} and sessionLimit>now()
  	</select>
+
+	<!-- user id duplication check -->
+	<select id="checkUid" resultType="int">
+		select COUNT(*) from user
+		where uid=#{uid}
+	</select>
 
 </mapper>

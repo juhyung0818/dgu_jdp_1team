@@ -5,7 +5,7 @@
 <%@include file="../include/sHeader.jsp"%>
 
 <div align=center style="max-width: 1500px">
-	<div class="box-header with-border" >
+	<div class="box-header with-border">
 		<h3 class="box-title">SUBJECT LIST</h3>
 	</div>
 	<form class="form-inline" role="form" method="post">
@@ -18,9 +18,9 @@
 				<tr>
 					<td>${subjectVO.subjectName}</td>
 					<td>
-						<div class="box-footer" >
-							<a href='/exam/studentExam?subjectCode=${subjectVO.subjectCode}'> 
-							<input type="button" class="w3-btn w3-pink" value="ENTER">
+						<div class="box-footer">
+							<a href='/exam/studentExam?subjectCode=${subjectVO.subjectCode}'>
+								<input type="button" class="w3-btn w3-pink" value="ENTER">
 							</a>
 						</div>
 					</td>
@@ -29,11 +29,12 @@
 		</table>
 		<div class="box-footer" align="right">
 			<!-- <a href='/subject/sRegister?uid=${uid}'> -->
-			<a href='/subject/sRegister'>
-				<input type="button" class="w3-btn w3-pink" value="ADD">
+			<a href='/subject/sRegister'> <input type="button"
+				class="w3-btn w3-pink" value="ADD">
 			</a>
 		</div>
-		<br><br>
+		<br>
+		<br>
 	</form>
 </div>
 

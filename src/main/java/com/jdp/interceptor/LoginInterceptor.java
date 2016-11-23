@@ -35,7 +35,6 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		if(user !=null)
 		{
 			logger.info("new login success");
-			Object dest=session.getAttribute("dest");
 			
 			//url after login success
 			
@@ -51,7 +50,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 					studentCookie.setMaxAge(60*60*24*7); // 1 week
 					response.addCookie(studentCookie);
 				}
-				response.sendRedirect(dest!=null?(String)dest : "/subject/sSubject");
+				response.sendRedirect("/subject/sSubject");
 			}
 				
 			//case : teacher
@@ -66,7 +65,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 					teacherCookie.setMaxAge(60*60*24*7);// 1 week
 					response.addCookie(teacherCookie);
 				}
-				response.sendRedirect(dest!=null?(String)dest : "/subject/tSubject");
+				response.sendRedirect("/subject/tSubject");
 			}
 		}
 		else

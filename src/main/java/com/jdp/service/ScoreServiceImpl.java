@@ -10,6 +10,7 @@ import com.jdp.domain.CheckVO;
 import com.jdp.domain.ExamVO;
 import com.jdp.domain.MemberListVO;
 import com.jdp.domain.ScoreVO;
+import com.jdp.persistence.ExamDAO;
 import com.jdp.persistence.ScoreDAO;
 
 @Service
@@ -28,10 +29,9 @@ public class ScoreServiceImpl implements ScoreService{
 		return scoreDao.answers(subjectCode, examName);
 	}
 
-
 	@Override
-	public String check(String uid) throws Exception {
-		return scoreDao.check(uid);
+	public ScoreVO check(int subjectCode, String examName, String uid) throws Exception {
+		return scoreDao.check(subjectCode, examName, uid);
 	}
 
 	@Override
@@ -42,10 +42,15 @@ public class ScoreServiceImpl implements ScoreService{
 	public List<MemberListVO> listMember(String uid, int subjectCode) throws Exception {
 		return scoreDao.listMember(uid, subjectCode);
 	}
-
+	
 	@Override
 	public List<MemberListVO> listMember2(MemberListVO memberListVO) throws Exception {
 		return scoreDao.listMember2(memberListVO);
+	}
+
+	@Override
+	public ScoreVO checkIsTry(int subjectCode, String examName, String uid) throws Exception {
+		return scoreDao.checkIsTry(subjectCode, examName, uid);
 	}
 
 	@Override
@@ -58,4 +63,5 @@ public class ScoreServiceImpl implements ScoreService{
 		return scoreDao.readScore(subjectCode, uid);
 	}
 
+	
 }

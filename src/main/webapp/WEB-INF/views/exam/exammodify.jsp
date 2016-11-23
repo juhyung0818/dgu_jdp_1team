@@ -31,27 +31,25 @@
 <body>
 	<center>
 	<h1>
-		Exam Register
+		Exam modify
 	</h1>
 	<form class="form-inline" role="form" method="post">
+	<input type='hidden' name='subjectCode' value="${subjectCode}">
 	<fieldset>
 		<div class="box-body">
 			<div class="form-group">
 				<label for="examName">exam name</label>
-				<input type="text" class="w3-input w3-border w3-round-large" name="examName" placeholder="exam name">
+				<input type="text" class="w3-input w3-border w3-round-large" name="examName" value="${examName}">
 			</div>
-			<div class="form-group">
-				<label for="questionNum">question number</label>
-				<input type="number" class="w3-input w3-border w3-round-large" name="num" placeholder="number of question"><br>
-			</div>
-
-			<div class="form-group">
+		<div class="form-group">
 				<label for="startTime">start time</label>
-				<input type="text" name="startTime" class='datetimepicker' value="">
+				<input type="text" id="startTime" class='datetimepicker' value="${startTime}">
+				
 			</div>
 			<div class="form-group">
 				<label for="endTime">end time</label>
-				<input type="text" name="endTime" class='datetimepicker' value="">
+				<input type="text" id="endTime" class='datetimepicker' value="${endTime}">
+				
 			</div>
 		</div>
 		<div class="box-footer"><br>

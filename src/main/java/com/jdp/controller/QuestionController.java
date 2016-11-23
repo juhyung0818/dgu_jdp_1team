@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -50,9 +52,13 @@ public class QuestionController {
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public String registPOST(@RequestParam("subjectCode") int subjectCode, 
 							@RequestParam("examName") String examName,
-							@RequestBody String question) throws Exception{
+							@RequestBody String question,
+							HttpServletRequest request) throws Exception{
 		logger.info("question register.........");
 		System.out.println(question);
+		
+		request.setCharacterEncoding("utf8");
+		
 		//parsing part
 		List<QuestionVO> list = new ArrayList<QuestionVO>();
 		String[] temp = question.split("&question%5B%5D=");
@@ -110,20 +116,24 @@ public class QuestionController {
 		model.addAttribute("list", questionService.tryQuestion(subjectCode, examName));
 		model.addAttribute("size", questionService.tryQuestion(subjectCode, examName).size()+1);
 		model.addAttribute("uname", ((UserVO)session.getAttribute("student")).getUname());
+		
+		//for incorrect access
+		model.addAttribute("path", ((boolean)session.getAttribute("path")));
+		model.addAttribute("deniedURL", ((String)session.getAttribute("deniedURL")));
 	}
 	
 	@RequestMapping(value = "/try", method = RequestMethod.POST)
 	public String tryPOST(@RequestParam("subjectCode") int subjectCode,
 			@RequestParam("examName") String examName,
-			@RequestBody String answer, 
+			@RequestBody String answer, RedirectAttributes rttr,
 			Model model, HttpSession session) throws Exception {
-		String uid = ((UserVO)session.getAttribute("student")).getUid();
+		UserVO user = (UserVO)session.getAttribute("student");
 
-		logger.info(uid + "- try question POST.....");
+		logger.info(user.getUid() + "- try question POST.....");
 		ScoreVO score = new ScoreVO();
 		score.setSubjectCode(subjectCode);
 		score.setExamName(examName);
-		score.setUid(uid);
+		score.setUid(user.getUid());
 		score.setScore(0);
 		
 		//parsing part
@@ -145,7 +155,8 @@ public class QuestionController {
 		
 		//insert score
 		scoreService.register(score);
-		return "redirect:/exam/studentExam?subjectCode="+subjectCode;
+	    rttr.addAttribute("subjectCode", subjectCode);
+		return "redirect:/exam/studentExam";
 	}
 	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
@@ -181,4 +192,5 @@ public class QuestionController {
 	    rttr.addAttribute("subjectCode", subjectCode);
 		return "redirect:/exam/managementExam";
 	}
+
 }

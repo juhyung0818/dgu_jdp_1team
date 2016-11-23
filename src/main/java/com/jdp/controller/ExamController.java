@@ -1,5 +1,6 @@
 package com.jdp.controller;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,23 +50,32 @@ public class ExamController {
 	public String registPOST(@RequestParam("subjectCode") int subjectCode, 
 			@RequestParam("examName") String examName, 
 			@RequestParam("num") int num, 
-			@ModelAttribute ExamVO exam, Model model) throws Exception {
+			@RequestParam("startTime") String startTime, 
+			@RequestParam("endTime") String endTime, 
+			//@ModelAttribute ExamVO exam, Model model) throws Exception {
+			Model model) throws Exception {
 		logger.info("exam register.........");
-		logger.info(exam.toString());
+		//logger.info(exam.toString());
+		ExamVO exam=new ExamVO();
 		exam.setSubjectCode(subjectCode);
 		exam.setExamName(examName);
+		
+		exam.setStartTime(Timestamp.valueOf(startTime+":00"));//for matching format
+		exam.setEndTime(Timestamp.valueOf(endTime+":00"));//for matching format
 		examService.register(exam);
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
 		return "redirect:/question/register?subjectCode="+subjectCode+"&examName="+examName+"&num="+num;
 	}
 
 	@RequestMapping(value = "/managementExam", method = RequestMethod.GET)
-	public void managementExamGET(@RequestParam("subjectCode") int subjectCode, Model model) throws Exception {
+	public void managementExamGET(@RequestParam("subjectCode") int subjectCode, Model model, HttpSession session) throws Exception {
 		logger.info("subjectCode : " + subjectCode + "examList");
 		model.addAttribute("list", examService.examList(subjectCode));
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
+		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
 	}
+	
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String managementExamPOST(@RequestParam("subjectCode") int subjectCode, 
 			@RequestParam("examName") String examName,
@@ -80,8 +90,10 @@ public class ExamController {
 	
 	@RequestMapping(value = "/studentExam", method = RequestMethod.GET)
 	public void studentExamGET(@RequestParam("subjectCode") int subjectCode,
-			Model model, HttpSession session) throws Exception {
+			Model model, HttpSession session) throws Exception 
+	{
 		logger.info("subjectCode : " + subjectCode + " examList");
+		
 		UserVO user = new UserVO();
 		user = (UserVO)session.getAttribute("student");
 
@@ -92,6 +104,7 @@ public class ExamController {
 
 		// examList.size() >= scoreList
 		for(int i=0; i<examList.size(); i++){
+
 			ScoreExamVO temp = new ScoreExamVO();
 			temp.setSubjectCode(examList.get(i).getSubjectCode()); // subject code
 			temp.setExamName(examList.get(i).getExamName()); // exam name
@@ -105,33 +118,79 @@ public class ExamController {
 						&& examList.get(i).getExamName().equals(scoreList.get(j).getExamName())){
 					temp.setScore(scoreList.get(j).getScore());
 				}
+
 			}
 			list.add(temp);
 		}
-		
-		//check whether take exam or doesn't
-		model.addAttribute("isTry", scoreService.check(user.getUid()));
-		
+
+		//initialization
+		//path : you have to take a exam with 'try' button
+		//       must not to directly enter page that take a exam. 
+		session.setAttribute("path",false);
+
 		model.addAttribute("uid", user.getUid());
 		
 		model.addAttribute("list", list);
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
 		model.addAttribute("uname", user.getUname());
-	}
-	@RequestMapping(value = "/studentExam", method = RequestMethod.POST)
-	public String studentExamPOST(@RequestParam("subjectCode") int subjectCode, 
-			@RequestBody String examName,
-			Model model, HttpSession session) throws Exception {
 		
-		model.addAttribute("subjectCode", subjectCode);
-
-		String[] exam = examName.split("&examName%5B%5D=");
-
-		for(int i=0; i<exam.length; i++){
-			System.out.println(exam[i]);
+		try {
+			model.addAttribute("examActive", (boolean)session.getAttribute("examActive"));	
+		} catch (Exception e) {
+			//initialization
+			session.setAttribute("examActive", true);
+			model.addAttribute("examActive", true);	
 		}
-		return "redirect:/question/try?subjectCode="+subjectCode+"&examName="+exam[0];
+	}
+
+
+	@RequestMapping(value ="/studentExamPost", method = RequestMethod.POST)
+	public void studentExamPOST(@RequestParam("subjectCode") int subjectCode,
+			@RequestParam("examName") String examName,
+			Model model, HttpSession session) throws Exception {
+		//if score is not null, then you took a exam before
+		//if not, you didn't take a exam
+		ScoreVO score=scoreService.checkIsTry(subjectCode, examName, ((UserVO)session.getAttribute("student")).getUid());
+		
+		//for using ExamInterceptor
+		model.addAttribute("scoreVO", score);
+		model.addAttribute("currentSubCode", subjectCode);
+		model.addAttribute("currentExamName", examName);
+	}
+	
+
+	/**
+	 * exam information update
+	 * Method : GET
+	 * @param subjectCode : key of subject
+	 * @param examName
+	 * @param session : login session
+	 * @param model
+	 * @throws Exception
+	 */
+	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	public void examModifyGET(@RequestParam("subjectCode") int subjectCode, 
+			@RequestParam("examName") String examName, 
+			HttpSession session, Model model) throws Exception{
+		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
+		ExamVO exam = examService.getExam(subjectCode, examName);
+		System.out.println(exam.toString());
+		model.addAttribute("subjectCode", subjectCode);
+		model.addAttribute("examName", exam.getExamName());
+		model.addAttribute("startTime", exam.getStartTime());
+		model.addAttribute("endTime", exam.getEndTime());
+	}
+	
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String examModifyPOST(@RequestParam("subjectCode") int subjectCode, 
+			@RequestParam("examName") String examName,
+			@ModelAttribute("exam") ExamVO exam, 
+			RedirectAttributes rttr) throws Exception{
+		logger.info(exam.toString());
+		examService.update(exam);
+	    rttr.addAttribute("subjectCode", exam.getSubjectCode());
+		return "redirect:/exam/managementExam";
 	}
 	
 }

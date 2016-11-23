@@ -2,6 +2,7 @@ package com.jdp.service;
 
 import java.util.Date;
 
+import com.jdp.domain.ExamVO;
 import com.jdp.domain.UserVO;
 import com.jdp.dto.LoginDTO;
 /**
@@ -17,7 +18,10 @@ public interface UserService {
 	 * @throws Exception
 	 */
 	public UserVO login(LoginDTO dto) throws Exception;
-	
+
+	public UserVO register(UserVO user) throws Exception;
+	//public UserVO login(UserVO user) throws Exception;
+
 	/**
 	 * auto login
 	 * @param uid : user id
@@ -32,4 +36,13 @@ public interface UserService {
 	 * @return UserVO
 	 */
 	public UserVO checkLoginBefore(String value) throws Exception;
+
+	/**
+	 * check duplication uid
+	 * @param uid
+	 * @return
+	 * @throws Exception
+	 * @author YJH
+	 */
+	public int checkUid(String uid) throws Exception;
 }

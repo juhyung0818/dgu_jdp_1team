@@ -6,16 +6,18 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
+import com.jdp.domain.ExamVO;
 import com.jdp.domain.UserVO;
 import com.jdp.dto.LoginDTO;
 import com.jdp.persistence.UserDAO;
+
 /**
  * implement UserService
- * @author kwon
- * update date : 2016-11-11
+ * 
+ * @author kwon update date : 2016-11-11
  */
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 
 	@Inject
 	private UserDAO dao;
@@ -26,14 +28,28 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
+	public UserVO register(UserVO user) throws Exception {
+
+		return dao.register(user);
+	}
+
+	@Override
 	public void keepLogin(String uid, String sessionId, Date next) throws Exception {
 		dao.keepLogin(uid, sessionId, next);
 	}
 
 	@Override
-	public UserVO checkLoginBefore(String value) throws Exception{
+	public UserVO checkLoginBefore(String value) throws Exception {
 		return dao.checkUserWithSessionKey(value);
 	}
 
+	/**
+	 * uid check
+	 * @author YJH
+	 */
+	@Override
+	public int checkUid(String uid) throws Exception {
+		return dao.checkUid(uid);
+	}
 
 }

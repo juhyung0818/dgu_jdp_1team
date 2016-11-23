@@ -20,4 +20,8 @@ public interface SubjectService {
 	public void joinSubject(MemberVO member) throws Exception;
 	//teacher delete subject
 	public void delete(int subjectCode) throws Exception;
+	//get subject name
+	public String getSubjectName(int subjectCode) throws Exception;
+	//student leave subject
+	public void leaveSubject(String uid, int subjectCode) throws Exception;
 }

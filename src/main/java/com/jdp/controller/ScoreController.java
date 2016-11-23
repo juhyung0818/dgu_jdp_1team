@@ -94,15 +94,14 @@ public class ScoreController {
 		flag =0;
 	}
 	
-	
 	@RequestMapping(value = "/management", method = RequestMethod.POST)
 	public String managementPOST(
-			//@RequestParam("subjectName") String subjectName, 
+			@RequestParam("subjectName") String subjectName, 
 			@RequestParam("member_grade") String member_grade, 
 			@RequestParam("member_classNumber") String member_classNumber, 
 			@RequestParam("member_studentNumber") String member_studentNumber,
 			@RequestParam("member_uname") String member_uname,
-			@ModelAttribute MemberListVO memberList, Model model, HttpSession session, ModelAndView modelAndView) throws Exception {
+			@ModelAttribute MemberListVO memberList, Model model, HttpSession session) throws Exception {
 		logger.info("memberlist...........");
 		int subjectCode;
 		int sum =0;
@@ -119,6 +118,7 @@ public class ScoreController {
 		if(!member_studentNumber.equals(""))
 			memberList.setStudentNumber(Integer.parseInt(member_studentNumber));
 		memberList.setUname(member_uname);
+		
 		listMem = scoreService.listMember2(memberList);
 		listExam=scoreService.listExam(subjectCode);
 		for(int i=0;i<listExam.size();i++){
@@ -152,10 +152,8 @@ public class ScoreController {
 		}
 		flag =1;
 		
-		ModelMap modelMap=(ModelMap)modelAndView.getModel();
-		String temp=(String)modelMap.get("subjectName");
-		
-		return "redirect:/score/management?subjectCode="+subjectCode+"&subjectName="+temp;
+		model.addAttribute("subjectName", subjectName);
+		return "redirect:/score/management?subjectCode="+subjectCode+"&subjectName="+subjectName;
 	}
 
 }

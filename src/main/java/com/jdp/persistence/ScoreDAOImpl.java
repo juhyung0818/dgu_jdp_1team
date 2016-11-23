@@ -38,7 +38,11 @@ public class ScoreDAOImpl implements ScoreDAO{
 
 
 	@Override
-	public String check(String uid) throws Exception {
+	public ScoreVO check(int subjectCode, String examName, String uid) throws Exception {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("subjectCode", subjectCode);
+		paramMap.put("examName", examName);
+		paramMap.put("uid", uid);
 		return session.selectOne(namespace + ".check", uid);
 	}
 	@Override
@@ -86,6 +90,15 @@ public class ScoreDAOImpl implements ScoreDAO{
 		paramMap.put("subjectCode", subjectCode);
 		paramMap.put("uid", uid);
 		return session.selectList(namespace+".readScore", paramMap);
+	
+	}
+	@Override	
+	public ScoreVO checkIsTry(int subjectCode, String examName, String uid) throws Exception {
+		Map<String, Object> paramMap=new HashMap<String, Object>();
+		paramMap.put("subjectCode", subjectCode);
+		paramMap.put("examName", examName);
+		paramMap.put("uid", uid);
+		return session.selectOne(namespace+".checkIsTry", paramMap);
 	}
 
 }

@@ -29,6 +29,14 @@ public class UserDAOImpl implements UserDAO{
 		return session.selectOne(namespace+".login", dto);
 	}
 
+
+@Override
+public UserVO register(UserVO user) throws Exception {
+	
+	return session.selectOne(namespace+".register",user );
+}
+
+
 	@Override
 	public void keepLogin(String uid, String sessionId, Date next) {
 		Map<String, Object> paramMap=new HashMap<String, Object>();
@@ -42,6 +50,17 @@ public class UserDAOImpl implements UserDAO{
 	@Override
 	public UserVO checkUserWithSessionKey(String value) {
 		return session.selectOne(namespace+".checkUserWithSessionKey", value);
+	}
+
+	/**
+	 * uid check
+	 * "uid" is primary key
+	 * uid must not duplicate
+	 * @author YJH
+	 */
+	@Override
+	public int checkUid(String uid) throws Exception {
+		return session.selectOne(namespace+".checkUid", uid);
 	}
 
 }

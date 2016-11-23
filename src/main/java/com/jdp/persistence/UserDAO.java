@@ -17,6 +17,10 @@ public interface UserDAO {
 	 * @throws Exception
 	 */
 	public UserVO login(LoginDTO dto) throws Exception;
+
+	public UserVO register(UserVO user) throws Exception;
+	//public UserVO login(UserVO user) throws Exception;
+
 	
 	/**
 	 * auto login
@@ -33,5 +37,14 @@ public interface UserDAO {
 	 * @return
 	 * @throws Exception
 	 */
-	public UserVO checkUserWithSessionKey(String value) throws Exception;;
+	public UserVO checkUserWithSessionKey(String value) throws Exception;
+	
+	/**
+	 * check duplication uid
+	 * @param uid :user id
+	 * @return : check exists uid
+	 * @throws Exception
+	 * @author YJH
+	 */
+	public int checkUid(String uid) throws Exception;
 }

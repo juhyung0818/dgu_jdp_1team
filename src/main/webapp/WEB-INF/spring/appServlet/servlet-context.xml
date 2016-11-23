@@ -27,7 +27,13 @@
 	
 	<beans:bean id="authInterceptor" class="com.jdp.interceptor.AuthInterceptor">
 	</beans:bean>
+	
+	<beans:bean id="examInterceptor" class="com.jdp.interceptor.ExamInterceptor">
+	</beans:bean>
 
+	<beans:bean id="tryInterceptor" class="com.jdp.interceptor.TryInterceptor">
+	</beans:bean>
+	
 	<interceptors>
 		<interceptor>
 			<mapping path="/user/loginPost"/>
@@ -40,6 +46,16 @@
 			<mapping path="/question/*"/>
 			
 			<beans:ref bean="authInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/exam/studentExamPost"/>			
+			<beans:ref bean="examInterceptor"/>
+		</interceptor>
+		
+		<interceptor>
+			<mapping path="/question/try"/>			
+			<beans:ref bean="tryInterceptor"/>
 		</interceptor>
 		
 	</interceptors>

@@ -5,10 +5,12 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.jdp.domain.MemberListVO;
 import com.jdp.domain.MemberVO;
 import com.jdp.domain.SubjectVO;
+import com.jdp.persistence.ExamDAO;
+import com.jdp.persistence.QuestionDAO;
 import com.jdp.persistence.SubjectDAO;
 
 /**
@@ -21,6 +23,10 @@ public class SubjectServiceImpl implements SubjectService{
 
 	@Inject
 	private SubjectDAO subjectDao;
+	@Inject
+	private ExamDAO examDao;
+	@Inject
+	private QuestionDAO questionDao;
 	
 	@Override
 	public int register(String subjectName, String uid) throws Exception {
@@ -47,9 +53,32 @@ public class SubjectServiceImpl implements SubjectService{
 		return subjectDao.listTeacher(uid);
 	}
 
+	/**
+	 * delete subject to use subjectCode
+	 */
+	@Transactional
 	@Override
 	public void delete(int subjectCode) throws Exception {
+		questionDao.deleteAll(subjectCode);
+		examDao.deleteAll(subjectCode);
 		subjectDao.delete(subjectCode);
+	}
+
+	/**
+	 * find subjectCode to use usbjectCode
+	 */
+	@Override
+	public String getSubjectName(int subjectCode) throws Exception {
+		return subjectDao.getSubjectName(subjectCode);
+	}
+
+	/**
+	 * student leave subject
+	 * uid : user id, subjectCode : subject code
+	 */
+	@Override
+	public void leaveSubject(String uid, int subjectCode) throws Exception {
+		subjectDao.leaveSubject(uid, subjectCode);
 	}
 
 }

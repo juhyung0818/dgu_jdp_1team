@@ -4,59 +4,72 @@
 	pageEncoding="UTF-8"%>
 <%@include file="../include/sHeader.jsp"%>
 
+<script>
+	var b = ${examActive};
+	if(!b)
+		self.window.alert("not time to take a exam!!!");
+</script>
 
 <div align="center">
 	<div class="box-header with-border">
 		<h3 class="box-title">EXAM LIST</h3>
 	</div>
-
-
 		<table class="w3-table w3-bordered">
 			<tr>
 				<th>EXAM NAME</th>
 				<th>START TIME</th>
 				<th>END TIME</th>
 				<th>SCORE</th>
-				<th>TRY</th>
 			</tr>
 			<c:forEach items="${list}" var="scoreExamVO" varStatus="i" >
 				<tr>
 					<td>${scoreExamVO.examName}</td>
 					<td>${scoreExamVO.startTime}</td>
 					<td>${scoreExamVO.endTime}</td>
-					<td>
+					<td id="score${i.count}">
 						<script type = "text/javascript">
 							if("${scoreExamVO.score}" == -1){
-								document.write("-");
+								document.write(
+									"<form id='msg' action='/exam/studentExamPost?subjectCode=${scoreExamVO.subjectCode}&examName=${scoreExamVO.examName}' method='post'>" +
+					                	"<input type='hidden' name='subjectCode' value='${subjectCode}''>" +
+		                        		"<div class='box-footer' >" +
+		                     				"<button id ='tryBtn' class='w3-btn w3-white w3-border w3-border-pink w3-round-xlarge' onclick='isTry(${scoreExamVO.score})'> TRY </button>"+
+		                        		"</div>"+
+		                        	"</form>"
+		                     		);
 							} else{
 								document.write("${scoreExamVO.score}");
 							}
-          				</script>
-					
-					</td>
-					<td>
-						<div class="box-footer" >
-							<a href='/question/try?subjectCode=${scoreExamVO.subjectCode}&examName=${scoreExamVO.examName}'>
-								<button class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> TRY </button>
-							</a>
-						</div>
+						</script>
 					</td>
 				</tr>
 			</c:forEach>
 		</table>
+		<button type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge btn-danger">SUBJECT REMOVE</button>
 		<br><br>
 </div>
-<!-- <script>
-$("#try'{i.count}'").click( function(){
-	var examName = [];
-	examName.push($("#try1").val());
-	console.log("false");
-	$.ajax({
-		type : 'POST',
-		data:({'examName': examName})
-	});
-});
-</script> -->
 
+<script>
+$(document).ready(function() {
+
+	var formObj = $("form[role='form']");
+
+	console.log(formObj);
+
+	$(".btn-danger").on("click", function() {
+		formObj.attr("action", "/subject/leave");
+		formObj.submit();
+	});
+
+});
+
+ function isTry(score)
+ {
+  	if(score!=-1)
+  		alert('you took a exam before!!!');
+
+ }
+ 
+ </script>
 
 <%@include file="../include/sFooter.jsp"%>
