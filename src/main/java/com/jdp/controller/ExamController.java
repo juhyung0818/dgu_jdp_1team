@@ -182,6 +182,16 @@ public class ExamController {
 		model.addAttribute("endTime", exam.getEndTime());
 	}
 	
+	/**
+	 * exam information update
+	 * Method : POST
+	 * @param subjectCode
+	 * @param examName
+	 * @param exam
+	 * @param rttr
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public String examModifyPOST(@RequestParam("subjectCode") int subjectCode, 
 			@RequestParam("examName") String examName,
