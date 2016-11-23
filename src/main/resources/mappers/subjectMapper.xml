@@ -57,4 +57,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where uid=#{uid} and subjectCode=#{subjectCode}
 	</delete>
 	
+	<!-- check user access authority -->
+	<select id="checkAuthority">
+		select count(*)
+		from member
+		where uid=#{uid} and subjectCode=#{subjectCode}
+	</select>
+	
 </mapper>

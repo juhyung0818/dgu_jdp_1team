@@ -13,6 +13,11 @@ import com.jdp.domain.CheckVO;
 import com.jdp.domain.MemberListVO;
 import com.jdp.domain.ScoreVO;
 
+/**
+ * 
+ * @author LYJ
+ *
+ */
 @Repository
 public class ScoreDAOImpl implements ScoreDAO{
 
@@ -57,6 +62,7 @@ public class ScoreDAOImpl implements ScoreDAO{
 	public List<MemberListVO> listMember2(MemberListVO memberListVO) throws Exception {
 		return session.selectList(namespace+".manage2", memberListVO);
 	}
+	
 	/**
 	 * display exam infomation and score
 	 * 2016.11.11.Fri

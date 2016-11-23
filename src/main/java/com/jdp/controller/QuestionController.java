@@ -9,7 +9,6 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -105,12 +104,23 @@ public class QuestionController {
 		return "redirect:/exam/managementExam?subjectCode="+subjectCode;
 	}
 	
+	/**
+	 * exam try to student
+	 * Method : GET
+	 * @param subjectCode
+	 * @param examName
+	 * @param model
+	 * @param session
+	 * @throws Exception
+	 */
 	@RequestMapping(value = "/try", method = RequestMethod.GET)
 	public void tryGET(@RequestParam("subjectCode") int subjectCode,
 			@RequestParam("examName") String examName, 
 			Model model, 
 			HttpSession session)throws Exception {
 		logger.info("- try question GET......");
+		UserVO user = new UserVO();
+		user = (UserVO)session.getAttribute("student");
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("examName", examName);
 		model.addAttribute("list", questionService.tryQuestion(subjectCode, examName));
@@ -122,6 +132,18 @@ public class QuestionController {
 		model.addAttribute("deniedURL", ((String)session.getAttribute("deniedURL")));
 	}
 	
+	/**
+	 * exam try to student
+	 * Method : POST
+	 * @param subjectCode
+	 * @param examName
+	 * @param answer
+	 * @param rttr
+	 * @param model
+	 * @param session
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value = "/try", method = RequestMethod.POST)
 	public String tryPOST(@RequestParam("subjectCode") int subjectCode,
 			@RequestParam("examName") String examName,
