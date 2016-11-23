@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.jdp.domain.CheckVO;
 import com.jdp.domain.MemberListVO;
 import com.jdp.domain.ScoreVO;
-import com.jdp.persistence.ExamDAO;
 import com.jdp.persistence.ScoreDAO;
 
 @Service

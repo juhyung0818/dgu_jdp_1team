@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,6 +23,7 @@ import com.jdp.domain.ScoreVO;
 import com.jdp.domain.UserVO;
 import com.jdp.service.ExamService;
 import com.jdp.service.ScoreService;
+import com.jdp.service.SubjectService;
 
 /**
  * controller of teacher and students about exam
@@ -39,6 +39,8 @@ public class ExamController {
 	private ExamService examService;
 	@Inject
 	private ScoreService scoreService;
+	@Inject
+	private SubjectService subjectService;
 	private static final Logger logger = LoggerFactory.getLogger(ExamController.class);
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
@@ -96,6 +98,8 @@ public class ExamController {
 		
 		UserVO user = new UserVO();
 		user = (UserVO)session.getAttribute("student");
+		
+		subjectService.checkAuthority(user.getUid(), subjectCode);
 
 		List<ExamVO> examList = examService.examList(subjectCode);
 		List<ScoreVO> scoreList = scoreService.myScore(subjectCode, user.getUid());

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.jdp.domain.MemberVO;
 import com.jdp.domain.SubjectVO;
+import com.jdp.exception.NotAuthoritySubject;
 import com.jdp.persistence.ExamDAO;
 import com.jdp.persistence.QuestionDAO;
 import com.jdp.persistence.SubjectDAO;
@@ -79,6 +80,14 @@ public class SubjectServiceImpl implements SubjectService{
 	@Override
 	public void leaveSubject(String uid, int subjectCode) throws Exception {
 		subjectDao.leaveSubject(uid, subjectCode);
+	}
+
+	@Override
+	public int checkAuthority(String uid, int subjectCode) throws Exception {
+		if(subjectDao.checkAuthority(uid, subjectCode) == 0){
+			throw new NotAuthoritySubject();
+		}
+		return 1;
 	}
 
 }

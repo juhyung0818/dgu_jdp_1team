@@ -9,19 +9,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.jdp.domain.CheckVO;
 import com.jdp.domain.MemberListVO;
 import com.jdp.domain.UserVO;
-import com.jdp.domain.QuestionVO;
-import com.jdp.domain.ScoreVO;
-import com.jdp.service.QuestionService;
 import com.jdp.service.ScoreService;
-import com.jdp.service.SubjectService;
 
 @Controller
 @RequestMapping("/score")

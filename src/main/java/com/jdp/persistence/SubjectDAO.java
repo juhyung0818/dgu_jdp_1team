@@ -2,7 +2,6 @@ package com.jdp.persistence;
 
 import java.util.List;
 
-import com.jdp.domain.MemberListVO;
 import com.jdp.domain.MemberVO;
 import com.jdp.domain.SubjectVO;
 
@@ -31,6 +30,6 @@ public interface SubjectDAO {
 	//leave subject
 	public void leaveSubject(String uid, int subjectCode) throws Exception;
 	//check user access authority
-	public void checkAuthority(String uid, String subjectCode) throws Exception;
+	public int checkAuthority(String uid, int subjectCode) throws Exception;
 
 }

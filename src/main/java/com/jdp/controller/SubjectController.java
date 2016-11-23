@@ -66,6 +66,7 @@ public class SubjectController {
 		model.addAttribute("list", subjectService.listStudent(vo.getUid()));
 		model.addAttribute("uid", vo.getUid());
 		model.addAttribute("uname", vo.getUname());
+		
 	}
 	
 	@RequestMapping(value = "/sRegister", method = RequestMethod.GET)
