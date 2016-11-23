@@ -20,6 +20,6 @@ public interface QuestionService {
 	//display question list
 	public List<QuestionVO> listQuestion(int subjectCode, String examName) throws Exception;
 	public List<QuestionVO> tryQuestion(int subjectCode, String examName) throws Exception;
-	
+	//subject leave
 	public void delete(int subjectCode, String examName) throws Exception;
 }

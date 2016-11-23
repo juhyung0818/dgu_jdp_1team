@@ -30,5 +30,7 @@ public interface SubjectDAO {
 	public String getSubjectName(int subjectCode) throws Exception;
 	//leave subject
 	public void leaveSubject(String uid, int subjectCode) throws Exception;
+	//check user access authority
+	public void checkAuthority(String uid, String subjectCode) throws Exception;
 
 }

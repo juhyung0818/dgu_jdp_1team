@@ -75,15 +75,22 @@ public class SubjectDAOImpl implements SubjectDAO{
 		return session.selectOne(namespace+".getSubjectName", subjectCode);
 	}
 
-	/**
-	 * Student leave subject 
-	 */
+	// Student leave subject 
 	@Override
 	public void leaveSubject(String uid, int subjectCode) throws Exception {
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("uid", uid);
 		paramMap.put("subjectCode", subjectCode);
 		session.delete(namespace+".leaveSubject", paramMap);
+	}
+	
+	// check user access authority
+	@Override
+	public void checkAuthority(String uid, String subjectCode) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("uid", uid);
+		paramMap.put("subjectCode", subjectCode);
+		session.selectOne(namespace+".checkAuthority", paramMap);
 	}
 }
 

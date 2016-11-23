@@ -3,6 +3,7 @@ package com.jdp.persistence;
 import java.util.List;
 
 import com.jdp.domain.CheckVO;
+import com.jdp.domain.ExamVO;
 import com.jdp.domain.MemberListVO;
 import com.jdp.domain.ScoreVO;
 
@@ -23,6 +24,8 @@ public interface ScoreDAO {
 	public List<MemberListVO> listMember2(MemberListVO memberListVO) throws Exception;
 	public ScoreVO check(int subjectCode, String examName, String uid) throws Exception;
 	public List<ScoreVO> myScore(int subjectCode, String uid) throws Exception;
+	public List<ExamVO> listExam(int subjectCode) throws Exception;
+	public List<ScoreVO> readScore(int subjectCode, String uid) throws Exception;
 	/**
 	 * student took a exam whether or not
 	 * @param subjectCode

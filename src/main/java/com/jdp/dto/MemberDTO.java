@@ -1,5 +1,9 @@
 package com.jdp.dto;
-
+/**
+ * 
+ * @author ภฬฟ๋มุ
+ *
+ */
 public class MemberDTO {
 	private String uid;
 	private int subjectCode;

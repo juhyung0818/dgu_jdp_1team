@@ -10,9 +10,15 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.jdp.domain.CheckVO;
+import com.jdp.domain.ExamVO;
 import com.jdp.domain.MemberListVO;
 import com.jdp.domain.ScoreVO;
 
+/**
+ * 
+ * @author LYJ
+ *
+ */
 @Repository
 public class ScoreDAOImpl implements ScoreDAO{
 
@@ -57,6 +63,7 @@ public class ScoreDAOImpl implements ScoreDAO{
 	public List<MemberListVO> listMember2(MemberListVO memberListVO) throws Exception {
 		return session.selectList(namespace+".manage2", memberListVO);
 	}
+	
 	/**
 	 * display exam infomation and score
 	 * 2016.11.11.Fri
@@ -77,6 +84,21 @@ public class ScoreDAOImpl implements ScoreDAO{
 	}
 
 	@Override
+	public List<ExamVO> listExam(int subjectCode) throws Exception {
+		Map<String, Object> paramMap = new HashMap<>();
+		paramMap.put("subjectCode", subjectCode);
+		return session.selectList(namespace+".examList", paramMap);
+	}
+
+	@Override
+	public List<ScoreVO> readScore(int subjectCode, String uid) throws Exception {
+		Map<String, Object> paramMap = new HashMap<String, Object>();
+		paramMap.put("subjectCode", subjectCode);
+		paramMap.put("uid", uid);
+		return session.selectList(namespace+".readScore", paramMap);
+	
+	}
+	@Override	
 	public ScoreVO checkIsTry(int subjectCode, String examName, String uid) throws Exception {
 		Map<String, Object> paramMap=new HashMap<String, Object>();
 		paramMap.put("subjectCode", subjectCode);

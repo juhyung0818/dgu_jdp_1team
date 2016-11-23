@@ -28,7 +28,7 @@
 							<input type="button" value="ENTER"
 							 class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red"></a>
 							<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red"
-							 href="#">Management</a>
+							 href='/score/management?subjectCode=${subjectVO.subjectCode}&subjectName=${subjectVO.subjectName}'>Management</a>
 							<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red" 
 							 href="/subject/tDelete?subjectCode=${subjectVO.subjectCode}">Delete</a>
 <!--
