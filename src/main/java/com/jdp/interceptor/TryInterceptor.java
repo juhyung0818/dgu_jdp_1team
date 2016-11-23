@@ -23,6 +23,8 @@ public class TryInterceptor extends HandlerInterceptorAdapter{
 			throws Exception {
 		
 		HttpSession session=request.getSession();
+
+		//check whether student take a exam through correct path or not
 		if((boolean)session.getAttribute("path"))
 		{
 			logger.info("correct path..");
