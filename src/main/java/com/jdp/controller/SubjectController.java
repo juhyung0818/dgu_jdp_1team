@@ -37,16 +37,17 @@ public class SubjectController {
 	@RequestMapping(value = "/tRegister", method = RequestMethod.GET)
 	public void registGET(Model model, HttpSession session) {
 		logger.info("subject Register...");
-		
-		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
+		UserVO user = (UserVO)session.getAttribute("teacher");
+		model.addAttribute("uname", user.getUname());
 	}
 	
 	//TODO this method need subjectCode, tid
 	@RequestMapping(value = "/tRegister", method = RequestMethod.POST)
-	public String registPOST(@RequestParam("subjectName") String subjectName, HttpSession session) throws Exception {
-		
+	public String registPOST(@RequestParam("subjectName") String subjectName,
+			RedirectAttributes rttr, HttpSession session) throws Exception {
+		UserVO user = (UserVO)session.getAttribute("teacher");
 		int subjectCode=subjectService.register(subjectName, ((UserVO)session.getAttribute("teacher")).getUid());
-		
+		rttr.addFlashAttribute("msg", "SUCCESS");
 		return "redirect:/exam/managementExam?subjectCode="+subjectCode;
 	}
 
@@ -58,6 +59,12 @@ public class SubjectController {
 		model.addAttribute("uname", vo.getUname());
 	}
 	
+	/**
+	 * student join subject
+	 * @param model
+	 * @param session
+	 * @throws Exception
+	 */
 	@RequestMapping(value = "/sSubject", method = RequestMethod.GET)
 	public void listStudent(Model model, HttpSession session) throws Exception {
 		logger.info("student subject List...");
@@ -66,8 +73,14 @@ public class SubjectController {
 		model.addAttribute("list", subjectService.listStudent(vo.getUid()));
 		model.addAttribute("uid", vo.getUid());
 		model.addAttribute("uname", vo.getUname());
+		
 	}
 	
+	/**
+	 * student join subject
+	 * @param model
+	 * @param session
+	 */
 	@RequestMapping(value = "/sRegister", method = RequestMethod.GET)
 	public void sRegisterGET(Model model, HttpSession session) {
 		logger.info("Student Subject Register...");
@@ -85,6 +98,12 @@ public class SubjectController {
 		return "redirect:/subject/sSubject";
 	}
 	
+	/**
+	 * teacher remove subject 
+	 * @param subjectCode
+	 * @return
+	 * @throws Exception
+	 */
 	@RequestMapping(value ="/tDelete", method = RequestMethod.POST)
 	public String tDeletePOST(@RequestParam("subjectCode") int subjectCode) throws Exception {
 		logger.info("teacher Subject delete...");

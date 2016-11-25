@@ -6,7 +6,6 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.jdp.domain.ExamVO;
 import com.jdp.domain.UserVO;
 import com.jdp.dto.LoginDTO;
 import com.jdp.persistence.UserDAO;

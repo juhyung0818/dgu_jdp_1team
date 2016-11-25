@@ -2,7 +2,6 @@ package com.jdp.service;
 
 import java.util.List;
 
-import com.jdp.domain.QuestionListVO;
 import com.jdp.domain.QuestionVO;
 
 /**

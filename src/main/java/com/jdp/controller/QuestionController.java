@@ -121,6 +121,7 @@ public class QuestionController {
 		logger.info("- try question GET......");
 		UserVO user = new UserVO();
 		user = (UserVO)session.getAttribute("student");
+
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("examName", examName);
 		model.addAttribute("list", questionService.tryQuestion(subjectCode, examName));

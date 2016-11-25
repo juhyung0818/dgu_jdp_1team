@@ -30,14 +30,12 @@
 					<a href='/exam/modify?subjectCode=${examVO.subjectCode}&examName=${examVO.examName}'>
 						<button id="modify" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> MODIFY </button>
 					</a>
-
 				</td>
 				<td>
 					<a href='/question/modify?subjectCode=${examVO.subjectCode}&examName=${examVO.examName}'>
 						<button id="enter" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> ENTER </button>
 					</a>
 				</td>
-
 			</tr>
 		</c:forEach>
 	</table>
