@@ -45,23 +45,13 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<button type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge btn-danger">SUBJECT REMOVE</button>
+		<form action="/subject/leave?subjectCode=${subjectCode}" method="post">
+			<button type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge btn-danger">SUBJECT REMOVE</button>
+		</form>
 		<br><br>
 </div>
 
 <script>
-$(document).ready(function() {
-
-	var formObj = $("form[role='form']");
-
-	console.log(formObj);
-
-	$(".btn-danger").on("click", function() {
-		formObj.attr("action", "/subject/leave");
-		formObj.submit();
-	});
-
-});
 
  function isTry(score)
  {

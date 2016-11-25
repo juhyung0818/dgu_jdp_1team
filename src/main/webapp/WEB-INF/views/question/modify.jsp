@@ -162,9 +162,7 @@
 					<br>
 					<div class="box-footer">
 						<br>
-						<button id="modify"
-							class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"
-							value="10">SAVE</button>
+						<button id="modify" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="10">SAVE</button>
 						<button type="submit"
 							class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge btn-danger">REMOVE</button>
 						<a href="/exam/managementExam?subjectCode=${subjectCode}">
@@ -213,11 +211,7 @@
 				'question' : question
 			})
 		});
-		self.location = "/exam/managementExam?subjectCode=" + $
-		{
-			subjectCode
-		}
-		;
+		self.location = "/exam/managementExam?subjectCode=" + ${subjectCode};
 	});
 </script>
 
