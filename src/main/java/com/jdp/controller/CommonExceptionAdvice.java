@@ -2,6 +2,7 @@ package com.jdp.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -95,4 +96,16 @@ public class CommonExceptionAdvice {
 		return modelAndView;
 	}
 
+	@ResponseBody
+	@ExceptionHandler(DuplicateKeyException.class)
+	public ModelAndView duplicateKeyException(DuplicateKeyException e) {
+
+		logger.error(e.getMessage());
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/exception/primary_key_duplication");
+		modelAndView.addObject("exception", e);
+
+		return modelAndView;
+	}
+	
 }

@@ -63,7 +63,7 @@ public class ScoreController {
 					} catch (Exception e) {
 						ScoreVO temp=new ScoreVO();
 						temp.setExamName(listExam.get(j).getExamName());
-						temp.setSubjectCode(subjectCode);
+//						temp.setSubjectCode(subjectCode);
 						temp.setUid(user.getUid());
 						temp.setScore(0);
 						listScore.add(temp);
@@ -128,7 +128,7 @@ public class ScoreController {
 				} catch (Exception e) {
 					ScoreVO temp=new ScoreVO();
 					temp.setExamName(listExam.get(j).getExamName());
-					temp.setSubjectCode(subjectCode);
+//					temp.setSubjectCode(subjectCode);
 					temp.setUid(user.getUid());
 					temp.setScore(0);
 					listScore.add(temp);

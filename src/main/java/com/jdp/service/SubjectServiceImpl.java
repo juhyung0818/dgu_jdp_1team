@@ -30,8 +30,8 @@ public class SubjectServiceImpl implements SubjectService{
 	private QuestionDAO questionDao;
 	
 	@Override
-	public int register(String subjectName, String uid) throws Exception {
-		return subjectDao.register(subjectName, uid);
+	public void register(String subjectName, String uid) throws Exception {
+		subjectDao.register(subjectName, uid);
 	}
 
 	@Override
@@ -81,13 +81,4 @@ public class SubjectServiceImpl implements SubjectService{
 	public void leaveSubject(String uid, int subjectCode) throws Exception {
 		subjectDao.leaveSubject(uid, subjectCode);
 	}
-
-	@Override
-	public int checkAuthority(String uid, int subjectCode) throws Exception {
-		if(subjectDao.checkAuthority(uid, subjectCode) == 0){
-			throw new NotAuthoritySubject();
-		}
-		return 1;
-	}
-
 }

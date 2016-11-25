@@ -11,7 +11,7 @@ import com.jdp.domain.SubjectVO;
  */
 public interface SubjectService {
 	
-	public int register(String subjectName, String uid) throws Exception;
+	public void register(String subjectName, String uid) throws Exception;
 	public void modify(int subjectCode, String subjectName) throws Exception; 
 	public List<SubjectVO> listStudent(String uid) throws Exception;
 	public List<SubjectVO> listTeacher(String uid) throws Exception;
@@ -23,6 +23,4 @@ public interface SubjectService {
 	public String getSubjectName(int subjectCode) throws Exception;
 	//student leave subject
 	public void leaveSubject(String uid, int subjectCode) throws Exception;
-	//check user access authority
-	public int checkAuthority(String uid, int subjectCode) throws Exception;
 }

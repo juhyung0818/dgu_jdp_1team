@@ -47,18 +47,13 @@ public class ExamTest {
 	
 	@Test
 	public void testDeleteExam() throws Exception{
-		int subjectCode = 12312;
-		String examName = "aa";
-		Map<String, Object> paramMap = new HashMap<>();
-		paramMap.put("subjectCode", subjectCode);
-		paramMap.put("examName", examName);
-		dao.delete(subjectCode, examName);
+		int examCode = 12312;
+		dao.delete(examCode);
 	}
 	
 	@Test
 	public void testUpdateExam() throws Exception{
 		ExamVO vo = new ExamVO();
-		vo = dao.getExam(12313, "a");
 		System.out.println(vo.toString());
 		dao.update(vo);
 	}
@@ -79,15 +74,13 @@ public class ExamTest {
 	
 	@Test
 	public void testQuestionAnswer() throws Exception{
-		int subjectCode= 1300;
-		String examName = "soooo";
-		logger.info(score.answers(subjectCode, examName).toString());
+		int examCode= 1300;
+		logger.info(score.answer(examCode).toString());
 	}
 	
 	@Test
 	public void testGetExam() throws Exception{
 		ExamVO exam = new ExamVO();
-		exam = dao.getExam(12312, "a");
 		System.out.println(exam.toString());
 	}
 }

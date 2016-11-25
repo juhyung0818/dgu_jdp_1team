@@ -10,6 +10,7 @@ import java.sql.Timestamp;
  */
 public class ExamVO {
 
+	private int examCode;
 	private int subjectCode;
 	private String examName;
 	private int studentCnt;
@@ -17,7 +18,13 @@ public class ExamVO {
 	private Timestamp startTime;
 	private Timestamp endTime;
 
-	/* setter, getter methods */
+	/* setter, getter, toString methods */
+	public int getExamCode() {
+		return examCode;
+	}
+	public void setExamCode(int examCode) {
+		this.examCode = examCode;
+	}
 	public int getSubjectCode() {
 		return subjectCode;
 	}
@@ -30,7 +37,6 @@ public class ExamVO {
 	public void setExamName(String examName) {
 		this.examName = examName;
 	}
-	
 	public int getStudentCnt() {
 		return studentCnt;
 	}
@@ -55,11 +61,11 @@ public class ExamVO {
 	public void setEndTime(Timestamp endTime) {
 		this.endTime = endTime;
 	}
-	
-	//toString method for log
 	@Override
 	public String toString() {
-		return "ExamVO [subjectCode=" + subjectCode + ", examName=" + examName + ", studentCnt=" + studentCnt
-				+ ", startTime=" + startTime + ", endTime=" + endTime + "]";
+		return "ExamVO [examCode=" + examCode + ", subjectCode=" + subjectCode + ", examName=" + examName
+				+ ", studentCnt=" + studentCnt + ", questionNum=" + questionNum + ", startTime=" + startTime
+				+ ", endTime=" + endTime + "]";
 	}
+
 }

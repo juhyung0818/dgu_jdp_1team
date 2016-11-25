@@ -6,25 +6,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.jdp.mapper.QuestionMapper">
 
 	<insert id="register">
-		insert into question (subjectCode, examName, qNumber, qInfo, ex1, ex2, ex3, ex4, qPoint, answer)
-		values (#{subjectCode}, #{examName}, #{qNumber}, #{qInfo}, #{ex1}, #{ex2}, #{ex3}, #{ex4}, #{qPoint}, #{answer})
+		insert into question (examCode, subjectCode, examName, qNumber, qInfo, ex1, ex2, ex3, ex4, qPoint, answer)
+		values (#{examCode}, #{subjectCode}, #{examName}, #{qNumber}, #{qInfo}, #{ex1}, #{ex2}, #{ex3}, #{ex4}, #{qPoint}, #{answer})
 	</insert>
 	
 	 <update id="update">
  		update question set qInfo=#{qInfo}, ex1=#{ex1}, ex2=#{ex2}, ex3=#{ex3},ex4=#{ex4}, qPoint=#{qPoint}, answer=#{answer}
- 		where subjectCode=#{subjectCode} and examName=#{examName} and qNumber=#{qNumber}
+ 		where examCode=#{examCode} and qNumber=#{qNumber}
  	</update>
 
 	<select id="listQuestion" resultType="com.jdp.domain.QuestionVO">
- 		select examName, qNumber, qInfo, ex1, ex2, ex3, ex4, qPoint, answer
+ 		select qNumber, qInfo, ex1, ex2, ex3, ex4, qPoint, answer
  		from question
- 		where subjectCode=#{subjectCode} and examName=#{examName}
+ 		where examCode=#{examCode}
  		order by qNumber
  	</select>
  	
  	<delete id="delete">
  		delete from question
- 		where subjectCode=#{subjectCode} and examName=#{examName}
+ 		where examCode=#{examCode}
  	</delete>
  	
  	<!-- de -->
@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	<select id="tryQuestion" resultType="com.jdp.domain.QuestionVO">
  		select examName, qNumber, qInfo, ex1, ex2, ex3, ex4, qPoint
  		from question
- 		where subjectCode=#{subjectCode} and examName=#{examName}
+ 		where examCode=#{examCode}
  		order by qNumber
  	</select>
 

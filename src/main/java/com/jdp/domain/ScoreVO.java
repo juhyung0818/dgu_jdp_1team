@@ -9,17 +9,17 @@ package com.jdp.domain;
 
 public class ScoreVO {
 
-	private int subjectCode;
+	private int examCode;
 	private String examName;
 	private String uid;
 	private int score;
-
-	/* getter, setter methods */
-	public int getSubjectCode() {
-		return subjectCode;
+	
+	//getter, setter. toString methods
+	public int getExamCode() {
+		return examCode;
 	}
-	public void setSubjectCode(int subjectCode) {
-		this.subjectCode = subjectCode;
+	public void setExamCode(int examCode) {
+		this.examCode = examCode;
 	}
 	public String getExamName() {
 		return examName;
@@ -39,11 +39,9 @@ public class ScoreVO {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	
-	/* toStinrg for log*/
 	@Override
 	public String toString() {
-		return "ScoreVO [subjectCode=" + subjectCode + ", examName=" + examName + ", uid=" + uid + ", score=" + score
-				+ "]";
+		return "ScoreVO [examCode=" + examCode + ", examName=" + examName + ", uid=" + uid + ", score=" + score + "]";
 	}
+
 }

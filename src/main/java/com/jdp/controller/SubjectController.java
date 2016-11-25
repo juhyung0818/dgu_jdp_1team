@@ -46,9 +46,8 @@ public class SubjectController {
 	public String registPOST(@RequestParam("subjectName") String subjectName,
 			RedirectAttributes rttr, HttpSession session) throws Exception {
 		UserVO user = (UserVO)session.getAttribute("teacher");
-		int subjectCode=subjectService.register(subjectName, ((UserVO)session.getAttribute("teacher")).getUid());
-		rttr.addFlashAttribute("msg", "SUCCESS");
-		return "redirect:/exam/managementExam?subjectCode="+subjectCode;
+		subjectService.register(subjectName, user.getUid());
+		return "redirect:/subject/tSubject";
 	}
 
 	@RequestMapping(value = "/tSubject", method = RequestMethod.GET)

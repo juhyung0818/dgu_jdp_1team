@@ -50,8 +50,7 @@
 }
 </style>
 <form role="form" action="modify" method="post">
-	<input type='hidden' name='subjectCode' value="${subjectCode}">
-	<input type='hidden' name='examName' value="${examName}">
+	<input type='hidden' name='examCode' value="${examCode}">
 </form>
 
 <section class="content">
@@ -163,8 +162,11 @@
 					<div class="box-footer">
 						<br>
 						<button id="modify" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="10">SAVE</button>
-						<button type="submit"
-							class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge btn-danger">REMOVE</button>
+						
+						<form action="/exam/delete?examCode=${examCode}" method="post">
+							<button id="modify" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge">REMOVE</button>
+						</form>
+						
 						<a href="/exam/managementExam?subjectCode=${subjectCode}">
 							<button id="backPage"
 								class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge">

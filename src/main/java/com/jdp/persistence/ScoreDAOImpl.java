@@ -34,11 +34,8 @@ public class ScoreDAOImpl implements ScoreDAO{
 	
 	//answer check
 	@Override
-	public List<CheckVO> answers(int subjectCode, String examName) throws Exception {
-		Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("subjectCode", subjectCode);
-		paramMap.put("examName", examName);
-		return session.selectList(namespace+".answer", paramMap);
+	public List<CheckVO> answer(int examCode) throws Exception {
+		return session.selectList(namespace+".answer", examCode);
 	}
 
 

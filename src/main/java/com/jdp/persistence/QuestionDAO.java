@@ -18,10 +18,10 @@ public interface QuestionDAO {
 	//modify a question
 	public void update(QuestionVO question) throws Exception;
 	//display question list
-	public List<QuestionVO> listQuestion(int subjectCode, String examName) throws Exception;
-	public List<QuestionVO> tryQuestion(int subjectCode, String examName) throws Exception;
+	public List<QuestionVO> listQuestion(int examCode) throws Exception;
+	public List<QuestionVO> tryQuestion(int examCode) throws Exception;
 	
- 	public void delete(int subjectCode, String examName) throws Exception;
+ 	public void delete(int examCode) throws Exception;
 	//all question delete
 	public void deleteAll(int subjectCode) throws Exception;
 

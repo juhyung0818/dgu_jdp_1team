@@ -14,7 +14,7 @@ import com.jdp.domain.ScoreVO;
 public interface ScoreService {
 
 	public void register(ScoreVO score) throws Exception;
-	public List<CheckVO> answer(int subjectCode, String examName) throws Exception;
+	public List<CheckVO> answer(int examName) throws Exception;
 
 	public List<MemberListVO> listMember(String uid, int subjectCode) throws Exception;
 	public List<MemberListVO> listMember2(MemberListVO memberListVO) throws Exception;

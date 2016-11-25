@@ -14,7 +14,7 @@ import com.jdp.domain.SubjectVO;
 public interface SubjectDAO {
 
 	//add subject in database 
-	public int register(String subjectName, String uid) throws Exception;
+	public void register(String subjectName, String uid) throws Exception;
 	//update subject in database
 	public void modify(int subjectCode, String subjectName) throws Exception;
 	//select subjectName in database for student

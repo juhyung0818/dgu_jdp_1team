@@ -10,17 +10,25 @@ import java.sql.Timestamp;
 public class ScoreExamVO {
 
 	private int subjectCode;
+	private int examCode;
 	private String examName;
 	private Timestamp startTime;
 	private Timestamp endTime;
 	private int score;
 	
-	//getter, setter methods
 	public int getSubjectCode() {
 		return subjectCode;
 	}
 	public void setSubjectCode(int subjectCode) {
 		this.subjectCode = subjectCode;
+	}
+	//getter, setter. toString methods
+	
+	public int getExamCode() {
+		return examCode;
+	}
+	public void setExamCode(int examCode) {
+		this.examCode = examCode;
 	}
 	public String getExamName() {
 		return examName;
@@ -46,11 +54,9 @@ public class ScoreExamVO {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	
-	//toString method for log
 	@Override
 	public String toString() {
-		return "ScoreExamVO [subjectCode=" + subjectCode + ", examName=" + examName + ", startTime=" + startTime
+		return "ScoreExamVO [examCode=" + examCode + ", examName=" + examName + ", startTime=" + startTime
 				+ ", endTime=" + endTime + ", score=" + score + "]";
 	}
 	
