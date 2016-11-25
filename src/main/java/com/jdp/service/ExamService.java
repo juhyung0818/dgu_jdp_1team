@@ -15,16 +15,14 @@ public interface ExamService {
 	//insert a exam
 	public void register(ExamVO exam) throws Exception; 
 	//remove a exam
-	public void delete(int subjectCode, String examName) throws Exception; 
+	public void delete(int examCode) throws Exception; 
 	//modify startTime, endTime, exam name
 	public void update(ExamVO exam, String newName) throws Exception;
 	//display exam list
 	public List<ExamVO> examList(int subjectCode) throws Exception;
-	
 	public String getSubjectName(int subjectCode) throws Exception;
 	//get exam infomation
-	public ExamVO getExam(int subjectCode, String examName) throws Exception;
-	
+	public ExamVO getExam(int examCode) throws Exception;
 	
 	public void update(ExamVO exam) throws Exception;
 	/**
@@ -34,5 +32,9 @@ public interface ExamService {
 	 * @return if start time <= current time <= end time, return examVO. if not, return null.
 	 * @throws Exception
 	 */
-	public ExamVO checkTime(int subjectCode, String examName) throws Exception;
+	public ExamVO checkTime(int examCode) throws Exception;
+	//return subject code of exam
+	public int getSubjectCode(int examCode) throws Exception;
+	//return subject code of exam
+	public int getExamCode(int subjectCode, String examName) throws Exception;
 }

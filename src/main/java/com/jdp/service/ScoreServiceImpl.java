@@ -10,7 +10,6 @@ import com.jdp.domain.CheckVO;
 import com.jdp.domain.ExamVO;
 import com.jdp.domain.MemberListVO;
 import com.jdp.domain.ScoreVO;
-import com.jdp.persistence.ExamDAO;
 import com.jdp.persistence.ScoreDAO;
 
 @Service
@@ -25,8 +24,8 @@ public class ScoreServiceImpl implements ScoreService{
 	}
 
 	@Override
-	public List<CheckVO> answer(int subjectCode, String examName) throws Exception {
-		return scoreDao.answers(subjectCode, examName);
+	public List<CheckVO> answer(int examCode) throws Exception {
+		return scoreDao.answer(examCode);
 	}
 
 	@Override

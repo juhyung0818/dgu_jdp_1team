@@ -18,42 +18,46 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.jdp.domain.CheckVO;
+import com.jdp.domain.ExamVO;
 import com.jdp.domain.QuestionVO;
 import com.jdp.domain.ScoreVO;
 import com.jdp.domain.UserVO;
+import com.jdp.service.ExamService;
 import com.jdp.service.QuestionService;
 import com.jdp.service.ScoreService;
 
 @Controller
 @RequestMapping("/question")
 public class QuestionController {
-	
+
 	@Inject
 	private QuestionService questionService;
 	@Inject
+	private ExamService examService;
+	@Inject
 	private ScoreService scoreService;
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(QuestionController.class);
-	
+
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public void registGET(@RequestParam("subjectCode") int subjectCode,
+	public void registGET(@RequestParam("subjectCode") int subjectCode, 
 			@RequestParam("examName") String examName,
-			@RequestParam("num") int num,
-			Model model, HttpSession session){
+			@RequestParam("num") int num, Model model,
+			HttpSession session) throws Exception {
 		
-		model.addAttribute("subjectCode", subjectCode);
+		logger.info("Question Register GETGETGET...");
+		int examCode = examService.getExamCode(subjectCode, examName);
+		model.addAttribute("subjectCode",subjectCode);
 		model.addAttribute("examName", examName);
 		model.addAttribute("num", num);
-		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
-		logger.info("Question Register...");
+		model.addAttribute("uname", ((UserVO) session.getAttribute("teacher")).getUname());
 	}
-	
+
 	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public String registPOST(@RequestParam("subjectCode") int subjectCode, 
-							@RequestParam("examName") String examName,
-							@RequestBody String question,
+	public String registPOST(@RequestParam("examCode") int examCode, 
+							@RequestBody String question, RedirectAttributes rttr,
 							HttpServletRequest request) throws Exception{
-		logger.info("question register.........");
+		logger.info("question register postpostpost.........");
 		System.out.println(question);
 		
 		request.setCharacterEncoding("utf8");
@@ -65,8 +69,7 @@ public class QuestionController {
 		for(int i=0; i<temp.length/8; i++){
 
 			QuestionVO q = new QuestionVO();
-			q.setSubjectCode(subjectCode);
-			q.setExamName(examName);
+			q.setExamCode(examCode);
 			q.setqNumber(Integer.parseInt(temp[i*8+1]));
 			q.setqPoint(Integer.parseInt(temp[i*8+2]));
 			q.setAnswer(Integer.parseInt(temp[i*8+3]));
@@ -80,33 +83,37 @@ public class QuestionController {
 		}
 		//insert questions
 		questionService.registerList(list);
-		
-		return "redirect:/exam/managementExam?subjectCode="+subjectCode;
-	}	
-	
-	
+
+		rttr.addAttribute("subjectCode", examService.getSubjectCode(examCode));
+		return "redirect:/exam/managementExam";
+	}
+
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
-	public void read(@RequestParam("subjectCode") int subjectCode, 
-			@RequestParam("examName") String examName, Model model, HttpSession session) throws Exception {
-		 List<QuestionVO> list = questionService.listQuestion(subjectCode, examName);
-		model.addAttribute("list",list);
-		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
-		model.addAttribute("subjectCode", subjectCode);
-		model.addAttribute("examName", examName);
+	public void read(@RequestParam("examCode") int examCode, Model model, HttpSession session, RedirectAttributes rttr)
+			throws Exception {
+		List<QuestionVO> list = questionService.listQuestion(examCode);
+		ExamVO exam = examService.getExam(examCode);
+
+		model.addAttribute("list", list);
+		model.addAttribute("examCode", examCode);
+		model.addAttribute("uname", ((UserVO) session.getAttribute("teacher")).getUname());
+		model.addAttribute("subjectCode", examService.getSubjectCode(examCode));
+		model.addAttribute("examName", exam.getExamName());
 		model.addAttribute("num", list.size());
 	}
-	
+
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public String delete(@RequestParam("subjectCode") int subjectCode, 
-			@RequestParam("examName") String examName) throws Exception {
-		logger.info("subjectCode: " + subjectCode +" examName: " + examName + " delete....");
-		questionService.delete(subjectCode, examName);
-		return "redirect:/exam/managementExam?subjectCode="+subjectCode;
+	public String delete(@RequestParam("examCode") int examCode, RedirectAttributes rttr) throws Exception {
+		int subjectCode = examService.getSubjectCode(examCode);
+		logger.info("subjectCode: " + subjectCode + " examCode: " + examCode + " delete....");
+		questionService.delete(examCode);
+		rttr.addAttribute("subjectCode", subjectCode);
+		return "redirect:/exam/managementExam";
 	}
-	
+
 	/**
-	 * exam try to student
-	 * Method : GET
+	 * exam try to student Method : GET
+	 * 
 	 * @param subjectCode
 	 * @param examName
 	 * @param model
@@ -114,29 +121,28 @@ public class QuestionController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/try", method = RequestMethod.GET)
-	public void tryGET(@RequestParam("subjectCode") int subjectCode,
-			@RequestParam("examName") String examName, 
-			Model model, 
-			HttpSession session)throws Exception {
+	public void tryGET(@RequestParam("examCode") int examCode, Model model, HttpSession session) throws Exception {
 		logger.info("- try question GET......");
 		UserVO user = new UserVO();
-		user = (UserVO)session.getAttribute("student");
-		model.addAttribute("subjectCode", subjectCode);
-		model.addAttribute("examName", examName);
-		model.addAttribute("list", questionService.tryQuestion(subjectCode, examName));
-		model.addAttribute("size", questionService.tryQuestion(subjectCode, examName).size()+1);
-		model.addAttribute("uname", ((UserVO)session.getAttribute("student")).getUname());
-		
-		//for incorrect access
-		model.addAttribute("path", ((boolean)session.getAttribute("path")));
-		model.addAttribute("deniedURL", ((String)session.getAttribute("deniedURL")));
+		user = (UserVO) session.getAttribute("student");
+
+		ExamVO exam = examService.getExam(examCode);
+		model.addAttribute("subjectCode", examService.getSubjectCode(examCode));
+		model.addAttribute("examName", exam.getExamName());
+		model.addAttribute("list", questionService.tryQuestion(examCode));
+		model.addAttribute("size", questionService.tryQuestion(examCode).size() + 1);
+		model.addAttribute("uname", ((UserVO) session.getAttribute("student")).getUname());
+
+		// for incorrect access
+		model.addAttribute("path", ((boolean) session.getAttribute("path")));
+		model.addAttribute("deniedURL", ((String) session.getAttribute("deniedURL")));
 	}
-	
+
 	/**
-	 * exam try to student
-	 * Method : POST
+	 * student try exam
+	 * 
 	 * @param subjectCode
-	 * @param examName
+	 * @param examCode
 	 * @param answer
 	 * @param rttr
 	 * @param model
@@ -145,73 +151,66 @@ public class QuestionController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/try", method = RequestMethod.POST)
-	public String tryPOST(@RequestParam("subjectCode") int subjectCode,
-			@RequestParam("examName") String examName,
-			@RequestBody String answer, RedirectAttributes rttr,
+	public String tryPOST(@RequestParam("examCode") int examCode, @RequestBody String answer, RedirectAttributes rttr,
 			Model model, HttpSession session) throws Exception {
-		UserVO user = (UserVO)session.getAttribute("student");
+		UserVO user = (UserVO) session.getAttribute("student");
 
 		logger.info(user.getUid() + "- try question POST.....");
 		ScoreVO score = new ScoreVO();
-		score.setSubjectCode(subjectCode);
-		score.setExamName(examName);
+		score.setExamCode(examCode);
 		score.setUid(user.getUid());
 		score.setScore(0);
-		
-		//parsing part
+
+		// parsing part
 		String[] stAnswer = answer.split("&answer=");
-		int[] stAns = new int[stAnswer.length-1]; 
-		for(int i=0; i<stAnswer.length; i++){
-			if(i>0){
-				stAns[i-1] = Integer.parseInt(stAnswer[i]);
+		int[] stAns = new int[stAnswer.length - 1];
+		for (int i = 0; i < stAnswer.length; i++) {
+			if (i > 0) {
+				stAns[i - 1] = Integer.parseInt(stAnswer[i]);
 			}
 		}
-		
-		//score calculation
-		List<CheckVO> an = scoreService.answer(subjectCode, examName);
-		for(int i=0; i<stAns.length; i++){
-			if(an.get(i).getAnwser()==stAns[i]){
+
+		// score calculation
+		List<CheckVO> an = scoreService.answer(examCode);
+		for (int i = 0; i < stAns.length; i++) {
+			if (an.get(i).getAnwser() == stAns[i]) {
 				score.setScore(score.getScore() + an.get(i).getqPoint());
 			}
 		}
-		
-		//insert score
+
+		// insert score
 		scoreService.register(score);
-	    rttr.addAttribute("subjectCode", subjectCode);
+		rttr.addAttribute("subjectCode", examService.getSubjectCode(examCode));
 		return "redirect:/exam/studentExam";
 	}
-	
+
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String modifyQuestion(@RequestParam("subjectCode") int subjectCode,
-			@RequestParam("examName") String examName, 
-			Model model, 
-			@RequestBody String question, RedirectAttributes rttr,
-			HttpSession session)throws Exception {
+	public String modifyQuestion(@RequestParam("examCode") int examCode, Model model, @RequestBody String question,
+			RedirectAttributes rttr, HttpSession session) throws Exception {
 
 		System.out.println("modify post....");
 
-		//parsing part
+		// parsing part
 		List<QuestionVO> list = new ArrayList<QuestionVO>();
 		String[] temp = question.split("&question%5B%5D=");
-		for(int i=0; i<temp.length/8; i++){
+		for (int i = 0; i < temp.length / 8; i++) {
 
 			QuestionVO q = new QuestionVO();
-			q.setSubjectCode(subjectCode);
-			q.setExamName(examName);
-			q.setqNumber(Integer.parseInt(temp[i*8+1]));
-			q.setqPoint(Integer.parseInt(temp[i*8+2]));
-			q.setAnswer(Integer.parseInt(temp[i*8+3]));
-			q.setqInfo(temp[i*8+4]);
-			q.setEx1(temp[i*8+5]);
-			q.setEx2(temp[i*8+6]);
-			q.setEx3(temp[i*8+7]);
-			q.setEx4(temp[i*8+8]);
+			q.setExamCode(examCode);
+			q.setqNumber(Integer.parseInt(temp[i * 8 + 1]));
+			q.setqPoint(Integer.parseInt(temp[i * 8 + 2]));
+			q.setAnswer(Integer.parseInt(temp[i * 8 + 3]));
+			q.setqInfo(temp[i * 8 + 4]);
+			q.setEx1(temp[i * 8 + 5]);
+			q.setEx2(temp[i * 8 + 6]);
+			q.setEx3(temp[i * 8 + 7]);
+			q.setEx4(temp[i * 8 + 8]);
 			//
 			list.add(q);
 		}
-		//modify questions
+		// modify questions
 		questionService.update(list);
-	    rttr.addAttribute("subjectCode", subjectCode);
+		rttr.addAttribute("subjectCode", examService.getSubjectCode(examCode));
 		return "redirect:/exam/managementExam";
 	}
 

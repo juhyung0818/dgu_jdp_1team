@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.jdp.domain.QuestionListVO;
 import com.jdp.domain.QuestionVO;
 import com.jdp.persistence.ExamDAO;
 import com.jdp.persistence.QuestionDAO;
@@ -26,19 +25,6 @@ public class QuestionServiceImpl implements QuestionService{
 	
 	@Inject
 	private ExamDAO examDAO;
-	
-	/**
-	 * add question in exam
-	 * @param questionList
-	 * @throws Exception
-	 */
-	public void register(QuestionListVO questions) throws Exception {
-		List<QuestionVO> list = questions.getqList();
-
-		for(int i=0; i<questions.getqList().size(); i++){
-			questionDAO.register(list.get(i));
-		}
-	}
 
 	@Override
 	public void register(QuestionVO question) throws Exception {
@@ -61,20 +47,20 @@ public class QuestionServiceImpl implements QuestionService{
 	}
 
 	@Override
-	public List<QuestionVO> listQuestion(int subjectCode, String examName) throws Exception {
-		return questionDAO.listQuestion(subjectCode, examName);
+	public List<QuestionVO> listQuestion(int examCode) throws Exception {
+		return questionDAO.listQuestion(examCode);
 	}
 	
 	@Override
-	public List<QuestionVO> tryQuestion(int subjectCode, String examName) throws Exception {
-		return questionDAO.tryQuestion(subjectCode, examName);
+	public List<QuestionVO> tryQuestion(int examCode) throws Exception {
+		return questionDAO.tryQuestion(examCode);
 	}
 
 	@Transactional
 	@Override
-	public void delete(int subjectCode, String examName) throws Exception {
-		questionDAO.delete(subjectCode, examName);
-		examDAO.delete(subjectCode, examName);
+	public void delete(int examCode) throws Exception {
+		questionDAO.delete(examCode);
+		examDAO.delete(examCode);
 	}
 
 }

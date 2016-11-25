@@ -2,7 +2,6 @@ package com.jdp.service;
 
 import java.util.Date;
 
-import com.jdp.domain.ExamVO;
 import com.jdp.domain.UserVO;
 import com.jdp.dto.LoginDTO;
 /**

@@ -6,8 +6,7 @@ package com.jdp.domain;
  */
 public class QuestionVO {
 	
-	private int subjectCode;
-	private String examName;
+	private int examCode;
 	private int qNumber;
 	private String qInfo;
 	private String ex1;
@@ -21,29 +20,15 @@ public class QuestionVO {
 	 * subjectCode getter method
 	 * @return code of subject
 	 */
-	public int getSubjectCode() {
-		return subjectCode;
+	public int getExamCode() {
+		return examCode;
 	}
 	/**
 	 * subject setter method
 	 * @param subjectCode
 	 */
-	public void setSubjectCode(int subjectCode) {
-		this.subjectCode = subjectCode;
-	}
-	/**
-	 * examName getter method
-	 * @return name of exam :code of subject
-	 */
-	public String getExamName() {
-		return examName;
-	}
-	/**
-	 * examName setter method
-	 * @param examName :name of exam
-	 */
-	public void setExamName(String examName) {
-		this.examName = examName;
+	public void setExamCode(int examCode) {
+		this.examCode = examCode;
 	}
 	/**
 	 * qNumber getter method
@@ -131,7 +116,7 @@ public class QuestionVO {
 	 */
 	@Override
 	public String toString() {
-		return "QuestionVO [subjectCode=" + subjectCode + ", examName=" + examName + ", qNumber=" + qNumber + ", qInfo="
+		return "QuestionVO [subjectCode=" + examCode + ", qNumber=" + qNumber + ", qInfo="
 				+ qInfo + ", ex1=" + ex1 + ", ex2=" + ex2 + ", ex3=" + ex3 + ", ex4=" + ex4 + ", qPoint=" + qPoint
 				+ ", answer=" + answer + "]";
 	}

@@ -46,4 +46,14 @@ fieldset {
 	</center>
 </body>
 </html>
+
+<script>
+	var result = '${msg}';
+	
+	if(result = "SUCCESS"){
+		alert("success");
+	}
+
+</script>
+
 <%@include file="../include/tFooter.jsp"%>

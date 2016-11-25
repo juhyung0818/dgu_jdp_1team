@@ -16,7 +16,7 @@ import com.jdp.domain.ScoreVO;
 public interface ScoreDAO {
 	
 	public void register(ScoreVO score) throws Exception;
-	public List<CheckVO> answers(int subjectCode, String examName) throws Exception;
+	public List<CheckVO> answer(int examCode) throws Exception;
 	public int myScore(String uid) throws Exception;
 	//manage student
 	public List<MemberListVO> listMember(String uid, int subjectCode) throws Exception;

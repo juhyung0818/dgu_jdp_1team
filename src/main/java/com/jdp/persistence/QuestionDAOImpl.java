@@ -40,27 +40,18 @@ public class QuestionDAOImpl implements QuestionDAO{
 	}
 
 	@Override
-	public List<QuestionVO> listQuestion(int subjectCode, String examName) throws Exception {
-		Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("subjectCode", subjectCode);
-		paramMap.put("examName", examName);
-		return session.selectList(namespace + ".listQuestion", paramMap);
+	public List<QuestionVO> listQuestion(int examCode) throws Exception {
+		return session.selectList(namespace + ".listQuestion", examCode);
 	}
 
 	@Override
-	public void delete(int subjectCode, String examName) throws Exception {
-		Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("subjectCode", subjectCode);
-		paramMap.put("examName", examName);
-		session.delete(namespace + ".delete", paramMap);
+	public void delete(int examCode) throws Exception {
+		session.delete(namespace + ".delete", examCode);
 	}
 
 	@Override
-	public List<QuestionVO> tryQuestion(int subjectCode, String examName) throws Exception {
-		Map<String, Object> paramMap = new HashMap<String, Object>();
-		paramMap.put("subjectCode", subjectCode);
-		paramMap.put("examName", examName);
-		return session.selectList(namespace + ".tryQuestion", paramMap);
+	public List<QuestionVO> tryQuestion(int examCode) throws Exception {
+		return session.selectList(namespace + ".tryQuestion", examCode);
 	}
 
 	@Override

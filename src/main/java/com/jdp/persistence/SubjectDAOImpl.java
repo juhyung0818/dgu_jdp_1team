@@ -9,7 +9,6 @@ import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.jdp.domain.MemberListVO;
 import com.jdp.domain.MemberVO;
 import com.jdp.domain.SubjectVO;
 
@@ -31,12 +30,11 @@ public class SubjectDAOImpl implements SubjectDAO{
 	 * Subject add to database in subject table
 	 */
 	@Override
-	public int register(String subjectName, String uid) throws Exception {
+	public void register(String subjectName, String uid) throws Exception {
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("subjectName", subjectName);
 		paramMap.put("uid", uid);
 		session.insert(namespace+".register", paramMap);
-		return session.selectOne(namespace+".checkSubjectCode", subjectName);
 	}
 	
 	/**
@@ -86,11 +84,11 @@ public class SubjectDAOImpl implements SubjectDAO{
 	
 	// check user access authority
 	@Override
-	public void checkAuthority(String uid, String subjectCode) throws Exception {
+	public int checkAuthority(String uid, int subjectCode) throws Exception {
 		Map<String, Object> paramMap = new HashMap<>();
 		paramMap.put("uid", uid);
 		paramMap.put("subjectCode", subjectCode);
-		session.selectOne(namespace+".checkAuthority", paramMap);
+		return session.selectOne(namespace+".checkAuthority", paramMap);
 	}
 }
 

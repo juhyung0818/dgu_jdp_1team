@@ -32,8 +32,7 @@ public class QuestionTest {
 	public void testRegisterQuestion() throws Exception {
 		QuestionVO vo = new QuestionVO();
 		for (int i = 0; i < 10; i++) {
-			vo.setSubjectCode(12);
-			vo.setExamName("test");
+			vo.setExamCode(100);
 			vo.setqNumber(i);
 			vo.setqInfo("problem");
 			vo.setEx1("1");
@@ -49,8 +48,7 @@ public class QuestionTest {
 	@Test
 	public void testUpdateQuestion() throws Exception{
 		QuestionVO vo = new QuestionVO();
-		vo.setSubjectCode(12312);
-		vo.setExamName("test");
+		vo.setExamCode(100);
 		vo.setqNumber(2);
 		vo.setqInfo("problem");
 		vo.setEx1("100");

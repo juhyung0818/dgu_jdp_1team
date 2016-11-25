@@ -20,11 +20,7 @@ import com.jdp.domain.MemberListVO;
 import com.jdp.domain.ScoreVO;
 import com.jdp.domain.UserVO;
 import com.jdp.service.ScoreService;
-/**
- * 
- * @author ÀÌ¿ëÁØ
- *
- */
+
 @Controller
 @RequestMapping("/score")
 public class ScoreController {
@@ -67,13 +63,13 @@ public class ScoreController {
 					} catch (Exception e) {
 						ScoreVO temp=new ScoreVO();
 						temp.setExamName(listExam.get(j).getExamName());
-						temp.setSubjectCode(subjectCode);
+//						temp.setSubjectCode(subjectCode);
 						temp.setUid(user.getUid());
 						temp.setScore(0);
 						listScore.add(temp);
 					}
 					double tmp=listAverage.get(j).getAllAvg();
-					listAverage.get(j).setAllAvg(tmp+=listScore.get(j).getScore());//¹æ±ÝÇÑºÎºÐ
+					listAverage.get(j).setAllAvg(tmp+=listScore.get(j).getScore());//ï¿½ï¿½ï¿½ï¿½ÑºÎºï¿½
 				}
 				
 				listMem.get(i).setScoreList(listScore);
@@ -128,17 +124,17 @@ public class ScoreController {
 				try {
 					if(listScore.get(j).getScore()>0){
 					sum += listScore.get(j).getScore();
-				}
+					}
 				} catch (Exception e) {
 					ScoreVO temp=new ScoreVO();
 					temp.setExamName(listExam.get(j).getExamName());
-					temp.setSubjectCode(subjectCode);
+//					temp.setSubjectCode(subjectCode);
 					temp.setUid(user.getUid());
 					temp.setScore(0);
 					listScore.add(temp);
 				}
 				double tmp = listAverage.get(j).getSomeAvg();
-				listAverage.get(j).setSomeAvg(tmp+=listScore.get(j).getScore());//¹æ±ÝÇÑºÎºÐ
+				listAverage.get(j).setSomeAvg(tmp+=listScore.get(j).getScore());//ï¿½ï¿½ï¿½ï¿½ÑºÎºï¿½
 			}
 			
 			listMem.get(i).setScoreList(listScore);

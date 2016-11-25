@@ -22,6 +22,10 @@
 		.tg .tg-yw4l{vertical-align:top}
 </style>
 
+<form role="form" action="modify" method="post">
+	<input type='hidden' name='examCode' value="${examCode}"> 
+</form>
+
 <body>
 	<div align="center">
 		<font size="7" color="black"> 문제 출제 </font> <br> <br>

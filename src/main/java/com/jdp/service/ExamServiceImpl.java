@@ -31,9 +31,9 @@ public class ExamServiceImpl implements ExamService{
 	
 	@Transactional
 	@Override
-	public void delete(int subjectCode, String examName) throws Exception {
-		questionDao.delete(subjectCode, examName);
-		examDao.delete(subjectCode, examName);
+	public void delete(int examCode) throws Exception {
+		questionDao.delete(examCode);
+		examDao.delete(examCode);
 	}
 
 	@Override
@@ -52,8 +52,8 @@ public class ExamServiceImpl implements ExamService{
 	}
 
 	@Override
-	public ExamVO getExam(int subjectCode, String examName) throws Exception {
-		return examDao.getExam(subjectCode, examName);
+	public ExamVO getExam(int examCode) throws Exception {
+		return examDao.getExam(examCode);
 	}
 	
 	@Override
@@ -62,8 +62,19 @@ public class ExamServiceImpl implements ExamService{
 	}
 
 	@Override
-	public ExamVO checkTime(int subjectCode, String examName) throws Exception {
-		return examDao.checkTime(subjectCode, examName);
+	public ExamVO checkTime(int examCode) throws Exception {
+		return examDao.checkTime(examCode);
 	}
 
+	//return subject code
+	@Override
+	public int getSubjectCode(int examCode) throws Exception {
+		return examDao.getSubjectCode(examCode);
+	}
+
+	//return exam code
+	@Override
+	public int getExamCode(int subjectCode, String examName) throws Exception {
+		return examDao.getExamCode(subjectCode, examName);
+	}
 }
