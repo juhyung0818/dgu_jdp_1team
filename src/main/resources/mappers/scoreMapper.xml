@@ -6,14 +6,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.jdp.mapper.ScoreMapper">
 
 	<insert id="register">
-		insert into score (subjectCode, examName, uid, score)
-		values (#{subjectCode}, #{examName}, #{uid}, #{score})
+		insert into score (examCode, uid, score)
+		values (#{examCode}, #{examName}, #{uid}, #{score})
 	</insert>
 	
 	<select id="listScore">
 		select uid, score
 		from score
-		where subjectCode=#{subjectCode} and examName=#{examName}
+		where examCode=#{examCode}
 	</select>
 	
  	<select id="answer" resultType="com.jdp.domain.CheckVO">
@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		select s.examCode, s.score, s.uid
  		from score as s join exam as e
  		on s.examCode = e.examCode
- 		where e.subjectCode=#{subjectCode} and s.uid=#{uid}
+ 		where e.examCode=#{examCode} and s.uid=#{uid}
  	</select>
  	
  	<select id="manage" resultType ="com.jdp.domain.MemberListVO">
@@ -58,7 +58,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="check" resultType="com.jdp.domain.ScoreVO">
 		select subjectCode, examName, uid, score
 		from score
-		where subjectCode=#{subjectCode} and examName=#{examName} and uid=#{uid}
+		where examCode=#{examCode} and uid=#{uid}
 	</select> 	
 	
 	<select id="examList" resultType ="com.jdp.domain.ExamVO">

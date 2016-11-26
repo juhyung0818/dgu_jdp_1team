@@ -26,35 +26,38 @@ fieldset {
 <body>
 	<center>
 		<h1>User Register</h1>
-			<fieldset>
-				<form action="/user/register" methoe="post">
-					<table>
-						<tr>
-							<th>ID: </th>
-							<td><input type="text" name="uid"><br></td>
-						</tr>
-						<tr>
-							<th>PW: </th>
-							<td><input type="text" name="upw"><br></td>
-						</tr>
-						<tr>
-							<th>Name: </th>
-							<td><input type="text" name="uname"><br></td>
-						</tr>
-						<tr>
-							<th>직업: </th>
-							<td>
-								<input type="radio" name="gender" value="1" > 선생님
-  								<input type="radio" name="gender" value="0"> 학생
-							</td>
-						</tr>
-					</table>
-					<input type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="OK">
-					<a href='/'>
-						<input type="button" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="BACK">
-					</a>
-				</form>
-			</fieldset>
+		<fieldset>
+			<form action="/user/register" method="post">
+				<table>
+					<tr>
+						<th>ID:</th>
+						<input type="hidden" id="idChk" value="N" />
+						<td><input type="text" name="uid" id="uid" required><br></td>
+						<td><input type="button" value="Id체크" onclick="javascript:chkDupId();" /> </td>
+					</tr>
+					<tr>
+						<th>PW:</th>
+						<td colspan="2"><input type="text" name="upw" required><br></td>
+					</tr>
+					<tr>
+						<th>Name:</th>
+						<td colspan="2"><input type="text" name="uname" required><br></td>
+					</tr>
+					<tr>
+						<th>직업:</th>
+						<td colspan="2"><input type="radio" name="gender" value="1"
+							required> 선생님 <input type="radio" name="gender" value="0">
+							학생</td>
+					</tr>
+				</table>
+				<input type="submit"
+					class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"
+					value="OK"> <a href='/'> <input type="button"
+					class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"
+					value="BACK">
+				</a>
+			</form>
+		</fieldset>
 	</center>
 </body>
 </html>

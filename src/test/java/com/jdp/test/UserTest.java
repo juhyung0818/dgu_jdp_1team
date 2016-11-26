@@ -12,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.jdp.controller.ExamController;
+import com.jdp.domain.UserVO;
 import com.jdp.persistence.UserDAO;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -35,5 +36,16 @@ public class UserTest {
 		String uid = "s";
 		assertNotNull(userDao.checkUid(uid)); //result is not null
 		logger.info(Integer.toString(userDao.checkUid(uid))); //uid is number of row
+	}
+	
+	//user register
+	@Test
+	public void testUserRegister() throws Exception{
+		UserVO user = new UserVO();
+		user.setUid("uu");
+		user.setUpw("0");
+		user.setUname("uu");
+		user.setFlag(0);
+		userDao.register(user);
 	}
 }

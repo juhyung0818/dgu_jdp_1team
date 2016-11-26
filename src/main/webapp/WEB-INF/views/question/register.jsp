@@ -36,7 +36,7 @@
 						<th class="tg-i46p" colspan="3" rowspan="2">
 						<div class="form-group">
 							Q<input class="w3-input" type="number" name="qNumber${status.count}"
-								placeholder="Enter qNumber" value='${i}'>
+								placeholder="Enter qNumber" value='${i}' readonly>
 					<label for="exampleInputEmail1"></label>
 					
 						</div>

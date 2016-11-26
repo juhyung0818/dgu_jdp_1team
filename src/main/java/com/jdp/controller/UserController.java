@@ -1,5 +1,6 @@
 package com.jdp.controller;
 
+import java.io.PrintWriter;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,9 +15,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.WebUtils;
 
@@ -119,12 +122,12 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public void registGET() {
+	public void registGET(UserVO user) {
 		logger.info("user register");
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public String registPOST(@ModelAttribute UserVO user) throws Exception {
+	public String registPOST(UserVO user) throws Exception {
 		logger.info("user register");
 		service.register(user);
 		return "redirect:/";
@@ -152,5 +155,19 @@ public class UserController {
 		resultMap.put("resultMsg", resultMsg);
 
 		return resultMap;
+	}
+	
+	@RequestMapping(value = "/uidCheck")
+	public void checkId(@RequestParam("uid") String uid, HttpServletResponse res, ModelMap model) throws Exception {
+		PrintWriter out = res.getWriter();
+
+			// 넘어온 ID를 받는다.
+
+			int chkPoint = service.checkUid(uid);
+			logger.info("uid: " +  uid + " " + chkPoint);
+
+			out.print(chkPoint);
+			out.flush();
+			out.close();
 	}
 }
