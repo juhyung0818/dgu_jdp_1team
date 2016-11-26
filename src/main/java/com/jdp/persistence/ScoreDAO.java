@@ -34,5 +34,5 @@ public interface ScoreDAO {
 	 * @return if already took a exam, return uid. if not, null
 	 * @throws Exception
 	 */
-	public ScoreVO checkIsTry(int subjectCode, String examName, String uid) throws Exception;
+	public ScoreVO checkIsTry(int examCode, String uid) throws Exception;
 }

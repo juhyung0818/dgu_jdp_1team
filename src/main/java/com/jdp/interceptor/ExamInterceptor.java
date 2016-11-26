@@ -26,48 +26,49 @@ public class ExamInterceptor extends HandlerInterceptorAdapter{
 	ExamService examService;
 	
 	private static final Logger logger = LoggerFactory.getLogger(ExamInterceptor.class);
-//	
-//	@Override
-//	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-//			ModelAndView modelAndView) throws Exception {
-//		
-//		HttpSession session=request.getSession();
-//		//because bring what i added to model in get/post method 
-//		ModelMap modelMap=modelAndView.getModelMap();
-//		
-//		ScoreVO score=(ScoreVO)modelMap.get("scoreVO");
+	
+	@Override
+	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
+			ModelAndView modelAndView) throws Exception {
+		
+		HttpSession session=request.getSession();
+		//because bring what i added to model in get/post method 
+		ModelMap modelMap=modelAndView.getModelMap();
+		
+		ScoreVO score=(ScoreVO)modelMap.get("scoreVO");
 //		int subjectCode=(int)modelMap.get("currentSubCode");
-//		String examName=(String)modelMap.get("currentExamName");
-//	
-//		
-//		
-//		ExamVO exam=examService.checkTime(subjectCode, examName);
-//		try {
-//			if(!exam.getExamName().equals(""))
-//			{
-//				session.setAttribute("examActive", true);
-//			}	
-//		} catch (Exception e) {
-//			session.setAttribute("examActive", false);
-//		}
-//		
-//		try {
-//			if(!score.getUid().equals(""))
-//			{
-//				// case : took a exam before
-//				logger.info("you took a exam before!!");
-//				response.sendRedirect("/exam/studentExam?subjectCode="+subjectCode);
-//			}
-//		} catch (Exception e) {
-//			//case : didn't take a exam
-//			logger.info("it's time to take a exam!!");
+		int examCode=(int)modelMap.get("currentExamCode");
+	
+		int subjectCode=examService.getSubjectCode(examCode);
+		
+		ExamVO exam=examService.checkTime(examCode);
+		try {
+			if(!exam.getExamName().equals(""))
+			{
+				session.setAttribute("examActive", true);
+			}	
+		} catch (Exception e) {
+			session.setAttribute("examActive", false);
+		}
+		
+		try {
+			if(!score.getUid().equals(""))
+			{
+				// case : took a exam before
+				logger.info("you took a exam before!!");
+				response.sendRedirect("/exam/studentExam?subjectCode="+subjectCode);
+			}
+		} catch (Exception e) {
+			//case : didn't take a exam
+			logger.info("it's time to take a exam!!");
 //			response.sendRedirect("/question/try?subjectCode="+subjectCode+"&examName="+examName);
-//		}
-//		finally {
-//			//save url if access denied
-//			session.setAttribute("deniedURL", "/exam/studentExam?subjectCode="+subjectCode);
-//		}
-//	}
+			response.sendRedirect("/question/try?&examCode="+examCode);
+		}
+		finally {
+			//save url if access denied
+			session.setAttribute("deniedURL", "/exam/studentExam?subjectCode="+subjectCode);
+		}
+	}
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)

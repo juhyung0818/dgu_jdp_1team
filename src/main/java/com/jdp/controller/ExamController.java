@@ -149,17 +149,17 @@ public class ExamController {
 
 
 	@RequestMapping(value ="/studentExamPost", method = RequestMethod.POST)
-	public void studentExamPOST(@RequestParam("subjectCode") int subjectCode,
-			@RequestParam("examName") String examName,
+	public void studentExamPOST(
+//			@RequestParam("subjectCode") int subjectCode,
+			@RequestParam("examCode") int examCode,
 			Model model, HttpSession session) throws Exception {
 		//if score is not null, then you took a exam before
 		//if not, you didn't take a exam
-		ScoreVO score=scoreService.checkIsTry(subjectCode, examName, ((UserVO)session.getAttribute("student")).getUid());
+		ScoreVO score=scoreService.checkIsTry(examCode, ((UserVO)session.getAttribute("student")).getUid());
 		
 		//for using ExamInterceptor
 		model.addAttribute("scoreVO", score);
-		model.addAttribute("currentSubCode", subjectCode);
-		model.addAttribute("currentExamName", examName);
+		model.addAttribute("currentExamCode", examCode);
 	}
 	
 

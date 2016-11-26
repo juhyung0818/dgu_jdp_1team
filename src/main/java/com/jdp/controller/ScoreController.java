@@ -146,7 +146,6 @@ public class ScoreController {
 		}
 		flag =1;
 		
-		model.addAttribute("subjectName", subjectName);
 		return "redirect:/score/management?subjectCode="+subjectCode+"&subjectName="+subjectName;
 	}
 

@@ -30,7 +30,7 @@
 						<script type = "text/javascript">
 							if("${scoreExamVO.score}" == -1){
 								document.write(
-									"<form id='msg' action='/exam/studentExamPost?subjectCode=${scoreExamVO.subjectCode}&examName=${scoreExamVO.examName}' method='post'>" +
+										"<form id='msg' action='/exam/studentExamPost?examCode=${scoreExamVO.examCode}' method='post'>" +
 					                	"<input type='hidden' name='subjectCode' value='${subjectCode}''>" +
 		                        		"<div class='box-footer' >" +
 		                     				"<button id ='tryBtn' class='w3-btn w3-white w3-border w3-border-pink w3-round-xlarge' onclick='isTry(${scoreExamVO.score})'> TRY </button>"+

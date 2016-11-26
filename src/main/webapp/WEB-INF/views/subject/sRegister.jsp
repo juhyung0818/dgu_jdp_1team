@@ -43,18 +43,18 @@ fieldset {
 		<div class="box-body">
 			<div class="form-group">
 				<label for="subjectCode">SUBJECT CODE</label>
-				<input type="text" class="w3-input w3-border w3-round-large" name="subjectCode" placeholder="Write subject code" />
+				<input type="number" class="w3-input w3-border w3-round-large" name="subjectCode" placeholder="Write subject code" />
 			</div>
 			<div class="form-group">
-				<label for="subjectCode">GRADE</label>
+				<label for="grade">GRADE</label>
 				<input type="text" class="w3-input w3-border w3-round-large" name="grade" placeholder="Write grade" />
 			</div>
 			<div class="form-group">
-				<label for="subjectCode">CLASS NUMBER</label>
+				<label for="classNumber">CLASS NUMBER</label>
 				<input type="text" class="w3-input w3-border w3-round-large" name="classNumber" placeholder="Write class number" />
 			</div>
 			<div class="form-group">
-				<label for="subjectCode">STUDENT NUMBER</label>
+				<label for="studentNumber">STUDENT NUMBER</label>
 				<input type="text" class="w3-input w3-border w3-round-large" name="studentNumber" placeholder="Write student number" />
 			</div>
 		</div>

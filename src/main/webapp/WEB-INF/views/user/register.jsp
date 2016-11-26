@@ -5,8 +5,6 @@
 <%@include file="../include/tHeader.jsp"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-
-<head>
 <style type="text/css">
 label {
 	display: none;
@@ -22,8 +20,6 @@ fieldset {
 	border-color: pink;
 }
 </style>
-</head>
-<body>
 	<center>
 		<h1>User Register</h1>
 		<fieldset>
@@ -58,9 +54,7 @@ fieldset {
 				</a>
 			</form>
 		</fieldset>
-	</center>
-</body>
-</html>
 
+	</center>
 <%@include file="../include/tFooter.jsp"%>
 

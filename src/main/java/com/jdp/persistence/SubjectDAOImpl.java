@@ -50,6 +50,7 @@ public class SubjectDAOImpl implements SubjectDAO{
 
 	@Override
 	public void joinSubject(MemberVO member) throws Exception {
+		
 		session.insert(namespace+".joinSubject", member);
 	}
 

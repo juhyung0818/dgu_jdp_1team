@@ -25,10 +25,10 @@ public interface ScoreService {
 	/**
 	 * student took a exam whether or not
 	 * @param subjectCode
-	 * @param examName
+	 * @param examCode
 	 * @param uid
 	 * @return if already took a exam, return uid. if not, null
 	 * @throws Exception
 	 */
-	public ScoreVO checkIsTry(int subjectCode, String examName, String uid) throws Exception;
+	public ScoreVO checkIsTry(int examCode, String uid) throws Exception;
 }

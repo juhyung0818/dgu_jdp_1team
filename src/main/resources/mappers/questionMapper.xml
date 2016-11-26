@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
  	<!-- questions for student -->
  	<select id="tryQuestion" resultType="com.jdp.domain.QuestionVO">
- 		select examName, qNumber, qInfo, ex1, ex2, ex3, ex4, qPoint
+ 		select qNumber, qInfo, ex1, ex2, ex3, ex4, qPoint
  		from question
  		where examCode=#{examCode}
  		order by qNumber
