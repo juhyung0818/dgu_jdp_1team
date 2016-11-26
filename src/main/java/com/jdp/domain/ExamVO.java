@@ -14,7 +14,6 @@ public class ExamVO {
 	private int subjectCode;
 	private String examName;
 	private int studentCnt;
-	private int questionNum;
 	private Timestamp startTime;
 	private Timestamp endTime;
 
@@ -43,12 +42,6 @@ public class ExamVO {
 	public void setStudentCnt(int studentCnt) {
 		this.studentCnt = studentCnt;
 	}
-	public int getQuestionNum() {
-		return questionNum;
-	}
-	public void setQuestionNum(int questionNum) {
-		this.questionNum = questionNum;
-	}
 	public Timestamp getStartTime() {
 		return startTime;
 	}
@@ -64,7 +57,7 @@ public class ExamVO {
 	@Override
 	public String toString() {
 		return "ExamVO [examCode=" + examCode + ", subjectCode=" + subjectCode + ", examName=" + examName
-				+ ", studentCnt=" + studentCnt + ", questionNum=" + questionNum + ", startTime=" + startTime
+				+ ", studentCnt=" + studentCnt + ", startTime=" + startTime
 				+ ", endTime=" + endTime + "]";
 	}
 

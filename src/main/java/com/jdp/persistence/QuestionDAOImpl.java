@@ -54,8 +54,4 @@ public class QuestionDAOImpl implements QuestionDAO{
 		return session.selectList(namespace + ".tryQuestion", examCode);
 	}
 
-	@Override
-	public void deleteAll(int subjectCode) throws Exception {
-		session.delete(namespace+".deleteAll", subjectCode);
-	}
 }

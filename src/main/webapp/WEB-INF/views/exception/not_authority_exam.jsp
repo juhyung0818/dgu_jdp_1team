@@ -8,13 +8,15 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>ERROR</title>
+		<title>Insert title here</title>
 	</head>
 	
 	<body>
-		<h1>
-			이미 존재하는 시험입니다.
-		</h1>	
-	
+		<h4>${exception.getMessage()}</h4>
+
+		<h1> 접근 권한이 없는 시험입니다.</h1>		
 	</body>
+	
+	
+	
 </html>	

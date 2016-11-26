@@ -15,16 +15,16 @@ public interface ExamService {
 	//insert a exam
 	public void register(ExamVO exam) throws Exception; 
 	//remove a exam
-	public void delete(int examCode) throws Exception; 
+	public void delete(int examCode) throws Exception;
+	//removu all exams
+	public void deleteAll(int subjectCode) throws Exception;
 	//modify startTime, endTime, exam name
-	public void update(ExamVO exam, String newName) throws Exception;
+	public void update(ExamVO exam) throws Exception;
 	//display exam list
 	public List<ExamVO> examList(int subjectCode) throws Exception;
 	public String getSubjectName(int subjectCode) throws Exception;
-	//get exam infomation
+	//get exam information
 	public ExamVO getExam(int examCode) throws Exception;
-	
-	public void update(ExamVO exam) throws Exception;
 	/**
 	 * it's time to able to take a exam or not
 	 * @param subjectCode

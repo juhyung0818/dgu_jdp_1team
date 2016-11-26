@@ -60,7 +60,6 @@ public class QuestionServiceImpl implements QuestionService{
 	@Override
 	public void delete(int examCode) throws Exception {
 		questionDAO.delete(examCode);
-		examDAO.delete(examCode);
 	}
 
 }

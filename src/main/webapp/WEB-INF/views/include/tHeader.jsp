@@ -37,8 +37,8 @@ h1 {
 
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"> </script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
-</head>
 
+</head>
 <body>
 	
 	<!-- !PAGE CONTENT! -->
@@ -61,8 +61,6 @@ h1 {
 			<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red"
 
 				href="/subject/tSubject">과목 관리</a> 
-			<!-- <a sclass="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red"
-				href="/subject/studentSubject">성적관리</a>-->
-				
+
 		</header>
 	</div>

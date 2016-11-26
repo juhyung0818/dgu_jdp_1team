@@ -1,8 +1,6 @@
 package com.jdp.test;
 
 import java.sql.Timestamp;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -82,5 +80,12 @@ public class ExamTest {
 	public void testGetExam() throws Exception{
 		ExamVO exam = new ExamVO();
 		System.out.println(exam.toString());
+	}
+	
+	@Test
+	public void testModifyExam() throws Exception{
+		ExamVO exam = dao.getExam(31);
+		exam.setExamName("mmmkd");
+		dao.update(exam);
 	}
 }

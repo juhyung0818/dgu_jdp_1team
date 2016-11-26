@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.jdp.domain.MemberVO;
 import com.jdp.domain.SubjectVO;
 import com.jdp.exception.NotAuthoritySubject;
+import com.jdp.exception.SubjectNameNotExistException;
 import com.jdp.persistence.ExamDAO;
 import com.jdp.persistence.QuestionDAO;
 import com.jdp.persistence.SubjectDAO;
@@ -31,11 +32,17 @@ public class SubjectServiceImpl implements SubjectService{
 	
 	@Override
 	public void register(String subjectName, String uid) throws Exception {
+		if(subjectName.length() == 0){
+			throw new SubjectNameNotExistException();
+		}
 		subjectDao.register(subjectName, uid);
 	}
 
 	@Override
 	public void modify(int subjectCode, String subjectName) throws Exception {
+		if(subjectName.length() == 0){
+			throw new SubjectNameNotExistException();
+		}
 		subjectDao.modify(subjectCode, subjectName);
 	}
 
@@ -60,7 +67,10 @@ public class SubjectServiceImpl implements SubjectService{
 	@Transactional
 	@Override
 	public void delete(int subjectCode) throws Exception {
-		questionDao.deleteAll(subjectCode);
+		List<Integer> list = examDao.examCodeList(subjectCode);
+		for(int e : list){
+			questionDao.delete(e);
+		}
 		examDao.deleteAll(subjectCode);
 		subjectDao.delete(subjectCode);
 	}

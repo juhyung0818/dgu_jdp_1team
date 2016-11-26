@@ -56,7 +56,9 @@
 		</div>
 		<div class="box-footer"><br>
 			<button type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> submit </button>
-			<button type="reset" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> cancel </button>
+			<a href='/exam/managementExam?subjectCode=${subjectCode}'>
+				<button id="cancel" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> CANCEL </button>
+			</a> 
 		</div>
 		</fieldset>
 	</form>

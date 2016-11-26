@@ -2,64 +2,62 @@
 <%@ page session="false"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@include file="../include/tHeader.jsp"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+
 <head>
+<style type="text/css">
+label {
+	display: none;
+}
 
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+input {
+	height: 30px;
+}
 
-<script type="text/javascript">
-	function chkMbId() {
-		$.ajax({
-			url : "/user/check",
-			type : "post",
-			data : {
-				uid : $("#uid").val()
-			},
-			dataType : "json",
-			success : function(data) {
-
-				$(
-						"<div style='text-align:center;'>" + data.resultMsg
-								+ "</div>").dialog({
-					modal : true,
-					resizable : false,
-					buttons : [ {
-						text : "확인",
-						click : function() {
-							$(this).dialog("close");
-						}
-					} ]
-				});
-				$(".ui-dialog-titlebar").hide();
-
-				if (data.result == "success") {
-
-				} else {
-
-				}
-			}
-		});
-	}
-</script>
+fieldset {
+	width: 200pt;
+	border: 3;
+	border-color: pink;
+}
+</style>
 </head>
 <body>
-	<form method="post" action="/user/register">
-		회원가입<br /> <br />
-		<div>
-			<label for="uid" style="display: inline-block; width: 100px;">회원아이디</label>
-			<input type="text" name="uid" id="uid" /> <input type="button"
-				value="중복 체크" onclick="chkMbId();">
-		</div>
-		<div>
-			<label for="uName" style="display: inline-block; width: 100px;">회원명</label>
-			<span><input type="text" name="uName" id="uName" /></span>
-		</div>
-		<div>
-			<label for="upw" style="display: inline-block; width: 100px;">회원패스워드</label>
-			<span><input type="text" name="upw" id="upw" /></span>
-		</div>
-		<input type="submit" value="회원가입">
-	</form>
+	<center>
+		<h1>User Register</h1>
+			<fieldset>
+				<form action="/user/register" methoe="post">
+					<table>
+						<tr>
+							<th>ID: </th>
+							<td><input type="text" name="uid"><br></td>
+						</tr>
+						<tr>
+							<th>PW: </th>
+							<td><input type="text" name="upw"><br></td>
+						</tr>
+						<tr>
+							<th>Name: </th>
+							<td><input type="text" name="uname"><br></td>
+						</tr>
+						<tr>
+							<th>직업: </th>
+							<td>
+								<input type="radio" name="gender" value="1" > 선생님
+  								<input type="radio" name="gender" value="0"> 학생
+							</td>
+						</tr>
+					</table>
+					<input type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="OK">
+					<a href='/'>
+						<input type="button" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="BACK">
+					</a>
+				</form>
+			</fieldset>
+	</center>
 </body>
 </html>
+
+<%@include file="../include/tFooter.jsp"%>
+

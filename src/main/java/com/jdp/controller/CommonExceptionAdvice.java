@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.jdp.exception.DuplicationExamException;
 import com.jdp.exception.InvalidTypeException;
 import com.jdp.exception.NotAuthoriedException;
 import com.jdp.exception.NotAuthoritySubject;
 import com.jdp.exception.NotExistException;
 import com.jdp.exception.PrimaryKeyDuplicatedException;
+import com.jdp.exception.SubjectNameNotExistException;
 
 /**
  * Advice class for Exception handler
@@ -96,6 +98,7 @@ public class CommonExceptionAdvice {
 		return modelAndView;
 	}
 
+	//Duplication key of table
 	@ResponseBody
 	@ExceptionHandler(DuplicateKeyException.class)
 	public ModelAndView duplicateKeyException(DuplicateKeyException e) {
@@ -108,4 +111,29 @@ public class CommonExceptionAdvice {
 		return modelAndView;
 	}
 	
+	//exam name already exist
+	@ResponseBody
+	@ExceptionHandler(DuplicationExamException.class)
+	public ModelAndView duplicationExamException(DuplicationExamException e) {
+
+		logger.error(e.getMessage());
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/exception/duplication_exam");
+		modelAndView.addObject("exception", e);
+
+		return modelAndView;
+	}
+	
+	//subject name invalid
+	@ResponseBody
+	@ExceptionHandler(SubjectNameNotExistException.class)
+	public ModelAndView subjectNameNotExistException(SubjectNameNotExistException e) {
+
+		logger.error(e.getMessage());
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/exception/subject_name_not_exist");
+		modelAndView.addObject("exception", e);
+
+		return modelAndView;
+	}
 }

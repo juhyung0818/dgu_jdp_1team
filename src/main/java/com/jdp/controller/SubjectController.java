@@ -47,6 +47,8 @@ public class SubjectController {
 			RedirectAttributes rttr, HttpSession session) throws Exception {
 		UserVO user = (UserVO)session.getAttribute("teacher");
 		subjectService.register(subjectName, user.getUid());
+		
+		rttr.addFlashAttribute("msg", "success");
 		return "redirect:/subject/tSubject";
 	}
 

@@ -67,8 +67,9 @@ public class ExamController {
 		int examCode = examService.getExamCode(subjectCode, examName);
 		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
-		rttr.addAttribute("subjectCode", subjectCode);
-		rttr.addAttribute("examName", examName);
+//		rttr.addAttribute("subjectCode", subjectCode);
+//		rttr.addAttribute("examName", examName);
+		rttr.addAttribute("examCode", examCode);
 		rttr.addAttribute("num", num);
 		return "redirect:/question/register";
 	}
@@ -194,10 +195,7 @@ public class ExamController {
 	 * @throws Exception
 	 */
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public String examModifyPOST(@RequestParam("subjectCode") int subjectCode, 
-			@RequestParam("examName") String examName,
-			@ModelAttribute("exam") ExamVO exam, 
-			RedirectAttributes rttr) throws Exception{
+	public String examModifyPOST(ExamVO exam, RedirectAttributes rttr) throws Exception{
 		logger.info(exam.toString());
 		examService.update(exam);
 	    rttr.addAttribute("subjectCode", exam.getSubjectCode());

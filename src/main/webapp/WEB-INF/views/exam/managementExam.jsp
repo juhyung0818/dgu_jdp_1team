@@ -42,38 +42,22 @@
 	
 	<br><br>
 	<div class="box-footer" align="right">
+		<form action="/subject/tDelete?subjectCode=${subjectCode}" method="post">
 		
 		<a href='/exam/register?subjectCode=${subjectCode}'>
-			<input type="button" class="w3-btn w3-pink" value="ADD">
+			<input type="button" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="ADD">
 		</a>
-		<button type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge btn-warning">SUBJECT MODIFY</button>
-		<button type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge btn-danger">SUBJECT REMOVE</button>
+		<a href="/subject/modify?subjectCode=${subjectCode}">
+			<input type="button" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="SUBJECT MODIFY">
+		</a>
+		
+			<button type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge">SUBJECT REMOVE</button>
+		
 		<a href="/subject/tSubject">
-			<button id="backPage" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> 
-				CANCEL
-		 	</button> 
+			<input type="button" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="CANCEL">		
 		</a>
+		</form>
 	</div>
 </div>
 
-<script>
-$(document).ready(function() {
-
-	var formObj = $("form[role='form']");
-
-	console.log(formObj);
-
-	$(".btn-danger").on("click", function() {
-		formObj.attr("action", "/subject/tDelete");
-		formObj.submit();
-	});
-	
-	$(".btn-warning").on("click", function() {
-		formObj.attr("action", "/subject/modify?subjectCode=${subjectCode}");
-		formObj.attr("method", "get");
-		formObj.submit();
-	});
-
-});
-</script>
 <%@include file="../include/tFooter.jsp"%>

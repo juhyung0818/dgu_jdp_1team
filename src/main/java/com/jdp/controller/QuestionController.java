@@ -40,23 +40,20 @@ public class QuestionController {
 	private static final Logger logger = LoggerFactory.getLogger(QuestionController.class);
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public void registGET(@RequestParam("subjectCode") int subjectCode, 
-			@RequestParam("examName") String examName,
+	public void registGET(@RequestParam("examCode") int examCode,
 			@RequestParam("num") int num, Model model,
 			HttpSession session) throws Exception {
 		
 		logger.info("Question Register GETGETGET...");
-		int examCode = examService.getExamCode(subjectCode, examName);
-		model.addAttribute("subjectCode",subjectCode);
-		model.addAttribute("examName", examName);
+		model.addAttribute("subjectCode",examService.getSubjectCode(examCode));
+		model.addAttribute("examCode", examCode);
 		model.addAttribute("num", num);
 		model.addAttribute("uname", ((UserVO) session.getAttribute("teacher")).getUname());
 	}
 
 	@RequestMapping(value="/register", method=RequestMethod.POST)
-	public String registPOST(@RequestParam("examCode") int examCode, 
-							@RequestBody String question, RedirectAttributes rttr,
-							HttpServletRequest request) throws Exception{
+	public String registPOST(@RequestParam("examCode") int examCode, @RequestBody String question, 
+			RedirectAttributes rttr, HttpServletRequest request) throws Exception{
 		logger.info("question register postpostpost.........");
 		System.out.println(question);
 		
@@ -78,7 +75,6 @@ public class QuestionController {
 			q.setEx2(temp[i*8+6]);
 			q.setEx3(temp[i*8+7]);
 			q.setEx4(temp[i*8+8]);
-			//
 			list.add(q);
 		}
 		//insert questions

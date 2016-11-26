@@ -22,7 +22,5 @@ public interface QuestionDAO {
 	public List<QuestionVO> tryQuestion(int examCode) throws Exception;
 	
  	public void delete(int examCode) throws Exception;
-	//all question delete
-	public void deleteAll(int subjectCode) throws Exception;
 
 }
