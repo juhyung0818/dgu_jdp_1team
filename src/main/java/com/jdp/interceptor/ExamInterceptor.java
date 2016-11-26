@@ -36,10 +36,10 @@ public class ExamInterceptor extends HandlerInterceptorAdapter{
 		ModelMap modelMap=modelAndView.getModelMap();
 		
 		ScoreVO score=(ScoreVO)modelMap.get("scoreVO");
-		int subjectCode=(int)modelMap.get("currentSubCode");
+//		int subjectCode=(int)modelMap.get("currentSubCode");
 		int examCode=(int)modelMap.get("currentExamCode");
 	
-		
+		int subjectCode=examService.getSubjectCode(examCode);
 		
 		ExamVO exam=examService.checkTime(examCode);
 		try {
@@ -62,7 +62,7 @@ public class ExamInterceptor extends HandlerInterceptorAdapter{
 			//case : didn't take a exam
 			logger.info("it's time to take a exam!!");
 //			response.sendRedirect("/question/try?subjectCode="+subjectCode+"&examName="+examName);
-			response.sendRedirect("/question/try?&examName="+examCode);
+			response.sendRedirect("/question/try?&examCode="+examCode);
 		}
 		finally {
 			//save url if access denied

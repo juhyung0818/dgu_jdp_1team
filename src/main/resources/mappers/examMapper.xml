@@ -10,18 +10,20 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values (#{examCode}, #{subjectCode}, #{examName}, #{studentCnt}, #{startTime}, #{endTime})
 	</insert>
 	
+	<!-- 과목내에 있는 한개의 시험 삭제 -->
 	<delete id="delete">
 		delete from exam
 		where examCode = #{examCode}
 	</delete>
 	
+	<!-- 과목내에 있는 모든 시험 삭제 -->
 	<delete id="deleteAll">
 		delete from exam
 		where subjectCode=#{subjectCode}
 	</delete>
 	
 	 <update id="modify">
-		update exam set startTime=#{startTime}, endTime=#{endTime}
+		update exam set examName=#{examName}, startTime=#{startTime}, endTime=#{endTime}
 		where examCode=#{examCode}
  	</update>
 
@@ -39,7 +41,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	</select>
  	
  	<select id="getExam" resultType="com.jdp.domain.ExamVO">
- 		select subjectCode, examName, startTime, endTime, studentCnt
+ 		select examCode, subjectCode, examName, startTime, endTime, studentCnt
  		from exam
  		where examCode=#{examCode}
  	</select>
@@ -59,6 +61,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	
  	 <select id="getExamCode" resultType="int">
  		select examCode
+ 		from exam
+ 		where subjectCode=#{subjectCode} and examName=#{examName}
+ 	</select>
+ 	
+ 	<select id="examCodeList" resultType="int">
+		select examCode
+		from exam
+		where subjectCode=#{subjectCode} 	
+ 	</select>
+ 	
+ 	<!-- check examName already exist or not -->
+ 	<select id="checkExamName" resultType="int">
+ 		select count(*)
  		from exam
  		where subjectCode=#{subjectCode} and examName=#{examName}
  	</select>

@@ -30,7 +30,6 @@
 						<script type = "text/javascript">
 							if("${scoreExamVO.score}" == -1){
 								document.write(
-								//	"<form id='msg' action='/exam/studentExamPost?subjectCode=${scoreExamVO.subjectCode}&examName=${scoreExamVO.examName}' method='post'>" +
 										"<form id='msg' action='/exam/studentExamPost?examCode=${scoreExamVO.examCode}' method='post'>" +
 					                	"<input type='hidden' name='subjectCode' value='${subjectCode}''>" +
 		                        		"<div class='box-footer' >" +

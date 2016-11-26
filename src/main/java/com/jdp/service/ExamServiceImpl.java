@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jdp.domain.ExamVO;
+import com.jdp.exception.DuplicationExamException;
 import com.jdp.persistence.ExamDAO;
 import com.jdp.persistence.QuestionDAO;
 
@@ -26,20 +27,27 @@ public class ExamServiceImpl implements ExamService{
 	
 	@Override
 	public void register(ExamVO exam) throws Exception {
+		if(examDao.checkExamName(exam.getSubjectCode(), exam.getExamName()) > 0){
+			throw new DuplicationExamException();
+		}
 		examDao.register(exam);
 	}
 	
+	//delete a exam;
 	@Transactional
 	@Override
 	public void delete(int examCode) throws Exception {
 		questionDao.delete(examCode);
 		examDao.delete(examCode);
 	}
-
+	
+	//delete all exams
+	@Transactional
 	@Override
-	public void update(ExamVO exam, String newName) throws Exception {
-		examDao.update(exam, newName);
+	public void deleteAll(int subjectCode) throws Exception {
+		examDao.delete(subjectCode);
 	}
+	
 
 	@Override
 	public List<ExamVO> examList(int subjectCode) throws Exception {
@@ -56,6 +64,7 @@ public class ExamServiceImpl implements ExamService{
 		return examDao.getExam(examCode);
 	}
 	
+	//modify : examName, startTime, endTime
 	@Override
 	public void update(ExamVO exam) throws Exception {
 		examDao.update(exam);

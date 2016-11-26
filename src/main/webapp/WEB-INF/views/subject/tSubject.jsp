@@ -25,11 +25,9 @@
 							 class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red"></a>
 					</td>
 					<td>
-							 <a href='/subject/tDelete?subjectCode=${subjectVO.subjectCode}'> 
-							 <form action="/subject/tDelete?subjectCode=${subjectVO.subjectCode}" method="post" value="${subjectVO.subjectCode}">
+							 <form action="/subject/tDelete?subjectCode=${subjectVO.subjectCode}" method="post">
 							 	<button type="submit" class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red">REMOVE</button>
 							</form>
-							</a>
 					</td>
 					<td>
 						<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red"

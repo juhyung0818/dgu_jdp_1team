@@ -130,8 +130,9 @@
 
 				<div class="box-footer"> <br>
 					<button id="complete" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> COMPLETE </button>
-					<button type="reset" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"
-					onclick="exam/studentExam?subjectCode=${subjectCode}"> CANCLE </button>
+					<a href='/exam/managementExam?subjectCode=${subjectCode}'>
+						<button id="cancel" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> CANCEL </button>
+					</a>
 				</div>
 
 			</div>
@@ -154,6 +155,7 @@ $("#complete").click( function(){
 	console.log(question);
 	$.ajax({
 		type : 'POST',
+		url : '/question/register?examCode=${examCode}',
 		headers: {
 			"Contnet-Type": "application/json;charset=UTF-8",
 			"X-HTTP-Method-Override": "POST" 
@@ -161,6 +163,8 @@ $("#complete").click( function(){
 		data:({'question': question})
 	});
 	self.location = "/exam/managementExam?subjectCode="+${subjectCode};
+	//reload before page
+	opener.location.reload();
 });
 </script>	
 	

@@ -10,7 +10,12 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.jdp.domain.ExamVO;
-
+/**
+ * Database Access Object
+ * class to access exam table in database
+ * @author YJH
+ * 2016.10.19.Wed
+ */
 @Repository
 public class ExamDAOImpl implements ExamDAO{
 
@@ -29,13 +34,7 @@ public class ExamDAOImpl implements ExamDAO{
 	}
 
 	@Override
-	public void update(ExamVO exam, String newName) throws Exception {
-		Map<String, Object> paramMap = new HashMap<>();
-		paramMap.put("subjectCode", exam.getSubjectCode());
-		paramMap.put("examName", exam.getExamName());
-		paramMap.put("startTime", exam.getStartTime());
-		paramMap.put("endTime", exam.getEndTime());
-		paramMap.put("newName", newName);
+	public void update(ExamVO exam) throws Exception {
 		session.update(namespace+".modify", exam);
 	}
 
@@ -60,11 +59,6 @@ public class ExamDAOImpl implements ExamDAO{
 	}
 
 	@Override
-	public void update(ExamVO exam) throws Exception {
-		session.update(namespace+".modify", exam);
-	}
-
-	@Override
 	public void deleteAll(int subjectCode) throws Exception {
 		session.delete(namespace+".deleteAll", subjectCode);
 	}
@@ -86,5 +80,18 @@ public class ExamDAOImpl implements ExamDAO{
 		param.put("subjectCode", subjectCode);
 		param.put("examName", examName);
 		return session.selectOne(namespace+".getExamCode", param);
+	}
+
+	@Override
+	public List<Integer> examCodeList(int subjectCode) throws Exception {
+		return session.selectList(namespace + ".examCodeList", subjectCode);
+	}
+
+	@Override
+	public int checkExamName(int subjectCode, String examName) throws Exception {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("subjectCode", subjectCode);
+		param.put("examName", examName);
+		return session.selectOne(namespace + ".checkExamName", param);
 	}
 }

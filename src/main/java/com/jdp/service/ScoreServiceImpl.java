@@ -49,7 +49,7 @@ public class ScoreServiceImpl implements ScoreService{
 
 	@Override
 	public ScoreVO checkIsTry(int examCode, String uid) throws Exception {
-		return scoreDao.checkIsTry( examCode, uid);
+		return scoreDao.checkIsTry(examCode, uid);
 	}
 
 	@Override

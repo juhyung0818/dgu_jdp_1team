@@ -31,4 +31,11 @@ public class SubjectTest {
 		vo.setSubjectName("jh class");
 		//subjectDao.register(vo);
 	}
+	
+	// subject modify test : subjectName
+	@Test
+	public void testSubjectModify() throws Exception{
+		SubjectVO vo = new SubjectVO();
+		subjectDao.modify(10, "thth");
+	}
 }

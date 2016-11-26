@@ -23,12 +23,14 @@
 		Exam modify
 	</h1>
 	<fieldset>
+		<div class="box-body"><br>
 		<form class="form-inline" role="form" method="post">
 		<input type='hidden' name='subjectCode' value="${subjectCode}"/>
+		<input type='hidden' name='examCode' value="${examCode}"/>
 			<div class="box-body">
 				<div class="form-group">
-					<label for="newName">exam name</label>
-					<input type="text" class="w3-input w3-border w3-round-large" value="${examName}">
+					<label for="examName">exam name</label>
+					<input type="text" name="examName" class="w3-input w3-border w3-round-large" value="${examName}">
 				</div>
 				<div class="form-group">
 					<label for="startTime">start time</label>
@@ -40,10 +42,11 @@
 					<input type="text" name="endTime" class='datetimepicker' value="${endTime}">
 				</div>
 			</div>
-		</form>
-		<div class="box-body"><br>
 			<button type="submit"  class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge btn-primary"> SAVE </button>
-			<button type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge btn-warning"> CANCEL </button> 
+			<a href='/exam/managementExam?subjectCode=${subjectCode}'>
+				<button id="cancel" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> CANCEL </button>
+			</a> 
+		</form>
 		</div>
 	</fieldset>
 </center>
@@ -62,10 +65,6 @@ $(document).ready(
 			formObj.submit();
 		});
 		
-		$(".btn-warning")
-			.on("click",function() {
-			self.location = "/exam/managementExam?subjectCode=${subjectCode}";
-		});
 	});
 </script>
 <%@include file="../include/tFooter.jsp"%>
