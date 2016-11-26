@@ -52,8 +52,8 @@
 				value="중복 체크" onclick="chkMbId();">
 		</div>
 		<div>
-			<label for="uName" style="display: inline-block; width: 100px;">회원명</label>
-			<span><input type="text" name="uName" id="uName" /></span>
+			<label for="uname" style="display: inline-block; width: 100px;">회원명</label>
+			<span><input type="text" name="uname" id="uName" /></span>
 		</div>
 		<div>
 			<label for="upw" style="display: inline-block; width: 100px;">회원패스워드</label>
