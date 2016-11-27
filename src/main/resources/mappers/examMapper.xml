@@ -46,8 +46,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		where examCode=#{examCode}
  	</select>
  	
- 	<select id="checkTime" resultType="com.jdp.domain.ExamVO">
- 		select *
+ 	<select id="checkTime" resultType="int">
+ 		select count(*)
  		from exam
  		where examCode = #{examCode}
  		and endTime > now() and  now() > startTime

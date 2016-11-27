@@ -30,7 +30,7 @@ public interface ExamDAO {
 	 * @return if start time <= current time <= end time, return examVO. if not, return null.
 	 * @throws Exception
 	 */
-	public ExamVO checkTime(int examCode) throws Exception;
+	public int checkTime(int examCode) throws Exception;
 	
 	//return subject code of exam
 	public int getSubjectCode(int examCode) throws Exception;

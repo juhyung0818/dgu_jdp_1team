@@ -122,14 +122,23 @@ public class QuestionController {
 		UserVO user = new UserVO();
 		user = (UserVO) session.getAttribute("student");
 
-		ExamVO exam = examService.getExam(examCode);
-		model.addAttribute("subjectCode", examService.getSubjectCode(examCode));
-		model.addAttribute("examCode", examCode);
-		model.addAttribute("examName", exam.getExamName());
-		model.addAttribute("list", questionService.tryQuestion(examCode));
-		model.addAttribute("size", questionService.tryQuestion(examCode).size() + 1);
-		model.addAttribute("uname", ((UserVO) session.getAttribute("student")).getUname());
-
+		int time=examService.checkTime(examCode);
+		
+		//case : time to take a exam
+		if( time!=0)
+		{
+			ExamVO exam = examService.getExam(examCode);
+			model.addAttribute("subjectCode", examService.getSubjectCode(examCode));
+			model.addAttribute("examName", exam.getExamName());
+			model.addAttribute("list", questionService.tryQuestion(examCode));
+			model.addAttribute("size", questionService.tryQuestion(examCode).size() + 1);
+			model.addAttribute("uname", ((UserVO) session.getAttribute("student")).getUname());
+		}
+		else
+		{
+			model.addAttribute("examActive", false);
+		}
+		
 		// for incorrect access
 		model.addAttribute("path", ((boolean) session.getAttribute("path")));
 		model.addAttribute("deniedURL", ((String) session.getAttribute("deniedURL")));

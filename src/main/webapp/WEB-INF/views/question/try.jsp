@@ -6,10 +6,16 @@
 		var questionArray = new Array();
 		var questionInfo = new Object();
 		var path=${path};
+		var examActive=${examActive};
 		if(!path)
 		{
 			self.window.alert("access denied!!!");
-			self.location="/exam/studentExam?subjectCode="+${subjectCode};
+			self.location="${deniedURL}";
+		}
+		if(!examActive)
+		{
+			self.window.alert("not time to exam!!!");
+			self.location="${deniedURL}";
 		}
 	</script>
 </head>
