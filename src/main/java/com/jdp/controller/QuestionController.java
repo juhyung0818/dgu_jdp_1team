@@ -124,6 +124,7 @@ public class QuestionController {
 
 		ExamVO exam = examService.getExam(examCode);
 		model.addAttribute("subjectCode", examService.getSubjectCode(examCode));
+		model.addAttribute("examCode", examCode);
 		model.addAttribute("examName", exam.getExamName());
 		model.addAttribute("list", questionService.tryQuestion(examCode));
 		model.addAttribute("size", questionService.tryQuestion(examCode).size() + 1);
@@ -156,10 +157,12 @@ public class QuestionController {
 		score.setExamCode(examCode);
 		score.setUid(user.getUid());
 		score.setScore(0);
+		
+		logger.info(answer);
 
 		// parsing part
-		String[] stAnswer = answer.split("&answer=");
-		int[] stAns = new int[stAnswer.length - 1];
+		String[] stAnswer = answer.split("&answer="); //student's answer
+		int[] stAns = new int[stAnswer.length - 1]; //student's answer parsing
 		for (int i = 0; i < stAnswer.length; i++) {
 			if (i > 0) {
 				stAns[i - 1] = Integer.parseInt(stAnswer[i]);
@@ -167,7 +170,7 @@ public class QuestionController {
 		}
 
 		// score calculation
-		List<CheckVO> an = scoreService.answer(examCode);
+		List<CheckVO> an = scoreService.answer(examCode); //real answer
 		for (int i = 0; i < stAns.length; i++) {
 			if (an.get(i).getAnwser() == stAns[i]) {
 				score.setScore(score.getScore() + an.get(i).getqPoint());

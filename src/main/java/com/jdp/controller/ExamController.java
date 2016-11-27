@@ -101,11 +101,11 @@ public class ExamController {
 		UserVO user = new UserVO();
 		user = (UserVO)session.getAttribute("student");
 		
+		
 		List<ExamVO> examList = examService.examList(subjectCode);
-		List<ScoreVO> scoreList = scoreService.myScore(subjectCode, user.getUid());
+		List<ScoreVO> scoreList = scoreService.scoreList(subjectCode, user.getUid());
 		
 		List<ScoreExamVO> list = new ArrayList<>();
-
 		// examList.size() >= scoreList
 		for(int i=0; i<examList.size(); i++){
 
@@ -115,13 +115,12 @@ public class ExamController {
 			temp.setStartTime(examList.get(i).getStartTime()); //start time
 			temp.setEndTime(examList.get(i).getEndTime()); // end time
 			temp.setScore(-1);
-			
+
 			//score for each exams
 			for(int j=0; j<scoreList.size(); j++){
-				if(examList.get(i).getExamCode()== scoreList.get(j).getExamCode()){
+				if(examList.get(i).getExamCode() == scoreList.get(j).getExamCode()){
 					temp.setScore(scoreList.get(j).getScore());
 				}
-
 			}
 			list.add(temp);
 		}

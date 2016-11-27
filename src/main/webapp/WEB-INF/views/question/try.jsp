@@ -17,7 +17,6 @@
 #box1 {
 	width: 225px;
 	height: 225px;
-	background-image: url("c:\User\Desktop\admin\teachr.jpg")
 }
 
 .tg {
@@ -67,21 +66,11 @@
 						<div class="box-header with-border">
 							<h3 class="box-title">QUESTIONS</h3>
 						</div>
-
-
 						<c:forEach items="${list}" var="questionVO" varStatus="i">
 							<table class="tg">
 								<tr>
-
-
-
 									<td>Q${questionVO.qNumber}.</td>
-
-
-
 									<td>point†ê: ${questionVO.qPoint}</td>
-
-
 									<th class="th-yw4l" colspan="9" rowspan="2">
 										<div>
 											<p>Answer</p>
@@ -99,29 +88,20 @@
 										</div>
 									</th>
 								</tr>
-								<tr>
-								</tr>
+								<tr></tr>
 								<tr>
 									<td class="th-yw4l" colspan="15" rowspan="8"><textarea
 											class="form-control" readonly cols="100" rows="20">${questionVO.qInfo}</textarea>
 									</td>
 								</tr>
+								<tr></tr>
+								<tr></tr>
+								<tr></tr>
+								<tr></tr>
+								<tr></tr>
+								<tr></tr>
+								<tr></tr>
 								<tr>
-								</tr>
-								<tr>
-								</tr>
-								<tr>
-								</tr>
-								<tr>
-								</tr>
-								<tr>
-								</tr>
-								<tr>
-								</tr>
-								<tr>
-								</tr>
-								<tr>
-
 									<td class="tg-yw4l" colspan="15" rowspan="5">
 										<p></p>
 										<ul class="w3-ul w3-border">
@@ -161,7 +141,6 @@ $("#complete").click( function(){
 		$.ajaxSettings.traditional = true;
 		$.ajax({
 			type : 'POST',
-			//url : '/question/try?subjectCode=${subjectCode}&examName=${examName}',
 			url : '/question/try?examCode=${examCode}',
 			headers: {
 				"Contnet-Type": "application/json;charset=UTF-8",

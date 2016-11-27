@@ -10,7 +10,7 @@ import com.jdp.domain.ScoreVO;
 /**
  * Database Access Object
  * interface to access score table in database
- * @author YJH
+ * @author LYJ
  * 2016.11.06.Sun
  */
 public interface ScoreDAO {
@@ -23,7 +23,20 @@ public interface ScoreDAO {
 	//manage student2
 	public List<MemberListVO> listMember2(MemberListVO memberListVO) throws Exception;
 	public ScoreVO check(int subjectCode, String examName, String uid) throws Exception;
-	public List<ScoreVO> myScore(int subjectCode, String uid) throws Exception;
+	/**
+	 * get score {examCode, uid}
+	 * @param examCode
+	 * @param uid
+	 * @author YJH
+	 */
+	public ScoreVO myScore(int examCode, String uid) throws Exception;
+	/**
+	 * get score list {subjectCode, uid} 
+	 * @param subjectCode
+	 * @param uid
+	 * @author YJH
+	 */
+	public List<ScoreVO> scoreList(int subjectCode, String uid) throws Exception;
 	public List<ExamVO> listExam(int subjectCode) throws Exception;
 	public List<ScoreVO> readScore(int subjectCode, String uid) throws Exception;
 	/**
