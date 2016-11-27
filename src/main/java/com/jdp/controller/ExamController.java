@@ -67,8 +67,6 @@ public class ExamController {
 		int examCode = examService.getExamCode(subjectCode, examName);
 		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
-//		rttr.addAttribute("subjectCode", subjectCode);
-//		rttr.addAttribute("examName", examName);
 		rttr.addAttribute("examCode", examCode);
 		rttr.addAttribute("num", num);
 		return "redirect:/question/register";
@@ -114,7 +112,13 @@ public class ExamController {
 			temp.setExamCode(examList.get(i).getExamCode());
 			temp.setStartTime(examList.get(i).getStartTime()); //start time
 			temp.setEndTime(examList.get(i).getEndTime()); // end time
-			temp.setScore(-1);
+			
+			//case : no time to exam
+			if(examService.checkTime(examList.get(i).getExamCode())==0)
+				temp.setScore(-2);
+			//case : time to exam but not take a exam yet
+			else
+				temp.setScore(-1);
 			
 			//score for each exams
 			for(int j=0; j<scoreList.size(); j++){
@@ -138,19 +142,11 @@ public class ExamController {
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
 		model.addAttribute("uname", user.getUname());
 		
-		try {
-			model.addAttribute("examActive", (boolean)session.getAttribute("examActive"));	
-		} catch (Exception e) {
-			//initialization
-			session.setAttribute("examActive", true);
-			model.addAttribute("examActive", true);	
-		}
 	}
 
 
 	@RequestMapping(value ="/studentExamPost", method = RequestMethod.POST)
 	public void studentExamPOST(
-//			@RequestParam("subjectCode") int subjectCode,
 			@RequestParam("examCode") int examCode,
 			Model model, HttpSession session) throws Exception {
 		//if score is not null, then you took a exam before

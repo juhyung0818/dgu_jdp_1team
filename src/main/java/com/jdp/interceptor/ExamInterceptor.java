@@ -36,20 +36,10 @@ public class ExamInterceptor extends HandlerInterceptorAdapter{
 		ModelMap modelMap=modelAndView.getModelMap();
 		
 		ScoreVO score=(ScoreVO)modelMap.get("scoreVO");
-//		int subjectCode=(int)modelMap.get("currentSubCode");
 		int examCode=(int)modelMap.get("currentExamCode");
 	
 		int subjectCode=examService.getSubjectCode(examCode);
 		
-		ExamVO exam=examService.checkTime(examCode);
-		try {
-			if(!exam.getExamName().equals(""))
-			{
-				session.setAttribute("examActive", true);
-			}	
-		} catch (Exception e) {
-			session.setAttribute("examActive", false);
-		}
 		
 		try {
 			if(!score.getUid().equals(""))
@@ -61,7 +51,6 @@ public class ExamInterceptor extends HandlerInterceptorAdapter{
 		} catch (Exception e) {
 			//case : didn't take a exam
 			logger.info("it's time to take a exam!!");
-//			response.sendRedirect("/question/try?subjectCode="+subjectCode+"&examName="+examName);
 			response.sendRedirect("/question/try?&examCode="+examCode);
 		}
 		finally {

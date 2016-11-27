@@ -64,7 +64,7 @@ public class ExamDAOImpl implements ExamDAO{
 	}
 
 	@Override
-	public ExamVO checkTime(int examCode) throws Exception {
+	public int checkTime(int examCode) throws Exception {
 		return session.selectOne(namespace+".checkTime", examCode);
 	}
 

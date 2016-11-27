@@ -33,14 +33,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		where examCode=#{examCode}
  		order by qNumber
  	</select>
- 
+
  	<select id="myScore" resultType="com.jdp.domain.ScoreVO">
  		select s.examCode, s.score, s.uid
  		from score as s join exam as e
  		on s.examCode = e.examCode
  		where e.subjectCode=#{subjectCode} and s.uid=#{uid}
  	</select>
- 	
+
+ 
  	<select id="manage" resultType ="com.jdp.domain.MemberListVO">
 	select m.grade, m.classnumber, m.studentnumber, u.uname, u.uid, m.subjectcode
     from subject as s join member as m on s.subjectcode = m.subjectcode join user as u on m.uid=u.uid

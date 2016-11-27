@@ -71,7 +71,7 @@ public class ExamServiceImpl implements ExamService{
 	}
 
 	@Override
-	public ExamVO checkTime(int examCode) throws Exception {
+	public int checkTime(int examCode) throws Exception {
 		return examDao.checkTime(examCode);
 	}
 
