@@ -17,25 +17,24 @@ import com.jdp.dto.LoginDTO;
  * update date : 2016-11-11
  */
 @Repository
-public class UserDAOImpl implements UserDAO{
+public class UserDAOImpl implements UserDAO {
 
 	@Inject
 	private SqlSession session;
-	
-	private static String namespace="com.jdp.mapper.UserMapper";
+
+	private static String namespace = "com.jdp.mapper.UserMapper";
 
 	@Override
-	public UserVO login(LoginDTO dto) throws Exception {	
-		return session.selectOne(namespace+".login", dto);
+	public UserVO login(LoginDTO dto) throws Exception {
+		return session.selectOne(namespace + ".login", dto);
 	}
 
 
-@Override
-public UserVO register(UserVO user) throws Exception {
-	
-	return session.selectOne(namespace+".register",user );
-}
+	@Override
+	public UserVO register(UserVO user) throws Exception {
 
+		return session.selectOne(namespace + ".register", user);
+	}
 
 	@Override
 	public void keepLogin(String uid, String sessionId, Date next) {

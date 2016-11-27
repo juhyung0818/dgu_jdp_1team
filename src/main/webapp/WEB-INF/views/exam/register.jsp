@@ -42,7 +42,7 @@
 			</div>
 			<div class="form-group">
 				<label for="questionNum">question number</label>
-				<input type="number" class="w3-input w3-border w3-round-large" name="num" placeholder="number of question"><br>
+				<input type="number" class="w3-input w3-border w3-round-large" name="num" placeholder="number of question" ><br>
 			</div>
 
 			<div class="form-group">
