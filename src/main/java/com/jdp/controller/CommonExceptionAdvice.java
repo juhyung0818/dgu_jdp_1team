@@ -37,17 +37,17 @@ public class CommonExceptionAdvice {
 		return modelAndView;
 	}
 
-	@ResponseBody
-	@ExceptionHandler(PrimaryKeyDuplicatedException.class)
-	public ModelAndView highfiveException(PrimaryKeyDuplicatedException e) {
-
-		logger.error(e.getMessage());
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/exception/primary_key_duplication");
-		modelAndView.addObject("exception", e);
-
-		return modelAndView;
-	}
+//	@ResponseBody
+//	@ExceptionHandler(PrimaryKeyDuplicatedException.class)
+//	public ModelAndView highfiveException(PrimaryKeyDuplicatedException e) {
+//
+//		logger.error(e.getMessage());
+//		ModelAndView modelAndView = new ModelAndView();
+//		modelAndView.setViewName("/exception/primary_key_duplication");
+//		modelAndView.addObject("exception", e);
+//
+//		return modelAndView;
+//	}
 
 	@ResponseBody
 	@ExceptionHandler(InvalidTypeException.class)

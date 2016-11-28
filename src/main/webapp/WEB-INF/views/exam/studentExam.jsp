@@ -51,7 +51,7 @@
 			</c:forEach>
 		</table>
 		<form action="/subject/leave?subjectCode=${subjectCode}" method="post">
-			<button type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge btn-danger">SUBJECT REMOVE</button>
+			<button type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" id="remove">SUBJECT REMOVE</button>
 		</form>
 		<br><br>
 </div>
@@ -64,7 +64,18 @@
   		alert('you took a exam before!!!');
 
  }
- 
+
+$("#remove").click( function(){
+ if(confirm("삭제 하시겠습니까?"))
+	 alert("삭제되었습니다.");
+ else
+ {
+	 alert("취소했습니다.");
+	 return false;
+ }
+
+});
+
  </script>
 
 <%@include file="../include/sFooter.jsp"%>

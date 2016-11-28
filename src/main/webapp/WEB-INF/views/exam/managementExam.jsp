@@ -4,6 +4,7 @@
 	pageEncoding="UTF-8"%>
 <%@include file="../include/tHeader.jsp"%>
 
+
 <form role="form" action="modify" method="post">
 	<input type='hidden' name='subjectCode' value="${subjectCode}"> 
 </form>
@@ -48,27 +49,31 @@
 		</a>
 		<a href="/subject/modify?subjectCode=${subjectCode}">
 			<input type="button" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" 
-			oncilck="button_event();" value="SUBJECT MODIFY">
+			oncilck="button_event()" value="SUBJECT MODIFY">
 		</a>
-		<button type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" onclick="button_event();">SUBJECT REMOVE</button>
+		 
+		<form action="/subject/tDelete?subjectCode=${subjectCode}" method="post">
+			<button class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red" id="remove">REMOVE</button>
+		</form>
+		 
 		<a href="/subject/tSubject">
 			<input type="button" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="CANCEL">		
 		</a>
 	</div>
 </div>
 
-<script type="text/javascript">
-	function button_event(){
-		if (confirm("정말 삭제하시겠습니까??") == true){    //확인
-  			document.form.action="/subject/tDelete?subjectCode=${subjectCode}";
-  			document.form.method="post";
-  			document.form.submit();
-		}else{   //취소
-  			return;
-		}
-	}
-</script>
+<script>
+	$("#remove").click( function(){
+	 if(confirm("삭제 하시겠습니까?"))
+		 alert("삭제되었습니다.");
+	 else
+	 {
+		 alert("취소했습니다.");
+		 return false;
+	 }
 
+});
+</script>
 
 <script>
 	var result = '${msg}';

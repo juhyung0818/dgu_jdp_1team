@@ -68,7 +68,7 @@ public class ScoreController {
 						listScore.add(temp);
 					}
 					double tmp=listAverage.get(j).getAllAvg();
-					listAverage.get(j).setAllAvg(tmp+=listScore.get(j).getScore());//����Ѻκ�
+					listAverage.get(j).setAllAvg(tmp+=listScore.get(j).getScore());
 				}
 				
 				listMem.get(i).setScoreList(listScore);
@@ -132,7 +132,7 @@ public class ScoreController {
 					listScore.add(temp);
 				}
 				double tmp = listAverage.get(j).getSomeAvg();
-				listAverage.get(j).setSomeAvg(tmp+=listScore.get(j).getScore());//����Ѻκ�
+				listAverage.get(j).setSomeAvg(tmp+=listScore.get(j).getScore());
 			}
 			
 			listMem.get(i).setScoreList(listScore);

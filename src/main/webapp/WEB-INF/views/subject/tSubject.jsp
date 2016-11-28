@@ -25,8 +25,9 @@
 							 class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red"></a>
 					</td>
 					<td>
-							 <form action="/subject/tDelete?subjectCode=${subjectVO.subjectCode}" method="post">
-							 	<button type="submit" class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red">REMOVE</button>
+							<form action="/subject/tDelete?subjectCode=${subjectVO.subjectCode}" method="post">
+								<button class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red" id="remove">REMOVE</button>
+								
 							</form>
 					</td>
 					<td>
@@ -51,7 +52,17 @@
 	if(result == 'success'){
 		alert('${subjectName}' + "과목이 성공적으로 등록되었습니다.");
 	}
-
+	
+	$("#remove").click( function(){
+		 if(confirm("삭제 하시겠습니까?"))
+			 alert("삭제되었습니다.");
+		 else
+		 {
+			 alert("취소했습니다.");
+			 return false;
+		 }
+	
+	});
 </script>
 
 <%@include file="../include/sFooter.jsp"%>

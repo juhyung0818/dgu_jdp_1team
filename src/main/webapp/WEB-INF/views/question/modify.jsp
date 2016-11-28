@@ -1,5 +1,10 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page session="false"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@include file="../include/tHeader.jsp"%>
 <head>
+<meta charset="utf-8">
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 <script>
@@ -167,7 +172,11 @@
 								<button id="modify" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="10">SAVE</button>
 							</td>
 							<td>
-									<button id="remove" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge btn-danger">REMOVE</button>
+								<!-- <button id="remove" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge btn-danger">REMOVE</button> -->
+								
+							<form action="/exam/delete?examCode=${examCode}" method="post">
+								<button class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red" id="remove">REMOVE</button>
+							</form>
 							</td>
 							<td>
 								<a href="/exam/managementExam?subjectCode=${subjectCode}">
@@ -183,42 +192,42 @@
 	</div>
 </section>
 
-<script>
-	$(document).ready(function() {
+<script type="text/javascript">
 
-		var formObj = $("form[role='form']");
+$("#remove").click( function(){
+ if(confirm("삭제 하시겠습니까?"))
+	 alert("삭제되었습니다.");
+ else
+ {
+	 alert("취소했습니다.");
+	 return false;
+ }
 
-		console.log(formObj);
+});
 
-		$(".btn-danger").on("click", function() {
-			formObj.attr("action", "/exam/delete");
-			formObj.submit();
-		});
-
+$("#modify").click(function() {
+	var question = [];
+	var i;
+	for (i = 1; i <= '${num}'; i++) {
+		question.push($('input[name=qNumber' + i + ']').val());
+		question.push($('input[name=qPoint' + i + ']').val());
+		question.push($('input[name=answer' + i + ']:checked').val());
+		question.push($('#qInfo' + i).val());
+		question.push($('input[name=ex1' + i + ']').val());
+		question.push($('input[name=ex2' + i + ']').val());
+		question.push($('input[name=ex3' + i + ']').val());
+		question.push($('input[name=ex4' + i + ']').val());
+	}
+	console.log(question);
+	$.ajax({
+	      url: "/question/modify?examCode=${examCode}",
+	      type: "post",
+	      contentType: "application/json",
+		data:JSON.stringify({question : question})
 	});
+	self.location = "/exam/managementExam?subjectCode=" + ${subjectCode};
+});
 
-	$("#modify").click(function() {
-		var question = [];
-		var i;
-		for (i = 1; i <= '${num}'; i++) {
-			question.push($('input[name=qNumber' + i + ']').val());
-			question.push($('input[name=qPoint' + i + ']').val());
-			question.push($('input[name=answer' + i + ']:checked').val());
-			question.push($('#qInfo' + i).val());
-			question.push($('input[name=ex1' + i + ']').val());
-			question.push($('input[name=ex2' + i + ']').val());
-			question.push($('input[name=ex3' + i + ']').val());
-			question.push($('input[name=ex4' + i + ']').val());
-		}
-		console.log(question);
-		$.ajax({
-		      url: "/question/modify?examCode=${examCode}",
-		      type: "post",
-		      contentType: "application/json",
-			data:JSON.stringify({question : question})
-		});
-		self.location = "/exam/managementExam?subjectCode=" + ${subjectCode};
-	});
 </script>
 
 <%@include file="../include/tFooter.jsp"%>
