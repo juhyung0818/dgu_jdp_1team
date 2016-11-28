@@ -82,6 +82,7 @@ public class CommonExceptionAdvice {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("/exception/error_common");
 		modelAndView.addObject("exception", e);
+		modelAndView.addObject("code", e.getExceptionCode());
 
 		return modelAndView;
 	}
@@ -94,19 +95,21 @@ public class CommonExceptionAdvice {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("/exception/not_authority_subject");
 		modelAndView.addObject("exception", e);
+		modelAndView.addObject("code", e.getExceptionCode());
 
 		return modelAndView;
 	}
 
 	//Duplication key of table
 	@ResponseBody
-	@ExceptionHandler(DuplicateKeyException.class)
-	public ModelAndView duplicateKeyException(DuplicateKeyException e) {
+	@ExceptionHandler(PrimaryKeyDuplicatedException.class)
+	public ModelAndView primaryKeyDuplicatedException(PrimaryKeyDuplicatedException e) {
 
 		logger.error(e.getMessage());
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("/exception/primary_key_duplication");
 		modelAndView.addObject("exception", e);
+		modelAndView.addObject("code", e.getExceptionCode());
 
 		return modelAndView;
 	}
@@ -134,6 +137,8 @@ public class CommonExceptionAdvice {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("/exception/subject_name_not_exist");
 		modelAndView.addObject("exception", e);
+		modelAndView.addObject("code", e.getExceptionCode());
+
 
 		return modelAndView;
 	}
