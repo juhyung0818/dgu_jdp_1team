@@ -35,13 +35,6 @@ fieldset {
 			</fieldset>
 	</center>
 
-<script>
-	var result = '${msg}';
-	
-	if(result == 'success'){
-		alert("success");
-	}
 
-</script>
 
 <%@include file="../include/tFooter.jsp"%>

@@ -44,10 +44,10 @@ public class SubjectController {
 	//TODO this method need subjectCode, tid
 	@RequestMapping(value = "/tRegister", method = RequestMethod.POST)
 	public String registPOST(@RequestParam("subjectName") String subjectName,
-			RedirectAttributes rttr, HttpSession session) throws Exception {
+			RedirectAttributes rttr, HttpSession session, Model model) throws Exception {
 		UserVO user = (UserVO)session.getAttribute("teacher");
 		subjectService.register(subjectName, user.getUid());
-		
+		rttr.addFlashAttribute("subjectName", subjectName);
 		rttr.addFlashAttribute("msg", "success");
 		return "redirect:/subject/tSubject";
 	}
@@ -143,4 +143,3 @@ public class SubjectController {
 		return "redirect:/subject/sSubject";
 	}
 }
-

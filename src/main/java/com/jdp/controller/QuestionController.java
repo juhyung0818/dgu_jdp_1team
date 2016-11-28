@@ -1,5 +1,6 @@
 package com.jdp.controller;
 
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -55,31 +56,28 @@ public class QuestionController {
 	public String registPOST(@RequestParam("examCode") int examCode, @RequestBody String question, 
 			RedirectAttributes rttr, HttpServletRequest request) throws Exception{
 		logger.info("question register postpostpost.........");
-		System.out.println(question);
 		
 		request.setCharacterEncoding("utf8");
 		
+		String[] temp = question.split("\"");
 		//parsing part
 		List<QuestionVO> list = new ArrayList<QuestionVO>();
-		String[] temp = question.split("&question%5B%5D=");
-		
-		for(int i=0; i<temp.length/8; i++){
+		for(int i=0; i<temp.length/16; i++){
 
 			QuestionVO q = new QuestionVO();
 			q.setExamCode(examCode);
-			q.setqNumber(Integer.parseInt(temp[i*8+1]));
-			q.setqPoint(Integer.parseInt(temp[i*8+2]));
-			q.setAnswer(Integer.parseInt(temp[i*8+3]));
-			q.setqInfo(temp[i*8+4]);
-			q.setEx1(temp[i*8+5]);
-			q.setEx2(temp[i*8+6]);
-			q.setEx3(temp[i*8+7]);
-			q.setEx4(temp[i*8+8]);
+			q.setqNumber(Integer.parseInt(temp[i*16+3]));
+			q.setqPoint(Integer.parseInt(temp[i*16+5]));
+			q.setAnswer(Integer.parseInt(temp[i*16+7]));
+			q.setqInfo(temp[i*16+9]);
+			q.setEx1(temp[i*16+11]);
+			q.setEx2(temp[i*16+13]);
+			q.setEx3(temp[i*16+15]);
+			q.setEx4(temp[i*16+17]);
 			list.add(q);
 		}
 		//insert questions
 		questionService.registerList(list);
-
 		rttr.addAttribute("subjectCode", examService.getSubjectCode(examCode));
 		return "redirect:/exam/managementExam";
 	}
@@ -198,22 +196,21 @@ public class QuestionController {
 
 		System.out.println("modify post....");
 
-		// parsing part
+		String[] temp = question.split("\"");
+		//parsing part
 		List<QuestionVO> list = new ArrayList<QuestionVO>();
-		String[] temp = question.split("&question%5B%5D=");
-		for (int i = 0; i < temp.length / 8; i++) {
+		for(int i=0; i<temp.length/16; i++){
 
 			QuestionVO q = new QuestionVO();
 			q.setExamCode(examCode);
-			q.setqNumber(Integer.parseInt(temp[i * 8 + 1]));
-			q.setqPoint(Integer.parseInt(temp[i * 8 + 2]));
-			q.setAnswer(Integer.parseInt(temp[i * 8 + 3]));
-			q.setqInfo(temp[i * 8 + 4]);
-			q.setEx1(temp[i * 8 + 5]);
-			q.setEx2(temp[i * 8 + 6]);
-			q.setEx3(temp[i * 8 + 7]);
-			q.setEx4(temp[i * 8 + 8]);
-			//
+			q.setqNumber(Integer.parseInt(temp[i*16+3]));
+			q.setqPoint(Integer.parseInt(temp[i*16+5]));
+			q.setAnswer(Integer.parseInt(temp[i*16+7]));
+			q.setqInfo(temp[i*16+9]);
+			q.setEx1(temp[i*16+11]);
+			q.setEx2(temp[i*16+13]);
+			q.setEx3(temp[i*16+15]);
+			q.setEx4(temp[i*16+17]);
 			list.add(q);
 		}
 		// modify questions

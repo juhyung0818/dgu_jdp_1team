@@ -120,6 +120,7 @@ public class CommonExceptionAdvice {
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("/exception/duplication_exam");
 		modelAndView.addObject("exception", e);
+		modelAndView.addObject("code", e.getExceptionCode());
 
 		return modelAndView;
 	}

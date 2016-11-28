@@ -45,4 +45,13 @@
 		<br>
 </div>
 
+<script>
+	var result = '${msg}';
+	
+	if(result == 'success'){
+		alert('${subjectName}' + "과목이 성공적으로 등록되었습니다.");
+	}
+
+</script>
+
 <%@include file="../include/sFooter.jsp"%>

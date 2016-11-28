@@ -1,8 +1,8 @@
 package com.jdp.dto;
 /**
  * 
- * @author ภฬฟ๋มุ
- *
+ * @author LYJ
+ * 2016.11.27.SUN
  */
 public class MemberDTO {
 	private String uid;

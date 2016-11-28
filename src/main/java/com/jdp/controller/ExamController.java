@@ -44,7 +44,8 @@ public class ExamController {
 	private static final Logger logger = LoggerFactory.getLogger(ExamController.class);
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public void registGET(@RequestParam("subjectCode") int subjectCode) {
+	public void registGET(@RequestParam("subjectCode") int subjectCode, HttpSession session, Model model) {
+		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
 		logger.info("question register");
 	}
 

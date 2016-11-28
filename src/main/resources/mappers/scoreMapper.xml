@@ -29,7 +29,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		on s.examCode = e.examCode
  		where e.examCode=#{examCode} and s.uid=#{uid}
  	</select>
-<<<<<<< HEAD
  	
  	<!-- new myScore list about a subject -->
  	<select id="scoreList" resultType="com.jdp.domain.ScoreVO">
@@ -38,11 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		on s.examCode = e.examCode
  		where e.subjectCode = #{subjectCode} and s.uid = #{uid}
  	</select>
- 	
-=======
-
  
->>>>>>> 8f6e47310e7caf59bc0292dc58da583452cf3ef2
  	<select id="manage" resultType ="com.jdp.domain.MemberListVO">
 	select m.grade, m.classnumber, m.studentnumber, u.uname, u.uid, m.subjectcode
     from subject as s join member as m on s.subjectcode = m.subjectcode join user as u on m.uid=u.uid

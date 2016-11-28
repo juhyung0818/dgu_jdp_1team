@@ -11,5 +11,4 @@ public class SubjectNameNotExistException extends NotExistException{
 	public ExceptionCode getExceptionCode() {
 		return ExceptionCode.SUBJECT_NAME_NOT_EXIST;
 	}
-
 }

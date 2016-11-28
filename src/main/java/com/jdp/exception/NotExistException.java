@@ -11,5 +11,4 @@ public class NotExistException extends ExamException{
 	public ExceptionCode getExceptionCode() {
 		return ExceptionCode.NOT_EXIST;
 	}
-
 }
