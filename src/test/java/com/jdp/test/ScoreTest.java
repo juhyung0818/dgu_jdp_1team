@@ -32,7 +32,7 @@ public class ScoreTest {
 	@Test
 	public void testRegisterScore() throws Exception{
 		ScoreVO score = new ScoreVO();
-		score.setExamCode(35);
+		score.setExamCode(40);
 		score.setScore(100);
 		score.setUid("jh");
 		scoreDao.register(score);

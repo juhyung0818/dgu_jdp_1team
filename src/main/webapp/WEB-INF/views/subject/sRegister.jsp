@@ -43,24 +43,26 @@ fieldset {
 		<div class="box-body">
 			<div class="form-group">
 				<label for="subjectCode">SUBJECT CODE</label>
-				<input type="number" class="w3-input w3-border w3-round-large" name="subjectCode" placeholder="Write subject code" />
+				<input type="number" class="w3-input w3-border w3-round-large" name="subjectCode" placeholder="Write subject code" required />
 			</div>
 			<div class="form-group">
 				<label for="grade">GRADE</label>
-				<input type="text" class="w3-input w3-border w3-round-large" name="grade" placeholder="Write grade" />
+				<input type="text" class="w3-input w3-border w3-round-large" name="grade" placeholder="Write grade" required/>
 			</div>
 			<div class="form-group">
 				<label for="classNumber">CLASS NUMBER</label>
-				<input type="text" class="w3-input w3-border w3-round-large" name="classNumber" placeholder="Write class number" />
+				<input type="text" class="w3-input w3-border w3-round-large" name="classNumber" placeholder="Write class number" required/>
 			</div>
 			<div class="form-group">
 				<label for="studentNumber">STUDENT NUMBER</label>
-				<input type="text" class="w3-input w3-border w3-round-large" name="studentNumber" placeholder="Write student number" />
+				<input type="text" class="w3-input w3-border w3-round-large" name="studentNumber" placeholder="Write student number" required/>
 			</div>
 		</div>
 		<div class="box-footer"><br>
-			<button type="submit"  class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> ADD </button>
-			<button type="reset" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> CANCLE </button>
+			<input type="submit"  class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="ADD"> 
+			<a href='/subject/sSubject'>
+				<input type="button" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="BACK">
+			</a>
 		</div>
 		</fieldset>
 	</form>

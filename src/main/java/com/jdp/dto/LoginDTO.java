@@ -1,9 +1,15 @@
 package com.jdp.dto;
-
+/**
+ * 
+ * @author kwon
+ * 2016.11.18.Fri
+ */
 public class LoginDTO {
 	private String uid;
 	private String upw;
 	private boolean useCookie;
+	
+	/* getter, setter, toString methods */
 	public String getUid() {
 		return uid;
 	}

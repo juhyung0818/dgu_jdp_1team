@@ -4,11 +4,11 @@
 	pageEncoding="UTF-8"%>
 <%@include file="../include/sHeader.jsp"%>
 
-<script>
+<!-- <script>
 	var b = ${examActive};
 	if(!b)
 		self.window.alert("not time to take a exam!!!");
-</script>
+</script> -->
 
 <div align="center">
 	<div class="box-header with-border">
@@ -32,7 +32,6 @@
 							{
 								document.write("---");
 							}
-						
 							else if("${scoreExamVO.score}" == -1){
 								document.write(
 									"<form id='msg' action='/exam/studentExamPost?examCode=${scoreExamVO.examCode}' method='post'>" +

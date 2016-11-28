@@ -18,7 +18,7 @@ public interface QuestionService {
 	public void update(List<QuestionVO> question) throws Exception;
 	//display question list
 	public List<QuestionVO> listQuestion(int examCode) throws Exception;
-	public List<QuestionVO> tryQuestion(int examCode) throws Exception;
+	public List<QuestionVO> tryQuestion(int examCode, String uid) throws Exception;
 	//subject leave
 	public void delete(int examCode) throws Exception;
 }

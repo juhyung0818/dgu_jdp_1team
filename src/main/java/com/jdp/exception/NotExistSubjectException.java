@@ -5,10 +5,10 @@ package com.jdp.exception;
  * @author YJH
  * 2016.26.Sat
  */
-public class SubjectNameNotExistException extends NotExistException{
+public class NotExistSubjectException extends NotExistException{
 
 	@Override
 	public ExceptionCode getExceptionCode() {
-		return ExceptionCode.SUBJECT_NAME_NOT_EXIST;
+		return ExceptionCode.NOT_EXIST_SUBJECT;
 	}
 }

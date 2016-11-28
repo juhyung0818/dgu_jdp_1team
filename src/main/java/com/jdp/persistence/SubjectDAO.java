@@ -29,7 +29,11 @@ public interface SubjectDAO {
 	public String getSubjectName(int subjectCode) throws Exception;
 	//leave subject
 	public void leaveSubject(String uid, int subjectCode) throws Exception;
-	//check user access authority
-	public int checkAuthority(String uid, int subjectCode) throws Exception;
+	//teacher check user access authority
+	public int checkAuthorityTeacher(String uid, int subjectCode) throws Exception;
+	//student check user access authority
+	public int checkAuthorityStudent(String uid, int subjectCode) throws Exception;
+	//subject exist or not
+	public int checkSubject(int subjectCode) throws Exception;
 
 }

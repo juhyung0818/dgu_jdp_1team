@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jdp.domain.QuestionVO;
+import com.jdp.exception.TookExamException;
 import com.jdp.persistence.ExamDAO;
 import com.jdp.persistence.QuestionDAO;
+import com.jdp.persistence.ScoreDAO;
 
 /**
  * Service interface
@@ -22,9 +24,8 @@ public class QuestionServiceImpl implements QuestionService{
 
 	@Inject
 	private QuestionDAO questionDAO;
-	
 	@Inject
-	private ExamDAO examDAO;
+	private ScoreDAO scoreDAO;
 
 	@Override
 	public void register(QuestionVO question) throws Exception {
@@ -48,12 +49,15 @@ public class QuestionServiceImpl implements QuestionService{
 
 	@Override
 	public List<QuestionVO> listQuestion(int examCode) throws Exception {
-		return questionDAO.listQuestion(examCode);
+		return questionDAO.tryQuestion(examCode);
 	}
 	
 	@Override
-	public List<QuestionVO> tryQuestion(int examCode) throws Exception {
-		return questionDAO.tryQuestion(examCode);
+	public List<QuestionVO> tryQuestion(int examCode, String uid) throws Exception {
+		if(scoreDAO.takeExam(examCode, uid) > 0){
+			throw new TookExamException();
+		}
+		return questionDAO.listQuestion(examCode);
 	}
 
 	@Transactional

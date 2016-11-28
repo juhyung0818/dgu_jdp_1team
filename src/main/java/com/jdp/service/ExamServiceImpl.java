@@ -9,8 +9,11 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.jdp.domain.ExamVO;
 import com.jdp.exception.DuplicationExamException;
+import com.jdp.exception.NotAccessSubjectException;
+import com.jdp.exception.NotExistExamException;
 import com.jdp.persistence.ExamDAO;
 import com.jdp.persistence.QuestionDAO;
+import com.jdp.persistence.SubjectDAO;
 
 /**
  * Service class about Exam
@@ -20,6 +23,8 @@ import com.jdp.persistence.QuestionDAO;
 @Service
 public class ExamServiceImpl implements ExamService{
 
+	@Inject
+	private SubjectDAO subjectDao;
 	@Inject
 	private ExamDAO examDao;
 	@Inject
@@ -50,7 +55,17 @@ public class ExamServiceImpl implements ExamService{
 	
 
 	@Override
-	public List<ExamVO> examList(int subjectCode) throws Exception {
+	public List<ExamVO> examList(int subjectCode, String uid, int flag) throws Exception {
+		//check user level
+		if(flag == 0){ //student case
+			if(subjectDao.checkAuthorityStudent(uid, subjectCode) == 0 ){
+				throw new NotAccessSubjectException();
+			}
+		}else if(flag==1){ //teacher case			
+			if(subjectDao.checkAuthorityTeacher(uid, subjectCode) == 0 ){
+				throw new NotAccessSubjectException();
+			}
+		}
 		return examDao.listExam(subjectCode);
 	}
 
@@ -72,7 +87,11 @@ public class ExamServiceImpl implements ExamService{
 
 	@Override
 	public int checkTime(int examCode) throws Exception {
-		return examDao.checkTime(examCode);
+		if(examDao.checkExam(examCode) > 0){
+			return examDao.checkTime(examCode);
+		}else{
+			throw new NotExistExamException();
+		}
 	}
 
 	//return subject code

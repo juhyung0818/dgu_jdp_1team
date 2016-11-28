@@ -30,12 +30,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		where e.examCode=#{examCode} and s.uid=#{uid}
  	</select>
  	
- 	<!-- new myScore list about a subject -->
+ 	<!-- new myScore list about a subject by YJH-->
  	<select id="scoreList" resultType="com.jdp.domain.ScoreVO">
  		select s.examCode, s.score, s.uid
  		from score as s join exam as e
  		on s.examCode = e.examCode
  		where e.subjectCode = #{subjectCode} and s.uid = #{uid}
+ 	</select>
+ 	
+ 	<!-- check exam to take by YJH-->
+ 	<select id="takeExam" resultType="int">
+ 		select count(*)
+ 		from score
+		where examCode=#{examCode} and uid=#{uid}
  	</select>
  
  	<select id="manage" resultType ="com.jdp.domain.MemberListVO">

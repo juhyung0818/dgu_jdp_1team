@@ -37,6 +37,13 @@ public interface ScoreDAO {
 	 * @author YJH
 	 */
 	public List<ScoreVO> scoreList(int subjectCode, String uid) throws Exception;
+	/**
+	 * check authority about exam
+	 * @param examCode
+	 * @param uid
+	 * @author YJH
+	 */
+	public int takeExam(int examCode, String uid) throws Exception;
 	public List<ExamVO> listExam(int subjectCode) throws Exception;
 	public List<ScoreVO> readScore(int subjectCode, String uid) throws Exception;
 	/**

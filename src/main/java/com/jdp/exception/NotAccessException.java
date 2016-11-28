@@ -5,10 +5,11 @@ package com.jdp.exception;
  * @author kwon
  * 2016.11.20.Sun
  */
-public class NotAuthoriedException extends ExamException{
+public abstract class NotAccessException extends ExamException{
 
 	@Override
 	public ExceptionCode getExceptionCode() {
 		return ExceptionCode.ACCESS_DENIED;
 	}
+	
 }

@@ -64,6 +64,7 @@ public class ScoreDAOImpl implements ScoreDAO{
 	/**
 	 * display exam information and score
 	 * 2016.11.11.Fri
+	 * @author YJH
 	 */
 	@Override
 	public ScoreVO myScore(int examCode, String uid) throws Exception {
@@ -102,13 +103,30 @@ public class ScoreDAOImpl implements ScoreDAO{
 		return session.selectOne(namespace+".checkIsTry", paramMap);
 	}
 
-	//get my score list in subject
+	/**
+	 * get my score list in subject
+	 * 2016.11.11.Fri
+	 * @author YJH
+	 */
 	@Override
 	public List<ScoreVO> scoreList(int subjectCode, String uid) throws Exception {
 		Map<String, Object> param = new HashMap<String, Object>();
 		param.put("subjectCode", subjectCode);
 		param.put("uid", uid);
 		return session.selectList(namespace + ".scoreList", param);
+	}
+
+	/**
+	 * check authority about exam
+	 * 2016.11.11.Fri
+	 * @author YJH
+	 */
+	@Override
+	public int takeExam(int examCode, String uid) throws Exception {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("examCode", examCode);
+		param.put("uid", uid);
+		return session.selectOne(namespace + ".takeExam", param);
 	}
 
 }

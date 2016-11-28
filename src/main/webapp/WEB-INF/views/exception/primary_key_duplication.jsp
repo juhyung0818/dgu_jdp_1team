@@ -5,16 +5,11 @@
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>ERROR</title>
-	</head>
-	
-	<body>
-		이미 존재합니다.
-	</body>
-	
-	
-	
-</html>	
+<script>
+var result = '${code}';
+
+if(result == 'PRIMARY_KEY_DUPLICATE'){
+	alert("이미 등록되어 있습니다.");
+	history.back();
+}
+</script>
