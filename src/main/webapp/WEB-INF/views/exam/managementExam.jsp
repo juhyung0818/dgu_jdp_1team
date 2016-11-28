@@ -42,22 +42,41 @@
 	
 	<br><br>
 	<div class="box-footer" align="right">
-		<form action="/subject/tDelete?subjectCode=${subjectCode}" method="post">
 		
 		<a href='/exam/register?subjectCode=${subjectCode}'>
 			<input type="button" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="ADD">
 		</a>
 		<a href="/subject/modify?subjectCode=${subjectCode}">
-			<input type="button" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="SUBJECT MODIFY">
+			<input type="button" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" 
+			oncilck="button_event();" value="SUBJECT MODIFY">
 		</a>
-		
-			<button type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge">SUBJECT REMOVE</button>
-		
+		<button type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" onclick="button_event();">SUBJECT REMOVE</button>
 		<a href="/subject/tSubject">
 			<input type="button" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="CANCEL">		
 		</a>
-		</form>
 	</div>
 </div>
+
+<script type="text/javascript">
+	function button_event(){
+		if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+  			document.form.action="/subject/tDelete?subjectCode=${subjectCode}";
+  			document.form.method="post";
+  			document.form.submit();
+		}else{   //취소
+  			return;
+		}
+	}
+</script>
+
+
+<script>
+	var result = '${msg}';
+	
+	if(result == 'success'){
+		alert("success");
+	}
+
+</script>
 
 <%@include file="../include/tFooter.jsp"%>

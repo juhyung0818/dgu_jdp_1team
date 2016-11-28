@@ -161,17 +161,21 @@
 					<br>
 					<div class="box-footer">
 						<br>
-						<button id="modify" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="10">SAVE</button>
-						
-						<form action="/exam/delete?examCode=${examCode}" method="post">
-							<button id="modify" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge">REMOVE</button>
-						</form>
-						
-						<a href="/exam/managementExam?subjectCode=${subjectCode}">
-							<button id="backPage"
-								class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge">
-								CANCEL</button>
-						</a>
+						<table>
+						<tr>
+							<td>
+								<button id="modify" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="10">SAVE</button>
+							</td>
+							<td>
+									<button id="remove" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge btn-danger">REMOVE</button>
+							</td>
+							<td>
+								<a href="/exam/managementExam?subjectCode=${subjectCode}">
+									<button id="backPage" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> CANCEL</button>
+								</a>
+							</td>
+						</tr>
+						</table>
 					</div>
 				</div>
 			</div>
@@ -208,10 +212,10 @@
 		}
 		console.log(question);
 		$.ajax({
-			type : 'POST',
-			data : ({
-				'question' : question
-			})
+		      url: "/question/modify?examCode=${examCode}",
+		      type: "post",
+		      contentType: "application/json",
+			data:JSON.stringify({question : question})
 		});
 		self.location = "/exam/managementExam?subjectCode=" + ${subjectCode};
 	});

@@ -10,7 +10,6 @@ package com.jdp.domain;
 public class ScoreVO {
 
 	private int examCode;
-	private String examName;
 	private String uid;
 	private int score;
 	
@@ -20,12 +19,6 @@ public class ScoreVO {
 	}
 	public void setExamCode(int examCode) {
 		this.examCode = examCode;
-	}
-	public String getExamName() {
-		return examName;
-	}
-	public void setExamName(String examName) {
-		this.examName = examName;
 	}
 	public String getUid() {
 		return uid;
@@ -41,7 +34,7 @@ public class ScoreVO {
 	}
 	@Override
 	public String toString() {
-		return "ScoreVO [examCode=" + examCode + ", examName=" + examName + ", uid=" + uid + ", score=" + score + "]";
+		return "ScoreVO [examCode=" + examCode + ", uid=" + uid + ", score=" + score + "]";
 	}
 
 }

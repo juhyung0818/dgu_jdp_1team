@@ -29,7 +29,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		on s.examCode = e.examCode
  		where e.subjectCode=#{subjectCode} and s.uid=#{uid}
  	</select>
-
+ 	
+ 	<!-- new myScore list about a subject -->
+ 	<select id="scoreList" resultType="com.jdp.domain.ScoreVO">
+ 		select s.examCode, s.score, s.uid
+ 		from score as s join exam as e
+ 		on s.examCode = e.examCode
+ 		where e.subjectCode = #{subjectCode} and s.uid = #{uid}
+ 	</select>
  
  	<select id="manage" resultType ="com.jdp.domain.MemberListVO">
 	select m.grade, m.classnumber, m.studentnumber, u.uname, u.uid, m.subjectcode

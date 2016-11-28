@@ -34,8 +34,8 @@ public class ScoreServiceImpl implements ScoreService{
 	}
 
 	@Override
-	public List<ScoreVO> myScore(int subjectCode, String uid) throws Exception {
-		return scoreDao.myScore(subjectCode, uid);
+	public ScoreVO myScore(int examCode, String uid) throws Exception {
+		return scoreDao.myScore(examCode, uid);
 	}
 	@Override
 	public List<MemberListVO> listMember(String uid, int subjectCode) throws Exception {
@@ -60,6 +60,11 @@ public class ScoreServiceImpl implements ScoreService{
 	@Override
 	public List<ScoreVO> readScore(int subjectCode, String uid) throws Exception {
 		return scoreDao.readScore(subjectCode, uid);
+	}
+
+	@Override
+	public List<ScoreVO> scoreList(int subjectCode, String uid) throws Exception {
+		return scoreDao.scoreList(subjectCode, uid);
 	}
 
 	

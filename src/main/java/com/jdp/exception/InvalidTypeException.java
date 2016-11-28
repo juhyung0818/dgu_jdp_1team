@@ -11,5 +11,4 @@ public class InvalidTypeException extends ExamException {
 	public ExceptionCode getExceptionCode() {
 		return ExceptionCode.INVALID_TYPE;
 	}
-
 }

@@ -116,7 +116,7 @@ public class QuestionVO {
 	 */
 	@Override
 	public String toString() {
-		return "QuestionVO [subjectCode=" + examCode + ", qNumber=" + qNumber + ", qInfo="
+		return "QuestionVO [examCode=" + examCode + ", qNumber=" + qNumber + ", qInfo="
 				+ qInfo + ", ex1=" + ex1 + ", ex2=" + ex2 + ", ex3=" + ex3 + ", ex4=" + ex4 + ", qPoint=" + qPoint
 				+ ", answer=" + answer + "]";
 	}

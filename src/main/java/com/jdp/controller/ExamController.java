@@ -44,7 +44,8 @@ public class ExamController {
 	private static final Logger logger = LoggerFactory.getLogger(ExamController.class);
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public void registGET(@RequestParam("subjectCode") int subjectCode) {
+	public void registGET(@RequestParam("subjectCode") int subjectCode, HttpSession session, Model model) {
+		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
 		logger.info("question register");
 	}
 
@@ -99,11 +100,11 @@ public class ExamController {
 		UserVO user = new UserVO();
 		user = (UserVO)session.getAttribute("student");
 		
+		
 		List<ExamVO> examList = examService.examList(subjectCode);
-		List<ScoreVO> scoreList = scoreService.myScore(subjectCode, user.getUid());
+		List<ScoreVO> scoreList = scoreService.scoreList(subjectCode, user.getUid());
 		
 		List<ScoreExamVO> list = new ArrayList<>();
-
 		// examList.size() >= scoreList
 		for(int i=0; i<examList.size(); i++){
 
@@ -112,20 +113,22 @@ public class ExamController {
 			temp.setExamCode(examList.get(i).getExamCode());
 			temp.setStartTime(examList.get(i).getStartTime()); //start time
 			temp.setEndTime(examList.get(i).getEndTime()); // end time
+			temp.setScore(-1);
+
 			
 			//case : no time to exam
-			if(examService.checkTime(examList.get(i).getExamCode())==0)
+			if(examService.checkTime(examList.get(i).getExamCode())==0){
 				temp.setScore(-2);
+			}
 			//case : time to exam but not take a exam yet
-			else
+			else{
 				temp.setScore(-1);
-			
+			}
 			//score for each exams
 			for(int j=0; j<scoreList.size(); j++){
-				if(examList.get(i).getExamCode()== scoreList.get(j).getExamCode()){
+				if(examList.get(i).getExamCode() == scoreList.get(j).getExamCode()){
 					temp.setScore(scoreList.get(j).getScore());
 				}
-
 			}
 			list.add(temp);
 		}

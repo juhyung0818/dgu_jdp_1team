@@ -11,5 +11,4 @@ public class PrimaryKeyDuplicatedException extends ExamException{
 	public ExceptionCode getExceptionCode() {
 		return ExceptionCode.PRIMARY_KEY_DUPLICATE;
 	}
-	
 }
