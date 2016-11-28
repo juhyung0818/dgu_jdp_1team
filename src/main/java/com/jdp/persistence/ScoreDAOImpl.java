@@ -71,14 +71,13 @@ public class ScoreDAOImpl implements ScoreDAO{
 		paramMap.put("subjectCode", subjectCode);
 		paramMap.put("uid", uid);
 		return session.selectList(namespace+".myScore", paramMap);
-
 	}
-
-	@Override
-	public int myScore(String uid) throws Exception {
-		// TODO Auto-generated method stub
-		return 0;
-	}
+//
+//	@Override
+//	public int myScore(String uid) throws Exception {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
 
 	@Override
 	public List<ExamVO> listExam(int subjectCode) throws Exception {
@@ -102,5 +101,4 @@ public class ScoreDAOImpl implements ScoreDAO{
 		paramMap.put("uid", uid);
 		return session.selectOne(namespace+".checkIsTry", paramMap);
 	}
-
 }

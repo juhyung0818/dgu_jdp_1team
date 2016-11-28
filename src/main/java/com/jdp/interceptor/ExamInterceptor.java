@@ -40,7 +40,6 @@ public class ExamInterceptor extends HandlerInterceptorAdapter{
 	
 		int subjectCode=examService.getSubjectCode(examCode);
 		
-		
 		try {
 			if(!score.getUid().equals(""))
 			{

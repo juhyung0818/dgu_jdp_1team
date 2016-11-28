@@ -1,5 +1,10 @@
 package com.jdp.dto;
-
+/**
+ * Data Transfer Object
+ * user
+ * @author kwon
+ * 2016.11.01.Thu
+ */
 public class LoginDTO {
 	private String uid;
 	private String upw;

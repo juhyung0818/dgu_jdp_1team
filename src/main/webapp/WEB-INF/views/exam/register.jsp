@@ -33,7 +33,7 @@
 	<h1>
 		Exam Register
 	</h1>
-	<form class="form-inline" role="form" method="post">
+	<form class="form-inline" method="post">
 	<fieldset>
 		<div class="box-body">
 			<div class="form-group">

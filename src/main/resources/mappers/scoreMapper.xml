@@ -4,23 +4,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.jdp.mapper.ScoreMapper">
-<!-- 
-	<insert id="register">
-		insert into score (examCode, uid, score)
-		values (#{examCode}, #{examName}, #{uid}, #{score})
-	</insert>
--->
+
 	<insert id="register">
 		insert into score (examCode, uid, score)
 		values (#{examCode}, #{uid}, #{score})
 	</insert>
-<!-- 
-	<select id="listScore">
-		select uid, score
-		from score
-		where examCode=#{examCode}
-	</select>
--->
+
 	<select id="listScore">
 		select uid, score
 		from score
@@ -38,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		select s.examCode, s.score, s.uid
  		from score as s join exam as e
  		on s.examCode = e.examCode
- 		where e.examCode=#{examCode} and s.uid=#{uid}
+ 		where e.subjectCode=#{subjectCode} and s.uid=#{uid}
  	</select>
 
  
@@ -90,13 +79,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from exam as e join subject as s on s.subjectcode=e.subjectcode
 		where s.subjectcode=#{subjectCode};
 	</select>
-	
+
 	<select id="readScore" resultType ="com.jdp.domain.ScoreVO">
-	select *
-	from score
-	where examCode=#{examCode} and uid=#{uid}; 
+		select s.examCode, s.score, s.uid
+ 		from score as s join exam as e
+ 		on s.examCode = e.examCode
+ 		where e.subjectCode=#{subjectCode} and s.uid=#{uid}
 	</select>
-	
+
 	<select id="checkIsTry" resultType="com.jdp.domain.ScoreVO">
 		select *
 		from score

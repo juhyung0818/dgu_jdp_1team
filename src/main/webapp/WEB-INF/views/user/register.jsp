@@ -41,7 +41,7 @@ fieldset {
 					</tr>
 					<tr>
 						<th>직업:</th>
-						<td colspan="2"><input type="radio" name="gender" value="1"
+						<td colspan="2"><input type="radio" name="lfa" value="1"
 							required> 선생님 <input type="radio" name="gender" value="0">
 							학생</td>
 					</tr>

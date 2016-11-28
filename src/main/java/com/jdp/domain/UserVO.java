@@ -1,5 +1,10 @@
 package com.jdp.domain;
-
+/**
+ * Value Object
+ * user
+ * @author kwon
+ * 2016.11.01.Thu
+ */
 public class UserVO {
 	private String uid;
 	private String upw;

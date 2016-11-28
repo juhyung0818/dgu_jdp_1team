@@ -133,41 +133,4 @@ public class UserController {
 		return "redirect:/";
 	}
 
-	@ResponseBody
-	@RequestMapping(value = "/check", method = RequestMethod.POST)
-	public Map<String, String> checkUid(String uid) throws Exception {
-
-		Map<String, String> resultMap = new HashMap<String, String>();
-
-		logger.info(uid);
-		int resultCnt = service.checkUid(uid);
-		String result = "";
-		String resultMsg = "";
-		if (resultCnt == 0) {
-			result = "success";
-			resultMsg = "사용가능한 아이디입니다.";
-		} else {
-			result = "failure";
-			resultMsg = "이미 사용중인 아이디입니다.";
-		}
-
-		resultMap.put("result", result);
-		resultMap.put("resultMsg", resultMsg);
-
-		return resultMap;
-	}
-	
-	@RequestMapping(value = "/uidCheck")
-	public void checkId(@RequestParam("uid") String uid, HttpServletResponse res, ModelMap model) throws Exception {
-		PrintWriter out = res.getWriter();
-
-			// 넘어온 ID를 받는다.
-
-			int chkPoint = service.checkUid(uid);
-			logger.info("uid: " +  uid + " " + chkPoint);
-
-			out.print(chkPoint);
-			out.flush();
-			out.close();
-	}
 }

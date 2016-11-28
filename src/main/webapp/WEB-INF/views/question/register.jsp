@@ -30,27 +30,25 @@
 	<div align="center">
 		<font size="7" color="black"> 문제 출제 </font> <br> <br>
 
-				<c:forEach var="i" begin="1" varStatus="status" end='${num}'>
-					<table class="tg ">
-						<tr>
+			<c:forEach var="i" begin="1" varStatus="status" end='${num}'>
+				<table class="tg ">
+					<tr>
 						<th class="tg-i46p" colspan="3" rowspan="2">
-						<div class="form-group">
-							Q<input class="w3-input" type="number" name="qNumber${status.count}"
-								placeholder="Enter qNumber" value='${i}' readonly>
-					<label for="exampleInputEmail1"></label>
-					
-						</div>
+							<div class="form-group">
+								Q<input class="w3-input" type="number" name="qNumber${status.count}" placeholder="Enter qNumber" value='${i}' readonly>
+								<!-- 
+									<label for="exampleInputEmail1"></label>
+						 		-->
+							</div>
 						</th>
 						<th class="th-yw4l" colspan="3" rowspan="2">
-						<div class="form-group">
-						<p>배점</p><input type="number" name="qPoint${status.count}" class="form-contorl" placeholder="Enter qPoint" value="0">
-						</div>
+							<div class="form-group">
+								<p>배점</p><input type="number" name="qPoint${status.count}" class="form-contorl" placeholder="Enter qPoint" value="0">
+							</div>
 						</th>
 						<th class="th-yw4l" colspan="9" rowspan="2">
-						 <div>
+							<div>
 									<p>정답</p>
-									
-										
 										<label class="w3-validate">1)</label>
 										<input class="w3-radio" type="radio" name="answer${status.count}" value="1" checked> 
 										<label class="w3-validate">2)</label>
@@ -141,30 +139,32 @@
 <script>
 $("#complete").click( function(){
 	var question = [];
+
 	var i;
 	for (i = 1; i <= '${num}' ; i++) {
-		question.push($('input[name=qNumber'+ i +']').val());
-		question.push($('input[name=qPoint'+ i +']').val());
-		question.push($('input[name=answer'+ i +']:checked').val());
-		question.push($('#qInfo'+i).val());
-		question.push($('input[name=ex1'+ i +']').val());
-		question.push($('input[name=ex2'+ i +']').val());
-		question.push($('input[name=ex3'+ i +']').val());
-		question.push($('input[name=ex4'+ i +']').val());
+		question.push("qNumber : " + $('input[name=qNumber'+ i +']').val());
+		question.push("qPoint : " $('input[name=qPoint'+ i +']').val());
+		question.push("answer : " $('input[name=answer'+ i +']:checked').val());
+		question.push("qInfo : " $('#qInfo'+i).val());
+		question.push("ex1 : " $('input[name=ex1'+ i +']').val());
+		question.push("ex2 : " $('input[name=ex2'+ i +']').val());
+		question.push("ex3 : " $('input[name=ex3'+ i +']').val());
+		question.push("ex4 : " $('input[name=ex4'+ i +']').val());
+		
 	} 
 	console.log(question);
 	$.ajax({
 		type : 'POST',
 		url : '/question/register?examCode=${examCode}',
 		headers: {
-			"Contnet-Type": "application/json;charset=UTF-8",
+			"Contnet-Type": "text/plain; charset=UTF-8",
 			"X-HTTP-Method-Override": "POST" 
 			},
-		data:({'question': question})
+			data:JSON.stringify({question: question})
 	});
 	self.location = "/exam/managementExam?subjectCode="+${subjectCode};
 	//reload before page
-	opener.location.reload();
+	//opener.location.reload();
 });
 </script>	
 	
