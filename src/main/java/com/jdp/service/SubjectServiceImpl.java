@@ -9,8 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.jdp.domain.MemberVO;
 import com.jdp.domain.SubjectVO;
-import com.jdp.exception.NotAuthoritySubject;
-import com.jdp.exception.SubjectNameNotExistException;
+import com.jdp.exception.NotExistSubjectException;
+import com.jdp.exception.NotExistSubjectNameException;
 import com.jdp.persistence.ExamDAO;
 import com.jdp.persistence.QuestionDAO;
 import com.jdp.persistence.SubjectDAO;
@@ -33,7 +33,7 @@ public class SubjectServiceImpl implements SubjectService{
 	@Override
 	public void register(String subjectName, String uid) throws Exception {
 		if(subjectName.length() == 0){
-			throw new SubjectNameNotExistException();
+			throw new NotExistSubjectNameException();
 		}
 		subjectDao.register(subjectName, uid);
 	}
@@ -41,14 +41,19 @@ public class SubjectServiceImpl implements SubjectService{
 	@Override
 	public void modify(int subjectCode, String subjectName) throws Exception {
 		if(subjectName.length() == 0){
-			throw new SubjectNameNotExistException();
+			throw new NotExistSubjectNameException();
 		}
 		subjectDao.modify(subjectCode, subjectName);
 	}
 
+	@Transactional
 	@Override
 	public void joinSubject(MemberVO member) throws Exception {
-		subjectDao.joinSubject(member);
+		if(subjectDao.checkSubject(member.getSubjectCode()) > 0){
+			subjectDao.joinSubject(member);
+		} else {
+			throw new NotExistSubjectException();
+		}
 	}
 
 	@Override

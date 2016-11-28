@@ -8,8 +8,18 @@
 <script>
 var result = '${code}';
 
-if(result == 'DUPLICATE_EXAM'){
-	alert("이미 존재하는 시험입니다.");
+if(result == 'NOT_SUBJECT'){
+	alert("접근할 수 없는 과목입니다.");
+	history.back();
+}
+
+if(result == 'ALREADY_TOOK_EXAM'){
+	alert("이미 시험에 응시하셨습니다.");
+	history.back();
+}
+
+if(result == 'TIME_OUT'){
+	alert("시험 시간이 아닙니다.");
 	history.back();
 }
 </script>

@@ -11,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -76,10 +75,12 @@ public class ExamController {
 	@RequestMapping(value = "/managementExam", method = RequestMethod.GET)
 	public void managementExamGET(@RequestParam("subjectCode") int subjectCode, Model model, HttpSession session) throws Exception {
 		logger.info("subjectCode : " + subjectCode + "examList");
-		model.addAttribute("list", examService.examList(subjectCode));
+		int flag = 1; //teacher flag is 1(one)
+		UserVO user = ((UserVO)session.getAttribute("teacher"));
+		model.addAttribute("list", examService.examList(subjectCode, user.getUid(), flag));
 		model.addAttribute("subjectCode", subjectCode);
 		model.addAttribute("subjectName", examService.getSubjectName(subjectCode));
-		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
+		model.addAttribute("uname", user.getUname());
 	}
 	
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
@@ -97,11 +98,11 @@ public class ExamController {
 			Model model, HttpSession session) throws Exception {
 		logger.info("student Exam subjectCode : " + subjectCode + " examList");
 		
+		int flag = 0; //student flag is 0(zero)
 		UserVO user = new UserVO();
 		user = (UserVO)session.getAttribute("student");
 		
-		
-		List<ExamVO> examList = examService.examList(subjectCode);
+		List<ExamVO> examList = examService.examList(subjectCode, user.getUid(), flag);
 		List<ScoreVO> scoreList = scoreService.scoreList(subjectCode, user.getUid());
 		
 		List<ScoreExamVO> list = new ArrayList<>();
@@ -114,7 +115,6 @@ public class ExamController {
 			temp.setStartTime(examList.get(i).getStartTime()); //start time
 			temp.setEndTime(examList.get(i).getEndTime()); // end time
 			temp.setScore(-1);
-
 			
 			//case : no time to exam
 			if(examService.checkTime(examList.get(i).getExamCode())==0){

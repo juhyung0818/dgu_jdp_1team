@@ -43,34 +43,42 @@
 	
 	<br><br>
 	<div class="box-footer" align="right">
-		
-		<a href='/exam/register?subjectCode=${subjectCode}'>
-			<input type="button" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="ADD">
-		</a>
-		<a href="/subject/modify?subjectCode=${subjectCode}">
-			<input type="button" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" 
-			oncilck="button_event()" value="SUBJECT MODIFY">
-		</a>
-		 
-		<form action="/subject/tDelete?subjectCode=${subjectCode}" method="post">
-			<button class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red" id="remove">REMOVE</button>
-		</form>
-		 
-		<a href="/subject/tSubject">
-			<input type="button" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="CANCEL">		
-		</a>
+		<table>
+			<tr>
+				<td>
+					<a href='/exam/register?subjectCode=${subjectCode}'>
+						<input type="button" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="ADD">
+					</a>
+				</td>
+				<td>	
+					<a href="/subject/modify?subjectCode=${subjectCode}">
+						<input type="button" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" 
+						oncilck="button_event()" value="SUBJECT MODIFY">
+					</a>
+				</td>
+				<td>	 
+					<form action="/subject/tDelete?subjectCode=${subjectCode}" method="post">
+						<input type="submit" class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red" id="remove" value="REMOVE">
+					</form>
+				</td>
+				<td>	 
+					<a href="/subject/tSubject">
+						<input type="button" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="CANCEL">		
+					</a>
+				</td>	
+			</tr>
+		</table>
 	</div>
 </div>
 
 <script>
-	$("#remove").click( function(){
-	 if(confirm("삭제 하시겠습니까?"))
+$("#remove").click( function(){
+	 if(confirm("삭제 하시겠습니까?")){
 		 alert("삭제되었습니다.");
-	 else
-	 {
-		 alert("취소했습니다.");
-		 return false;
-	 }
+	}else{
+		alert("취소했습니다.");
+		return false;
+	}
 
 });
 </script>

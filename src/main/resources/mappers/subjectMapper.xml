@@ -57,11 +57,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where uid=#{uid} and subjectCode=#{subjectCode}
 	</delete>
 	
-	<!-- check user access authority -->
-	<select id="checkAuthority" resultType="int">
+	<!-- teacher check user access authority -->
+	<select id="checkAuthorityTeacher" resultType="int">
+		select count(*)
+		from subject
+		where uid=#{uid} and subjectCode=#{subjectCode}
+	</select>
+	
+	<!-- student check user access authority -->
+	<select id="checkAuthorityStudent" resultType="int">
 		select count(*)
 		from member
 		where uid=#{uid} and subjectCode=#{subjectCode}
 	</select>
 	
+	<!-- subject exist or not -->
+	<select id="checkSubject" resultType="int">
+		select count(*)
+		from subject
+		where subjectCode=#{subjectCode}
+	</select>
+		
 </mapper>

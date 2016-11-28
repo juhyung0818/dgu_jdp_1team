@@ -9,6 +9,8 @@ public class LoginDTO {
 	private String uid;
 	private String upw;
 	private boolean useCookie;
+	
+	/* getter, setter, toString methods */
 	public String getUid() {
 		return uid;
 	}

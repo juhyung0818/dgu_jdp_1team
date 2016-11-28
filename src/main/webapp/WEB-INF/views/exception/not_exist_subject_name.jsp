@@ -8,8 +8,8 @@
 <script>
 var result = '${code}';
 
-if(result == 'DUPLICATE_EXAM'){
-	alert("이미 존재하는 시험입니다.");
+if(result == 'NOT_EXIST_EXAM_NAME'){
+	alert("시험 이름을 입력하세요.");
 	history.back();
 }
 </script>

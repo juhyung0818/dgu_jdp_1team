@@ -1,8 +1,7 @@
 <%@include file="../include/sHeader.jsp"%>
-<head>
 <script type="text/javascript"
 	src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<script>
+<!-- <script>
 		var questionArray = new Array();
 		var questionInfo = new Object();
 		var path=${path};
@@ -17,8 +16,7 @@
 			self.window.alert("not time to exam!!!");
 			self.location="${deniedURL}";
 		}
-	</script>
-</head>
+	</script> -->
 <style type="text/css">
 #box1 {
 	width: 225px;
@@ -144,6 +142,7 @@ $("#complete").click( function(){
 			answer.push($('input[name=answer'+ i +']:checked').val());
 		}
 		console.log(answer);
+		
 		$.ajaxSettings.traditional = true;
 		$.ajax({
 			type : 'POST',
@@ -156,7 +155,7 @@ $("#complete").click( function(){
 		});
 		self.location = "/exam/studentExam?subjectCode="+${subjectCode};
 		//reload before page
-		opener.location.reload();
+		opener.location.reload(); 
 
 });
 </script>

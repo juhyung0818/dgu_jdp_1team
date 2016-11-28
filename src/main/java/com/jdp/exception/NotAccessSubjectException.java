@@ -5,7 +5,7 @@ package com.jdp.exception;
  * @author kwon
  * 2016.11.20.Sun
  */
-public class NotAuthoritySubject extends ExamException{
+public class NotAccessSubjectException extends NotAccessException{
 
 	@Override
 	public ExceptionCode getExceptionCode() {

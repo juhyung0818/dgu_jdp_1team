@@ -21,7 +21,7 @@ public interface ExamService {
 	//modify startTime, endTime, exam name
 	public void update(ExamVO exam) throws Exception;
 	//display exam list
-	public List<ExamVO> examList(int subjectCode) throws Exception;
+	public List<ExamVO> examList(int subjectCode, String uid, int flag) throws Exception;
 	public String getSubjectName(int subjectCode) throws Exception;
 	//get exam information
 	public ExamVO getExam(int examCode) throws Exception;
