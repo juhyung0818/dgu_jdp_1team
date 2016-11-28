@@ -27,7 +27,6 @@
 					<td>
 							<form action="/subject/tDelete?subjectCode=${subjectVO.subjectCode}" method="post">
 								<button class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red" id="remove">REMOVE</button>
-								
 							</form>
 					</td>
 					<td>

@@ -144,19 +144,26 @@ $("#complete").click( function(){
 			answer.push($('input[name=answer'+ i +']:checked').val());
 		}
 		console.log(answer);
-		$.ajaxSettings.traditional = true;
 		$.ajax({
-			type : 'POST',
-			url : '/question/try?examCode=${examCode}',
-			headers: {
-				"Contnet-Type": "application/json;charset=UTF-8",
-				"X-HTTP-Method-Override": "POST" 
-				},
-				data: ({'answer': answer})
+		    url: "/question/try?examCode=${examCode}",
+		    type: "post",
+		    contentType: "application/json",
+			data:JSON.stringify({answer : answer})
 		});
 		self.location = "/exam/studentExam?subjectCode="+${subjectCode};
+//		$.ajaxSettings.traditional = true;
+//		$.ajax({
+//			type : 'POST',
+//			url : '/question/try?examCode=${examCode}',
+//			headers: {
+//				"Contnet-Type": "application/json;charset=UTF-8",
+//				"X-HTTP-Method-Override": "POST" 
+//				},
+//			data: ({'answer': answer})
+//		});
+//		self.location = "/exam/studentExam?subjectCode="+${subjectCode};
 		//reload before page
-		opener.location.reload();
+		//opener.location.reload();
 
 });
 </script>
