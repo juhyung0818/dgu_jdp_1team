@@ -2,7 +2,7 @@ package com.jdp.exception;
 
 /**
  * exception define enum class
- * @author kown
+ * @author YUN
  * 2016.11.20.Sun
  */
 public enum ExceptionCode {

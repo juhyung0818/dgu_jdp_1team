@@ -193,7 +193,7 @@
 		      url: "/question/register?examCode=${examCode}",
 		      type: "post",
 		      contentType: "application/json",
-			data:JSON.stringify({question : question})
+		      data:JSON.stringify({question : question})
 		});
 		self.location = "/exam/managementExam?subjectCode="+${subjectCode};
 	});

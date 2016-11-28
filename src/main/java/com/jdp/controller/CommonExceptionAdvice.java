@@ -31,6 +31,7 @@ import com.jdp.exception.TookExamException;
 public class CommonExceptionAdvice {
 
 	private static final Logger logger = LoggerFactory.getLogger(CommonExceptionAdvice.class);
+	private String exceptionView = "/exception/error";
 
 	@ExceptionHandler(Exception.class)
 	private ModelAndView errorModelAndView(Exception e) {
@@ -62,7 +63,7 @@ public class CommonExceptionAdvice {
 
 		logger.error(e.getMessage(), e.getStackTrace());
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/exception/error_common");
+		modelAndView.setViewName(exceptionView);
 		modelAndView.addObject("exception", e);
 		modelAndView.addObject("code", e.getExceptionCode());
 
@@ -78,7 +79,7 @@ public class CommonExceptionAdvice {
 
 		logger.error(e.getMessage());
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/exception/primary_key_duplication");
+		modelAndView.setViewName(exceptionView);
 		modelAndView.addObject("exception", e);
 		modelAndView.addObject("code", e.getExceptionCode());
 
@@ -92,15 +93,13 @@ public class CommonExceptionAdvice {
 
 		logger.error(e.getMessage());
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/exception/duplication_exam");
+		modelAndView.setViewName(exceptionView);
 		modelAndView.addObject("exception", e);
 		modelAndView.addObject("code", e.getExceptionCode());
 
 		return modelAndView;
 	}
 	
-	/* invalid exceptions */
-
 	/* not access exceptions */
 	//user is not access subject
 	@ResponseBody
@@ -108,8 +107,8 @@ public class CommonExceptionAdvice {
 	public ModelAndView notAccessSubjectException(NotAccessSubjectException e) {
 
 		logger.error(e.getMessage());
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/exception/not_access_subject");
+		ModelAndView modelAndView = new ModelAndView();	
+		modelAndView.setViewName(exceptionView);
 		modelAndView.addObject("exception", e);
 		modelAndView.addObject("code", e.getExceptionCode());
 
@@ -123,7 +122,7 @@ public class CommonExceptionAdvice {
 
 		logger.error(e.getMessage());
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/exception/not_access_exam");
+		modelAndView.setViewName(exceptionView);
 		modelAndView.addObject("exception", e);
 		modelAndView.addObject("code", e.getExceptionCode());
 
@@ -138,7 +137,7 @@ public class CommonExceptionAdvice {
 
 		logger.error(e.getMessage());
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/exception/not_exist_exam_name");
+		modelAndView.setViewName(exceptionView);
 		modelAndView.addObject("exception", e);
 		modelAndView.addObject("code", e.getExceptionCode());
 
@@ -152,7 +151,7 @@ public class CommonExceptionAdvice {
 
 		logger.error(e.getMessage());
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/exception/not_exist_subject_name");
+		modelAndView.setViewName(exceptionView);
 		modelAndView.addObject("exception", e);
 		modelAndView.addObject("code", e.getExceptionCode());
 
@@ -160,14 +159,14 @@ public class CommonExceptionAdvice {
 	}
 	
 	
-	//exam name is not exist
+	//exam is not exist
 	@ResponseBody
 	@ExceptionHandler(NotExistExamException.class)
 	public ModelAndView notExistExamException(NotExistExamException e) {
 
 		logger.error(e.getMessage());
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/exception/not_exist_exam");
+		modelAndView.setViewName(exceptionView);
 		modelAndView.addObject("exception", e);
 		modelAndView.addObject("code", e.getExceptionCode());
 
@@ -175,7 +174,7 @@ public class CommonExceptionAdvice {
 	}
 	
 	
-	//exam name is not exist
+	//subject is not exist
 	@ResponseBody
 	@ExceptionHandler(NotExistSubjectException.class)
 	public ModelAndView notExistSubjectException(NotExistException e) {
@@ -196,7 +195,7 @@ public class CommonExceptionAdvice {
 
 		logger.error(e.getMessage());
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/exception/error_common");
+		modelAndView.setViewName(exceptionView);
 		modelAndView.addObject("exception", e);
 		modelAndView.addObject("code", e.getExceptionCode());
 
@@ -211,7 +210,7 @@ public class CommonExceptionAdvice {
 
 		logger.error(e.getMessage());
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/exception/error");
+		modelAndView.setViewName(exceptionView);
 		modelAndView.addObject("exception", e);
 		modelAndView.addObject("code", e.getExceptionCode());
 
@@ -226,9 +225,9 @@ public class CommonExceptionAdvice {
 
 		logger.error(e.getMessage());
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/exception/error");
+		modelAndView.setViewName(exceptionView);
 		modelAndView.addObject("exception", e);
-		modelAndView.addObject("code", e.getExceptionCode());
+		modelAndView.addObject("code", e.getExceptionCode().getClass());
 
 		return modelAndView;
 	}

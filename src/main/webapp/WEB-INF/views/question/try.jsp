@@ -154,9 +154,6 @@ $("#complete").click( function(){
 				data: ({'answer': answer})
 		});
 		self.location = "/exam/studentExam?subjectCode="+${subjectCode};
-		//reload before page
-		opener.location.reload(); 
-
 });
 </script>
 
