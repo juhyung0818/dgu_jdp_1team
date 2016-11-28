@@ -4,11 +4,12 @@ package com.jdp.exception;
  * @author kwon
  * 2016.11.20.Sun
  */
-public class NotAuthorityExam extends NotAuthoriedException{
+public class NotAccessExamException extends NotAccessException{
 
 	@Override
 	public ExceptionCode getExceptionCode() {
 		return ExceptionCode.NOT_EXAM;
 	}
+	
 
 }

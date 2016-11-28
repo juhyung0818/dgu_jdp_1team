@@ -10,6 +10,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.jdp.domain.ExamVO;
+import com.jdp.exception.TimeOutException;
 /**
  * Database Access Object
  * class to access exam table in database
@@ -93,5 +94,10 @@ public class ExamDAOImpl implements ExamDAO{
 		param.put("subjectCode", subjectCode);
 		param.put("examName", examName);
 		return session.selectOne(namespace + ".checkExamName", param);
+	}
+
+	@Override
+	public int checkExam(int examCode) throws Exception {
+		return session.selectOne(namespace + ".checkExam", examCode);
 	}
 }

@@ -1,6 +1,5 @@
 package com.jdp.controller;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,6 +22,7 @@ import com.jdp.domain.ExamVO;
 import com.jdp.domain.QuestionVO;
 import com.jdp.domain.ScoreVO;
 import com.jdp.domain.UserVO;
+import com.jdp.exception.TimeOutException;
 import com.jdp.service.ExamService;
 import com.jdp.service.QuestionService;
 import com.jdp.service.ScoreService;
@@ -55,7 +55,7 @@ public class QuestionController {
 	@RequestMapping(value="/register", method=RequestMethod.POST)
 	public String registPOST(@RequestParam("examCode") int examCode, @RequestBody String question, 
 			RedirectAttributes rttr, HttpServletRequest request) throws Exception{
-		logger.info("question register postpostpost¡¦¡¦¡¦");
+		logger.info("question register postpostpostï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		
 		request.setCharacterEncoding("utf8");
 		
@@ -119,28 +119,24 @@ public class QuestionController {
 		logger.info("- try question GET......");
 		UserVO user = new UserVO();
 		user = (UserVO) session.getAttribute("student");
-
-		int time=examService.checkTime(examCode);
+		List<QuestionVO> list = questionService.tryQuestion(examCode, user.getUid());
+		if(examService.checkTime(examCode) == 0){
+			throw new TimeOutException();
+		}
+		ExamVO exam = examService.getExam(examCode);
 		
 		//case : time to take a exam
-		if( time!=0)
-		{
-			ExamVO exam = examService.getExam(examCode);
-			model.addAttribute("subjectCode", examService.getSubjectCode(examCode));
-			model.addAttribute("examName", exam.getExamName());
-			model.addAttribute("list", questionService.tryQuestion(examCode));
-			model.addAttribute("size", questionService.tryQuestion(examCode).size() + 1);
-			model.addAttribute("uname", ((UserVO) session.getAttribute("student")).getUname());
-			model.addAttribute("examActive", true);
-		}
-		else
-		{
-			model.addAttribute("examActive", false);
-		}
+
+		model.addAttribute("list", list);
+		model.addAttribute("size", list.size() + 1);
+		model.addAttribute("subjectCode", exam.getSubjectCode());
+		model.addAttribute("examCode", examCode);
+		model.addAttribute("examName", exam.getExamName());
+		model.addAttribute("uname", ((UserVO) session.getAttribute("student")).getUname());
 		
 		// for incorrect access
-		model.addAttribute("path", ((boolean) session.getAttribute("path")));
-		model.addAttribute("deniedURL", ((String) session.getAttribute("deniedURL")));
+//		model.addAttribute("path", ((boolean) session.getAttribute("path")));
+//		model.addAttribute("deniedURL", ((String) session.getAttribute("deniedURL")));
 	}
 
 	/**

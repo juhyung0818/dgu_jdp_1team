@@ -77,4 +77,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  		from exam
  		where subjectCode=#{subjectCode} and examName=#{examName}
  	</select>
+ 	
+ 	<!-- check exam exist or not -->
+ 	<select id="checkExam" resultType="int">
+ 		select count(*)
+ 		from exam
+ 		where examCode=#{examCode}
+ 	</select>
+ 	
 </mapper>

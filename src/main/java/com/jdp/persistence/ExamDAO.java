@@ -40,4 +40,6 @@ public interface ExamDAO {
 	public List<Integer> examCodeList(int subjectCode) throws Exception;
 	//check exam name
 	public int checkExamName(int subjectCode, String examName) throws Exception;
+	//check exam exist or not
+	public int checkExam(int examCode) throws Exception;
 }

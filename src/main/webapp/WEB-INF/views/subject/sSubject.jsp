@@ -12,7 +12,7 @@
 		<table class="w3-table w3-bordered">
 			<tr>
 				<th>SUBJECT NAME</th>
-				<th>TRY</th>
+				<th>ENTER</th>
 			</tr>
 			<c:forEach items="${list}" var="subjectVO">
 				<tr>
@@ -20,7 +20,7 @@
 					<td>
 						<div class="box-footer">
 							<a href='/exam/studentExam?subjectCode=${subjectVO.subjectCode}'>
-								<input type="button" class="w3-btn w3-pink" value="ENTER">
+								<input type="button" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="ENTER">
 							</a>
 						</div>
 					</td>
@@ -28,30 +28,13 @@
 			</c:forEach>
 		</table>
 		<div class="box-footer" align="right">
-			<!-- <a href='/subject/sRegister?uid=${uid}'> -->
 			<a href='/subject/sRegister'> <input type="button"
-				class="w3-btn w3-pink" value="ADD">
+				class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge" value="ADD">
 			</a>
 		</div>
 		<br>
 		<br>
 	</form>
 </div>
-
-
-<!-- <script>
-//buttons 
-$(document).ready(function(){
-	var formObj = $("form[role='form']");
-	console.log(formObj);
-	
-	$(".w3-btn w3-pink").on("click", function(){
-		formObj.attr("action", "/exam/register");
-		formObj.attr("method", "get");		
-		formObj.submit();
-	});
-});
-
-</script> -->
 
 <%@include file="../include/sFooter.jsp"%>
