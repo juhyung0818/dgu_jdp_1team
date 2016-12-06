@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jdp.exception.DuplicationExamException;
+import com.jdp.exception.DuplicationIdException;
 import com.jdp.exception.ExamException;
 import com.jdp.exception.InvalidTypeException;
 import com.jdp.exception.NotAccessExamException;
@@ -76,6 +77,20 @@ public class CommonExceptionAdvice {
 	@ResponseBody
 	@ExceptionHandler(PrimaryKeyDuplicatedException.class)
 	public ModelAndView primaryKeyDuplicatedException(PrimaryKeyDuplicatedException e) {
+
+		logger.error(e.getMessage());
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName(exceptionView);
+		modelAndView.addObject("exception", e);
+		modelAndView.addObject("code", e.getExceptionCode());
+
+		return modelAndView;
+	}
+	
+	//Duplication uid 
+	@ResponseBody
+	@ExceptionHandler(DuplicationIdException.class)
+	public ModelAndView duplicationIdException(DuplicationIdException e) {
 
 		logger.error(e.getMessage());
 		ModelAndView modelAndView = new ModelAndView();
@@ -181,7 +196,7 @@ public class CommonExceptionAdvice {
 
 		logger.error(e.getMessage());
 		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("/exception/not_exist_subject");
+		modelAndView.setViewName(exceptionView);
 		modelAndView.addObject("exception", e);
 		modelAndView.addObject("code", e.getExceptionCode());
 

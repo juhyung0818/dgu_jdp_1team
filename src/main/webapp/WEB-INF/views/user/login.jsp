@@ -117,7 +117,6 @@ input[type="checkbox"] {
 		<div id="my-form">
 			<div id="wrap">
 				<h1 class="member">member login</h1>
-				<img class='contentsimg' src="/resources/teacher.jpg">
 				<div class="form">
 					<div class="form2">
 						<div class="form3">

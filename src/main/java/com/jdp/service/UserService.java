@@ -18,8 +18,14 @@ public interface UserService {
 	 */
 	public UserVO login(LoginDTO dto) throws Exception;
 
+	/**
+	 * check duplication uid and register
+	 * @param uid
+	 * @return
+	 * @throws Exception
+	 * @author YJH
+	 */
 	public UserVO register(UserVO user) throws Exception;
-	//public UserVO login(UserVO user) throws Exception;
 
 	/**
 	 * auto login
@@ -37,11 +43,10 @@ public interface UserService {
 	public UserVO checkLoginBefore(String value) throws Exception;
 
 	/**
-	 * check duplication uid
+	 * id check exist or not
 	 * @param uid
-	 * @return
-	 * @throws Exception
 	 * @author YJH
+	 * @throws Exception
 	 */
-	public int checkUid(String uid) throws Exception;
+	public void checkUid(String uid) throws Exception;
 }

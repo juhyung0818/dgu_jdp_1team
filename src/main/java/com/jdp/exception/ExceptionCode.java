@@ -9,9 +9,11 @@ public enum ExceptionCode {
 
 	//exception enums
 	NONE(200, "success"),
+		NONE_ID(210, "success"),
 	PRIMARY_KEY_DUPLICATE(100, "primary key duplicated"),
 		DUPLICATE_SUBJECT(110, "duplicated subject"),
 		DUPLICATE_EXAM(120, "duplicated exam"),
+		DUPLICATE_ID(130, "duplicated id"),
 	INVALID_TYPE(300, "invalid type"),
 	NOT_EXIST(400, "not exist"), 
 		NOT_EXIST_SUBJECT_NAME(411, "subject name not exist"),
@@ -22,7 +24,7 @@ public enum ExceptionCode {
 		NOT_SUBJECT(510, "not access subject"),
 		NOT_EXAM(520, "not access exam"),
 	TIME_OUT(600, "time out a exam"),
-	ALREADY_TOOK_EXAM(600, "alreay took exam");
+	ALREADY_TOOK_EXAM(700, "alreay took exam");
 	
 	//fields
 	private int code;

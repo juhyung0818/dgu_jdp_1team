@@ -1,13 +1,16 @@
 package com.jdp.service;
 
 import java.util.Date;
+import java.util.concurrent.TimeoutException;
 
 import javax.inject.Inject;
 
+import org.omg.CORBA.TIMEOUT;
 import org.springframework.stereotype.Service;
 
 import com.jdp.domain.UserVO;
 import com.jdp.dto.LoginDTO;
+import com.jdp.exception.DuplicationIdException;
 import com.jdp.persistence.UserDAO;
 
 /**
@@ -26,9 +29,16 @@ public class UserServiceImpl implements UserService {
 		return dao.login(dto);
 	}
 
+	/**
+	 * uid check and register
+	 * @author YJH
+	 */
+
 	@Override
 	public UserVO register(UserVO user) throws Exception {
-
+		if(dao.checkUid(user.getUid()) > 0){
+			throw new DuplicationIdException();
+		}
 		return dao.register(user);
 	}
 
@@ -42,13 +52,13 @@ public class UserServiceImpl implements UserService {
 		return dao.checkUserWithSessionKey(value);
 	}
 
-	/**
-	 * uid check
-	 * @author YJH
-	 */
 	@Override
-	public int checkUid(String uid) throws Exception {
-		return dao.checkUid(uid);
+	public void checkUid(String uid) throws Exception {
+		if(dao.checkUid(uid) > 0){
+			throw new DuplicationIdException();
+		}else{
+			throw new TimeoutException();
+		}
 	}
 
 }

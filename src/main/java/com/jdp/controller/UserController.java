@@ -133,4 +133,16 @@ public class UserController {
 		return "redirect:/";
 	}
 
+	/**
+	 * 
+	 * @author YJH
+	 */
+	@RequestMapping(value="/check", method = RequestMethod.POST)
+	public void checkPOST(String uid) throws Exception{
+		logger.info("uid check : " + uid);
+		 
+		service.checkUid(uid);
+	}
+	
+	
 }

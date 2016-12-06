@@ -24,6 +24,10 @@ var result = '${code}';
 		alert("이미 존재하는 시험입니다.");
 		history.back();
 	}
+	if(result == "DUPLICATE_ID"){
+		alert("사용할 수 없는 ID 입니다.");
+		history.back();
+	}
 	if(result == "INVALID_TYPE"){
 		alert("유효하지 않은 입력입니다.");
 		history.back();
@@ -68,4 +72,5 @@ var result = '${code}';
 		alert("이미 응시한 시험입니다.");
 		history.back();
 	}
+
 </script>	

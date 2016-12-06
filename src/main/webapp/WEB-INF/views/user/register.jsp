@@ -24,12 +24,12 @@ fieldset {
 		<h1>User Register</h1>
 		<fieldset>
 			<form action="/user/register" method="post">
+				<input type="hidden" id="idChk" value="N" />
 				<table>
 					<tr>
 						<th>ID:</th>
-						<input type="hidden" id="idChk" value="N" />
 						<td><input type="text" name="uid" id="uid" required><br></td>
-						<td><input type="button" value="Id체크" onclick="javascript:chkDupId();" /> </td>
+						<td><input type="button" value="uid"/> </td>
 					</tr>
 					<tr>
 						<th>PW:</th>
@@ -48,10 +48,11 @@ fieldset {
 				</table>
 				<input type="submit"
 					class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"
-					value="OK"> <a href='/'> <input type="button"
+					value="OK"> 
+					<a href='/'> <input type="button"
 					class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"
 					value="BACK">
-				</a>
+					</a>
 			</form>
 		</fieldset>
 
