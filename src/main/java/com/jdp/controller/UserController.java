@@ -165,15 +165,13 @@ public class UserController {
 //	}
 
 	/**
-	 * 
+	 * user register check
 	 * @author YJH
 	 */
 	@RequestMapping(value="/check", method = RequestMethod.POST)
-	public void checkPOST(String uid) throws Exception{
+	public void checkPOST(@RequestParam("uid") String uid) throws Exception{
 		logger.info("uid check : " + uid);
-		 
 		service.checkUid(uid);
 	}
-	
 	
 }
