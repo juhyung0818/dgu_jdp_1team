@@ -15,6 +15,7 @@
 				<th>ENTER</th>
 				<th>REMOVE</th>
 				<th>GRADE</th>
+				<th>MEMBER</th>
 			</tr>
 			<c:forEach items="${list}" var="subjectVO">
 				<tr>
@@ -31,7 +32,11 @@
 					</td>
 					<td>
 						<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red"
-						href="/score/management?subjectCode=${subjectVO.subjectCode}&subjectName=${subjectVO.subjectName}">GRADE</a>
+						href="/score/management?subjectCode=${subjectVO.subjectCode}">GRADE</a>
+					</td>
+					<td>
+						<a class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red"
+						href="/member/management?subjectCode=${subjectVO.subjectCode}">MEMBER</a>
 					</td>
 				</tr>
 			</c:forEach>

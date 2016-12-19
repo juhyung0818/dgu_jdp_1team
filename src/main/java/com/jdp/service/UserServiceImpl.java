@@ -50,5 +50,4 @@ public class UserServiceImpl implements UserService {
 	public int checkUid(String uid) throws Exception {
 		return dao.checkUid(uid);
 	}
-
 }

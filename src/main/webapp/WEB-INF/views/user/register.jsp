@@ -20,6 +20,7 @@ fieldset {
 	border-color: pink;
 }
 </style>
+
 	<center>
 		<h1>User Register</h1>
 		<fieldset>
@@ -27,9 +28,38 @@ fieldset {
 				<table>
 					<tr>
 						<th>ID:</th>
-						<input type="hidden" id="idChk" value="N" />
-						<td><input type="text" name="uid" id="uid" required><br></td>
-						<td><input type="button" value="Id체크" onclick="javascript:chkDupId();" /> </td>
+						<td>
+							<input type="text" name="uid" id="uid" required>
+							<button onclick="checkID()">ID중복확인</button>
+						
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							결과 :
+						<script type="text/javascript">
+							if("${idCheck}"==true)
+							{
+								document.write("사용가능합니다.");
+							}
+							else
+							{
+								document.write("이미 사용중입니다.");
+							}
+						</script> 
+							<!-- 
+							<c:set var="id_check" value="false"></c:set>
+							
+							<c:choose>
+								<c:when test="${idCheck eq 'true'}">
+									사용가능합니다.
+								</c:when>
+								<c:when test="${idCheck eq 'false'}">
+									이미 사용중입니다.
+								</c:when>
+							</c:choose>
+							 -->
+						</td>
 					</tr>
 					<tr>
 						<th>PW:</th>
@@ -56,5 +86,24 @@ fieldset {
 		</fieldset>
 
 	</center>
+	
+<script>
+
+
+function checkID()
+{
+	var id = $('#uid').val();
+    // ajax 실행
+    $.ajax({
+        type : 'POST',
+        url : '/user/idCheck',
+        data:
+        {
+            id: id
+        },
+    }); // end ajax
+}
+
+</script>
 <%@include file="../include/tFooter.jsp"%>
 

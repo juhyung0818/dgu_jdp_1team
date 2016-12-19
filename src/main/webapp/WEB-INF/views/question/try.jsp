@@ -150,7 +150,6 @@ $("#complete").click( function(){
 			data:JSON.stringify({answer : answer})
 		});
 		self.location = "/exam/studentExam?subjectCode="+${subjectCode};
-		opener.location.reload(); 
 });
 </script>
 

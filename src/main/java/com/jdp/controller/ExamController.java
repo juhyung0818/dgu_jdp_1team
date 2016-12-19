@@ -56,7 +56,7 @@ public class ExamController {
 			@RequestParam("endTime") String endTime, HttpSession session, RedirectAttributes rttr,
 			Model model) throws Exception {
 		logger.info("exam register.........");
-		//logger.info(exam.toString());
+		
 		ExamVO exam=new ExamVO();
 		exam.setSubjectCode(subjectCode);
 		exam.setExamName(examName);

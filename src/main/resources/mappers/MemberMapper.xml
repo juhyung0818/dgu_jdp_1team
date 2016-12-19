@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.jdp.mapper.MemberMapper">
+
+	<select id="list"  resultType="com.jdp.domain.MemberVO">
+		select m.subjectCode, m.grade, m.classNumber, m.studentNumber, m.flag, u.uid, u.uname
+		from member as m, user as u 
+		where m.uid=u.uid and subjectCode=#{subjectCode}
+	</select>
+ 	
+ 	<update id="register">
+ 		update member set flag=1 where subjectCode=#{subjectCode} and uid=#{uid}
+ 	</update>
+ 	
+ 	<delete id="remove">
+ 		delete from member where subjectCode=#{subjectCode} and uid=#{uid}
+ 	</delete>
+</mapper>

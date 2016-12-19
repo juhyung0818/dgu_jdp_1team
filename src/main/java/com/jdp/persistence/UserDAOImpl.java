@@ -61,5 +61,4 @@ public class UserDAOImpl implements UserDAO {
 	public int checkUid(String uid) throws Exception {
 		return session.selectOne(namespace+".checkUid", uid);
 	}
-
 }

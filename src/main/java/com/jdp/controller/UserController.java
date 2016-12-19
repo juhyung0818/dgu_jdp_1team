@@ -17,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,6 +38,8 @@ public class UserController {
 	@Inject
 	private UserService service;
 
+	boolean id_checked=false;
+	
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
 	/**
@@ -122,8 +125,17 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
-	public void registGET(UserVO user) {
+	public void registGET(UserVO user, HttpSession session, Model model) {
 		logger.info("user register");
+		model.addAttribute("idCheck", id_checked);
+//		try {
+//			if((boolean)session.getAttribute("idCheck"))
+//				model.addAttribute("idCheck", true);
+//			else
+//				model.addAttribute("idCheck", false);
+//		} catch (Exception e) {
+//			model.addAttribute("idCheck", false);
+//		}
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
@@ -131,6 +143,25 @@ public class UserController {
 		logger.info("user register");
 		service.register(user);
 		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/idCheck", method = RequestMethod.POST)
+	public String idCheckPOST(@RequestBody String id, HttpSession session) throws Exception {
+		
+		
+		
+		String[] uid=id.split("=");
+		int cnt=service.checkUid(uid[1]);
+		
+		if(cnt==0)
+			id_checked=true;
+			//session.setAttribute("idCheck", true);
+			//model.addAttribute("idCheck", "사용가능합니다.");
+		else
+			id_checked=false;
+			//session.setAttribute("idCheck", false);
+			//model.addAttribute("idCheck", "이미 사용중입니다.");
+		return "redirect:/user/register";
 	}
 
 }

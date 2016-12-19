@@ -8,17 +8,23 @@ package com.jdp.domain;
 public class MemberVO {
 
 	private String uid;
+	private String uname;
 	private int subjectCode;
 	private int grade;
 	private int classNumber;
 	private int studentNumber;
-	
-	/* getter, setter methods */
+	private int flag;
 	public String getUid() {
 		return uid;
 	}
 	public void setUid(String uid) {
 		this.uid = uid;
+	}
+	public String getUname() {
+		return uname;
+	}
+	public void setUname(String uname) {
+		this.uname = uname;
 	}
 	public int getSubjectCode() {
 		return subjectCode;
@@ -44,11 +50,16 @@ public class MemberVO {
 	public void setStudentNumber(int studentNumber) {
 		this.studentNumber = studentNumber;
 	}
-	
-	/* toString for log */
+	public int getFlag() {
+		return flag;
+	}
+	public void setFlag(int flag) {
+		this.flag = flag;
+	}
 	@Override
 	public String toString() {
-		return "MemberVO [uid=" + uid + ", subjectCode=" + subjectCode + ", grade=" + grade + ", classNumber="
-				+ classNumber + ", studentNumber=" + studentNumber + "]";
+		return "MemberVO [uid=" + uid + ", uname=" + uname + ", subjectCode=" + subjectCode + ", grade=" + grade
+				+ ", classNumber=" + classNumber + ", studentNumber=" + studentNumber + ", flag=" + flag + "]";
 	}
+	
 }
