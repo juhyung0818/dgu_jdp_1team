@@ -25,9 +25,11 @@ fieldset {
 		<h1>User Register</h1>
 		<fieldset>
 			<form action="/user/register" method="post">
+				<input type="hidden" id="idChk" value="N" />
 				<table>
 					<tr>
 						<th>ID:</th>
+<<<<<<< HEAD
 						<td>
 							<input type="text" name="uid" id="uid" required>
 							<button onclick="checkID()">ID중복확인</button>
@@ -60,6 +62,10 @@ fieldset {
 							</c:choose>
 							 -->
 						</td>
+=======
+						<td><input type="text" name="uid" id="uid" required><br></td>
+						<td><input type="button" value="uid"/> </td>
+>>>>>>> a31a05642ab2f7932388f872e876e8358acbf760
 					</tr>
 					<tr>
 						<th>PW:</th>
@@ -78,10 +84,11 @@ fieldset {
 				</table>
 				<input type="submit"
 					class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"
-					value="OK"> <a href='/'> <input type="button"
+					value="OK"> 
+					<a href='/'> <input type="button"
 					class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"
 					value="BACK">
-				</a>
+					</a>
 			</form>
 		</fieldset>
 

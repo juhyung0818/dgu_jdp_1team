@@ -145,23 +145,35 @@ public class UserController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value = "/idCheck", method = RequestMethod.POST)
-	public String idCheckPOST(@RequestBody String id, HttpSession session) throws Exception {
-		
-		
-		
-		String[] uid=id.split("=");
-		int cnt=service.checkUid(uid[1]);
-		
-		if(cnt==0)
-			id_checked=true;
-			//session.setAttribute("idCheck", true);
-			//model.addAttribute("idCheck", "사용가능합니다.");
-		else
-			id_checked=false;
-			//session.setAttribute("idCheck", false);
-			//model.addAttribute("idCheck", "이미 사용중입니다.");
-		return "redirect:/user/register";
-	}
+//	@RequestMapping(value = "/idCheck", method = RequestMethod.POST)
+//	public String idCheckPOST(@RequestBody String id, HttpSession session) throws Exception {
+//		
+//		
+//		
+//		String[] uid=id.split("=");
+//		int cnt=service.checkUid(uid[1]);
+//		
+//		if(cnt==0)
+//			id_checked=true;
+//			//session.setAttribute("idCheck", true);
+//			//model.addAttribute("idCheck", "사용가능합니다.");
+//		else
+//			id_checked=false;
+//			//session.setAttribute("idCheck", false);
+//			//model.addAttribute("idCheck", "이미 사용중입니다.");
+//		return "redirect:/user/register";
+//	}
 
+	/**
+	 * 
+	 * @author YJH
+	 */
+	@RequestMapping(value="/check", method = RequestMethod.POST)
+	public void checkPOST(String uid) throws Exception{
+		logger.info("uid check : " + uid);
+		 
+		service.checkUid(uid);
+	}
+	
+	
 }

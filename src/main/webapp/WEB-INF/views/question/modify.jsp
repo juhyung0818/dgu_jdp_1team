@@ -197,7 +197,7 @@
 $("#remove").click( function(){
  if(confirm("삭제 하시겠습니까?"))
 	 alert("삭제되었습니다.");
- else
+ else1
  {
 	 alert("취소했습니다.");
 	 return false;

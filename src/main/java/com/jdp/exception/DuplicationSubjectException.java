@@ -5,7 +5,6 @@ package com.jdp.exception;
  * @author YJH
  * 2016.11.25.Fri
  */
-
 public class DuplicationSubjectException extends PrimaryKeyDuplicatedException{
 
 	@Override

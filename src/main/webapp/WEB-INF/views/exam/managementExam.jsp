@@ -43,6 +43,7 @@
 	
 	<br><br>
 	<div class="box-footer" align="right">
+		<form action="/subject/tDelete?subjectCode=${subjectCode}" method="post">
 		<table>
 			<tr>
 				<td>
@@ -57,9 +58,7 @@
 					</a>
 				</td>
 				<td>	 
-					<form action="/subject/tDelete?subjectCode=${subjectCode}" method="post">
-						<input type="submit" class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red" id="remove" value="REMOVE">
-					</form>
+					<input type="submit" class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red" id="remove" value="REMOVE">
 				</td>
 				<td>	 
 					<a href="/subject/tSubject">
@@ -68,6 +67,7 @@
 				</td>	
 			</tr>
 		</table>
+		</form>
 	</div>
 </div>
 

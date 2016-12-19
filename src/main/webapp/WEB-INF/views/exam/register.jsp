@@ -58,7 +58,7 @@
 			<button type="submit" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> submit </button>
 			<a href='/exam/managementExam?subjectCode=${subjectCode}'>
 				<button id="cancel" class="w3-btn w3-white w3-border w3-border-pink w3-round-xlarge"> CANCEL </button>
-			</a> 
+			</a>
 		</div>
 		</fieldset>
 	</form>

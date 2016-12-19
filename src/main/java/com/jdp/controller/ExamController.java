@@ -46,6 +46,7 @@ public class ExamController {
 	public void registGET(@RequestParam("subjectCode") int subjectCode, HttpSession session, Model model) {
 		model.addAttribute("uname", ((UserVO)session.getAttribute("teacher")).getUname());
 		logger.info("question register");
+		model.addAttribute("subjectCode", subjectCode);
 	}
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
