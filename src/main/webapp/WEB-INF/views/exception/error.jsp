@@ -25,7 +25,7 @@ var result = '${code}';
 		history.back();
 	}
 	if(result == "DUPLICATE_ID"){
-		alert("사용할 수 없는 ID 입니다.");
+		alert("이미 사용중인 ID 입니다.");
 		history.back();
 	}
 	if(result == "INVALID_TYPE"){

@@ -29,7 +29,7 @@ fieldset {
 					<tr>
 						<th>ID:</th>
 						<td><input type="text" name="uid" id="uid" required><br></td>
-						<td><input type="button" value="uid"/> </td>
+						<td>
 					</tr>
 					<tr>
 						<th>PW:</th>
@@ -57,5 +57,8 @@ fieldset {
 		</fieldset>
 
 	</center>
+	
+	
+	
 <%@include file="../include/tFooter.jsp"%>
 
