@@ -15,7 +15,8 @@
 				<th>CLASS NUMBER</th>
 				<th>STUDENT NUMBER</th>
 				<th>NAME</th>
-				<th>STATUS</th>
+				<th>REGISTER</th>
+				<th>REMOVE</th>
 			</tr>
 			<c:forEach items="${member}" var="memberVO">
 				<tr>
@@ -36,9 +37,9 @@
 					</td>
 					
 					<td>
-						<c:choose>
-							<c:when test="${memberVO.flag==0 }">
-								<form action="/member/register?subjectCode=${memberVO.subjectCode }&uid=${memberVO.uid}" method="post">
+					
+						<c:if test="${memberVO.flag==0 }">
+							<form action="/member/register?subjectCode=${memberVO.subjectCode }&uid=${memberVO.uid}" method="post">
 									<button class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red" id="register">REGISTER</button>
 									
 									<script type="text/javascript">
@@ -53,12 +54,12 @@
 										
 										});
 									</script>
-									
-								</form>	
-							</c:when>
-							
-							<c:when test="${memberVO.flag==1 }">
-								<form action="/member/remove?subjectCode=${memberVO.subjectCode }&uid=${memberVO.uid}" method="post">
+								</form>
+						</c:if>
+					</td>
+					<td>
+						<c:if test="${memberVO.flag==1 }">
+							<form action="/member/remove?subjectCode=${memberVO.subjectCode }&uid=${memberVO.uid}" method="post">
 									<button class="w3-btn w3-white w3-border w3-border-red w3-round-xlarge w3-hover-text-red" id="kick">REMOVE</button>
 									<script type="text/javascript">
 										$("#kick").click( function(){
@@ -69,13 +70,12 @@
 												 alert("취소했습니다.");
 												 return false;
 											 }
-										
 										});
 									</script>
 								</form>	
-							</c:when>
-						</c:choose>
+						</c:if>
 					</td>
+					
 					
 				</tr>
 			</c:forEach>
