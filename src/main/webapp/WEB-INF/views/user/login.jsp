@@ -131,20 +131,12 @@ input[type="checkbox"] {
 							<label><input type="checkbox" name="useCookie">아이디저장</label>
 							<div class="clear"></div>
 							<a class="w3-btn w3-pink" href="/user/register">회원가입</a>
-
 						</div>
 					</div>
 				</div>
 			</div>
-
 		</div>
-
-
-
 	</form>
-
-
 </body>
-
 </html>
 
